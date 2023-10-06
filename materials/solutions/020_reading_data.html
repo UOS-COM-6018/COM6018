@@ -62,10 +62,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/labs/020_reading_data';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/solutions/020_reading_data';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="000 COM6018 Solutions" href="../solutions/000_Introduction.html" />
     <link rel="prev" title="010 Getting Started with Python" href="010_python_intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -174,16 +173,16 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/020_Reading_Data.html">020 Reading and Writing Data Files</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Lab Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="010_python_intro.html">010 Getting Started with Python</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">020 Reading data</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/020_reading_data.html">020 Reading data</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../solutions/000_Introduction.html">000 COM6018 Solutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/010_python_intro.html">010 Getting Started with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/020_reading_data.html">020 Reading data</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">020 Reading data</a></li>
 </ul>
 
     </div>
@@ -238,7 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/materials/labs/020_reading_data.ipynb" target="_blank"
+      <li><a href="../../_sources/materials/solutions/020_reading_data.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -385,7 +384,15 @@ document.write(`
 <p>After you have written your function, run the test cell below to check that it works.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">def</span> <span class="nf">read_co2_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">),</span> <span class="n">fp</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Yr&#39;</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">,</span> <span class="s1">&#39;CO2&#39;</span><span class="p">,</span> <span class="s1">&#39;NB&#39;</span><span class="p">,</span> <span class="s1">&#39;scale&#39;</span><span class="p">],</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -396,6 +403,34 @@ document.write(`
 <span class="n">co2_data</span> <span class="o">=</span> <span class="n">read_co2_csv</span><span class="p">(</span><span class="s1">&#39;data/co2.csv&#39;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">co2_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;Yr&#39;</span><span class="p">:</span> <span class="s1">&#39;1958&#39;</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">:</span> <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">:</span> <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;CO2&#39;</span><span class="p">:</span> <span class="s1">&#39;NaN&#39;</span><span class="p">,</span> <span class="s1">&#39;NB&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="s1">&#39;12.0&#39;</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">co2_data</span> <span class="o">=</span> <span class="n">read_co2_csv</span><span class="p">(</span><span class="s1">&#39;data/co2.csv&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">assert</span> <span class="n">co2_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;Yr&#39;</span><span class="p">:</span> <span class="s1">&#39;1958&#39;</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">:</span> <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">:</span> <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;CO2&#39;</span><span class="p">:</span> <span class="s1">&#39;NaN&#39;</span><span class="p">,</span> <span class="s1">&#39;NB&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="s1">&#39;12.0&#39;</span><span class="p">}</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+
+<span class="nn">Cell In[1], line 5,</span> in <span class="ni">read_co2_csv</span><span class="nt">(filename)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">read_co2_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="n">lines</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">),</span> <span class="n">fp</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Yr&#39;</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">,</span> <span class="s1">&#39;CO2&#39;</span><span class="p">,</span> <span class="s1">&#39;NB&#39;</span><span class="p">,</span> <span class="s1">&#39;scale&#39;</span><span class="p">],</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/anaconda3/envs/com6018_dev/lib/python3.11/site-packages/IPython/core/interactiveshell.py:286,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
+<span class="g g-Whitespace">    </span><span class="mi">280</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">284</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">286</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/co2.csv&#39;
 </pre></div>
 </div>
 </div>
@@ -410,7 +445,13 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">read_ch4_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">),</span> <span class="n">fp</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -421,6 +462,11 @@ document.write(`
 <span class="n">ch4_data</span> <span class="o">=</span> <span class="n">read_ch4_csv</span><span class="p">(</span><span class="s1">&#39;data/ch4.csv&#39;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">ch4_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;site_code&#39;</span><span class="p">:</span> <span class="s1">&#39;MLO&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="s1">&#39;1987&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;hour&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;minute&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;second&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;time_decimal&#39;</span><span class="p">:</span> <span class="s1">&#39;1987.0&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;-999.99&#39;</span><span class="p">,</span> <span class="s1">&#39;value_std_dev&#39;</span><span class="p">:</span> <span class="s1">&#39;-99.99&#39;</span><span class="p">,</span> <span class="s1">&#39;nvalue&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="s1">&#39;19.536&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="s1">&#39;-155.576&#39;</span><span class="p">,</span> <span class="s1">&#39;altitude&#39;</span><span class="p">:</span> <span class="s1">&#39;3437.0&#39;</span><span class="p">,</span> <span class="s1">&#39;elevation&#39;</span><span class="p">:</span> <span class="s1">&#39;3397.0&#39;</span><span class="p">,</span> <span class="s1">&#39;intake_height&#39;</span><span class="p">:</span> <span class="s1">&#39;40.0&#39;</span><span class="p">,</span> <span class="s1">&#39;qcflag&#39;</span><span class="p">:</span> <span class="s1">&#39;*..&#39;</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -441,7 +487,9 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">simplify_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fields</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[{</span><span class="n">fields</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span> <span class="n">row</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">}</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -459,6 +507,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="step-4-dealing-with-missing-values">
@@ -467,7 +520,10 @@ document.write(`
 <p>Write a function called ‘remove_missing_values’ that takes a list of dictionaries and a parameter called ‘missing_value’. The missing_value is the value that is used to mark missing data, i.e. ‘NaN’ for the co2 data. The function should return a list of dictionaries in which any entries that have missing values have been removed. Note, the missing values appear in the ‘concentration’ field in this case, but the function should check all the fields – if any field has a missing value, the whole entry should be removed.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="k">def</span> <span class="nf">remove_missing_values</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">missing_value</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="n">missing_value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
 </pre></div>
 </div>
 </div>
@@ -505,7 +561,12 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">fix_data_types</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fields</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+            <span class="n">row</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="n">k</span><span class="p">](</span><span class="n">row</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -523,6 +584,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="step-5-2-fixing-the-units">
@@ -531,7 +597,12 @@ document.write(`
 <p>We could write a general function to do this but to keep things simple we’ll write a function called ‘convert_ch4_concentration_to_ppm’ that takes a list of dictionaries and converts the ‘ch4_concentration’ field to ppm by dividing its value by 1000. The function should return a list of dictionaries in which the ‘ch4_concentration’ field has been converted to ppm.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">convert_ch4_concentration_to_ppm</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e-3</span>
+    <span class="k">return</span> <span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -542,6 +613,11 @@ document.write(`
 <span class="n">ch4_data</span> <span class="o">=</span> <span class="n">convert_ch4_concentration_to_ppm</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">ch4_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.70002</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -564,7 +640,12 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION </span>
+<span class="k">def</span> <span class="nf">make_index</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index_fields</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+       <span class="n">row</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">index_fields</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -576,6 +657,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">co2_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1958</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span> <span class="mf">316.16</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;1958-3-30&#39;</span><span class="p">}</span>
 <span class="k">assert</span> <span class="n">ch4_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1987</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span> <span class="mf">1.70002</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;1987-4-3&#39;</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -610,7 +696,16 @@ document.write(`
 <p>Note, this might take a while to run. It takes about 7 seconds on my Macbook Pro.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="k">def</span> <span class="nf">join_data</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">):</span>
+    <span class="n">new_data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data1</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">row2</span> <span class="ow">in</span> <span class="n">data2</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">row2</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]:</span>
+                <span class="n">new_data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="o">**</span><span class="n">row</span><span class="p">,</span> <span class="o">**</span><span class="n">row2</span><span class="p">})</span>
+                <span class="k">continue</span>
+    <span class="k">return</span> <span class="n">new_data</span>
 </pre></div>
 </div>
 </div>
@@ -622,6 +717,11 @@ document.write(`
 <span class="n">joined_data</span> <span class="o">=</span> <span class="n">join_data</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="n">ch4_data</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">joined_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1987</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span> <span class="mf">350.84</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;1987-4-3&#39;</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span> <span class="mf">1.70002</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -648,7 +748,10 @@ document.write(`
 <p>Write a function called ‘join_data_fast’ that takes two lists of dictionaries and returns a list of dictionaries with the merged data using this faster approach</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">join_data_fast</span><span class="p">(</span><span class="n">data1</span><span class="p">,</span> <span class="n">data2</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="p">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]:</span> <span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data1</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">[{</span><span class="o">**</span><span class="n">index</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]],</span> <span class="o">**</span><span class="n">row</span><span class="p">}</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data2</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;index&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">index</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -659,6 +762,11 @@ document.write(`
 <span class="n">joined_data</span> <span class="o">=</span> <span class="n">join_data_fast</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="n">ch4_data</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">joined_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1987</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span> <span class="mf">350.84</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;1987-4-3&#39;</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span> <span class="mf">1.70002</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -674,7 +782,9 @@ document.write(`
 <p>Try this in the cell below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="c1"># %timeit join_data(co2_data, ch4_data)</span>
+<span class="c1"># %timeit join_data_fast(co2_data, ch4_data)</span>
 </pre></div>
 </div>
 </div>
@@ -691,7 +801,12 @@ document.write(`
 <p>Write a function called ‘add_co2e’ that takes a list of dictionaries and returns a list of dictionaries with an extra field called ‘co2e’. The value of the co2e field should be the sum of the co2 and ch4 concentrations multiplied by their GWP.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="k">def</span> <span class="nf">add_co2e</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;co2e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">25</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;co2_concentration&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">data</span>
 </pre></div>
 </div>
 </div>
@@ -702,6 +817,11 @@ document.write(`
 <span class="n">co2e_data</span> <span class="o">=</span> <span class="n">add_co2e</span><span class="p">(</span><span class="n">joined_data</span><span class="p">)</span>
 <span class="k">assert</span> <span class="n">co2e_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;co2e&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">393.34049999999996</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -720,6 +840,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11996f4d0&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/79f2576da8aaf30dcb256e7cdde2a52fbc6de9ef2f807e88396448113ab75e46.png" src="../../_images/79f2576da8aaf30dcb256e7cdde2a52fbc6de9ef2f807e88396448113ab75e46.png" />
+</div>
 </div>
 <section id="step-9-2-making-a-meaningful-time-axis">
 <h3>Step 9.2 - Making a meaningful time axis<a class="headerlink" href="#step-9-2-making-a-meaningful-time-axis" title="Permalink to this heading">#</a></h3>
@@ -727,7 +853,10 @@ document.write(`
 <p>Write a function called ‘get_decimal_year’ that takes three parameters, year, month and day and returns the decimal year. This is complicated by the fact that the months have different numbers of days. For your function, simplify it by considering all months to be exactly 1/12 of a year and all days to be exactly 1/365 of a year. This is not exactly correct, but it is good enough for our purposes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="k">def</span> <span class="nf">get_decimal_year</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">year</span> <span class="o">+</span> <span class="p">(</span><span class="n">month</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">12</span> <span class="o">+</span> <span class="p">(</span><span class="n">day</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">365</span>
 </pre></div>
 </div>
 </div>
@@ -742,11 +871,22 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1958.2461187214612
+All tests passed!
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now write a function called add_decimal_year that adds a decimal_year field to each row of data. You can use the get_decimal_year function you just wrote.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="k">def</span> <span class="nf">add_decimal_year</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">row</span><span class="p">[</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_decimal_year</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">data</span> 
 </pre></div>
 </div>
 </div>
@@ -761,6 +901,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1987.2554794520547
+All tests passed!
+</pre></div>
+</div>
+</div>
 </div>
 <p>We will now replot the data using the decimal year for the x-axis.</p>
 <div class="cell docutils container">
@@ -770,6 +916,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1199e9050&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/d1064b42b74f596c521850970f08b91f3966d76daee24073954beb83bf8a4322.png" src="../../_images/d1064b42b74f596c521850970f08b91f3966d76daee24073954beb83bf8a4322.png" />
+</div>
 </div>
 <p>The plot below shows just the methane concentration over time. Note how it was was rising during the 90’s and then seemed to level off during the 2000’s. But, alarmingly, it started to rapidly rise again from about 2007 onwards. This is a worrying trend. As you can see from the previous plot, although methane concentrations are much lower than co2 concentrations, they make a significant contribution to the total global warming potential – equivalent to over 50 ppm of CO2, or two decades worth of CO2 emission increases at current rates. So rapid increases in methane concentrations are a major concern.</p>
 <div class="cell docutils container">
@@ -777,6 +929,12 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">co2e_data</span><span class="p">],</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">co2e_data</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1199c8450&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/fe52c54a434e17349ba6e23fa55cb2c12c93db81b261e7243bb06cbcd318cae3.png" src="../../_images/fe52c54a434e17349ba6e23fa55cb2c12c93db81b261e7243bb06cbcd318cae3.png" />
 </div>
 </div>
 <p><em>Copyright © 2023 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
@@ -797,7 +955,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./materials/labs"
+            path: "./materials/solutions"
         },
         predefinedOutput: true
     }
@@ -822,15 +980,6 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">010 Getting Started with Python</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../solutions/000_Introduction.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">000 COM6018 Solutions</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
