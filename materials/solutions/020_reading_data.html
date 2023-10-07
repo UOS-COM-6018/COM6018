@@ -384,7 +384,25 @@ document.write(`
 <p>After you have written your function, run the test cell below to check that it works.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION 1 - using a list comprehension to remove the comment lines</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">def</span> <span class="nf">read_co2_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="c1"># Only keep the lines that do not start with &#39;%&#39;</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">fp</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">)]</span>
+        <span class="c1"># Note, fieldnames are provided below as they are not in csv format in the file</span>
+        <span class="n">fieldnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Yr&#39;</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">,</span> <span class="s1">&#39;CO2&#39;</span><span class="p">,</span> <span class="s1">&#39;NB&#39;</span><span class="p">,</span> <span class="s1">&#39;scale&#39;</span><span class="p">]</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">fieldnames</span><span class="p">,</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_REMOVE docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION 2 - using &#39;filter&#39; and a &#39;lambda&#39; function to remove the comment lines</span>
 <span class="kn">import</span> <span class="nn">csv</span>
 
 <span class="k">def</span> <span class="nf">read_co2_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
@@ -407,30 +425,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">co2_data</span> <span class="o">=</span> <span class="n">read_co2_csv</span><span class="p">(</span><span class="s1">&#39;data/co2.csv&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">assert</span> <span class="n">co2_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;Yr&#39;</span><span class="p">:</span> <span class="s1">&#39;1958&#39;</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">:</span> <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">:</span> <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;CO2&#39;</span><span class="p">:</span> <span class="s1">&#39;NaN&#39;</span><span class="p">,</span> <span class="s1">&#39;NB&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="s1">&#39;12.0&#39;</span><span class="p">}</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
-
-<span class="nn">Cell In[1], line 5,</span> in <span class="ni">read_co2_csv</span><span class="nt">(filename)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">read_co2_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="n">lines</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">),</span> <span class="n">fp</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Yr&#39;</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">,</span> <span class="s1">&#39;CO2&#39;</span><span class="p">,</span> <span class="s1">&#39;NB&#39;</span><span class="p">,</span> <span class="s1">&#39;scale&#39;</span><span class="p">],</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">File /opt/homebrew/anaconda3/envs/com6018_dev/lib/python3.11/site-packages/IPython/core/interactiveshell.py:286,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">279</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
-<span class="g g-Whitespace">    </span><span class="mi">280</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">281</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">282</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">283</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">284</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">286</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/co2.csv&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -449,6 +444,8 @@ document.write(`
 <span class="k">def</span> <span class="nf">read_ch4_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
         <span class="n">lines</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">),</span> <span class="n">fp</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
+        <span class="c1"># This time we don&#39;t need to provide fields because there is a header row</span>
+        <span class="c1"># in the file, but we need to specify the delimiter because it is not a comma</span>
         <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">data</span>
@@ -487,9 +484,25 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
-<span class="k">def</span> <span class="nf">simplify_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fields</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">[{</span><span class="n">fields</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span> <span class="n">row</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">}</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION 1 - a simple solution</span>
+<span class="k">def</span> <span class="nf">simplify_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">old_key_to_new_key_dict</span><span class="p">):</span>
+    <span class="n">new_data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">new_item</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">old_key</span> <span class="ow">in</span> <span class="n">old_key_to_new_key_dict</span><span class="p">:</span>
+            <span class="n">new_key</span> <span class="o">=</span> <span class="n">old_key_to_new_key_dict</span><span class="p">[</span><span class="n">old_key</span><span class="p">]</span>
+            <span class="n">new_item</span><span class="p">[</span><span class="n">new_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="n">old_key</span><span class="p">]</span>
+        <span class="n">new_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">new_data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_REMOVE docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION 2 - elegant and more efficient one line solution but arguably less readable</span>
+<span class="k">def</span> <span class="nf">simplify_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">old_key_to_new_key_dict</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[{</span><span class="n">old_key_to_new_key_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span> <span class="n">item</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">old_key_to_new_key_dict</span><span class="p">}</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -841,10 +854,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11996f4d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x128aedc90&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/79f2576da8aaf30dcb256e7cdde2a52fbc6de9ef2f807e88396448113ab75e46.png" src="../../_images/79f2576da8aaf30dcb256e7cdde2a52fbc6de9ef2f807e88396448113ab75e46.png" />
+<img alt="../../_images/22f42f31e4818b3241dcae0e4c95f486aad59aaca17b579c82bcda790df035e5.png" src="../../_images/22f42f31e4818b3241dcae0e4c95f486aad59aaca17b579c82bcda790df035e5.png" />
 </div>
 </div>
 <section id="step-9-2-making-a-meaningful-time-axis">
@@ -917,10 +930,10 @@ All tests passed!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1199e9050&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x128f67190&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/d1064b42b74f596c521850970f08b91f3966d76daee24073954beb83bf8a4322.png" src="../../_images/d1064b42b74f596c521850970f08b91f3966d76daee24073954beb83bf8a4322.png" />
+<img alt="../../_images/ce14d0cb816b938625dc72b33f7ff5f7dc54b516bcc30621531eded469280aa4.png" src="../../_images/ce14d0cb816b938625dc72b33f7ff5f7dc54b516bcc30621531eded469280aa4.png" />
 </div>
 </div>
 <p>The plot below shows just the methane concentration over time. Note how it was was rising during the 90’s and then seemed to level off during the 2000’s. But, alarmingly, it started to rapidly rise again from about 2007 onwards. This is a worrying trend. As you can see from the previous plot, although methane concentrations are much lower than co2 concentrations, they make a significant contribution to the total global warming potential – equivalent to over 50 ppm of CO2, or two decades worth of CO2 emission increases at current rates. So rapid increases in methane concentrations are a major concern.</p>
@@ -931,10 +944,10 @@ All tests passed!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1199c8450&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x128fae3d0&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/fe52c54a434e17349ba6e23fa55cb2c12c93db81b261e7243bb06cbcd318cae3.png" src="../../_images/fe52c54a434e17349ba6e23fa55cb2c12c93db81b261e7243bb06cbcd318cae3.png" />
+<img alt="../../_images/c67e0ea6bd88e5870b553ce21daa9205b3f055dbaebd2a40bb45d6ecd1169dd5.png" src="../../_images/c67e0ea6bd88e5870b553ce21daa9205b3f055dbaebd2a40bb45d6ecd1169dd5.png" />
 </div>
 </div>
 <p><em>Copyright © 2023 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
