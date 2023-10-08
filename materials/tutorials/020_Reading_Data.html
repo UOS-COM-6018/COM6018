@@ -397,11 +397,11 @@ document.write(`
 <p>CSV stands for ‘Comma Separated Values’. It is a very simple format that is commonly used for tabulated data, i.e., data that might be stored in a spreadsheet. It is therefore ideal for our typical case where we have a dataset containing a number of data items, each with a number of fields.</p>
 <p>In CSV, each row stores a single data item and, within the row, the field values are listed separated by commas (hence the name CSV). Optionally, the first row of the file can contain the names of the fields.</p>
 <p>For example, a CSV file of windfarm data might be storing a windfarm id, the number of turbines, the turbine height and the max kW power of each windfarm. This would be stored in a file called for example, <a class="reference download internal" download="" href="../../_downloads/3e5622148ebe0c603fdffde964badc26/windfarm.csv"><span class="xref download myst">data/windfarm.csv</span></a>, with contents like this</p>
-<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>&quot;id&quot;, &quot;turbines&quot;, &quot;height&quot;, &quot;power&quot;
-&quot;WF1355&quot;, 13, 53, 19500
-&quot;WF1364&quot;, 3, 60, 8250
-&quot;WF1356&quot;, 12, 60, 24000
-&quot;WF1357&quot;, 36, 60, 72000
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span><span class="o">&quot;id&quot;</span><span class="p">,</span><span class="m"> &quot;turbines&quot;</span><span class="p">,</span><span class="k"> &quot;height&quot;</span><span class="p">,</span><span class="no"> &quot;power&quot;</span>
+<span class="o">&quot;WF1355&quot;</span><span class="p">,</span><span class="m"> 13</span><span class="p">,</span><span class="k"> 53</span><span class="p">,</span><span class="no"> 19500</span>
+<span class="o">&quot;WF1364&quot;</span><span class="p">,</span><span class="m"> 3</span><span class="p">,</span><span class="k"> 60</span><span class="p">,</span><span class="no"> 8250</span>
+<span class="o">&quot;WF1356&quot;</span><span class="p">,</span><span class="m"> 12</span><span class="p">,</span><span class="k"> 60</span><span class="p">,</span><span class="no"> 24000</span>
+<span class="o">&quot;WF1357&quot;</span><span class="p">,</span><span class="m"> 36</span><span class="p">,</span><span class="k"> 60</span><span class="p">,</span><span class="no"> 72000</span>
 </pre></div>
 </div>
 <p>The above example stores data for just four windfarms. In practice, a CSV file might contain thousands or hundreds of thousands of data items. Also, in a real dataset there may be a far greater number of fields, e.g., latitude, longitude, year of installation, turbine manufacturer, etc.</p>
@@ -775,8 +775,8 @@ favourite_numbers is read back as:
 <ul class="simple">
 <li><p>… and now as it would appear in a JSON Lines file.</p></li>
 </ul>
-<div class="highlight-jsonl notranslate"><div class="highlight"><pre><span></span> {&quot;name&quot;: &quot;Alice&quot;, &quot;favourite_numbers&quot;: [1, 2, 3]}
- {&quot;name&quot;: &quot;Bob&quot;, &quot;favourite_numbers&quot;: [4, 5, 6]}
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;favourite_numbers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]}</span>
+<span class="w"> </span><span class="p">{</span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;favourite_numbers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">]}</span>
 </pre></div>
 </div>
 <p>Note, we no longer enclose the items in a list, and we no longer separate them with commas. However, we do insist that each item has its own line.</p>
