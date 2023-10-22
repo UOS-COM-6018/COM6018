@@ -1,4 +1,4 @@
-# 030 Week 3 Intro
+# 030 Introducing NumPy
 
 ```{admonition} Click link below to view slides in new tab
 

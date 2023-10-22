@@ -1,4 +1,4 @@
-# 040 Week 4 Intro
+# 040 Introducing Pandas
 
 ```{admonition} Click link below to view slides in new tab
 
