@@ -2,6 +2,6 @@
 
 ```{admonition} Click link below to view slides in new tab
 
-<a href="../../050_week5_intro.html" target=”_blank”>050 Week 5 Intro</a>
+<a href="../../050_introducing_matplotlib.html" target=”_blank”>050 Introducing Matplotlib</a>
 
 ```

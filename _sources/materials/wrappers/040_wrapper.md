@@ -2,6 +2,6 @@
 
 ```{admonition} Click link below to view slides in new tab
 
-<a href="../../040_week4_intro.html" target=”_blank”>040 Week 4 Intro</a>
+<a href="../../040_introducing_pandas.html" target=”_blank”>040 Introducing Pandas</a>
 
 ```
