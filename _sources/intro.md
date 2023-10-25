@@ -1,4 +1,4 @@
-# Welcome to the COM6018 course book
+# The COM6018 module book
 
 This book contains the course material for COM6018, "Data Science with Python", taught at the University of Sheffield.
 
