@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>000 COM6018 Lab Classes &#8212; COM6018 - Data Science with Python</title>
+    <title>050 Using Matplotlib &#8212; COM6018 - Data Science with Python</title>
   
   
   
@@ -60,11 +60,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/labs/000_Introduction';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/labs/050_using_matplotlib';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="010 Getting Started with Python" href="010_python_intro.html" />
-    <link rel="prev" title="050 Exploratory Data Analysis and Visualization" href="../tutorials/050_Introducing_Matplotlib.html" />
+    <link rel="next" title="000 COM6018 Solutions" href="../solutions/000_Introduction.html" />
+    <link rel="prev" title="040 Working with Pandas" href="040_working_with_pandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -179,12 +181,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Lab Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="010_python_intro.html">010 Getting Started with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="020_reading_data.html">020 Reading data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="030_introducing_numpy.html">030 Introducing NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="040_working_with_pandas.html">040 Working with Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">050 Using Matplotlib</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
 <ul class="nav bd-sidenav">
@@ -239,6 +241,37 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/labs/050_using_matplotlib.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
 <div class="dropdown dropdown-source-buttons">
   <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
     <i class="fab fa-github"></i>
@@ -264,7 +297,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https:/github.com/UOS-COM-6018/COM6018/edit/main/materials/labs/000_Introduction.md" target="_blank"
+      <li><a href="https:/github.com/UOS-COM-6018/COM6018/edit/main/materials/labs/050_using_matplotlib.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -281,7 +314,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https:/github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/labs/000_Introduction.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https:/github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/labs/050_using_matplotlib.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -311,7 +344,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/materials/labs/000_Introduction.md" target="_blank"
+      <li><a href="../../_sources/materials/labs/050_using_matplotlib.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -321,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -393,7 +426,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>000 COM6018 Lab Classes</h1>
+    <h1>050 Using Matplotlib</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -403,8 +436,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-useful-resources">Some useful resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-1-simple-line-plot">Plot 1 - Simple line plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-1b-using-subplots">Plot 1b - Using subplots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-2-stackplot-and-pie-charts">Plot 2 - Stackplot and pie charts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-3-grid-of-scatter-plots">Plot 3 - Grid of scatter plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-4-geographic-data-plot">Plot 4 - Geographic data plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-5-contour-plot-of-function">Plot 5 - Contour plot of function</a></li>
 </ul>
             </nav>
         </div>
@@ -416,24 +455,152 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="com6018-lab-classes">
-<h1>000 COM6018 Lab Classes<a class="headerlink" href="#com6018-lab-classes" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="using-matplotlib">
+<h1>050 Using Matplotlib<a class="headerlink" href="#using-matplotlib" title="Permalink to this headline">#</a></h1>
 <blockquote>
-<div><p>COM6108</p>
+<div><p>COM6018</p>
 </div></blockquote>
-<p><em>Copyright © Jon Barker, 2023 University of Sheffield. All rights reserved</em>.</p>
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
-<p>For the COM6018 lab classes, we will be using <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">Jupyter</span> <span class="pre">notebooks</span></code>.</p>
-<p>Each week, shortly before the lab class session, a new notebook will appear in the module GitHub site. The notebooks will be designed to teach you how to apply the ideas that we have been discussing in the lecture sessions. They build up slowly starting with an introduction to Python and then incrementally introducing more specialist Python module and data science techniques. Through completing the notebooks you will also be developing code that you can re-use for completing the module’s assignments.</p>
-<p>Note, although you can completely the lab materials in your own time, it is <strong>strongly</strong> recommended that you attend the lab classes. The lab sessions will be staffed by PhD demonstrators and the module leader, and will provide an opportunity to ask questions about both the lab and lecture content. COM6018 is a very practically-orientated module and provides skills that underpin all other modules in the Data Analytics MSc. It is therefore important that you use the lab classes as an opportunity to improve your skills and to get feedback.</p>
-</section>
-<section id="some-useful-resources">
-<h2>Some useful resources<a class="headerlink" href="#some-useful-resources" title="Permalink to this headline">#</a></h2>
+<p><em>Copyright © 2023 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
+<p>In this lab class we are going to get practice with using Matplotlib. We will be using the <a class="reference external" href="https://matplotlib.org/3.1.1/contents.html">Matplotlib documentation</a> and the Introducing Matplotlib notebook as a reference.</p>
+<p>The lab class is organised as a sequence of exercises. For each one you are provided with a dataset and an image of a plot of the data. Your task is to write code to reproduce the plot as closely as possible. After the lab class the solution code will be released so you can check your answers. The exercises start with simple plots and get progressively more complex.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="plot-1-simple-line-plot">
+<h2>Plot 1 - Simple line plot<a class="headerlink" href="#plot-1-simple-line-plot" title="Permalink to this headline">#</a></h2>
+<p>The first plot is a simple line plot. The plot, shown below, shows worldwide renewable energy consumption from 1989 to 2022. The data for the plot is in file <code class="docutils literal notranslate"><span class="pre">data/renewable_energy.csv</span></code>. Your task is to write code to reproduce the plot as closely as possible.</p>
+<p>Some hints:</p>
 <ul class="simple">
-<li><p>Documentation for the Jupyter notebook <a class="reference external" href="https://jupyter-notebook.readthedocs.io/en/stable/notebook.html">https://jupyter-notebook.readthedocs.io/en/stable/notebook.html</a></p></li>
-<li><p>Installing Python on your laptop <a class="reference external" href="https://realpython.com/installing-python/">https://realpython.com/installing-python/</a></p></li>
+<li><p>You will need to filter the pandas dataframe to select only the data for the ‘World’ region.</p></li>
+<li><p>You can read the data using pandas <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function.</p></li>
+<li><p>The plotting can be done with a series of calls to <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>.</p></li>
+<li><p>Getting the grid lines right is is a bit tricky. You’ll need to to use the ‘plt.grid’ function and <code class="docutils literal notranslate"><span class="pre">plt.yticks</span></code> to set the spacing of major and minor tick marks.</p></li>
 </ul>
+<p>Write your code in the cell below. Run the cell to display your plot and make adjustments to the code until it matches the target plot.</p>
+<img alt="plot1" src="../../_images/energy.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="plot-1b-using-subplots">
+<h3>Plot 1b - Using subplots<a class="headerlink" href="#plot-1b-using-subplots" title="Permalink to this headline">#</a></h3>
+<p>The second plot uses the same data but uses subplots to compare energy consumption for the world, the EU and the UK.</p>
+<p>Hints:</p>
+<ul class="simple">
+<li><p>Start with the command <code class="docutils literal notranslate"><span class="pre">plt.figure(figsize=(15,</span> <span class="pre">5))</span></code> to set the size of the figure.</p></li>
+<li><p>You can use the <code class="docutils literal notranslate"><span class="pre">plt.subplot</span></code> command to place the subplots on a 1x3 grid.</p></li>
+<li><p>Write a function to generate each subplot, i.e. the function can take a filtered version of the dataframe and a title string as arguments.</p></li>
+</ul>
+<img alt="plot1b" src="../../_images/energy_subplots.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="plot-2-stackplot-and-pie-charts">
+<h2>Plot 2 - Stackplot and pie charts<a class="headerlink" href="#plot-2-stackplot-and-pie-charts" title="Permalink to this headline">#</a></h2>
+<p>The next plot shows the same worldwide energy consumption data but this time as a ‘stackplot’. There are also two pie charts showing the proportion of energy of each type in 1989 and 2022.</p>
+<p>Hints:</p>
+<ul class="simple">
+<li><p>The layout can be made using plt.subplot.</p></li>
+<li><p>You can use the <code class="docutils literal notranslate"><span class="pre">plt.stackplot</span></code> function to generate the stackplot. Check the matlplot lib documentation for details.</p></li>
+<li><p>The pie charts can be made with <code class="docutils literal notranslate"><span class="pre">plt.pie</span></code>. Again, check the documentation for details.</p></li>
+<li><p>You will need to retrieve the first and last value in each data series to use as the data for the pie charts (i.e. 1989 and 2022). You can do this using the <code class="docutils literal notranslate"><span class="pre">iloc</span></code> method of the dataframe.</p></li>
+<li><p>Note, the first pie chart groups wind, solar and other into ‘all other’.</p></li>
+</ul>
+<img alt="plot2" src="../../_images/energy_stacked.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-3-grid-of-scatter-plots">
+<h2>Plot 3 - Grid of scatter plots<a class="headerlink" href="#plot-3-grid-of-scatter-plots" title="Permalink to this headline">#</a></h2>
+<p>The next plot illustrates a famous dataset known as the ‘iris’ dataset. The dataset contains measurements of the sepal and petal length and width for three species of iris flower. This dataset was first published in 1936 by the British statistician and biologist Ronald Fisher. The dataset is widely used in machine learning and data science to illustrate classification and clustering algorithms.</p>
+<p>The plot shows a grid of scatter plots comparing each pair of measurements. The data is in file <code class="docutils literal notranslate"><span class="pre">data/iris.csv</span></code>.</p>
+<p>This plot is a bit more complex than the previous ones.</p>
+<p>Hints:</p>
+<ul class="simple">
+<li><p>Write a function that can generate each subplot. The function should take the dataframe and the column names for the x and y axes as arguments.</p></li>
+<li><p>Use a nested loop to loop over all combinations of x and y axes.</p></li>
+<li><p>Note, the legend has only been placed on the diagonal subplots where it doesn’t overlap with the data.</p></li>
+<li><p>You can use the <code class="docutils literal notranslate"><span class="pre">plt.tight_layout()</span></code> function as the final command to ensure that the subplot axes titles don’t overlap other subplots.</p></li>
+</ul>
+<img alt="plot3" src="../../_images/iris_scatter.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-4-geographic-data-plot">
+<h2>Plot 4 - Geographic data plot<a class="headerlink" href="#plot-4-geographic-data-plot" title="Permalink to this headline">#</a></h2>
+<p>The next plot is showing the location and generation capacity of wind farms in the UK. The data is in file <code class="docutils literal notranslate"><span class="pre">data/wind_farms.csv</span></code>. The plot is basically a scatter plot but the points are shown over a map of the UK. This has been achieved using the <code class="docutils literal notranslate"><span class="pre">basemap</span></code> matplotlib toolkit.</p>
+<p>The first lines of the solution are as follows</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/wind_farms_uk.csv&#39;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;lcc&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> 
+            <span class="n">lat_0</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=-</span><span class="mf">3.5</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="mf">1E6</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">1.2E6</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You will now need to use the function <code class="docutils literal notranslate"><span class="pre">m.fillcontinents</span></code>, <code class="docutils literal notranslate"><span class="pre">m.drawcoastlines</span></code> and <code class="docutils literal notranslate"><span class="pre">m.drawmapboundary</span></code> to draw the map. You will also need to use the <code class="docutils literal notranslate"><span class="pre">m.scatter</span></code> function to plot the wind farm locations.</p>
+<p>Hints:</p>
+<ul class="simple">
+<li><p>Note, that the <em>area</em> of the circles is proportional to the wind farm capacity.</p></li>
+<li><p>You will need to use <code class="docutils literal notranslate"><span class="pre">m.scatter</span></code>’s parameters <code class="docutils literal notranslate"><span class="pre">latlon=True</span></code> so that the coordinates are interpreted as latitude and longitude.</p></li>
+<li><p>The legend in the bottom left corner is quite tricky to generate. It can be made by placing invisible ‘dummy’ points on the plot that have labels attached. Try Googling for a solution but don’t worry if you can’t get this bit to work, wait for the solution code to be released.</p></li>
+</ul>
+<img alt="plot4" src="../../_images/wind_farms.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-5-contour-plot-of-function">
+<h2>Plot 5 - Contour plot of function<a class="headerlink" href="#plot-5-contour-plot-of-function" title="Permalink to this headline">#</a></h2>
+<p>The last example is a contour plot of the function is <span class="math notranslate nohighlight">\(f(x,y) = sin(4x) + cos(xy)\)</span></p>
+<p>This looks complicated but can actually be made with just a few lines of code. If you are unsure on how to proceed then check the contour plot example in the course notes.</p>
+<p>Hints:</p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">np.meshgrid</span></code> to generate the x and y coordinates.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">plt.contour</span></code> to generate the contour plot.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">plt.clabel</span></code> to add the contour labels.</p></li>
+<li><p>The plot is using the colourmap called ‘RdBu’ which use red to represent low values and blue to represent high values.</p></li>
+<li><p>Write a Python function called ‘f’ to compute the function values for each x and y coordinate. This will make the code easier to read. This function should take a pair of numpy arrays to represent the x and y coordinates of all the points that need to be computed and return the function values as a numpy array. (The x and y arrays can be generated using <code class="docutils literal notranslate"><span class="pre">np.meshgrid</span></code>.)</p></li>
+</ul>
+<p>You can easily change the function to plot by changing the definition of the function ‘f’. By using sines and cosines of different sums, products and powers of x and y you can generate a wide range of interesting patterns.</p>
+<img alt="plot5" src="../../_images/contours.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -469,20 +636,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../tutorials/050_Introducing_Matplotlib.html"
+       href="040_working_with_pandas.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">050 Exploratory Data Analysis and Visualization</p>
+        <p class="prev-next-title">040 Working with Pandas</p>
       </div>
     </a>
     <a class="right-next"
-       href="010_python_intro.html"
+       href="../solutions/000_Introduction.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">010 Getting Started with Python</p>
+        <p class="prev-next-title">000 COM6018 Solutions</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -504,8 +671,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-useful-resources">Some useful resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-1-simple-line-plot">Plot 1 - Simple line plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-1b-using-subplots">Plot 1b - Using subplots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-2-stackplot-and-pie-charts">Plot 2 - Stackplot and pie charts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-3-grid-of-scatter-plots">Plot 3 - Grid of scatter plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-4-geographic-data-plot">Plot 4 - Geographic data plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-5-contour-plot-of-function">Plot 5 - Contour plot of function</a></li>
 </ul>
   </nav></div>
 
