@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="060 Introducing Scikit-Learn" href="060_Introducing_Scikit_Learn.html" />
-    <link rel="prev" title="040 Processing Data with Pandas" href="040_Introducing_Pandas.html" />
+    <link rel="prev" title="045 Common Pandas Mistakes" href="045_Common_Pandas_Mistakes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -190,6 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="030_Introducing_Numpy.html">030 Numerical Computing with NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="035_Some_Common_Problems.html">035 Some Common Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="040_Introducing_Pandas.html">040 Processing Data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="045_Common_Pandas_Mistakes.html">045 Common Pandas Mistakes</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">050 Exploratory Data Analysis and Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="060_Introducing_Scikit_Learn.html">060 Introducing Scikit-Learn</a></li>
 </ul>
@@ -881,7 +882,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/318d397dcc5d52b77d7e89302a9b1fb7d631f625e179026d93ef1639228729b9.png" src="../../_images/318d397dcc5d52b77d7e89302a9b1fb7d631f625e179026d93ef1639228729b9.png" />
+<img alt="../../_images/3d231be97f314804c18b82ad74254715e83440d86ad92c451f91a489625ed098.png" src="../../_images/3d231be97f314804c18b82ad74254715e83440d86ad92c451f91a489625ed098.png" />
 </div>
 </div>
 <p>Matplotlib also provide a function called ‘bar’ for plotting bar charts. Do not confuse this with the ‘hist’ function. The ‘bar’ function can take a set of x, y numeric value pairs as in the example below,</p>
@@ -932,7 +933,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fca2d22abb7c79ff28e4d8636b83ec3471e6df32dcf2dcc678c27c4b677eec83.png" src="../../_images/fca2d22abb7c79ff28e4d8636b83ec3471e6df32dcf2dcc678c27c4b677eec83.png" />
+<img alt="../../_images/3d0152baecaeb0a534d988c09c97af4f9c079f848cd8d63742dcca026fad3b82.png" src="../../_images/3d0152baecaeb0a534d988c09c97af4f9c079f848cd8d63742dcca026fad3b82.png" />
 </div>
 </div>
 <p>In the above, we have 1000 samples each with two features, <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">x2</span></code>. The scatter plot gives us a clear indication of the relationship between the two variables. In this case, we can see that the points are clustered around a straight line. This is indicates that there is strong correlation between the two variables. This is not surprising in this case because <code class="docutils literal notranslate"><span class="pre">x2</span></code> has been constructed from a linear function of <code class="docutils literal notranslate"><span class="pre">x1</span></code> (namely, <span class="math notranslate nohighlight">\(15 x_1 + 10\)</span>) with some random noise added.</p>
@@ -1227,7 +1228,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b516ff2419359047d16b25aeeade9157bfb99abd6f0d720ba621c068406c3de5.png" src="../../_images/b516ff2419359047d16b25aeeade9157bfb99abd6f0d720ba621c068406c3de5.png" />
+<img alt="../../_images/d9565767153cba085e4b5c3c8bf84b564ae223d1ab0f4c8a842afe00445db6e1.png" src="../../_images/d9565767153cba085e4b5c3c8bf84b564ae223d1ab0f4c8a842afe00445db6e1.png" />
 </div>
 </div>
 <p>It is important to think carefully about whether to use a line or scatter plot. A line plot emphasises the continuity of data along the x-axis. A scatter plot emphasises the individual data points. In this particular case, the scatter plot is probably more appropriate because each point represents a different car and there is no continuity between cars.</p>
@@ -1440,7 +1441,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/94340a249e873762d15b041c032de7b2bc0505e8f6563d398006ff5cf6bdd91b.png" src="../../_images/94340a249e873762d15b041c032de7b2bc0505e8f6563d398006ff5cf6bdd91b.png" />
+<img alt="../../_images/ab52904c74ea2e0f20e9706e7fc5239f1e04afd950a8a6fecdb12263cce5fffd.png" src="../../_images/ab52904c74ea2e0f20e9706e7fc5239f1e04afd950a8a6fecdb12263cce5fffd.png" />
 </div>
 </div>
 </section>
@@ -1561,12 +1562,12 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="040_Introducing_Pandas.html"
+       href="045_Common_Pandas_Mistakes.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">040 Processing Data with Pandas</p>
+        <p class="prev-next-title">045 Common Pandas Mistakes</p>
       </div>
     </a>
     <a class="right-next"
