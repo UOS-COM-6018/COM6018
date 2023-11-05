@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,12 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -66,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="030 Numerical Computing with NumPy" href="030_Introducing_Numpy.html" />
     <link rel="prev" title="015 Further Python" href="015_Further_Python.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -75,6 +77,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -135,13 +146,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
       
     
     
-    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/uos_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="COM6018 - Data Science with Python - Home"/>
+    <script>document.write(`<img src="../../_static/uos_logo.png" class="logo__image only-dark" alt="COM6018 - Data Science with Python - Home"/>`);</script>
   
   
 </a></div>
@@ -165,6 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/030_wrapper.html">030 Introducing NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/040_wrapper.html">040 Introducing Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/050_wrapper.html">050 Data Visualisation with Matplotlib and Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/060_wrapper.html">060 An Introduction to Scikit-Learn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
 <ul class="current nav bd-sidenav">
@@ -176,6 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="035_Some_Common_Problems.html">035 Some Common Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="040_Introducing_Pandas.html">040 Processing Data with Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="050_Introducing_Matplotlib.html">050 Exploratory Data Analysis and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="060_Introducing_Scikit_Learn.html">060 Introducing Scikit-Learn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
 <ul class="nav bd-sidenav">
@@ -397,10 +411,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -408,7 +422,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -470,34 +484,34 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="reading-and-writing-data-files">
-<h1>020 Reading and Writing Data Files<a class="headerlink" href="#reading-and-writing-data-files" title="Permalink to this headline">#</a></h1>
+<h1>020 Reading and Writing Data Files<a class="headerlink" href="#reading-and-writing-data-files" title="Permalink to this heading">#</a></h1>
 <blockquote>
 <div><p>COM6018</p>
 </div></blockquote>
 <p><em>Copyright © 2023 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
 <section id="introduction">
-<h2>1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2>1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <section id="storing-data-in-files">
-<h3>1.1 Storing data in files<a class="headerlink" href="#storing-data-in-files" title="Permalink to this headline">#</a></h3>
+<h3>1.1 Storing data in files<a class="headerlink" href="#storing-data-in-files" title="Permalink to this heading">#</a></h3>
 <p>In this course we will be dealing with many different sets of data. Nearly all of these will start life as a file stored on a computer which we will need to read into our programs. The programs that we write will be transforming or analysing this data in some way. The results will then typically need to be written back to a file so that they can be used by other programs or people. So, understanding how to read and write data files is a key skill for a data scientist.</p>
 <p>When storing data in a file, we need to use a standard format so that the data can be easily read by others. There are a huge variety of different data file formats that are used in data science; some are very general purpose, others are specialised `domain-specific’ formats. In these notes we will be introducing some of the most common formats that you are likely to encounter.</p>
 </section>
 <section id="human-readable-vs-machine-readable">
-<h3>1.2 Human-readable vs. Machine-readable<a class="headerlink" href="#human-readable-vs-machine-readable" title="Permalink to this headline">#</a></h3>
+<h3>1.2 Human-readable vs. Machine-readable<a class="headerlink" href="#human-readable-vs-machine-readable" title="Permalink to this heading">#</a></h3>
 <p>One of the first considerations when writing data to a file is whether or not it needs to be <strong>human-readable</strong>. By human-readable we mean that the data can be directly inspected and understood by a human, i.e., typically by being represented using ASCII characters. In many cases, this is not required and we can use a <strong>machine-readable</strong> format (also know as a <strong>binary format</strong>). A binary format will typically be more compact (i.e., it will consume less storage space) and faster to read and write. However, for small datasets the storage and read/write times are not significant and a human-readable format is often easier to work with. In this course we will be starting with relatively small dataset and using human-readable formats for all of our data files.</p>
 <p>There are many different human-readable data formats but two of the most common for data science are CSV and JSON. We will be looking at these formats in some detail in these notes.</p>
 </section>
 <section id="some-terminology">
-<h3>1.3 Some terminology<a class="headerlink" href="#some-terminology" title="Permalink to this headline">#</a></h3>
+<h3>1.3 Some terminology<a class="headerlink" href="#some-terminology" title="Permalink to this heading">#</a></h3>
 <p>Before describing the different data formats, we need to introduce some terminology. When we talk about a dataset, we are typically referring to a collection of <strong>data items</strong> describing the objects in the set. Each data item is described by a collection of <strong>fields</strong> where each field describes a different aspect of the object. For example, a dataset might contain information about a number of people. Each person would be a data item and the fields would be things like name, age, height, weight, etc. Note, the fields may be of different types, e.g., the name field would be a string, the age field would be an integer, the height field would be a float, etc.</p>
 <p>In data science, and particularly in machine learning, we are often dealing with datasets that represent examples of some larger population. For example, we may have a collection of 10,000 images of cats from which we want to learn about all possible images of cats. In machine learning, each data item is more commonly called a <strong>sample</strong> and the fields are called <strong>features</strong>. So depending on the context (or who we are talking to!), we might talk about a dataset containing 10,000 samples each with 100 features; or a dataset having 10,000 data items each with 100 fields.</p>
 <p>In these notes on file formats, we will use the terms ‘data item’ and ‘field’. Later in the course when discussing machine learning, we will more often use the terms ‘sample’ and ‘feature’.</p>
 </section>
 </section>
 <section id="csv-files">
-<h2>2 CSV Files<a class="headerlink" href="#csv-files" title="Permalink to this headline">#</a></h2>
+<h2>2 CSV Files<a class="headerlink" href="#csv-files" title="Permalink to this heading">#</a></h2>
 <section id="the-csv-file-format">
-<h3>2.1 The CSV file format<a class="headerlink" href="#the-csv-file-format" title="Permalink to this headline">#</a></h3>
+<h3>2.1 The CSV file format<a class="headerlink" href="#the-csv-file-format" title="Permalink to this heading">#</a></h3>
 <p>CSV stands for ‘Comma Separated Values’. It is a very simple format that is commonly used for tabulated data, i.e., data that might be stored in a spreadsheet. It is therefore ideal for our typical case where we have a dataset containing a number of data items, each with a number of fields.</p>
 <p>In CSV, each row stores a single data item and, within the row, the field values are listed separated by commas (hence the name CSV). Optionally, the first row of the file can contain the names of the fields.</p>
 <p>For example, a CSV file of windfarm data might be storing a windfarm id, the number of turbines, the turbine height and the max kW power of each windfarm. This would be stored in a file called for example, <a class="reference download internal" download="" href="../../_downloads/3e5622148ebe0c603fdffde964badc26/windfarm.csv"><span class="xref download myst">data/windfarm.csv</span></a>, with contents like this</p>
@@ -511,7 +525,7 @@ document.write(`
 <p>The above example stores data for just four windfarms. In practice, a CSV file might contain thousands or hundreds of thousands of data items. Also, in a real dataset there may be a far greater number of fields, e.g., latitude, longitude, year of installation, turbine manufacturer, etc.</p>
 </section>
 <section id="reading-a-csv-file-with-csv-reader">
-<h3>2.2 Reading a CSV file with <code class="docutils literal notranslate"><span class="pre">csv.reader</span></code><a class="headerlink" href="#reading-a-csv-file-with-csv-reader" title="Permalink to this headline">#</a></h3>
+<h3>2.2 Reading a CSV file with <code class="docutils literal notranslate"><span class="pre">csv.reader</span></code><a class="headerlink" href="#reading-a-csv-file-with-csv-reader" title="Permalink to this heading">#</a></h3>
 <p>For handling csv files in Python, we can use the <code class="docutils literal notranslate"><span class="pre">csv</span></code> module that is part of the Standard Library. This has a method called <code class="docutils literal notranslate"><span class="pre">reader</span></code> which will take a file handle and return an <strong>iterator object</strong> that allows us to read each row of the file as a list of field values. In the example below, this has been used in a list comprehension to load the entire dataset as a list of lists.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -548,7 +562,7 @@ document.write(`
 <p>This code has read the data but the resulting data is not stored in a very convenient format. The data is returned as a list of lists. The first element of the list contains the names of the fields whch are stored as a list of strings. Subsequent elements in the list contain the rows of the csv file with each of these rows stored as a simple list of field values. To interpret these lists  we have to remember what the order of the list means (or use the names in <code class="docutils literal notranslate"><span class="pre">data[0]</span></code>). A further issue is that all the field values are being treated as strings, e.g., the power for the first windfarm is 19500 kW where 19500 is a numeric value but is stored as the character string ‘19500’. We would need to take extra steps to convert the fields into the correct types.</p>
 </section>
 <section id="a-better-way-using-csv-dictreader">
-<h3>2.3 A better way - using <code class="docutils literal notranslate"><span class="pre">csv.DictReader</span></code><a class="headerlink" href="#a-better-way-using-csv-dictreader" title="Permalink to this headline">#</a></h3>
+<h3>2.3 A better way - using <code class="docutils literal notranslate"><span class="pre">csv.DictReader</span></code><a class="headerlink" href="#a-better-way-using-csv-dictreader" title="Permalink to this heading">#</a></h3>
 <p>Storing our dataset as a list of lists makes it hard to work with. A much more useful representation would be as a <strong>list of dictionaries</strong>. In this case,  each dictionary would store a single data item and the dictionary entries would store the field values, indexed by their field names. For example, the data would look like this,</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
 <span class="w">    </span><span class="p">{</span>
@@ -602,7 +616,7 @@ document.write(`
 <p>This is both easier to write (as we don’t have to remember the order of the fields in the original file) and much easier to read, i.e., <code class="docutils literal notranslate"><span class="pre">data[0]['power']</span></code> is much more meaningful than <code class="docutils literal notranslate"><span class="pre">data[0][3]</span></code>.</p>
 </section>
 <section id="dealing-with-numeric-versus-string-fields">
-<h3>2.4 Dealing with numeric versus string fields<a class="headerlink" href="#dealing-with-numeric-versus-string-fields" title="Permalink to this headline">#</a></h3>
+<h3>2.4 Dealing with numeric versus string fields<a class="headerlink" href="#dealing-with-numeric-versus-string-fields" title="Permalink to this heading">#</a></h3>
 <p>Note, we still have the problem in the example above that all field are read in and stored as strings.</p>
 <p>A solution to this is to use the <code class="docutils literal notranslate"><span class="pre">quoting</span></code> parameter of the <code class="docutils literal notranslate"><span class="pre">DictReader</span></code> to specify that only quoted values should be read as strings; all others are converted into floats. This is done as follows.</p>
 <div class="cell docutils container">
@@ -655,7 +669,7 @@ document.write(`
 </section>
 </section>
 <section id="the-json-data-format">
-<h2>3 The JSON data format<a class="headerlink" href="#the-json-data-format" title="Permalink to this headline">#</a></h2>
+<h2>3 The JSON data format<a class="headerlink" href="#the-json-data-format" title="Permalink to this heading">#</a></h2>
 <p>The CSV files that we looked at in the last section are convenient when each field in our data entry can be represented by a simple type such as a string or a number. However, in many cases the field values might themselves have more complex types such as lists, or even dictionaries.</p>
 <p>For example, imagine we have weather data for a large number of cities around the world for a given year. For each city (one data entry) we may have simple fields that store, for example, the name and the country, but the weather data might be recorded for each month, i.e., twelve values. Further, for each month we might have separate recordings for say, the daily rainfall, minimum and maximum temperature, the number of snowy days, etc, which would be best stored as a dictionary. So, within the data entry, we have a list of twelve months, and each month is in turn stored as a dictionary. Our resulting data might look something like this,</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
@@ -687,7 +701,7 @@ document.write(`
 <p>JSON files are text files which are usually given the file extension ‘.json’. Their contents look like the text in the example above (in fact the text above is a snippet of a larger JSON file with ‘//etc’ added where text has been deleted). Dictionary entries are introduced with ‘{’ and terminated with ‘}’. Lists are introduced with ‘[’ and terminated with ‘]’. The values in the dictionary entries can be strings, numbers, lists or even other dictionaries. The values in the lists can be strings, numbers, lists or dictionaries. So, JSON files can be used to store arbitrarily complex data structures. Unlike CSV files, which can vary in their format (e.g., do strings have quotes or not? What character is used as the quote? etc), the JSON format is strictly defined and so although it can store more complex data, there is no ambiguity in how the data is stored. This makes it easy to write tools for reading and writing JSON files, and there are plenty such tools available.</p>
 <p>(For the full specification of the JSON format see <a class="reference external" href="https://www.json.org/json-en.html">https://www.json.org/json-en.html</a>. Note, in the specification the term “object” is used to refer to what we have been calling a dictionary, and the term “array” is used to refer to what we have been calling a list. This is largely due to JSON’s origins in JavaScript.)</p>
 <section id="reading-json-files">
-<h3>3.1 Reading JSON files<a class="headerlink" href="#reading-json-files" title="Permalink to this headline">#</a></h3>
+<h3>3.1 Reading JSON files<a class="headerlink" href="#reading-json-files" title="Permalink to this heading">#</a></h3>
 <p>As with CSV files, Python has a Standard Library module for reading and writing JSON files. The module is called <code class="docutils literal notranslate"><span class="pre">json</span></code> and is imported with <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">json</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">json</span></code> module has two main functions, <code class="docutils literal notranslate"><span class="pre">load</span></code> and <code class="docutils literal notranslate"><span class="pre">dump</span></code>. The <code class="docutils literal notranslate"><span class="pre">load</span></code> function is used to read a JSON file and convert it into a Python data structure. The <code class="docutils literal notranslate"><span class="pre">dump</span></code> function is used to convert a Python data structure into a JSON file.</p>
 <p>In the example below, we use the <code class="docutils literal notranslate"><span class="pre">load</span></code> function to read the JSON file <code class="docutils literal notranslate"><span class="pre">data/climate.json</span></code> and convert it into a Python list which we have called <code class="docutils literal notranslate"><span class="pre">climate_data</span></code>.</p>
@@ -724,7 +738,7 @@ document.write(`
 </ul>
 </section>
 <section id="writing-json-files">
-<h3>3.2 Writing JSON files<a class="headerlink" href="#writing-json-files" title="Permalink to this headline">#</a></h3>
+<h3>3.2 Writing JSON files<a class="headerlink" href="#writing-json-files" title="Permalink to this heading">#</a></h3>
 <p>Writing JSON files is just as easy as reading them. To write a JSON-compatible Python data structure to a file we use the <code class="docutils literal notranslate"><span class="pre">dump</span></code> function. For example, to write out the climate data that we have just read in, we can use,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -856,7 +870,7 @@ favourite_numbers is read back as:
 <p>These issues are not normally a problem, but it is worth being aware of them.</p>
 </section>
 <section id="json-lines-format">
-<h3>3.3 JSON Lines format<a class="headerlink" href="#json-lines-format" title="Permalink to this headline">#</a></h3>
+<h3>3.3 JSON Lines format<a class="headerlink" href="#json-lines-format" title="Permalink to this heading">#</a></h3>
 <p>One of the nice features of the CSV format is that each data entry is stored on a separate line. This makes it very easy to read items from large files one at a time, i.e., note how the csv.reader and csv.DictReader objects iterate over a file, line by line, returning a data entry each time.</p>
 <p>With the standard JSON format this is not possible. JSON does not dictate how white space is used and as we have seen, it is typical to store a single data-entry over many lines using indentation to indicate the nested structure. Even if we insisted on storing each data-entry on a single line there is a further problem: the JSON format for a list of dictionaries requires the whole list to be enclosed in square brackets. This means that a JSON parser will be looking for the closing square bracket before it can return any data. This is not a problem for small files, but for large files it means that the whole file must be read into memory before any data can be returned.</p>
 <p>To make JSON more friendly for storing large data science data sets, the <code class="docutils literal notranslate"><span class="pre">JSON</span> <span class="pre">Lines</span></code> format was developed (typically stored with the file extension <code class="docutils literal notranslate"><span class="pre">.jsonl</span></code>). In this format, we simply store each data entry as a valid JSON string <strong>on a separate line</strong> terminated by a newline character. Note, although each line is a valid JSON string, the file as a whole is not. i.e., the list of data entries is not enclosed in square brackets, and the data entries are not separated by commas. However, this file, like a CSV file, can be read and parsed line by line. This is particularly useful for processing large data science data sets that may be too big to fit into memory.</p>
@@ -886,7 +900,7 @@ favourite_numbers is read back as:
 <p>Note, we no longer enclose the items in a list, and we no longer separate them with commas. However, we do insist that each item has its own line.</p>
 <p>The JSON Lines format is a very simply convention and the full specification can be found on this single page website, <a class="reference external" href="https://jsonlines.org/">https://jsonlines.org/</a></p>
 <section id="reading-json-lines-files">
-<h4>3.3.1 Reading JSON lines files<a class="headerlink" href="#reading-json-lines-files" title="Permalink to this headline">#</a></h4>
+<h4>3.3.1 Reading JSON lines files<a class="headerlink" href="#reading-json-lines-files" title="Permalink to this heading">#</a></h4>
 <p>Note, because <code class="docutils literal notranslate"><span class="pre">.jsonl</span></code> is not a valid <code class="docutils literal notranslate"><span class="pre">.json</span></code> file, it cannot be read directly with the builtin <code class="docutils literal notranslate"><span class="pre">json.read</span></code> function. Also there is no jsonl file reader built into the standard library. However, we can easily read <code class="docutils literal notranslate"><span class="pre">.jsonl</span></code> files with a few lines of Python. To do this we can use the <code class="docutils literal notranslate"><span class="pre">json.loads</span></code> function which will convert a single string into a JSON object. Using this we can read the file line-by-line and convert each line as we go. For example,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -913,7 +927,7 @@ favourite_numbers is read back as:
 </div>
 </section>
 <section id="writing-json-lines-files">
-<h4>3.3.2 Writing JSON lines files<a class="headerlink" href="#writing-json-lines-files" title="Permalink to this headline">#</a></h4>
+<h4>3.3.2 Writing JSON lines files<a class="headerlink" href="#writing-json-lines-files" title="Permalink to this heading">#</a></h4>
 <p>Writing to the JSON lines format is just as easy. We simply need to convert each data entry into a JSON string and write it to a file. The <code class="docutils literal notranslate"><span class="pre">json.dumps</span></code> function will convert the JSON object into a string for us. So for example,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -958,11 +972,10 @@ favourite_numbers is read back as:
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="015_Further_Python.html"
@@ -982,10 +995,7 @@ favourite_numbers is read back as:
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1070,8 +1080,8 @@ By Jon Barker, University of Sheffield
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
 
   <footer class="bd-footer">
   </footer>

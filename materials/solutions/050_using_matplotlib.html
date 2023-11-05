@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,12 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -67,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="prev" title="040 Working with Pandas" href="040_working_with_pandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -76,6 +78,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -136,13 +147,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
       
     
     
-    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/uos_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="COM6018 - Data Science with Python - Home"/>
+    <script>document.write(`<img src="../../_static/uos_logo.png" class="logo__image only-dark" alt="COM6018 - Data Science with Python - Home"/>`);</script>
   
   
 </a></div>
@@ -166,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/030_wrapper.html">030 Introducing NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/040_wrapper.html">040 Introducing Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/050_wrapper.html">050 Data Visualisation with Matplotlib and Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/060_wrapper.html">060 An Introduction to Scikit-Learn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
 <ul class="nav bd-sidenav">
@@ -177,6 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/035_Some_Common_Problems.html">035 Some Common Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/040_Introducing_Pandas.html">040 Processing Data with Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/050_Introducing_Matplotlib.html">050 Exploratory Data Analysis and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/060_Introducing_Scikit_Learn.html">060 Introducing Scikit-Learn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
 <ul class="nav bd-sidenav">
@@ -398,10 +412,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -409,7 +423,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -456,7 +470,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="using-matplotlib">
-<h1>050 Using Matplotlib<a class="headerlink" href="#using-matplotlib" title="Permalink to this headline">#</a></h1>
+<h1>050 Using Matplotlib<a class="headerlink" href="#using-matplotlib" title="Permalink to this heading">#</a></h1>
 <blockquote>
 <div><p>COM6018</p>
 </div></blockquote>
@@ -473,7 +487,7 @@ document.write(`
 </div>
 </div>
 <section id="plot-1-simple-line-plot">
-<h2>Plot 1 - Simple line plot<a class="headerlink" href="#plot-1-simple-line-plot" title="Permalink to this headline">#</a></h2>
+<h2>Plot 1 - Simple line plot<a class="headerlink" href="#plot-1-simple-line-plot" title="Permalink to this heading">#</a></h2>
 <p>The first plot is a simple line plot. The plot, shown below, shows worldwide renewable energy consumption from 1989 to 2022. The data for the plot is in file <code class="docutils literal notranslate"><span class="pre">data/renewable_energy.csv</span></code>. Your task is to write code to reproduce the plot as closely as possible.</p>
 <p>Some hints:</p>
 <ul class="simple">
@@ -518,7 +532,7 @@ document.write(`
 </div>
 </div>
 <section id="plot-1b-using-subplots">
-<h3>Plot 1b - Using subplots<a class="headerlink" href="#plot-1b-using-subplots" title="Permalink to this headline">#</a></h3>
+<h3>Plot 1b - Using subplots<a class="headerlink" href="#plot-1b-using-subplots" title="Permalink to this heading">#</a></h3>
 <p>The second plot uses the same data but uses subplots to compare energy consumption for the world, the EU and the UK.</p>
 <p>Hints:</p>
 <ul class="simple">
@@ -565,7 +579,7 @@ document.write(`
 </section>
 </section>
 <section id="plot-2-stackplot-and-pie-charts">
-<h2>Plot 2 - Stackplot and pie charts<a class="headerlink" href="#plot-2-stackplot-and-pie-charts" title="Permalink to this headline">#</a></h2>
+<h2>Plot 2 - Stackplot and pie charts<a class="headerlink" href="#plot-2-stackplot-and-pie-charts" title="Permalink to this heading">#</a></h2>
 <p>The next plot shows the same worldwide energy consumption data but this time as a ‘stackplot’. There are also two pie charts showing the proportion of energy of each type in 1989 and 2022.</p>
 <p>Hints:</p>
 <ul class="simple">
@@ -609,7 +623,7 @@ document.write(`
 </div>
 </section>
 <section id="plot-3-grid-of-scatter-plots">
-<h2>Plot 3 - Grid of scatter plots<a class="headerlink" href="#plot-3-grid-of-scatter-plots" title="Permalink to this headline">#</a></h2>
+<h2>Plot 3 - Grid of scatter plots<a class="headerlink" href="#plot-3-grid-of-scatter-plots" title="Permalink to this heading">#</a></h2>
 <p>The next plot illustrates a famous dataset known as the ‘iris’ dataset. The dataset contains measurements of the sepal and petal length and width for three species of iris flower. This dataset was first published in 1936 by the British statistician and biologist Ronald Fisher. The dataset is widely used in machine learning and data science to illustrate classification and clustering algorithms.</p>
 <p>The plot shows a grid of scatter plots comparing each pair of measurements. The data is in file <code class="docutils literal notranslate"><span class="pre">data/iris.csv</span></code>.</p>
 <p>This plot is a bit more complex than the previous ones.</p>
@@ -655,7 +669,7 @@ document.write(`
 </div>
 </section>
 <section id="plot-4-geographic-data-plot">
-<h2>Plot 4 - Geographic data plot<a class="headerlink" href="#plot-4-geographic-data-plot" title="Permalink to this headline">#</a></h2>
+<h2>Plot 4 - Geographic data plot<a class="headerlink" href="#plot-4-geographic-data-plot" title="Permalink to this heading">#</a></h2>
 <p>The next plot is showing the location and generation capacity of wind farms in the UK. The data is in file <code class="docutils literal notranslate"><span class="pre">data/wind_farms.csv</span></code>. The plot is basically a scatter plot but the points are shown over a map of the UK. This has been achieved using the <code class="docutils literal notranslate"><span class="pre">basemap</span></code> matplotlib toolkit.</p>
 <p>The first lines of the solution are as follows</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
@@ -716,7 +730,7 @@ document.write(`
 </div>
 </section>
 <section id="plot-5-contour-plot-of-function">
-<h2>Plot 5 - Contour plot of function<a class="headerlink" href="#plot-5-contour-plot-of-function" title="Permalink to this headline">#</a></h2>
+<h2>Plot 5 - Contour plot of function<a class="headerlink" href="#plot-5-contour-plot-of-function" title="Permalink to this heading">#</a></h2>
 <p>The last example is a contour plot of the function is <span class="math notranslate nohighlight">\(f(x,y) = sin(4x) + cos(xy)\)</span></p>
 <p>This looks complicated but can actually be made with just a few lines of code. If you are unsure on how to proceed then check the contour plot example in the course notes.</p>
 <p>Hints:</p>
@@ -777,11 +791,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="040_working_with_pandas.html"
@@ -792,10 +805,7 @@ document.write(`
         <p class="prev-next-title">040 Working with Pandas</p>
       </div>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -865,8 +875,8 @@ By Jon Barker, University of Sheffield
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
 
   <footer class="bd-footer">
   </footer>

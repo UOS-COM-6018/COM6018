@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,12 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -68,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="035 Some Common Problems" href="035_Some_Common_Problems.html" />
     <link rel="prev" title="020 Reading and Writing Data Files" href="020_Reading_Data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -77,6 +79,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -137,13 +148,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
       
     
     
-    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/uos_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="COM6018 - Data Science with Python - Home"/>
+    <script>document.write(`<img src="../../_static/uos_logo.png" class="logo__image only-dark" alt="COM6018 - Data Science with Python - Home"/>`);</script>
   
   
 </a></div>
@@ -167,6 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/030_wrapper.html">030 Introducing NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/040_wrapper.html">040 Introducing Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/050_wrapper.html">050 Data Visualisation with Matplotlib and Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/060_wrapper.html">060 An Introduction to Scikit-Learn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
 <ul class="current nav bd-sidenav">
@@ -178,6 +191,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="035_Some_Common_Problems.html">035 Some Common Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="040_Introducing_Pandas.html">040 Processing Data with Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="050_Introducing_Matplotlib.html">050 Exploratory Data Analysis and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="060_Introducing_Scikit_Learn.html">060 Introducing Scikit-Learn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
 <ul class="nav bd-sidenav">
@@ -399,10 +413,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -410,7 +424,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -496,15 +510,15 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="numerical-computing-with-numpy">
-<h1>030 Numerical Computing with NumPy<a class="headerlink" href="#numerical-computing-with-numpy" title="Permalink to this headline">#</a></h1>
+<h1>030 Numerical Computing with NumPy<a class="headerlink" href="#numerical-computing-with-numpy" title="Permalink to this heading">#</a></h1>
 <blockquote>
 <div><p>COM6018</p>
 </div></blockquote>
 <p><em>Copyright © 2023 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
 <section id="introducing-numpy">
-<h2>1. Introducing NumPy<a class="headerlink" href="#introducing-numpy" title="Permalink to this headline">#</a></h2>
+<h2>1. Introducing NumPy<a class="headerlink" href="#introducing-numpy" title="Permalink to this heading">#</a></h2>
 <section id="what-is-numpy">
-<h3>1.1 What is NumPy?<a class="headerlink" href="#what-is-numpy" title="Permalink to this headline">#</a></h3>
+<h3>1.1 What is NumPy?<a class="headerlink" href="#what-is-numpy" title="Permalink to this heading">#</a></h3>
 <p><em>NumPy</em> is a core Python package for scientific computing that</p>
 <ul class="simple">
 <li><p>provides a powerful N-dimensional array object,</p></li>
@@ -514,7 +528,7 @@ document.write(`
 </ul>
 </section>
 <section id="importing-numpy">
-<h3>1.2 Importing NumPy<a class="headerlink" href="#importing-numpy" title="Permalink to this headline">#</a></h3>
+<h3>1.2 Importing NumPy<a class="headerlink" href="#importing-numpy" title="Permalink to this heading">#</a></h3>
 <p>NumPy is conventionally imported using,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -527,9 +541,9 @@ document.write(`
 </section>
 </section>
 <section id="numpy-arrays">
-<h2>2. NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this headline">#</a></h2>
+<h2>2. NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this heading">#</a></h2>
 <section id="generating-a-numpy-ndarray">
-<h3>2.1 Generating a NumPy ndarray<a class="headerlink" href="#generating-a-numpy-ndarray" title="Permalink to this headline">#</a></h3>
+<h3>2.1 Generating a NumPy ndarray<a class="headerlink" href="#generating-a-numpy-ndarray" title="Permalink to this heading">#</a></h3>
 <p>The NumPy package introduce a type called <code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> that is used for representing N-Dimensional arrays. An N-Dimensional array is a data structure that can be used to represent vectors, matrices, and higher-dimensional arrays. i.e., a vector is a 1-D array, a matrix is a 2-D array, etc.</p>
 <p>Arrays can be generated from various sources. These include</p>
 <ul class="simple">
@@ -539,7 +553,7 @@ document.write(`
 </ul>
 </section>
 <section id="generating-arrays-from-lists">
-<h3>2.2 Generating arrays from lists<a class="headerlink" href="#generating-arrays-from-lists" title="Permalink to this headline">#</a></h3>
+<h3>2.2 Generating arrays from lists<a class="headerlink" href="#generating-arrays-from-lists" title="Permalink to this heading">#</a></h3>
 <p>In the example below we generate a 1-D array from a Python list. We start with the Python list <code class="docutils literal notranslate"><span class="pre">my_list</span></code> and then use the NumPy function <code class="docutils literal notranslate"><span class="pre">np.array</span></code> to convert it to a NumPy array which we have stored as the varible <code class="docutils literal notranslate"><span class="pre">my_array</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -598,7 +612,7 @@ document.write(`
 </div>
 </section>
 <section id="the-ndarray-object-s-properties">
-<h3>2.3 The ndarray object’s properties<a class="headerlink" href="#the-ndarray-object-s-properties" title="Permalink to this headline">#</a></h3>
+<h3>2.3 The ndarray object’s properties<a class="headerlink" href="#the-ndarray-object-s-properties" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">ndarray</span></code> has various properties that we can access. The most import are <code class="docutils literal notranslate"><span class="pre">shape</span></code>, <code class="docutils literal notranslate"><span class="pre">size</span></code>, and <code class="docutils literal notranslate"><span class="pre">dtype</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">shape</span></code> property is a tuple that gives the size of each dimension of the array.</p>
 <div class="cell docutils container">
@@ -642,7 +656,7 @@ document.write(`
 <p>Tip: when working with NumPy arrays it is often useful to check the <code class="docutils literal notranslate"><span class="pre">shape</span></code> and <code class="docutils literal notranslate"><span class="pre">dtype</span></code> properties to make sure you are working with the correct type of array. Printing these properties is also a useful debugging technique and is often more useful than printing the arrays contents.</p>
 </section>
 <section id="n-dimensional-arrays">
-<h3>2.4 N-dimensional arrays<a class="headerlink" href="#n-dimensional-arrays" title="Permalink to this headline">#</a></h3>
+<h3>2.4 N-dimensional arrays<a class="headerlink" href="#n-dimensional-arrays" title="Permalink to this heading">#</a></h3>
 <p>NumPy generalises arrays to be N-dimensional. Although we are often working with 1-d or 2-d data there are applications where higher dimensions are useful. For example, 3-d data appears often when video processing (x, y and time) and 4-d data appears in medical imaging (x, y, z and time). Note, in mathematics, N-dimensional arrays are often called tensors. (This is why Google’s deep learning library is called TensorFlow.)</p>
 <p>In the example below we first create a 2-D array (<code class="docutils literal notranslate"><span class="pre">x2</span></code>) of shape 2 by 2 and then we make a 3-D array (<code class="docutils literal notranslate"><span class="pre">x3</span></code>) using a list of 4 of these 2-D arrays.</p>
 <div class="cell docutils container">
@@ -697,9 +711,9 @@ document.write(`
 </section>
 </section>
 <section id="generating-numpy-arrays">
-<h2>3 Generating NumPy arrays<a class="headerlink" href="#generating-numpy-arrays" title="Permalink to this headline">#</a></h2>
+<h2>3 Generating NumPy arrays<a class="headerlink" href="#generating-numpy-arrays" title="Permalink to this heading">#</a></h2>
 <section id="basic-array-generating-functions">
-<h3>3.1 Basic array generating functions<a class="headerlink" href="#basic-array-generating-functions" title="Permalink to this headline">#</a></h3>
+<h3>3.1 Basic array generating functions<a class="headerlink" href="#basic-array-generating-functions" title="Permalink to this heading">#</a></h3>
 <p>NumPy provides a number of functions for generating arrays of various kinds.</p>
 <p>For example, generating a 1-D array of consecutive integers,</p>
 <div class="cell docutils container">
@@ -785,7 +799,7 @@ document.write(`
 </div>
 </section>
 <section id="more-array-generating-functions">
-<h3>3.2 More array generating functions<a class="headerlink" href="#more-array-generating-functions" title="Permalink to this headline">#</a></h3>
+<h3>3.2 More array generating functions<a class="headerlink" href="#more-array-generating-functions" title="Permalink to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">diag</span></code> function can be used to generate diagonal matrices where we specify the numbers that we want to appear on the leading diagonal. For example a 3 by 3 matrix with 4, 5 and 3 along the diagonal can be generated with,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -857,7 +871,7 @@ document.write(`
 </div>
 </section>
 <section id="arrays-initialised-with-random-numbers">
-<h3>3.3 Arrays initialised with random numbers<a class="headerlink" href="#arrays-initialised-with-random-numbers" title="Permalink to this headline">#</a></h3>
+<h3>3.3 Arrays initialised with random numbers<a class="headerlink" href="#arrays-initialised-with-random-numbers" title="Permalink to this heading">#</a></h3>
 <p>NumPy provides a number of functions for generating arrays of random numbers. The most useful are <code class="docutils literal notranslate"><span class="pre">rand</span></code> and <code class="docutils literal notranslate"><span class="pre">randn</span></code> which appear in the the submodule <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code>.  <code class="docutils literal notranslate"><span class="pre">rand</span></code> uses random numbers that are uniformly distributed between 0 and 1. <code class="docutils literal notranslate"><span class="pre">randn</span></code> uses random numbers that are normally distributed with mean 0 and standard deviation 1.</p>
 <p>For example, to generate a 2 by 4 matrix of random numbers,</p>
 <div class="cell docutils container">
@@ -867,8 +881,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.11229652, 0.17970481, 0.55500897, 0.16153164],
-       [0.16236838, 0.19615705, 0.57885438, 0.45238564]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.17669464, 0.91510699, 0.84014843, 0.35875814],
+       [0.155234  , 0.51282745, 0.68223173, 0.92844005]])
 </pre></div>
 </div>
 </div>
@@ -881,15 +895,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.50681445,  0.10339555,  0.42845757,  1.59019132],
-       [ 0.32055715,  0.09057107,  0.3961315 , -0.95442404]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.24622098, -0.77501413, -0.00307114,  0.03067261],
+       [ 2.11012129,  0.61471199,  0.47375861, -0.19741084]])
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="reading-arrays-from-files">
-<h3>3.4 Reading arrays from files<a class="headerlink" href="#reading-arrays-from-files" title="Permalink to this headline">#</a></h3>
+<h3>3.4 Reading arrays from files<a class="headerlink" href="#reading-arrays-from-files" title="Permalink to this heading">#</a></h3>
 <p>Finally, we might want to generate arrays by reading data from a file. NumPy provides a number of functions for this,</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">genfromtxt</span></code> and <code class="docutils literal notranslate"><span class="pre">savetxt</span></code> for reading and writing to text files.</p></li>
@@ -1005,9 +1019,9 @@ document.write(`
 </section>
 </section>
 <section id="array-manipulation">
-<h2>4 Array manipulation<a class="headerlink" href="#array-manipulation" title="Permalink to this headline">#</a></h2>
+<h2>4 Array manipulation<a class="headerlink" href="#array-manipulation" title="Permalink to this heading">#</a></h2>
 <section id="indexing-and-slicing">
-<h3>4.1 Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">#</a></h3>
+<h3>4.1 Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this heading">#</a></h3>
 <p>indexing is similar to Python lists</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1037,15 +1051,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.22555105 0.92873197]
- [0.75375772 0.76477524]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.67025068 0.88867704]
+ [0.10194897 0.59461605]]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="extracting-a-row-or-column-vector-from-a-matrix">
-<h3>4.2 Extracting a row or column vector from a matrix<a class="headerlink" href="#extracting-a-row-or-column-vector-from-a-matrix" title="Permalink to this headline">#</a></h3>
+<h3>4.2 Extracting a row or column vector from a matrix<a class="headerlink" href="#extracting-a-row-or-column-vector-from-a-matrix" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s2">&quot;data/test_matrix.txt&quot;</span><span class="p">)</span>
@@ -1099,7 +1113,7 @@ document.write(`
 </div>
 </section>
 <section id="some-basic-operations">
-<h3>4.3 Some basic operations<a class="headerlink" href="#some-basic-operations" title="Permalink to this headline">#</a></h3>
+<h3>4.3 Some basic operations<a class="headerlink" href="#some-basic-operations" title="Permalink to this heading">#</a></h3>
 <p>The NumPy ndarray object has many methods.</p>
 <p>e.g., <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">product</span></code>, <code class="docutils literal notranslate"><span class="pre">mean</span></code></p>
 <div class="cell docutils container">
@@ -1200,9 +1214,9 @@ document.write(`
 </section>
 </section>
 <section id="working-with-numpy-arrays">
-<h2>5 Working with NumPy arrays<a class="headerlink" href="#working-with-numpy-arrays" title="Permalink to this headline">#</a></h2>
+<h2>5 Working with NumPy arrays<a class="headerlink" href="#working-with-numpy-arrays" title="Permalink to this heading">#</a></h2>
 <section id="reshaping-and-resizing">
-<h3>5.1 Reshaping and resizing<a class="headerlink" href="#reshaping-and-resizing" title="Permalink to this headline">#</a></h3>
+<h3>5.1 Reshaping and resizing<a class="headerlink" href="#reshaping-and-resizing" title="Permalink to this heading">#</a></h3>
 <p>It’s sometimes necessary to wrap a vector into a matrix or unwrap a matrix into a vector</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1262,7 +1276,7 @@ document.write(`
 </div>
 </section>
 <section id="adding-a-new-dimension">
-<h3>5.2 Adding a new dimension<a class="headerlink" href="#adding-a-new-dimension" title="Permalink to this headline">#</a></h3>
+<h3>5.2 Adding a new dimension<a class="headerlink" href="#adding-a-new-dimension" title="Permalink to this heading">#</a></h3>
 <p>Can easily turn 1-D vectors in 2-D matrices</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1321,7 +1335,7 @@ document.write(`
 </div>
 </section>
 <section id="stacking-arrays">
-<h3>5.3 Stacking arrays<a class="headerlink" href="#stacking-arrays" title="Permalink to this headline">#</a></h3>
+<h3>5.3 Stacking arrays<a class="headerlink" href="#stacking-arrays" title="Permalink to this heading">#</a></h3>
 <p>Arrays with compatible dimensions can be joined horizontally or vertically</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1368,7 +1382,7 @@ document.write(`
 </div>
 </section>
 <section id="tiling-and-repeating">
-<h3>5.4 Tiling and repeating<a class="headerlink" href="#tiling-and-repeating" title="Permalink to this headline">#</a></h3>
+<h3>5.4 Tiling and repeating<a class="headerlink" href="#tiling-and-repeating" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
@@ -1442,9 +1456,9 @@ document.write(`
 </section>
 </section>
 <section id="copying">
-<h2>6 Copying<a class="headerlink" href="#copying" title="Permalink to this headline">#</a></h2>
+<h2>6 Copying<a class="headerlink" href="#copying" title="Permalink to this heading">#</a></h2>
 <section id="shallow-copy">
-<h3>6.1 Shallow copy<a class="headerlink" href="#shallow-copy" title="Permalink to this headline">#</a></h3>
+<h3>6.1 Shallow copy<a class="headerlink" href="#shallow-copy" title="Permalink to this heading">#</a></h3>
 <p>Arrays are handled by reference.</p>
 <p>When you do <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">=</span> <span class="pre">B</span></code> you are just copying a reference, not the data itself.</p>
 <div class="cell docutils container">
@@ -1481,7 +1495,7 @@ document.write(`
 <p>So how do we make a real copy?</p>
 </section>
 <section id="deep-copy">
-<h3>6.2 Deep Copy<a class="headerlink" href="#deep-copy" title="Permalink to this headline">#</a></h3>
+<h3>6.2 Deep Copy<a class="headerlink" href="#deep-copy" title="Permalink to this heading">#</a></h3>
 <p>To actually copy the data stored in the array we use the NumPy copy method,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1519,7 +1533,7 @@ document.write(`
 </section>
 </section>
 <section id="matrix-operations">
-<h2>7 Matrix operations<a class="headerlink" href="#matrix-operations" title="Permalink to this headline">#</a></h2>
+<h2>7 Matrix operations<a class="headerlink" href="#matrix-operations" title="Permalink to this heading">#</a></h2>
 <p>NumPy implements all common array operations,</p>
 <ul class="simple">
 <li><p>addition, subtraction,</p></li>
@@ -1528,7 +1542,7 @@ document.write(`
 <li><p>inverse</p></li>
 </ul>
 <section id="array-addition-and-subtraction">
-<h3>7.1 Array addition and subtraction<a class="headerlink" href="#array-addition-and-subtraction" title="Permalink to this headline">#</a></h3>
+<h3>7.1 Array addition and subtraction<a class="headerlink" href="#array-addition-and-subtraction" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
@@ -1601,7 +1615,7 @@ document.write(`
 </div>
 </section>
 <section id="broadcasting">
-<h3>7.2 Broadcasting<a class="headerlink" href="#broadcasting" title="Permalink to this headline">#</a></h3>
+<h3>7.2 Broadcasting<a class="headerlink" href="#broadcasting" title="Permalink to this heading">#</a></h3>
 <p>During operation NumPy will try to repeat an array to make dimensions fit. This is called ‘broadcasting’. It’s convenient but it can be confusing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1657,7 +1671,7 @@ document.write(`
 </div>
 </section>
 <section id="transpose">
-<h3>7.3 Transpose<a class="headerlink" href="#transpose" title="Permalink to this headline">#</a></h3>
+<h3>7.3 Transpose<a class="headerlink" href="#transpose" title="Permalink to this heading">#</a></h3>
 <p>Transposing a matrix swaps the rows and columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1724,7 +1738,7 @@ document.write(`
 </div>
 </section>
 <section id="a-note-on-vectors-versus-skinny-matrices">
-<h3>7.4 A note on vectors versus `skinny’ matrices<a class="headerlink" href="#a-note-on-vectors-versus-skinny-matrices" title="Permalink to this headline">#</a></h3>
+<h3>7.4 A note on vectors versus `skinny’ matrices<a class="headerlink" href="#a-note-on-vectors-versus-skinny-matrices" title="Permalink to this heading">#</a></h3>
 <p>When using NumPy, a vector is <strong>not</strong> the same as a matrix with one column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1779,7 +1793,7 @@ document.write(`
 </div>
 </section>
 <section id="multiplication">
-<h3>7.5  Multiplication<a class="headerlink" href="#multiplication" title="Permalink to this headline">#</a></h3>
+<h3>7.5  Multiplication<a class="headerlink" href="#multiplication" title="Permalink to this heading">#</a></h3>
 <p>The ‘*’ operator performs ‘elementwise’ multiplication</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1833,7 +1847,7 @@ document.write(`
 </div>
 </section>
 <section id="matrix-inverse">
-<h3>7.6 Matrix inverse<a class="headerlink" href="#matrix-inverse" title="Permalink to this headline">#</a></h3>
+<h3>7.6 Matrix inverse<a class="headerlink" href="#matrix-inverse" title="Permalink to this heading">#</a></h3>
 <p>Matrix determinant and inverse function are provided by the <code class="docutils literal notranslate"><span class="pre">linalg</span></code> submodule of NumPy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1885,7 +1899,7 @@ document.write(`
 </section>
 </section>
 <section id="summary">
-<h2>8 Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2>8 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>NumPy provides tools for numeric computing.</p></li>
 <li><p>With NumPy, Python becomes a usable alternative to MATLAB.</p></li>
@@ -1925,11 +1939,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="020_Reading_Data.html"
@@ -1949,10 +1962,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -2061,8 +2071,8 @@ By Jon Barker, University of Sheffield
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
 
   <footer class="bd-footer">
   </footer>

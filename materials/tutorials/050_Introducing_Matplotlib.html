@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,12 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -65,10 +67,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'materials/tutorials/050_Introducing_Matplotlib';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="000 COM6018 Lab Classes" href="../labs/000_Introduction.html" />
+    <link rel="next" title="060 Introducing Scikit-Learn" href="060_Introducing_Scikit_Learn.html" />
     <link rel="prev" title="040 Processing Data with Pandas" href="040_Introducing_Pandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -77,6 +79,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -137,13 +148,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
       
     
     
-    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/uos_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="COM6018 - Data Science with Python - Home"/>
+    <script>document.write(`<img src="../../_static/uos_logo.png" class="logo__image only-dark" alt="COM6018 - Data Science with Python - Home"/>`);</script>
   
   
 </a></div>
@@ -167,6 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/030_wrapper.html">030 Introducing NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/040_wrapper.html">040 Introducing Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/050_wrapper.html">050 Data Visualisation with Matplotlib and Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/060_wrapper.html">060 An Introduction to Scikit-Learn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
 <ul class="current nav bd-sidenav">
@@ -178,6 +191,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="035_Some_Common_Problems.html">035 Some Common Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="040_Introducing_Pandas.html">040 Processing Data with Pandas</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">050 Exploratory Data Analysis and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="060_Introducing_Scikit_Learn.html">060 Introducing Scikit-Learn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
 <ul class="nav bd-sidenav">
@@ -399,10 +413,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -410,7 +424,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -502,13 +516,13 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exploratory-data-analysis-and-visualization">
-<h1>050 Exploratory Data Analysis and Visualization<a class="headerlink" href="#exploratory-data-analysis-and-visualization" title="Permalink to this headline">#</a></h1>
+<h1>050 Exploratory Data Analysis and Visualization<a class="headerlink" href="#exploratory-data-analysis-and-visualization" title="Permalink to this heading">#</a></h1>
 <blockquote>
 <div><p>COM6018</p>
 </div></blockquote>
 <p><em>Copyright © 2023 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
 <section id="introducing-matplotlib-and-seaborn">
-<h2>1. Introducing Matplotlib and Seaborn<a class="headerlink" href="#introducing-matplotlib-and-seaborn" title="Permalink to this headline">#</a></h2>
+<h2>1. Introducing Matplotlib and Seaborn<a class="headerlink" href="#introducing-matplotlib-and-seaborn" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">Matplotlib</span></code> is a Python package for generating 2D and 3D plots.</p>
 <ul class="simple">
 <li><p>It is based on the plotting tools from MATLAB (hence the name).</p></li>
@@ -526,7 +540,7 @@ document.write(`
 <p>This tutorial will run through some of the most common plot types and features and can act as a starting point for your own use of the Matplotlib and Seaborn packages. For full documentation see <a class="reference external" href="http://matplotlib.org">http://matplotlib.org</a> and <a class="reference external" href="http://seaborn.pydata.org">http://seaborn.pydata.org</a>.</p>
 <p>The tutorial will first discuss Matplotlib and then will introduce Seaborn in the final sections.</p>
 <section id="hello-world">
-<h3>1.1 Hello world<a class="headerlink" href="#hello-world" title="Permalink to this headline">#</a></h3>
+<h3>1.1 Hello world<a class="headerlink" href="#hello-world" title="Permalink to this heading">#</a></h3>
 <p>Matplotlib’s basic plotting functionality is provided by the <code class="docutils literal notranslate"><span class="pre">pyplot</span></code> module. This is usually imported as <code class="docutils literal notranslate"><span class="pre">plt</span></code>. We will also be using the NumPy package for generating data for the examples. To import both of these packages use the following commands:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -563,7 +577,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 <p>Exactly how the plot is displayed will depend on the environment we are working in and how we have things configured. Generally, if we are running in a Jupyter notebook the plot will be displayed inline in the notebook. If we are running the Python code as a script the plot will be displayed in a separate window.</p>
 </section>
 <section id="a-simple-plot">
-<h3>1.2 A simple plot<a class="headerlink" href="#a-simple-plot" title="Permalink to this headline">#</a></h3>
+<h3>1.2 A simple plot<a class="headerlink" href="#a-simple-plot" title="Permalink to this heading">#</a></h3>
 <p>The previous plot displayed the curve but was lacking axis labels, a title, etc. We can add these using various pyplot functions. In the example below we use <code class="docutils literal notranslate"><span class="pre">xlabel</span></code>, <code class="docutils literal notranslate"><span class="pre">ylabel</span></code> and <code class="docutils literal notranslate"><span class="pre">title</span></code> to add the annotation. We also use <code class="docutils literal notranslate"><span class="pre">plt.figure</span></code> to start a new figure and <code class="docutils literal notranslate"><span class="pre">plt.show</span></code> to display the figure. Note also that we have provide a 3rd parameter to the <code class="docutils literal notranslate"><span class="pre">plot</span></code> function with the value ‘b-’. This specifies the colour and line style of the curve. ‘b-’ means a blue solid line. We can change the color by using a different first letter, e.g., ‘r-’ would be a red solid line. We can also use other line styles, e.g., ‘r–’ would be a red dashed line, ‘r.’ would be a red dotted line, etc. See the Matplotlib documentation for a full list of colours and line styles.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -582,7 +596,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="object-oriented-api">
-<h3>1.3 Object-oriented API<a class="headerlink" href="#object-oriented-api" title="Permalink to this headline">#</a></h3>
+<h3>1.3 Object-oriented API<a class="headerlink" href="#object-oriented-api" title="Permalink to this heading">#</a></h3>
 <p>Somewhat confusingly, Matplotlib provides two different APIs for generating plots. The first is the <code class="docutils literal notranslate"><span class="pre">pyplot</span></code> API which we have been using so far. This is a <strong>procedural API</strong> which is very similar to the MATLAB plotting API. The second is the <strong>object-oriented API</strong>. This is more flexible and allows us to have more control over the plot. This will be more useful when we want to produce more complicated plots, e.g., plots with multiple axes in the same figure.</p>
 <p>The following example shows how we can use the object-oriented API to produce the same plot as before.</p>
 <div class="cell docutils container">
@@ -608,10 +622,10 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </section>
 </section>
 <section id="structuring-plots">
-<h2>2 Structuring plots<a class="headerlink" href="#structuring-plots" title="Permalink to this headline">#</a></h2>
+<h2>2 Structuring plots<a class="headerlink" href="#structuring-plots" title="Permalink to this heading">#</a></h2>
 <p>We will now introduce some methods for structuring more complex plots. We will see how to add multiple axes to a figure and how to control the layout of the axes. We will also see how to save plots to files and how to add a legend.</p>
 <section id="multiple-axes-in-a-figure">
-<h3>2.1 Multiple axes in a figure<a class="headerlink" href="#multiple-axes-in-a-figure" title="Permalink to this headline">#</a></h3>
+<h3>2.1 Multiple axes in a figure<a class="headerlink" href="#multiple-axes-in-a-figure" title="Permalink to this heading">#</a></h3>
 <p>Using object-oriented API we can add multiple axes to a figure using the <code class="docutils literal notranslate"><span class="pre">add_axes</span></code> method which takes the coordinates of the bottom-left and top-right corners of the axes (in the range 0 to 1). The following example shows how to add two axes to a figure.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -630,7 +644,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="using-the-subplot-layout-manager">
-<h3>2.2 Using the subplot layout manager<a class="headerlink" href="#using-the-subplot-layout-manager" title="Permalink to this headline">#</a></h3>
+<h3>2.2 Using the subplot layout manager<a class="headerlink" href="#using-the-subplot-layout-manager" title="Permalink to this heading">#</a></h3>
 <p>If we want a regular grid of axes we can use the <code class="docutils literal notranslate"><span class="pre">subplots</span></code> function. This takes two parameters: the number of rows and the number of columns. It returns a figure object and a 2-D numpy array storing the individual axis objects. We can then select the axis from the array that we wish to plot on.</p>
 <p>For example, the following example shows how we might create a 2x2 grid of axes.</p>
 <div class="cell docutils container">
@@ -669,7 +683,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 <p>Note, the use of the NumPy reshape function, i.e., <code class="docutils literal notranslate"><span class="pre">axes.reshape(-1)</span></code>, which is being used to turn the 2-D array of axes into a 1-D array. This type of reshaping is a common trick in NumPy which makes it easy to iterate over all the elements of a multi-dimensional array without having to use nested loops.</p>
 </section>
 <section id="setting-the-figure-size">
-<h3>2.3 Setting the figure size<a class="headerlink" href="#setting-the-figure-size" title="Permalink to this headline">#</a></h3>
+<h3>2.3 Setting the figure size<a class="headerlink" href="#setting-the-figure-size" title="Permalink to this heading">#</a></h3>
 <p>The size of the figure can be set using the <code class="docutils literal notranslate"><span class="pre">set_size_inches</span></code> method. Note, this is a method of the figure object, i.e., it is setting the size of the entire figure not the of the various plots inside the figure. The size is specified in inches. The default size is 8 by 6 inches.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -691,7 +705,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 <p>Note above the the <code class="docutils literal notranslate"><span class="pre">set_size_inches</span></code> method takes a single tuple is its input parameter, hence, the need for the double brackets: the inner brackets are for the tuple.</p>
 </section>
 <section id="writing-to-file">
-<h3>2.4 Writing to file<a class="headerlink" href="#writing-to-file" title="Permalink to this headline">#</a></h3>
+<h3>2.4 Writing to file<a class="headerlink" href="#writing-to-file" title="Permalink to this heading">#</a></h3>
 <p>Once we have made a plot it is very easy to save it to a file and there are many image file formats that we can use.</p>
 <p>To save the figure we simply use the <code class="docutils literal notranslate"><span class="pre">savefig</span></code> method of the <code class="docutils literal notranslate"><span class="pre">figure</span></code> object, as follows,</p>
 <div class="cell docutils container">
@@ -712,7 +726,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 <p>The function will infer the file format from the file extension. In the above example we have saved the plot as ‘PDF’ and we have also set the resolution of the figure using the <code class="docutils literal notranslate"><span class="pre">dpi</span></code> parameter  (dpi means <code class="docutils literal notranslate"><span class="pre">dots</span> <span class="pre">per</span> <span class="pre">inch</span></code>). The <code class="docutils literal notranslate"><span class="pre">dpi</span></code> parameter is optional and if it is not supplied it will default to 80. Setting this to a higher value can be useful if we want to make a high quality plot for printing.</p>
 </section>
 <section id="adding-a-legend">
-<h3>2.5 Adding a legend<a class="headerlink" href="#adding-a-legend" title="Permalink to this headline">#</a></h3>
+<h3>2.5 Adding a legend<a class="headerlink" href="#adding-a-legend" title="Permalink to this heading">#</a></h3>
 <p>In the examples so far we have placed a separate curve on each axis and we can use the title to explain what the curve represents. However, if we want to place multiple curves on the same axis we need to add a ‘legend’ so that the plot is easy to understand. This can be done using the <code class="docutils literal notranslate"><span class="pre">legend</span></code> method of the axis object.</p>
 <p>The following example plots the function <span class="math notranslate nohighlight">\(x^2\)</span>, <span class="math notranslate nohighlight">\(x^x\)</span> and <span class="math notranslate nohighlight">\(2^x\)</span> on the same axes. Note, in the code below that when using the <code class="docutils literal notranslate"><span class="pre">plot</span></code> method, we have now also specified a <code class="docutils literal notranslate"><span class="pre">label</span></code> for each curve. The <code class="docutils literal notranslate"><span class="pre">legend</span></code> method then uses these labels to generate the legend. The <code class="docutils literal notranslate"><span class="pre">loc</span></code> parameter specifies where the legend should be placed. The value 0 means that Matplotlib should decide where to place the legend (it tries to position it by choosing a corner where it will not overlap with the data) but you can also specify the location explicitly as either upper-right, upper-left, lower-left or lower-right by using the integers 1, 2, 3 or 4 respectively.</p>
 <div class="cell docutils container">
@@ -733,7 +747,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 <p>Note, Matplotlib has chosen the line colours.</p>
 </section>
 <section id="changing-colors-and-linestyles">
-<h3>2.6 Changing colors and linestyles<a class="headerlink" href="#changing-colors-and-linestyles" title="Permalink to this headline">#</a></h3>
+<h3>2.6 Changing colors and linestyles<a class="headerlink" href="#changing-colors-and-linestyles" title="Permalink to this heading">#</a></h3>
 <p>Matplotlib provides a lot of flexibility over how plots are displayed. We can control the colour, line style, marker style, etc. of each curve. This is done by setting additional optional parameters to the <code class="docutils literal notranslate"><span class="pre">plot</span></code> method, e.g. <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">linestyle</span></code>, <code class="docutils literal notranslate"><span class="pre">marker</span></code>, <code class="docutils literal notranslate"><span class="pre">markersize</span></code> etc.</p>
 <p>The following example shows how to do this.</p>
 <div class="cell docutils container">
@@ -756,7 +770,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 <p>Marker symbols can be ‘+’, ‘s’, ‘*’, ‘o’ and many others. See the Matplotlib documentation for a full list.</p>
 </section>
 <section id="controlling-the-axes">
-<h3>2.7 Controlling the axes<a class="headerlink" href="#controlling-the-axes" title="Permalink to this headline">#</a></h3>
+<h3>2.7 Controlling the axes<a class="headerlink" href="#controlling-the-axes" title="Permalink to this heading">#</a></h3>
 <p>Matplotlib also provides a lot of control over exactly how the axes are displayed. We can control the range, the tick spacing, the tick labels, the grid lines, etc. If we do not specify values explicitly then Matplotlib works out sensible settings itself (as in the previous examples), but we often want to take control.</p>
 <p>The following example shows some examples of how to do this.</p>
 <div class="cell docutils container">
@@ -780,7 +794,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="repositioning-the-spines">
-<h3>2.8 Repositioning the spines<a class="headerlink" href="#repositioning-the-spines" title="Permalink to this headline">#</a></h3>
+<h3>2.8 Repositioning the spines<a class="headerlink" href="#repositioning-the-spines" title="Permalink to this heading">#</a></h3>
 <p>By default, axes will appear along the bottom and left of the plot. This is irrespective of the range of the data and whether the range includes negative values. For more traditional plots we often want the axes to be positioned at the origin. This can be done using the <code class="docutils literal notranslate"><span class="pre">spines</span></code> attribute of the axis object. The following example shows how to do this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -803,7 +817,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="adding-text">
-<h3>2.9 Adding text<a class="headerlink" href="#adding-text" title="Permalink to this headline">#</a></h3>
+<h3>2.9 Adding text<a class="headerlink" href="#adding-text" title="Permalink to this heading">#</a></h3>
 <p>Additional text annotations can be added to a plot using the the <code class="docutils literal notranslate"><span class="pre">text</span></code> method of the axis object. This takes the x and y coordinates of the text and the text string. Optional parameters such as <code class="docutils literal notranslate"><span class="pre">fontsize</span></code> can be used to control the appearance of the text.</p>
 <p>The following example shows how to do this.</p>
 <div class="cell docutils container">
@@ -823,7 +837,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="more-complex-figure-layouts">
-<h3>2.10 More complex figure layouts<a class="headerlink" href="#more-complex-figure-layouts" title="Permalink to this headline">#</a></h3>
+<h3>2.10 More complex figure layouts<a class="headerlink" href="#more-complex-figure-layouts" title="Permalink to this heading">#</a></h3>
 <p>For more flexible layouts we can use <code class="docutils literal notranslate"><span class="pre">subplot2grid</span></code>. This allows us to specify the number of rows and columns in the figure and the position of each axis, but it also allows axes to span multiple rows and columns. The following example shows how to do this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -847,10 +861,10 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </section>
 </section>
 <section id="other-plot-types">
-<h2>3 Other plot types<a class="headerlink" href="#other-plot-types" title="Permalink to this headline">#</a></h2>
+<h2>3 Other plot types<a class="headerlink" href="#other-plot-types" title="Permalink to this heading">#</a></h2>
 <p>So far we have seen how to plot curves using the <code class="docutils literal notranslate"><span class="pre">plot</span></code> method. Matplotlib can also be used to plot other types of data. In this section we will see how to plot shaded regions, histograms and scatter plots. We will also see how to generate 3D plots.</p>
 <section id="histograms-and-bar-charts">
-<h3>3.1  Histograms and bar charts<a class="headerlink" href="#histograms-and-bar-charts" title="Permalink to this headline">#</a></h3>
+<h3>3.1  Histograms and bar charts<a class="headerlink" href="#histograms-and-bar-charts" title="Permalink to this heading">#</a></h3>
 <p>If we have a set of data points we can display the distribution of the data as histogram using the <code class="docutils literal notranslate"><span class="pre">hist</span></code> method. This takes the data as a parameter and optionally the number of bins to use. The same method can also be used to plot a cumulative histogram by setting the <code class="docutils literal notranslate"><span class="pre">cumulative</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <p>In the example below we used the <code class="docutils literal notranslate"><span class="pre">np.random.randn</span></code> function to produce a set of 100,000 random numbers from a normal distribution. We then plot the histogram and the cumulative histogram.</p>
 <div class="cell docutils container">
@@ -867,7 +881,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6b846dc89e70c2c98161619be1a7676ef75db08928e7ee05b3008e10d30dbc36.png" src="../../_images/6b846dc89e70c2c98161619be1a7676ef75db08928e7ee05b3008e10d30dbc36.png" />
+<img alt="../../_images/318d397dcc5d52b77d7e89302a9b1fb7d631f625e179026d93ef1639228729b9.png" src="../../_images/318d397dcc5d52b77d7e89302a9b1fb7d631f625e179026d93ef1639228729b9.png" />
 </div>
 </div>
 <p>Matplotlib also provide a function called ‘bar’ for plotting bar charts. Do not confuse this with the ‘hist’ function. The ‘bar’ function can take a set of x, y numeric value pairs as in the example below,</p>
@@ -904,7 +918,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="scatter-plots">
-<h3>3.2 Scatter plots<a class="headerlink" href="#scatter-plots" title="Permalink to this headline">#</a></h3>
+<h3>3.2 Scatter plots<a class="headerlink" href="#scatter-plots" title="Permalink to this heading">#</a></h3>
 <p>Often in data science, we want to look at the relationship between a pair of variables. For example, we might want to see if there is a correlation between the height and weight of people sampled from some population. In this case we can use a scatter plot. This is a plot where each sample is represented by a point on the plot and we place the sample according to the value of the two variables.</p>
 <p>The following example shows how to do this.</p>
 <div class="cell docutils container">
@@ -918,13 +932,13 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b70465a62bebea7b28ec83836c77c27c2a1b531bbaaf8e59fd9444cffadf5a99.png" src="../../_images/b70465a62bebea7b28ec83836c77c27c2a1b531bbaaf8e59fd9444cffadf5a99.png" />
+<img alt="../../_images/fca2d22abb7c79ff28e4d8636b83ec3471e6df32dcf2dcc678c27c4b677eec83.png" src="../../_images/fca2d22abb7c79ff28e4d8636b83ec3471e6df32dcf2dcc678c27c4b677eec83.png" />
 </div>
 </div>
 <p>In the above, we have 1000 samples each with two features, <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">x2</span></code>. The scatter plot gives us a clear indication of the relationship between the two variables. In this case, we can see that the points are clustered around a straight line. This is indicates that there is strong correlation between the two variables. This is not surprising in this case because <code class="docutils literal notranslate"><span class="pre">x2</span></code> has been constructed from a linear function of <code class="docutils literal notranslate"><span class="pre">x1</span></code> (namely, <span class="math notranslate nohighlight">\(15 x_1 + 10\)</span>) with some random noise added.</p>
 </section>
 <section id="d-plots">
-<h3>3.3 3D plots<a class="headerlink" href="#d-plots" title="Permalink to this headline">#</a></h3>
+<h3>3.3 3D plots<a class="headerlink" href="#d-plots" title="Permalink to this heading">#</a></h3>
 <p>Matplotlib can also be used to make plots showing the relationship between three variables, e.g., imagine that we have a value <span class="math notranslate nohighlight">\(z\)</span> that is a function of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. This kind of plot can be shown as a 3D surface plot, a contour plot, or as a colour mapped image.</p>
 <p>For example,  imagine we want to visualise the function <span class="math notranslate nohighlight">\(z = cos(x) + sin(y)\)</span>. We are first going to use NumPy to generate a grid of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> values. We are then going to use these to compute a value <span class="math notranslate nohighlight">\(z\)</span> for each point on the grid. Finally, we use Matplotlib to plot the values of <span class="math notranslate nohighlight">\(z\)</span> as a 3D surface plot.</p>
 <div class="cell docutils container">
@@ -955,10 +969,10 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </section>
 </section>
 <section id="advanced-plotting">
-<h2>4 Advanced plotting<a class="headerlink" href="#advanced-plotting" title="Permalink to this headline">#</a></h2>
+<h2>4 Advanced plotting<a class="headerlink" href="#advanced-plotting" title="Permalink to this heading">#</a></h2>
 <p>This section illustrates just a few of Matplotlib’s more advanced features.</p>
 <section id="colouring-in-regions">
-<h3>4.1. Colouring in regions<a class="headerlink" href="#colouring-in-regions" title="Permalink to this headline">#</a></h3>
+<h3>4.1. Colouring in regions<a class="headerlink" href="#colouring-in-regions" title="Permalink to this heading">#</a></h3>
 <p>We can easily shade in regions between curves using the <code class="docutils literal notranslate"><span class="pre">fill_between</span></code> method. This takes the x values and the y values of the two curves and fills in the region between them. The following example shows how to do this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -978,7 +992,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="changing-the-colormap">
-<h3>4.2 Changing the colormap<a class="headerlink" href="#changing-the-colormap" title="Permalink to this headline">#</a></h3>
+<h3>4.2 Changing the colormap<a class="headerlink" href="#changing-the-colormap" title="Permalink to this heading">#</a></h3>
 <p>In the previous section we saw how to display a 2-D array of data as an image using <code class="docutils literal notranslate"><span class="pre">imshow</span></code>. By default, when we did this, the colours ranged between blue (low values) and red (high values). This behaviour can be changed by setting the <code class="docutils literal notranslate"><span class="pre">colormap</span></code>.  Predefined colormaps are provided by Matplotlib with names such as <code class="docutils literal notranslate"><span class="pre">plt.cm.hot</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.cm.hot</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.cm.RdBu</span></code>, etc. The colormap can be specified using the <code class="docutils literal notranslate"><span class="pre">cmap</span></code> parameter.</p>
 <p>The following example shows how to do this. The same data that was used in the previous section is replotted using three different colour maps.</p>
 <div class="cell docutils container">
@@ -1004,7 +1018,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="generating-a-contour-plot">
-<h3>4.3 Generating a contour plot<a class="headerlink" href="#generating-a-contour-plot" title="Permalink to this headline">#</a></h3>
+<h3>4.3 Generating a contour plot<a class="headerlink" href="#generating-a-contour-plot" title="Permalink to this heading">#</a></h3>
 <p>The code below uses the same data but now displays the z value using a contour map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1022,7 +1036,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="making-3d-figures">
-<h3>4.4 Making 3D figures<a class="headerlink" href="#making-3d-figures" title="Permalink to this headline">#</a></h3>
+<h3>4.4 Making 3D figures<a class="headerlink" href="#making-3d-figures" title="Permalink to this heading">#</a></h3>
 <p>We can plot our X, Y, Z data from the previous section as a surface plot or as a wireframe plot. The following example shows how to do this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1052,7 +1066,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="adding-2-d-projections-to-a-3-d-plot">
-<h3>4.5 Adding 2-D projections to a 3-D plot<a class="headerlink" href="#adding-2-d-projections-to-a-3-d-plot" title="Permalink to this headline">#</a></h3>
+<h3>4.5 Adding 2-D projections to a 3-D plot<a class="headerlink" href="#adding-2-d-projections-to-a-3-d-plot" title="Permalink to this heading">#</a></h3>
 <p>We can also add 2-D projections to a 3-D plot. The following example shows how to do this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1077,7 +1091,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="generating-animations">
-<h3>4.6 Generating Animations<a class="headerlink" href="#generating-animations" title="Permalink to this headline">#</a></h3>
+<h3>4.6 Generating Animations<a class="headerlink" href="#generating-animations" title="Permalink to this heading">#</a></h3>
 <p>In this final subsection, we show how you can make animations using Matplotlib. This is done using the <code class="docutils literal notranslate"><span class="pre">animation</span></code> module. This module provides a function called <code class="docutils literal notranslate"><span class="pre">FuncAnimation</span></code> which takes a figure and a function as parameter. The function it is passed should itself have a single integer ‘frame index’ parameter. The FuncAnimation function will call the function it has been passed multiple times, each time with a new frame index. We can decide how many frames to generate by using <code class="docutils literal notranslate"><span class="pre">FuncAnimation</span></code>’s  integer <code class="docutils literal notranslate"><span class="pre">frames</span></code> parameter. The <code class="docutils literal notranslate"><span class="pre">FuncAnimation</span></code> method returns an animation object. We can then call the <code class="docutils literal notranslate"><span class="pre">save</span></code> method of the animation object to save it to an animated <em>gif file</em>.</p>
 <p>This all sounds very complicated but it can be made clear by an example,</p>
 <div class="cell docutils container">
@@ -1108,7 +1122,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </section>
 </section>
 <section id="introducing-seaborn">
-<h2>5 Introducing Seaborn<a class="headerlink" href="#introducing-seaborn" title="Permalink to this headline">#</a></h2>
+<h2>5 Introducing Seaborn<a class="headerlink" href="#introducing-seaborn" title="Permalink to this heading">#</a></h2>
 <p>Seaborn is a Python package for generating statistical plots. It is based on Matplotlib but provides a higher-level interface that reduces the amount of code that we need to write ourselves. It can produce plots such as histograms, boxplots, scatter plots, etc. It can produce plots with a single line of code that would not easy to make using Matplotlib directly.</p>
 <p>To use Seaborn we must first import the package. It is conventional to import it as <code class="docutils literal notranslate"><span class="pre">sns</span></code>.</p>
 <div class="cell docutils container">
@@ -1162,7 +1176,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 <p>For a full list of themes see the Seaborn documentation.</p>
 <section id="visualising-statistical-relationships">
-<h3>5.1 Visualising statistical relationships<a class="headerlink" href="#visualising-statistical-relationships" title="Permalink to this headline">#</a></h3>
+<h3>5.1 Visualising statistical relationships<a class="headerlink" href="#visualising-statistical-relationships" title="Permalink to this heading">#</a></h3>
 <p>Relationships between variables can be visualised using the <code class="docutils literal notranslate"><span class="pre">relplot</span></code> function. This can be used to generate scatter plots, line plots, etc.</p>
 <p>By default, the <code class="docutils literal notranslate"><span class="pre">relplot</span></code> function will generate a scatter plot. The following example shows how to show the relationship between the <code class="docutils literal notranslate"><span class="pre">horsepower</span></code> and <code class="docutils literal notranslate"><span class="pre">mpg</span></code> variables for all the cars in the <code class="docutils literal notranslate"><span class="pre">mpg</span></code> dataset.</p>
 <div class="cell docutils container">
@@ -1213,7 +1227,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fb78982f490139549741bc6621c96a1fe0f0f3436f71dc596e34613f54849bb3.png" src="../../_images/fb78982f490139549741bc6621c96a1fe0f0f3436f71dc596e34613f54849bb3.png" />
+<img alt="../../_images/b516ff2419359047d16b25aeeade9157bfb99abd6f0d720ba621c068406c3de5.png" src="../../_images/b516ff2419359047d16b25aeeade9157bfb99abd6f0d720ba621c068406c3de5.png" />
 </div>
 </div>
 <p>It is important to think carefully about whether to use a line or scatter plot. A line plot emphasises the continuity of data along the x-axis. A scatter plot emphasises the individual data points. In this particular case, the scatter plot is probably more appropriate because each point represents a different car and there is no continuity between cars.</p>
@@ -1245,11 +1259,11 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 <p>In the above, the <code class="docutils literal notranslate"><span class="pre">height</span></code> parameter is used to set the height of each plot in the grid. The default height is 5 inches. Here we have reduced it to 2.5 so that the entire grid fits on the page a bit better. Note, some of the plots have no data, i.e., there are no 8-cylinder cars from Europe or Japan in this dataset.</p>
 </section>
 <section id="visualising-distributions-of-data">
-<h3>5.2 Visualising distributions of data<a class="headerlink" href="#visualising-distributions-of-data" title="Permalink to this headline">#</a></h3>
+<h3>5.2 Visualising distributions of data<a class="headerlink" href="#visualising-distributions-of-data" title="Permalink to this heading">#</a></h3>
 <p>When we have a new set of data, one of the first things we want to do is to understand something about its distribution, e.g., What is its range?  Is tha data clustered about a single value or are there multiple clusters? If the data symmetrically distributed about a central value or is it skewed? etc.  These questions can be answered by plotting the distribution of the data using, for example, a histogram plot.</p>
 <p>In Seaborn, distributions are plotted using the <code class="docutils literal notranslate"><span class="pre">displot</span></code> function. This can be used to generate histograms, kernel density (KDE) plots and rug plots.</p>
 <section id="plotting-univariate-distributions">
-<h4>5.2.1 Plotting univariate distributions<a class="headerlink" href="#plotting-univariate-distributions" title="Permalink to this headline">#</a></h4>
+<h4>5.2.1 Plotting univariate distributions<a class="headerlink" href="#plotting-univariate-distributions" title="Permalink to this heading">#</a></h4>
 <p>The ‘displot’ has a parameter called ‘kind’ which determines the type of plot that will be generated. To examine the distribution of a single variable, i.e., a ‘univariate’ distribution, a simple histogram is often the best tool and we would use <code class="docutils literal notranslate"><span class="pre">kind='hist'</span></code>. (However, as ‘hist’ is the default kind, we do not need to specify it explicitly.)</p>
 <p>For example, to view the distribution of the weights of cars in our dataset we would use the following</p>
 <div class="cell docutils container">
@@ -1325,7 +1339,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="plotting-bi-variate-distributions">
-<h4>5.2.2 Plotting bi-variate distributions<a class="headerlink" href="#plotting-bi-variate-distributions" title="Permalink to this headline">#</a></h4>
+<h4>5.2.2 Plotting bi-variate distributions<a class="headerlink" href="#plotting-bi-variate-distributions" title="Permalink to this heading">#</a></h4>
 <p>If we want to look at the distribution of a pair of variables (i.e., a bi-variate distribution) we still use the displot, but we now also provide a value for the ‘y’ parameter. This will produce a 2-D histogram, i.e., a grid in which the shading of the tiles in the grid is used to indicate the number of samples in each bin.</p>
 <p>For example, to plot the distribution of weight against mpg we would use the following,</p>
 <div class="cell docutils container">
@@ -1396,7 +1410,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="plotting-multiple-distributions">
-<h4>5.2.3 Plotting multiple distributions<a class="headerlink" href="#plotting-multiple-distributions" title="Permalink to this headline">#</a></h4>
+<h4>5.2.3 Plotting multiple distributions<a class="headerlink" href="#plotting-multiple-distributions" title="Permalink to this heading">#</a></h4>
 <p>If we want to get a quick overview of the relationship between all pairs of variables in a dataset, we can use the <code class="docutils literal notranslate"><span class="pre">pairplot</span></code> function. This will generate a grid of plots showing the distribution of each pair of variables. The following example shows how to do this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1409,15 +1423,15 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 <img alt="../../_images/db0db2f546e6be7ce144eb3008ae0967c06ff27b14d0f1d5d9c6932dd9401ede.png" src="../../_images/db0db2f546e6be7ce144eb3008ae0967c06ff27b14d0f1d5d9c6932dd9401ede.png" />
 </div>
 </div>
-<p>See the online tutorial for how we can customise these distribution plots further. <a class="reference external" href="https://seaborn.pydata.org/tutorial/distributions.html">https://seaborn.pydata.org/tutorial/distributions.html</a></p>
+<p>See the online tutorial for how we can customise these distribution plots further. <a class="reference external" href="https://seaborn.pydata.org/tutorial/distributions.html#">https://seaborn.pydata.org/tutorial/distributions.html#</a></p>
 </section>
 </section>
 <section id="visualising-categorical-data">
-<h3>5.3 Visualising categorical data<a class="headerlink" href="#visualising-categorical-data" title="Permalink to this headline">#</a></h3>
+<h3>5.3 Visualising categorical data<a class="headerlink" href="#visualising-categorical-data" title="Permalink to this heading">#</a></h3>
 <p>In the previous section we looked at how we could visualise the relationship between pairs of variables. The scatter plots, histograms and kernel density plots are most appropriate when both of the variables are continuous. However, we often want to visualise the relationship between a continuous variable and a categorical variable. For example, we might want to visualise the relationship between the weight of a car and its origin. In this case, there are more specialised categorical plots that we can use. These would include strip plots, swarm plots, box plots, boxen plots and violin plots. In Seaborn, these plots are all produced  using the <code class="docutils literal notranslate"><span class="pre">catplot</span></code> function and setting the <code class="docutils literal notranslate"><span class="pre">kind</span></code> parameter to select the type of plot we require.</p>
 <p>In the examples that follow we will use <code class="docutils literal notranslate"><span class="pre">catplot</span></code> to show the relationship between the fuel efficiency of a car and its origin.</p>
 <section id="a-strip-plot">
-<h4>5.3.1 A strip plot<a class="headerlink" href="#a-strip-plot" title="Permalink to this headline">#</a></h4>
+<h4>5.3.1 A strip plot<a class="headerlink" href="#a-strip-plot" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;strip&#39;</span><span class="p">)</span>
@@ -1426,12 +1440,12 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/42549023cb3783a7845041355cb3144f5715a2c93535d9d001f3aa0bb2a56e91.png" src="../../_images/42549023cb3783a7845041355cb3144f5715a2c93535d9d001f3aa0bb2a56e91.png" />
+<img alt="../../_images/94340a249e873762d15b041c032de7b2bc0505e8f6563d398006ff5cf6bdd91b.png" src="../../_images/94340a249e873762d15b041c032de7b2bc0505e8f6563d398006ff5cf6bdd91b.png" />
 </div>
 </div>
 </section>
 <section id="a-swarm-plot">
-<h4>5.3.2 A ‘swarm’ plot<a class="headerlink" href="#a-swarm-plot" title="Permalink to this headline">#</a></h4>
+<h4>5.3.2 A ‘swarm’ plot<a class="headerlink" href="#a-swarm-plot" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;swarm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -1446,7 +1460,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="a-box-plot">
-<h4>5.3.3  A box plot<a class="headerlink" href="#a-box-plot" title="Permalink to this headline">#</a></h4>
+<h4>5.3.3  A box plot<a class="headerlink" href="#a-box-plot" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
@@ -1460,7 +1474,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="a-boxen-plot">
-<h4>5.3.4 A boxen plot<a class="headerlink" href="#a-boxen-plot" title="Permalink to this headline">#</a></h4>
+<h4>5.3.4 A boxen plot<a class="headerlink" href="#a-boxen-plot" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;boxen&#39;</span><span class="p">)</span>
@@ -1474,7 +1488,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </section>
 <section id="a-violin-plot">
-<h4>5.3.5 A violin plot<a class="headerlink" href="#a-violin-plot" title="Permalink to this headline">#</a></h4>
+<h4>5.3.5 A violin plot<a class="headerlink" href="#a-violin-plot" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;violin&#39;</span><span class="p">)</span>
@@ -1502,7 +1516,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </section>
 </section>
 <section id="summary">
-<h2>6 Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2>6 Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>Matplotlib and Seaborn are very large and sophisticated package for visualising data in Python. Matplotlib works at a lower level than Seaborn. It is highly flexible and allows very precise control but can be a little verbose, i.e., requiring quite a few lines of code to configure each plot. Seaborn is a higher-level package that is built on top of Matplotlib and provides a more convenient interface for common statistical plots. It interfaces elegantly with Pandas dataframes and makes it very easy to generate plots that show the relationship between multiple variables.</p>
 <p>Seaborn is very useful for initial data exploration where we are using plots to get a feel for the data and to identify interesting relationships. However, if we want to produce a publication-quality plot, we may need to use additional Matplotlib functionality to get the precise control that we need. e.g., to meet the style guidelines of a particular journal.</p>
 <p>In this tutorial,</p>
@@ -1541,11 +1555,10 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="040_Introducing_Pandas.html"
@@ -1557,18 +1570,15 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
       </div>
     </a>
     <a class="right-next"
-       href="../labs/000_Introduction.html"
+       href="060_Introducing_Scikit_Learn.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">000 COM6018 Lab Classes</p>
+        <p class="prev-next-title">060 Introducing Scikit-Learn</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1683,8 +1693,8 @@ By Jon Barker, University of Sheffield
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
 
   <footer class="bd-footer">
   </footer>
