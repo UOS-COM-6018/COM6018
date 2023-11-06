@@ -1,0 +1,852 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>060 Introduction to Scikit Learn &#8212; COM6018 - Data Science with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/labs/060_introducing_scikit_learn';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="000 COM6018 Solutions" href="../solutions/000_Introduction.html" />
+    <link rel="prev" title="050 Using Matplotlib" href="050_using_matplotlib.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="COM6018 - Data Science with Python - Home"/>
+    <script>document.write(`<img src="../../_static/uos_logo.png" class="logo__image only-dark" alt="COM6018 - Data Science with Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    The COM6018 module book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/000_Introduction.html">000 COM6018 Lecture Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/010_wrapper.html">010 Welcome to COM6018</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/015_wrapper.html">015 Getting set up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/020_wrapper.html">020 Using Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/025_wrapper.html">025 Reading and Writing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/030_wrapper.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/040_wrapper.html">040 Introducing Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/050_wrapper.html">050 Data Visualisation with Matplotlib and Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/060_wrapper.html">060 An Introduction to Scikit-Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/000_Introduction.html">000 COM6018 Course Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/010_Introducing_Python.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/015_Further_Python.html">015 Further Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/020_Reading_Data.html">020 Reading and Writing Data Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/030_Introducing_Numpy.html">030 Numerical Computing with NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/035_Some_Common_Problems.html">035 Some Common Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/040_Introducing_Pandas.html">040 Processing Data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/045_Common_Pandas_Mistakes.html">045 Common Pandas Mistakes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/050_Introducing_Matplotlib.html">050 Exploratory Data Analysis and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/060_Introducing_Scikit_Learn.html">060 Introducing Scikit-Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">060 Introduction to Scikit Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../solutions/000_Introduction.html">000 COM6018 Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/050_using_matplotlib.html">050 Using Matplotlib</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/labs/060_introducing_scikit_learn.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https:/github.com/UOS-COM-6018/COM6018" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https:/github.com/UOS-COM-6018/COM6018/edit/main/materials/labs/060_introducing_scikit_learn.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https:/github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/labs/060_introducing_scikit_learn.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/materials/labs/060_introducing_scikit_learn.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>060 Introduction to Scikit Learn</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-loading-the-data">Step 1 - Loading the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-visualize-the-data">Step 2 - Visualize the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-generating-a-training-and-testing-set">Step 3 - Generating a training and testing set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-training-a-classifier">Step 4 - Training a classifier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-evaluate-the-model">Step 5 - Evaluate the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-tuning-the-model-s-hyperparameters">Step 6 - Tuning the model’s hyperparameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-analyzing-the-model-performance">Step 7 - Analyzing the model performance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-evaluate-the-model-using-cross-validation">Step 8 - Evaluate the model using cross-validation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-scikit-learn">
+<h1>060 Introduction to Scikit Learn<a class="headerlink" href="#introduction-to-scikit-learn" title="Permalink to this heading">#</a></h1>
+<blockquote>
+<div><p>COM6018</p>
+</div></blockquote>
+<p><em>Copyright © 2023 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
+<p>In this lab class we will use the scikit-learn library to implement a k-Nearest Neighbours classifier and apply it to a simple classification problem. Before attempting this lab make sure that you have read the corresponding tutorial notes <code class="docutils literal notranslate"><span class="pre">060_Introducing_Scikit_Learn</span></code></p>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<p>The classification task concerns the passive detection of land mines. The data set is described in the UCI Machine Learning Repository <a class="reference external" href="https://archive.ics.uci.edu/dataset/763/land+mines-1">here</a>.</p>
+<p>Landmines can be detected using a passive sensor similar to a metal detector. The detector is swept above the ground produces a voltage signal output. If the value is high then that indicates that there is possibly a mine present. This mine can then be carefully cleared. The problem is that there are other things that can cause a signal. Also the strength of the signal depends on how high the sensor is above the ground and the type of soil.</p>
+<p>Data is provide for 338 detections some of which are landmines and some of which are not. For each sample the following three measurements are provided:</p>
+<ul class="simple">
+<li><p>Voltage (V) :Output voltage value from a magnetic sensor</p></li>
+<li><p>High (H): The height of the sensor from the ground.</p></li>
+<li><p>Soil Type (S): A value that corresponds to the amount of moisture in the soil</p></li>
+</ul>
+<p>The output label that we wish to predict is one of 5 classes:</p>
+<ul class="simple">
+<li><p>1: No Landmine</p></li>
+<li><p>2: Anti-Tank Mine</p></li>
+<li><p>3: Anti-Personnel Mine</p></li>
+<li><p>4: Booby trapped Anti-Tank Mine</p></li>
+<li><p>5: M14 Anti-Personnel Mine</p></li>
+</ul>
+<p>There are a roughly equal number of samples for each class.</p>
+<p>The primary task is to distinguish between class 1 (i..e no mine) and the other classes (i.e., some type of mine). This is a binary classification problem, i.e. a <code class="docutils literal notranslate"><span class="pre">detection</span></code> problem. But we will consider the multi-class problem of distinguishing between all 5 classes. If the detector could tell us which type of mine is likely to be present this would be useful information for the team that has to clear the mine.</p>
+</section>
+<section id="step-1-loading-the-data">
+<h2>Step 1 - Loading the data<a class="headerlink" href="#step-1-loading-the-data" title="Permalink to this heading">#</a></h2>
+<p>The data is stored in an Excel spreadsheet filed called <code class="docutils literal notranslate"><span class="pre">data/Mine_Dataset.xls</span></code>. If you open the file you will see that it has several sheets. The one with the data is called <code class="docutils literal notranslate"><span class="pre">Normalized_Data</span></code>.</p>
+<p>We can read data from an Excel spreadsheet using the <code class="docutils literal notranslate"><span class="pre">read_excel</span></code> function from the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library. The function takes the name of the file as its first argument and the name of the sheet as its second argument. It returns a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object. Do this now in the cell below.</p>
+<p>(Remember that you will need to import the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library first.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">338</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note, the features are stored in the columns labelled <code class="docutils literal notranslate"><span class="pre">V</span></code>, <code class="docutils literal notranslate"><span class="pre">H</span></code> and <code class="docutils literal notranslate"><span class="pre">S</span></code>. The labels are stored in the column labelled <code class="docutils literal notranslate"><span class="pre">M</span></code>.</p>
+</section>
+<section id="step-2-visualize-the-data">
+<h2>Step 2 - Visualize the data<a class="headerlink" href="#step-2-visualize-the-data" title="Permalink to this heading">#</a></h2>
+<p>We will now for a grid of scatter plots using the pairplot method from the seaborn library. Again, check the tutorial notes if you are not sure how to do this. Be sure to set the pairplot argument <code class="docutils literal notranslate"><span class="pre">hue</span></code> to the name of the column containing the labels.</p>
+<p>Implement this in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the scatter plot you can see that the data for the Soil (S) and Height (H) features are ‘quantized’, i.e., they only take a small number of values. The Soil feature can have values six possible value, (0.0, 0.2, …, 1.0); The Height feature can have 12 values. All the features have been normalized to lie in the range [0,1].</p>
+</section>
+<section id="step-3-generating-a-training-and-testing-set">
+<h2>Step 3 - Generating a training and testing set<a class="headerlink" href="#step-3-generating-a-training-and-testing-set" title="Permalink to this heading">#</a></h2>
+<p>We will now split the data into training and test sets. We will used 75% of the data for training and 25% for testing. We will do this using the train_test_split function from the sklearn.model_selection library.</p>
+<p>First of all we will need to separate the features (columns ‘V’, ‘H’ and ‘S’) and the labels into separate dataframes. We can do this using the <code class="docutils literal notranslate"><span class="pre">drop</span></code> method of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object. The <code class="docutils literal notranslate"><span class="pre">drop</span></code> method takes a list of column names as its first argument and returns a new <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object with the specified columns removed. The <code class="docutils literal notranslate"><span class="pre">drop</span></code> method does not modify the original <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object.</p>
+<p>Set the train_test_split ‘random_state’ parameter to 1. This will ensure that the data is split in the same way each time the code is run.</p>
+<p>Write the code in the cell below and then check you code by running the test cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="k">assert</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">253</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">85</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">253</span><span class="p">,)</span>
+<span class="k">assert</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">85</span><span class="p">,)</span>
+<span class="k">assert</span> <span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">V</span> <span class="o">==</span> <span class="mf">0.480361964603055</span>
+<span class="k">assert</span> <span class="n">y_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4-training-a-classifier">
+<h2>Step 4 - Training a classifier<a class="headerlink" href="#step-4-training-a-classifier" title="Permalink to this heading">#</a></h2>
+<p>We will now use a k-Nearest Neighbours classifier to classify the data. We will use the <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code> class from the <code class="docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code> library. Initially use a value of k=1.</p>
+<p>In the cell below create a <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code> object and assign it to a variable called <code class="docutils literal notranslate"><span class="pre">model</span></code> and then call the fit function with the training data defined above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">model</span><span class="o">.</span><span class="n">get_params</span><span class="p">()[</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">model</span><span class="o">.</span><span class="n">_fit_X</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">253</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">_fit_X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-5-evaluate-the-model">
+<h2>Step 5 - Evaluate the model<a class="headerlink" href="#step-5-evaluate-the-model" title="Permalink to this heading">#</a></h2>
+<p>We will now use the model’s predict method to predict the labels for the test data. Assign the predicted labels to a variable called <code class="docutils literal notranslate"><span class="pre">y_pred</span></code>. And then use the metrics.accuracy_score function to calculate the accuracy of the model. Store the accuracy in a variable called ‘score’ and print the value to the screen.</p>
+<p>Write the code in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+
+<span class="k">assert</span> <span class="n">score</span> <span class="o">==</span> <span class="mf">0.29411764705882354</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The accuracy is very low, aorud 0.29, i.e. 29%. Given there are 5 classes we would expect to get around 20% accuracy by chance. The classifier is doing better than chance but it is still getting more classifications wrong than right.</p>
+<p>We will try to improve the score in the next step.</p>
+</section>
+<section id="step-6-tuning-the-model-s-hyperparameters">
+<h2>Step 6 - Tuning the model’s hyperparameters<a class="headerlink" href="#step-6-tuning-the-model-s-hyperparameters" title="Permalink to this heading">#</a></h2>
+<p>The previous result has been achieved with a value of k=1. We will now try to improve the accuracy by trying different values of k. We will try values of k for all odd values in the range 1 to 21.</p>
+<p>This can be done by gathering together the steps above and placing them inside a for loop which iterates over the values of k. Inside the for loop add a print statement to print the value of k and the accuracy score.</p>
+<p>Write the code in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should find that the best result comes from using a value of k = 5. This gives an accuracy of around 0.38, i.e. 38%. This is a significant improvement over the previous result.</p>
+</section>
+<section id="step-7-analyzing-the-model-performance">
+<h2>Step 7 - Analyzing the model performance<a class="headerlink" href="#step-7-analyzing-the-model-performance" title="Permalink to this heading">#</a></h2>
+<p>We will now re-run the classifier using k = 5 and then use the confusion_matrix function to calculate the confusion matrix. Assign the result to a variable called <code class="docutils literal notranslate"><span class="pre">cm</span></code>.</p>
+<p>Then use ConfusionMatrixDisplay from sklearn.metrics to display the confusion matrix. You can set the <code class="docutils literal notranslate"><span class="pre">display_labels</span></code> parameter so that meaningful labels are displayed, e.g., <code class="docutils literal notranslate"><span class="pre">display_labels=['None',</span> <span class="pre">'AP</span> <span class="pre">Mine',</span> <span class="pre">'AT</span> <span class="pre">Mine',</span> <span class="pre">'Booby',</span> <span class="pre">'M14']</span></code></p>
+<p>Refer to the module lecture notes if you are unsure how to compute and display confusion matrices.</p>
+<p>Write the code in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="k">assert</span> <span class="n">cm</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">11</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Examine the confusion matrix. You should see that there are a lot of correct classifications (i.e., numbers on the diagonal). However, there are also some cells off the diagonal which have high values. For example, the classifier is confusing AT mines, Booby-trapped AT Mines and AT M14 mines. This is not surprising as these two classes are very similar. More significantly, the M14 class is often been classified as ‘None’. This is a serious problem as it means that the classifier is failing to detect M14 mines. (In the context of <code class="docutils literal notranslate"><span class="pre">detection</span></code> this is called a <code class="docutils literal notranslate"><span class="pre">false</span> <span class="pre">negative</span></code>.) We can also see some false positives, e.g., the classifier is classifying some ‘None’ samples as AT Mines.</p>
+<p>Consider a real-world application of this classifier. Which type of error would be more consequential? If the classifier was used to detect landmines in a field then the false positives would cause the field to be unnecessarily cleared. This would be expensive and time consuming. However, the false negatives are much more serious. If the classifier fails to detect a mine then it could result in the loss of life.</p>
+</section>
+<section id="step-8-evaluate-the-model-using-cross-validation">
+<h2>Step 8 - Evaluate the model using cross-validation<a class="headerlink" href="#step-8-evaluate-the-model-using-cross-validation" title="Permalink to this heading">#</a></h2>
+<p>In the previous evaluation we used 75% of the data for training and just 25% for testing. This meant that the test set was quite small and so the accuracy score and the values in the confusion matrix might not be very reliable.</p>
+<p>We will now use the leave-one-out training/test paradigm to evaluate the 3-nearest neighbour classifier more reliably.</p>
+<p>To do this you will need to use the ‘cross_val_predict’ method and the ‘LeaveOneOut’ class from ‘sklearn.model_selection’.</p>
+<p>Run the leave-one-out cross-validation and then calculate the accuracy score and the confusion matrix. Display the confusion matrix using the ConfusionMatrixDisplay class. Also compute the accuracy (stored it in a variable called <code class="docutils literal notranslate"><span class="pre">accuracy</span></code>) and print it.</p>
+<p>An example of how to use these can be found in the tutorial notebook.</p>
+<p>Write the code in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+
+<span class="k">assert</span> <span class="n">cm</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">accuracy</span> <span class="o">==</span> <span class="mf">0.378698224852071</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should see that the classifier is now making a significant number of false negative type errors, i.e. many of the mines are being classified as ‘None’.</p>
+<p>Consider the task as a basic two class detection problem, i.e. with outputs ‘Mine’ or ‘None’, i.e. grouping all the mine classes into a single class. What is the accuracy of the classifier for this task?</p>
+<p>Write Python code to compute this accuracy in the cell below. Store it in a variable called <code class="docutils literal notranslate"><span class="pre">detection_accuracy.</span></code></p>
+<p>(Hint: you can use the confusion matrix to calculate this.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="k">assert</span> <span class="n">detection_accuracy</span> <span class="o">==</span> <span class="mf">0.7840236686390533</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We should have found that the accuracy is about 78%.</p>
+<p>We can also work out the ‘false negative rate’, i.e. the percentage of detections where a land mine is missed. We want this to be very low.</p>
+<p>This is computed by summing the errors in the first column of the confusion matrix and dividing by the total number of detections.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">false_negatives</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;False negative rate = &#39;</span><span class="p">,</span> <span class="n">false_negatives</span> <span class="o">/</span> <span class="n">cm</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The value is about 15%. This is far too high for a real-world application.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./materials/labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="050_using_matplotlib.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">050 Using Matplotlib</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../solutions/000_Introduction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">000 COM6018 Solutions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-loading-the-data">Step 1 - Loading the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-visualize-the-data">Step 2 - Visualize the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-generating-a-training-and-testing-set">Step 3 - Generating a training and testing set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-training-a-classifier">Step 4 - Training a classifier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-evaluate-the-model">Step 5 - Evaluate the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-tuning-the-model-s-hyperparameters">Step 6 - Tuning the model’s hyperparameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-analyzing-the-model-performance">Step 7 - Analyzing the model performance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-evaluate-the-model-using-cross-validation">Step 8 - Evaluate the model using cross-validation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jon Barker, University of Sheffield
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
