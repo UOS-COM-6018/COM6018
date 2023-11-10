@@ -481,10 +481,13 @@ document.write(`
 <div><p>COM6018</p>
 </div></blockquote>
 <p><em>Copyright © 2023 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
-<p>In this lab class, we will use the scikit-learn library to implement a k-Nearest Neighbours classifier and apply it to a simple classification problem. Before attempting this lab, make sure that you have read the corresponding tutorial notes <a class="reference external" href="https://uos-com-6018.github.io/COM6018/materials/tutorials/060_Introducing_Scikit_Learn.html">060_Introducing_Scikit_Learn</a>.</p>
+<p>In this lab class, we will use the scikit-learn library to implement a k-Nearest Neighbours classifier and apply it to a simple classification problem. Before attempting this lab, make sure that you have read the corresponding tutorial notes <a class="reference external" href="https://uos-com-6018.github.io/COM6018/materials/tutorials/060_Introducing_Scikit_Learn.html">060_Introducing_Scikit_Learn</a></p>
 <section id="background">
 <h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
-<p>The classification task that we will tackle in this lab concerns the passive detection of land mines. The data set is described in the UCI Machine Learning Repository <a class="reference external" href="https://archive.ics.uci.edu/dataset/763/land+mines-1">here</a>.</p>
+<p>The classification task that we will tackle in this lab concerns the passive detection of land mines. The data set is described in the UCI Machine Learning Repository and in the following publication,</p>
+<ul class="simple">
+<li><p>Yilmaz, C., Kahraman, H. T., &amp; Söyler, S. (2018). <em>Passive mine detection and classification method based on hybrid model</em>. IEEE Access, 6, 47870-47888 <a class="reference external" href="https://archive.ics.uci.edu/dataset/763/land+mines-1">DOI:10.1109/ACCESS.2018.2866538</a>.</p></li>
+</ul>
 <p>Landmines can be detected using a passive sensor similar to a metal detector. The detector is swept above the ground produces a voltage signal output. If the value is high, then that indicates that there is possibly a mine present. This mine can then be carefully cleared. The problem is that there are other things that can cause a signal. Also the strength of the signal depends on how high the sensor is above the ground and the type of soil.</p>
 <p>Data is provide for 338 detections some of which are landmines and some of which are not. For each sample the following three measurements are provided:</p>
 <ul class="simple">
