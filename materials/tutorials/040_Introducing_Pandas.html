@@ -210,6 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../solutions/030_introducing_numpy.html">030 Introducing NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../solutions/040_working_with_pandas.html">040 Working with Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../solutions/050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
 </ul>
 
     </div>
@@ -660,6 +661,30 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
+</pre></div>
+</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done
 Solving environment: | 
 </pre></div>
@@ -772,9 +797,6 @@ Solving environment: |
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done
 </pre></div>
 </div>
@@ -789,16 +811,160 @@ Please update conda by running
 Or to minimize the number of packages updated during conda update use
 
      conda install conda=23.10.0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>## Package Plan ##
+
+  environment location: /opt/homebrew/anaconda3/envs/com6018_dev
+
+  added / updated specs:
+    - pandas
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    pandas-2.1.3               |  py311h6e08293_0        13.6 MB  conda-forge
+    ------------------------------------------------------------
+                                           Total:        13.6 MB
+
+The following packages will be UPDATED:
+
+  pandas                              2.1.2-py311h6e08293_0 --&gt; 2.1.3-py311h6e08293_0 
 
 
 
-# All requested packages already installed.
+Downloading and Extracting Packages:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   |                                       |   0% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | 8                                     |   2% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ##2                                   |   6% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ####2                                 |  12% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | #####8                                |  16% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | #######2                              |  20% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ########9                             |  24% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ##########4                           |  28% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ############1                         |  33% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | #############6                        |  37% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ###############5                      |  42% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | #################1                    |  46% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ##################9                   |  51% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ####################4                 |  55% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ######################1               |  60% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | #######################7              |  64% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | #########################3            |  68% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ##########################6           |  72% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ############################          |  76% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | #############################4        |  80% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ###############################6      |  86% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | #################################     |  89% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ##################################4   |  93% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ###################################7  |  97% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ##################################### | 100% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas-2.1.3         | 13.6 MB   | ##################################### | 100% 
+                                                                                
+
+
+Preparing transaction: - 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done
+Verifying transaction: | 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done
+Executing transaction: \ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\ 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>| 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>done
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -1519,9 +1685,6 @@ min     1978.000000      1.000000      1.000000      2.080000      0.000000
 max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 </div>
 <p>This will print the following table:</p>
@@ -1655,7 +1818,7 @@ Name: Extent, Length: 84, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a2098317c22fdb600f21e0e907113ebc724ebee0ef7fa580d52fa1f20550e951.png" src="../../_images/a2098317c22fdb600f21e0e907113ebc724ebee0ef7fa580d52fa1f20550e951.png" />
+<img alt="../../_images/a7d04794b74ca19666aa8fe1ca92129694de9e0204ff53f0ccf4562412942ab6.png" src="../../_images/a7d04794b74ca19666aa8fe1ca92129694de9e0204ff53f0ccf4562412942ab6.png" />
 </div>
 </div>
 <p>You can see that the sea ice extent has been broadly trending downwards but the values at the extremes of the x-axis look a bit odd, i.e., there are very large values for the first and last year in the dataset. This is is an ‘artefact’ caused because the data for these years is incomplete. The data for 1978 only starts in November and the data for 2019 only goes up to July. The code has computed the average for the few months that are available but this is not representative of the average for the full year. We can fix this problem by simply removing these years from the data before plotting.</p>
@@ -1672,7 +1835,7 @@ Name: Extent, Length: 84, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cd29812bce3f4588fbd3b589a05b5c229c63d845043c0565d43dc8b88d09924e.png" src="../../_images/cd29812bce3f4588fbd3b589a05b5c229c63d845043c0565d43dc8b88d09924e.png" />
+<img alt="../../_images/0d3433843fe1c3326413c844cb57518a4852db2834c463f9bdb63106ad613f39.png" src="../../_images/0d3433843fe1c3326413c844cb57518a4852db2834c463f9bdb63106ad613f39.png" />
 </div>
 </div>
 <p>Notice how the sea ice minimum fluctuates seemingly at random from year to year. This kind of unexplained variation in data is often referred to as noise. But ignoring the fluctuations, we can see that there also appears to be a downward trend in the sea ice minimum. If we want to be sure that there is a genuine downward trend and that the low values in recent years are not just part of the usual random fluctuations, then we need to do some statistical analysis. We will look at how to do this later in the module.</p>

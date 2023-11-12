@@ -210,6 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">030 Introducing NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="040_working_with_pandas.html">040 Working with Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
 </ul>
 
     </div>
@@ -582,10 +583,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x127940b50&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x10ecb2250&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/e374a112975d376cf6b806a0254fc759fccf047b0461be0aba5272fdc266e9d9.png" src="../../_images/e374a112975d376cf6b806a0254fc759fccf047b0461be0aba5272fdc266e9d9.png" />
+<img alt="../../_images/afe4726aa2789c15d58181bb7ca0369b626824cc314ea0f993ab3e2b835cdb47.png" src="../../_images/afe4726aa2789c15d58181bb7ca0369b626824cc314ea0f993ab3e2b835cdb47.png" />
 </div>
 </div>
 <p>You should see a graph that trends upwards over time but which also has a season oscillation, i.e., the concentration of CO<sub>2</sub> in the atmosphere increases and decreases over the course of a year. This is because the concentration of CO<sub>2</sub> in the atmosphere is affected by the seasons. In the summer, plants grow and absorb CO<sub>2</sub> from the atmosphere, and in the winter they die and release CO<sub>2</sub> back into the atmosphere.</p>
@@ -600,10 +601,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1279acdd0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x10ee463d0&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/569a031763a152a8cdeb60810126129c53f4cab94c2a9db43d818fd1e337c78e.png" src="../../_images/569a031763a152a8cdeb60810126129c53f4cab94c2a9db43d818fd1e337c78e.png" />
+<img alt="../../_images/164b01159fcb5b21b7f7df16551966cb274d853816255b2172c2a01572a61e8a.png" src="../../_images/164b01159fcb5b21b7f7df16551966cb274d853816255b2172c2a01572a61e8a.png" />
 </div>
 </div>
 <p>The solution to this is to apply a ‘smoothing filter’ to the data before we look for the picks and dips. A smoothing filter is a function that takes a list of numbers as input and returns a new list of numbers that are ‘smoothed’ versions of the input. It does this by sliding a window over the input list and calculating the weighted sum of the numbers in the window.</p>
@@ -662,7 +663,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dec5292f7707b903cd6fe2ca54a4186762c4910b6669c2738ee86c58faf460ee.png" src="../../_images/dec5292f7707b903cd6fe2ca54a4186762c4910b6669c2738ee86c58faf460ee.png" />
+<img alt="../../_images/ebdeb6008be7b8d263667561cbe8f72fa7e0abe91765f19225c9c3aedf64a126.png" src="../../_images/ebdeb6008be7b8d263667561cbe8f72fa7e0abe91765f19225c9c3aedf64a126.png" />
 </div>
 </div>
 <p>You should observe that the using a window of 7 is too short and the peaks and dips are still very noisy.  A window of 360 is too long and the peaks and dips are no longer correct. The window of 60 is about right.</p>
@@ -767,7 +768,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/089d8e9144e886e99a9f9aeb77a02a24a186cda57e97487b151e3540d155dd47.png" src="../../_images/089d8e9144e886e99a9f9aeb77a02a24a186cda57e97487b151e3540d155dd47.png" />
+<img alt="../../_images/b7526efbb307cae0ccae5d4585184bba67cd245b4fef5c6ada21b0309b115554.png" src="../../_images/b7526efbb307cae0ccae5d4585184bba67cd245b4fef5c6ada21b0309b115554.png" />
 </div>
 </div>
 <p>Observe the figure above. You should see several problems,</p>
@@ -802,10 +803,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1279d2290&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x10eff9f10&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/e374a112975d376cf6b806a0254fc759fccf047b0461be0aba5272fdc266e9d9.png" src="../../_images/e374a112975d376cf6b806a0254fc759fccf047b0461be0aba5272fdc266e9d9.png" />
+<img alt="../../_images/afe4726aa2789c15d58181bb7ca0369b626824cc314ea0f993ab3e2b835cdb47.png" src="../../_images/afe4726aa2789c15d58181bb7ca0369b626824cc314ea0f993ab3e2b835cdb47.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -872,10 +873,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x127c71a90&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x10f0ac250&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/886b506dfbf9467711f0dbda02c9585f7f9a6282e3957daaf8829cfd06d3b9d0.png" src="../../_images/886b506dfbf9467711f0dbda02c9585f7f9a6282e3957daaf8829cfd06d3b9d0.png" />
+<img alt="../../_images/6b05b054d76d6c95cacabe394e5c51af33aa53530f24474ee9d8c20e8a6a03bc.png" src="../../_images/6b05b054d76d6c95cacabe394e5c51af33aa53530f24474ee9d8c20e8a6a03bc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -905,10 +906,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x127cfc590&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x10f133090&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/af3d2dd4283973eb18f060efa1b5280ebbc13bfc35018802f941d62d721a6ce3.png" src="../../_images/af3d2dd4283973eb18f060efa1b5280ebbc13bfc35018802f941d62d721a6ce3.png" />
+<img alt="../../_images/bb61e4b1d047c55aea99b2a6caf0929a0197843baefe897d49c9145c1607f0a0.png" src="../../_images/bb61e4b1d047c55aea99b2a6caf0929a0197843baefe897d49c9145c1607f0a0.png" />
 </div>
 </div>
 <p>We will now rewrite the <code class="docutils literal notranslate"><span class="pre">find_peaks2</span></code> function so that it takes a NumPy array as input and returns a NumPy array of peak values and a NumPy array of peak indices.</p>
@@ -940,7 +941,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a343b898d78dcb82b99441d0459948d0289180d420b55f59b5b1f966072e2ff1.png" src="../../_images/a343b898d78dcb82b99441d0459948d0289180d420b55f59b5b1f966072e2ff1.png" />
+<img alt="../../_images/8b077f12d8baca4b546368a59a5757b0304f56ac4327dc988b4579bcb3313d4f.png" src="../../_images/8b077f12d8baca4b546368a59a5757b0304f56ac4327dc988b4579bcb3313d4f.png" />
 </div>
 </div>
 </section>
@@ -973,7 +974,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/813ed8d40918263c629608278b2ecb841249232eb9bf2322bb5a5e535b72d1a3.png" src="../../_images/813ed8d40918263c629608278b2ecb841249232eb9bf2322bb5a5e535b72d1a3.png" />
+<img alt="../../_images/b3bb2b869c40af557cfdf9cc59a7e5e5de180e947feb33cf734fd4f0d3b5690a.png" src="../../_images/b3bb2b869c40af557cfdf9cc59a7e5e5de180e947feb33cf734fd4f0d3b5690a.png" />
 </div>
 </div>
 <p>Now, we can write a function to compute the average year-on-year increase in the peak and dip values. The function should take a NumPy array of dip or peak values as input and return the average year-on-year increase. (You can assume that your list of dip and peak values has correctly identified the annual peak and dip.)</p>

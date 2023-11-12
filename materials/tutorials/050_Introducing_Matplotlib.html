@@ -212,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../solutions/030_introducing_numpy.html">030 Introducing NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../solutions/040_working_with_pandas.html">040 Working with Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../solutions/050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
 </ul>
 
     </div>
@@ -573,7 +574,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ad84142b0e0069f3725775e984f8fae832b95ba97f827380f4d165b850843484.png" src="../../_images/ad84142b0e0069f3725775e984f8fae832b95ba97f827380f4d165b850843484.png" />
+<img alt="../../_images/0e5930a6a97c9acd3ec3e98460167a74032315e6268348e2dad8a54b7bf9ac84.png" src="../../_images/0e5930a6a97c9acd3ec3e98460167a74032315e6268348e2dad8a54b7bf9ac84.png" />
 </div>
 </div>
 <p>Exactly how the plot is displayed will depend on the environment we are working in and how we have things configured. Generally, if we are running in a Jupyter notebook the plot will be displayed inline in the notebook. If we are running the Python code as a script the plot will be displayed in a separate window.</p>
@@ -593,7 +594,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/df044d31563e1d09b91d06b5b2ebe512c156bbd7a618ba1a08e187f5a027255d.png" src="../../_images/df044d31563e1d09b91d06b5b2ebe512c156bbd7a618ba1a08e187f5a027255d.png" />
+<img alt="../../_images/16b0380bb4686d85004eea078bbf049ad52227d16889797c6ffe0b842a4aeb6e.png" src="../../_images/16b0380bb4686d85004eea078bbf049ad52227d16889797c6ffe0b842a4aeb6e.png" />
 </div>
 </div>
 </section>
@@ -614,7 +615,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7cb26c517637e72419234a7f636d113a60a067a5e2d3ae4f0239cf3730ef4dbb.png" src="../../_images/7cb26c517637e72419234a7f636d113a60a067a5e2d3ae4f0239cf3730ef4dbb.png" />
+<img alt="../../_images/7d101abd05998b71107d56a79061b898271b72fce3412e6656e9d7fe09b97930.png" src="../../_images/7d101abd05998b71107d56a79061b898271b72fce3412e6656e9d7fe09b97930.png" />
 </div>
 </div>
 <div class="admonition note">
@@ -641,7 +642,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cea316e7e195487febc7ee02ea77fcade762ae882cc12d0ad31022d1b1490fb4.png" src="../../_images/cea316e7e195487febc7ee02ea77fcade762ae882cc12d0ad31022d1b1490fb4.png" />
+<img alt="../../_images/7f943d60ab0c97d27924e8c27f7356a99652c4f680234d17f12c302a18470ceb.png" src="../../_images/7f943d60ab0c97d27924e8c27f7356a99652c4f680234d17f12c302a18470ceb.png" />
 </div>
 </div>
 </section>
@@ -661,7 +662,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f473165861d902c8f2acdf7ae4a90dff241536075f807ff3ce7d98f3cd36ace6.png" src="../../_images/f473165861d902c8f2acdf7ae4a90dff241536075f807ff3ce7d98f3cd36ace6.png" />
+<img alt="../../_images/18ae8ff01bd26c125de15fedc6a906e0752f04f5e03f1a0b2ca2426411deacc9.png" src="../../_images/18ae8ff01bd26c125de15fedc6a906e0752f04f5e03f1a0b2ca2426411deacc9.png" />
 </div>
 </div>
 <p>Note the use of the <code class="docutils literal notranslate"><span class="pre">tight_layout</span></code> function immediately before the called to <code class="docutils literal notranslate"><span class="pre">show</span></code>. This  adjust the spacing between the axes to make sure the labels do not overlap.</p>
@@ -679,7 +680,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/249dc10cdf757154e887661bd185a8daac0902809dbd7a495c205067938dee23.png" src="../../_images/249dc10cdf757154e887661bd185a8daac0902809dbd7a495c205067938dee23.png" />
+<img alt="../../_images/ebbd2bd16e319715f7ad43f5e0248a1129fc9e8f0917e8d95db3880488fbc34b.png" src="../../_images/ebbd2bd16e319715f7ad43f5e0248a1129fc9e8f0917e8d95db3880488fbc34b.png" />
 </div>
 </div>
 <p>Note, the use of the NumPy reshape function, i.e., <code class="docutils literal notranslate"><span class="pre">axes.reshape(-1)</span></code>, which is being used to turn the 2-D array of axes into a 1-D array. This type of reshaping is a common trick in NumPy which makes it easy to iterate over all the elements of a multi-dimensional array without having to use nested loops.</p>
@@ -701,7 +702,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/146505970d20b141ba0a2d7714722e1ad631f39b08ac54125cd8fdad0940754b.png" src="../../_images/146505970d20b141ba0a2d7714722e1ad631f39b08ac54125cd8fdad0940754b.png" />
+<img alt="../../_images/98d8ee5056bd3642948b7b50111e2cc0d2d9936d186e99c0e3ab1d1dd0ee5cea.png" src="../../_images/98d8ee5056bd3642948b7b50111e2cc0d2d9936d186e99c0e3ab1d1dd0ee5cea.png" />
 </div>
 </div>
 <p>Note above the the <code class="docutils literal notranslate"><span class="pre">set_size_inches</span></code> method takes a single tuple is its input parameter, hence, the need for the double brackets: the inner brackets are for the tuple.</p>
@@ -722,7 +723,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3112deda616af412de86a0daba5e49192787d4e19c399427175e9b2a702fbdff.png" src="../../_images/3112deda616af412de86a0daba5e49192787d4e19c399427175e9b2a702fbdff.png" />
+<img alt="../../_images/a7eb09853faedd3bf3c6c0304621713a572e105f2321a9ff05a651913b53972d.png" src="../../_images/a7eb09853faedd3bf3c6c0304621713a572e105f2321a9ff05a651913b53972d.png" />
 </div>
 </div>
 <p>The function will infer the file format from the file extension. In the above example we have saved the plot as ‘PDF’ and we have also set the resolution of the figure using the <code class="docutils literal notranslate"><span class="pre">dpi</span></code> parameter  (dpi means <code class="docutils literal notranslate"><span class="pre">dots</span> <span class="pre">per</span> <span class="pre">inch</span></code>). The <code class="docutils literal notranslate"><span class="pre">dpi</span></code> parameter is optional and if it is not supplied it will default to 80. Setting this to a higher value can be useful if we want to make a high quality plot for printing.</p>
@@ -743,7 +744,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9d7cb5455d7b242f13998451404d0762dce95ed6d1dd4976d342e1f9c08f7eff.png" src="../../_images/9d7cb5455d7b242f13998451404d0762dce95ed6d1dd4976d342e1f9c08f7eff.png" />
+<img alt="../../_images/8f69fccaf2f98f4e880783d5f528f187ea53295170b2035f2ca81d2af096a2a8.png" src="../../_images/8f69fccaf2f98f4e880783d5f528f187ea53295170b2035f2ca81d2af096a2a8.png" />
 </div>
 </div>
 <p>Note, Matplotlib has chosen the line colours.</p>
@@ -765,7 +766,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3cabbc071de0c384527146668e3f11310625229e636617a6eff8e699aae068e5.png" src="../../_images/3cabbc071de0c384527146668e3f11310625229e636617a6eff8e699aae068e5.png" />
+<img alt="../../_images/33ca211881991b7f4ae18b61f20d3491d88ffd3f2d016b82e9fb9fe56b72684b.png" src="../../_images/33ca211881991b7f4ae18b61f20d3491d88ffd3f2d016b82e9fb9fe56b72684b.png" />
 </div>
 </div>
 <p>Notice how the legend automatically picks up the corresponding colours and line styles.</p>
@@ -791,7 +792,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/01c52e73867dd2bde6af87c5884b6eb6d6e516679d536d1fb149dd8a18c0995f.png" src="../../_images/01c52e73867dd2bde6af87c5884b6eb6d6e516679d536d1fb149dd8a18c0995f.png" />
+<img alt="../../_images/901564c0ca15de7749906f98fa51f65133189b8d9f315912ef482d171b049b65.png" src="../../_images/901564c0ca15de7749906f98fa51f65133189b8d9f315912ef482d171b049b65.png" />
 </div>
 </div>
 </section>
@@ -814,7 +815,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/25758e685a06ff2b82cdeb381dbc08711929e8dfa1ea009b4ea6f10fe418475b.png" src="../../_images/25758e685a06ff2b82cdeb381dbc08711929e8dfa1ea009b4ea6f10fe418475b.png" />
+<img alt="../../_images/3cf9a7ded854ab937dab56eb77423ab953e3d5ce246931fdc58346b6f6f8f7f2.png" src="../../_images/3cf9a7ded854ab937dab56eb77423ab953e3d5ce246931fdc58346b6f6f8f7f2.png" />
 </div>
 </div>
 </section>
@@ -834,7 +835,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/65d0630693cac465c13f280a4902a3999769b1ff5deb250da31b09cf2a396f0f.png" src="../../_images/65d0630693cac465c13f280a4902a3999769b1ff5deb250da31b09cf2a396f0f.png" />
+<img alt="../../_images/c323f4f250770ab3e45193303de8b2f1b29958548c47603e8c8243ba2922edc6.png" src="../../_images/c323f4f250770ab3e45193303de8b2f1b29958548c47603e8c8243ba2922edc6.png" />
 </div>
 </div>
 </section>
@@ -857,7 +858,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/34864d7388ea8e07f94f6f16f4ca6f1c74801509e744a8f276ab6db7b7a5541b.png" src="../../_images/34864d7388ea8e07f94f6f16f4ca6f1c74801509e744a8f276ab6db7b7a5541b.png" />
+<img alt="../../_images/dbbf2363626333f187246396dc51be7ffd935a13191256646c1b27a75d456f21.png" src="../../_images/dbbf2363626333f187246396dc51be7ffd935a13191256646c1b27a75d456f21.png" />
 </div>
 </div>
 </section>
@@ -883,7 +884,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/797598250ac4aa9a218e9759b3e4334c44f8ba0be03f7593efd146e205ed4e4d.png" src="../../_images/797598250ac4aa9a218e9759b3e4334c44f8ba0be03f7593efd146e205ed4e4d.png" />
+<img alt="../../_images/bf39643fb92fa0be7c33687033325929047008e5860198c99335dfa73de1a6b7.png" src="../../_images/bf39643fb92fa0be7c33687033325929047008e5860198c99335dfa73de1a6b7.png" />
 </div>
 </div>
 <p>Matplotlib also provide a function called ‘bar’ for plotting bar charts. Do not confuse this with the ‘hist’ function. The ‘bar’ function can take a set of x, y numeric value pairs as in the example below,</p>
@@ -899,7 +900,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f280ea3d84ae460291ba9aa58b16f5264cb1190c8705578c118fcea4365c23bc.png" src="../../_images/f280ea3d84ae460291ba9aa58b16f5264cb1190c8705578c118fcea4365c23bc.png" />
+<img alt="../../_images/ab20673d636015f2e82f79c8cf2929507b16bb49bb2ea84fa7987ff223750900.png" src="../../_images/ab20673d636015f2e82f79c8cf2929507b16bb49bb2ea84fa7987ff223750900.png" />
 </div>
 </div>
 <p>However, it is more typically used to plot categorical data. In this case we provide a list of labels and a list of values. The following example shows how to do this.</p>
@@ -915,7 +916,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5a261a56a11a7d9560b5f3c19b982e32f57b15348f0f0d19933f6e92cd748d75.png" src="../../_images/5a261a56a11a7d9560b5f3c19b982e32f57b15348f0f0d19933f6e92cd748d75.png" />
+<img alt="../../_images/ab1c4b0652df1064ff549626a513b174def3acaeb479a5ace6d792789a2dcfac.png" src="../../_images/ab1c4b0652df1064ff549626a513b174def3acaeb479a5ace6d792789a2dcfac.png" />
 </div>
 </div>
 </section>
@@ -934,7 +935,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/df0cc0df99f5cf8e6fcb79225c1520adfb388723ef6b06e5d321d3575124af38.png" src="../../_images/df0cc0df99f5cf8e6fcb79225c1520adfb388723ef6b06e5d321d3575124af38.png" />
+<img alt="../../_images/abfb2d59bb87c2e829a3b9b24f153ef0ba92a0f9fcb3997a77aacb635cc115dd.png" src="../../_images/abfb2d59bb87c2e829a3b9b24f153ef0ba92a0f9fcb3997a77aacb635cc115dd.png" />
 </div>
 </div>
 <p>In the above, we have 1000 samples each with two features, <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">x2</span></code>. The scatter plot gives us a clear indication of the relationship between the two variables. In this case, we can see that the points are clustered around a straight line. This is indicates that there is strong correlation between the two variables. This is not surprising in this case because <code class="docutils literal notranslate"><span class="pre">x2</span></code> has been constructed from a linear function of <code class="docutils literal notranslate"><span class="pre">x1</span></code> (namely, <span class="math notranslate nohighlight">\(15 x_1 + 10\)</span>) with some random noise added.</p>
@@ -964,7 +965,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d981d5561cc4ca022cf96eb5a1c93487f3fcff62724ece22f62ed60b9e48ea7d.png" src="../../_images/d981d5561cc4ca022cf96eb5a1c93487f3fcff62724ece22f62ed60b9e48ea7d.png" />
+<img alt="../../_images/a95d75853132f952d27adc2bdcaa240a4f485529c358e766f97546b5591c1588.png" src="../../_images/a95d75853132f952d27adc2bdcaa240a4f485529c358e766f97546b5591c1588.png" />
 </div>
 </div>
 <p>Contour plots and surfaces can be made in a similar way and examples are shown in the next section.</p>
@@ -989,7 +990,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e6388f26427a04298aafa47ad2b30fddb0d40d83684d696f09972e66ce297617.png" src="../../_images/e6388f26427a04298aafa47ad2b30fddb0d40d83684d696f09972e66ce297617.png" />
+<img alt="../../_images/f8044743376daed4f87fa059ee9d305a452b9441f00013d2019ef25a1f41c9b3.png" src="../../_images/f8044743376daed4f87fa059ee9d305a452b9441f00013d2019ef25a1f41c9b3.png" />
 </div>
 </div>
 </section>
@@ -1008,7 +1009,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ad99e497d67c79c5d878be3bcb90fbf4a1d8fae3981886f2928130e8bb134725.png" src="../../_images/ad99e497d67c79c5d878be3bcb90fbf4a1d8fae3981886f2928130e8bb134725.png" />
+<img alt="../../_images/3ed31d01844882db782edabe1b0fcd647508a7fc3d38ab1064b8b802dd66b829.png" src="../../_images/3ed31d01844882db782edabe1b0fcd647508a7fc3d38ab1064b8b802dd66b829.png" />
 </div>
 </div>
 <div class="cell tag_remove-output docutils container">
@@ -1033,7 +1034,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4816a42a53c2d4bd7ca376d054162a59fe60d1c261ed171f3d595c3dc5cf332c.png" src="../../_images/4816a42a53c2d4bd7ca376d054162a59fe60d1c261ed171f3d595c3dc5cf332c.png" />
+<img alt="../../_images/9f3d549aab33c07eb2aef174deb6155d6f6382344f92aab598a6db27331cfb65.png" src="../../_images/9f3d549aab33c07eb2aef174deb6155d6f6382344f92aab598a6db27331cfb65.png" />
 </div>
 </div>
 </section>
@@ -1054,7 +1055,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1cc08db947e47ac9b9dd18b584e009542c5c1a4a6f3c01ff933c2965a88512b5.png" src="../../_images/1cc08db947e47ac9b9dd18b584e009542c5c1a4a6f3c01ff933c2965a88512b5.png" />
+<img alt="../../_images/d79fa4592ac25fa6b197ca4d409f516ea4a10a200ae3ead533f64690d3b2e7ff.png" src="../../_images/d79fa4592ac25fa6b197ca4d409f516ea4a10a200ae3ead533f64690d3b2e7ff.png" />
 </div>
 </div>
 <p>Note that these plots are displayed on 3-D axes. For documentation on how to comtrol 3-D axes, see the documentation for the <code class="docutils literal notranslate"><span class="pre">Axes3D</span></code> class which can be found in the <code class="docutils literal notranslate"><span class="pre">mpl_toolkits.mplot3d.axes3d</span></code> module.</p>
@@ -1088,7 +1089,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/994d45cc45460d81dfb0010e39000e1b35c0ee4c7bb1d14748bfb742ec5b35f1.png" src="../../_images/994d45cc45460d81dfb0010e39000e1b35c0ee4c7bb1d14748bfb742ec5b35f1.png" />
+<img alt="../../_images/b344a289df5f700c55f2438c149d35ceb516228abdbbe525854ea5b4e1479f3f.png" src="../../_images/b344a289df5f700c55f2438c149d35ceb516228abdbbe525854ea5b4e1479f3f.png" />
 </div>
 </div>
 </section>
@@ -1116,7 +1117,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b7249b7b7e3bbdc302d1bb864146204d5218660c76dfc9a12e90ec8ec7b826e1.png" src="../../_images/b7249b7b7e3bbdc302d1bb864146204d5218660c76dfc9a12e90ec8ec7b826e1.png" />
+<img alt="../../_images/dbd0f6fa5ac66c6a9bee6f2359bb993abc1b8a287e5cb3a6e560d9efe58bcfeb.png" src="../../_images/dbd0f6fa5ac66c6a9bee6f2359bb993abc1b8a287e5cb3a6e560d9efe58bcfeb.png" />
 </div>
 </div>
 <p>The resulting gif file is shown below.</p>
@@ -1189,7 +1190,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/35fbd398593414ae91744161ceed3aa7bd3501a956da1c703baf67f762d4c473.png" src="../../_images/35fbd398593414ae91744161ceed3aa7bd3501a956da1c703baf67f762d4c473.png" />
+<img alt="../../_images/13584f920a98ff64005be06ec62bfdf2bf05a8953f9bd4039400be05998591d3.png" src="../../_images/13584f920a98ff64005be06ec62bfdf2bf05a8953f9bd4039400be05998591d3.png" />
 </div>
 </div>
 <p>Note, we could have produced this plot using Matplotlib directly but it would have taken a lot more code, i.e., we would have had to extract the data from the DataFrame, label the axes, set up the grid, etc.</p>
@@ -1203,7 +1204,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3156afb291c0399f20452ee470bcfecec0322c3d6a276e8b4ac659fc7a15a104.png" src="../../_images/3156afb291c0399f20452ee470bcfecec0322c3d6a276e8b4ac659fc7a15a104.png" />
+<img alt="../../_images/36e8e1001d26310418822576816d55da69ac46b4e9abb1d3b69104692a46ebaa.png" src="../../_images/36e8e1001d26310418822576816d55da69ac46b4e9abb1d3b69104692a46ebaa.png" />
 </div>
 </div>
 <p>Note how Seaborn has automatically labelled the axes for us and added a legend.</p>
@@ -1216,7 +1217,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/750cb001bdbb89f8c5c6b0929048edae754072f8ddfb7f623dc06be90f2843d5.png" src="../../_images/750cb001bdbb89f8c5c6b0929048edae754072f8ddfb7f623dc06be90f2843d5.png" />
+<img alt="../../_images/80216ac9bb5aa78f810b58aa2e522a5057baaf7b495c3587ffe61a98e8da40de.png" src="../../_images/80216ac9bb5aa78f810b58aa2e522a5057baaf7b495c3587ffe61a98e8da40de.png" />
 </div>
 </div>
 <p>From this plot we can see that the cars from Japan and Europe tend to be lighter and more fuel efficient than the cars from the USA. Note, this dataset consists of cars from the 1970s and 1980s. The differences between the regions may be less pronounced in more recent years. Petrol used to be very cheap in the the USA, so fuel efficiency was not a priority, whereas, is recent years cars have become heavier in order to provide more protection in accidents.</p>
@@ -1229,7 +1230,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/01dce110f7ddd53145a01f64df13409ec800c804e9b50880eff9c1deb23b7efc.png" src="../../_images/01dce110f7ddd53145a01f64df13409ec800c804e9b50880eff9c1deb23b7efc.png" />
+<img alt="../../_images/88b43234cbd5a931d002bac79be876afceb0c1acf800ad96ab6c796d33039d54.png" src="../../_images/88b43234cbd5a931d002bac79be876afceb0c1acf800ad96ab6c796d33039d54.png" />
 </div>
 </div>
 <p>It is important to think carefully about whether to use a line or scatter plot. A line plot emphasises the continuity of data along the x-axis. A scatter plot emphasises the individual data points. In this particular case, the scatter plot is probably more appropriate because each point represents a different car and there is no continuity between cars.</p>
@@ -1242,7 +1243,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/fef641a875aea84e454f9a758a4bf5962a2cb17f5595cbd34a99671b020ce8fe.png" src="../../_images/fef641a875aea84e454f9a758a4bf5962a2cb17f5595cbd34a99671b020ce8fe.png" />
+<img alt="../../_images/558d7c43a626c7f9aabf76df21d3720c07d71debd5c92fb6f2120c898f343a45.png" src="../../_images/558d7c43a626c7f9aabf76df21d3720c07d71debd5c92fb6f2120c898f343a45.png" />
 </div>
 </div>
 <p>In the above plots we have tried to show several variables on the same axes. An alternative approach, particularly for categorical variables, is to use multiple axes. Seaborn has the concept of a FacetGrid which is a grid of axes. Each axis shows a different subset of the data. A FacetGrid can be constructed simply by setting the <code class="docutils literal notranslate"><span class="pre">col</span></code> and/or <code class="docutils literal notranslate"><span class="pre">row</span></code> parameters.</p>
@@ -1255,7 +1256,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6617b322267791bab870cd628f3a96fb55f355f386a85d72fdc0df16ca7d626d.png" src="../../_images/6617b322267791bab870cd628f3a96fb55f355f386a85d72fdc0df16ca7d626d.png" />
+<img alt="../../_images/985d2cf9d802fb5dcae3553f419f0bb7cb99cb02376ccac7eb8a5ce9a9df7e7c.png" src="../../_images/985d2cf9d802fb5dcae3553f419f0bb7cb99cb02376ccac7eb8a5ce9a9df7e7c.png" />
 </div>
 </div>
 <p>In the above, the <code class="docutils literal notranslate"><span class="pre">height</span></code> parameter is used to set the height of each plot in the grid. The default height is 5 inches. Here we have reduced it to 2.5 so that the entire grid fits on the page a bit better. Note, some of the plots have no data, i.e., there are no 8-cylinder cars from Europe or Japan in this dataset.</p>
@@ -1276,7 +1277,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/983bc3cc8c2ac81d8258f96a9eba28099592655967742edff95916a1be8b8365.png" src="../../_images/983bc3cc8c2ac81d8258f96a9eba28099592655967742edff95916a1be8b8365.png" />
+<img alt="../../_images/476c6bf9f7b0a2477a307917a50afe29630647bc1b11f4a526cd72c363ef5c58.png" src="../../_images/476c6bf9f7b0a2477a307917a50afe29630647bc1b11f4a526cd72c363ef5c58.png" />
 </div>
 </div>
 <p>Seaborn has automatically chosen the number of bins to use in the histogram. It tries to pick something that is sensible based on the variance of the data and the number of samples. However, we can override this by setting the <code class="docutils literal notranslate"><span class="pre">bins</span></code> parameter. For example, if we wanted to use 20 bins, we would use the following,</p>
@@ -1288,7 +1289,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/13f84583597de21d6f9c98ef8254eb6a2eb32ac37522495059116339e277c791.png" src="../../_images/13f84583597de21d6f9c98ef8254eb6a2eb32ac37522495059116339e277c791.png" />
+<img alt="../../_images/49284cfc91290b12b3bd43c9a9706994dffab400e908468b1f0ae42cd43d5ea8.png" src="../../_images/49284cfc91290b12b3bd43c9a9706994dffab400e908468b1f0ae42cd43d5ea8.png" />
 </div>
 </div>
 <p>Or we can specify a bin width. For example, if we want each bin to represent a 200 kg range, we would use the following,</p>
@@ -1300,7 +1301,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9555d5981c5cd670bff6b73a9fd0beebd51c18c0caf4833ca7aae56981f33fcc.png" src="../../_images/9555d5981c5cd670bff6b73a9fd0beebd51c18c0caf4833ca7aae56981f33fcc.png" />
+<img alt="../../_images/9386e32ddda4eebb4e93a0b62d6aedef35700b21310d16746ca84c3496d0674a.png" src="../../_images/9386e32ddda4eebb4e93a0b62d6aedef35700b21310d16746ca84c3496d0674a.png" />
 </div>
 </div>
 <p>In the previous plots, we have made a single histogram for the entire car database. Let’s say that we instead wanted to see the distribution of the car weights for each origin separately, i.e., separate distributions for Japan, US and Europe. To do this we can introduce the ‘hue’ parameter to get separate histograms for each region with each one in a different colour.</p>
@@ -1312,7 +1313,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/94ac32bd40e196fbb1bce2f39a61862d9258220bc3ab6948d7ff2a7294bed421.png" src="../../_images/94ac32bd40e196fbb1bce2f39a61862d9258220bc3ab6948d7ff2a7294bed421.png" />
+<img alt="../../_images/6c0b426c76a219d489dd4fe2bdcecd6978d91713902f1a56fd6e6a19872b7543.png" src="../../_images/6c0b426c76a219d489dd4fe2bdcecd6978d91713902f1a56fd6e6a19872b7543.png" />
 </div>
 </div>
 <p>In this case, the result is not very clear because the distributions are very overlapping. We can make things clearer by using the ‘multiple’ parameter which can be set to ‘stack’ to make a stacked histogram, or ‘dodge’ to make interlaced histograms. For example, using ‘dodge’ option would look like this,</p>
@@ -1324,7 +1325,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c4681990c7edfff65a1ccfcb302e3fc922b588a05d3d1a62a2114cd1254c51bc.png" src="../../_images/c4681990c7edfff65a1ccfcb302e3fc922b588a05d3d1a62a2114cd1254c51bc.png" />
+<img alt="../../_images/b914c80cab58b04af00f774fff9a63e83e232b239f849edc1a5bbcabffaf4d68.png" src="../../_images/b914c80cab58b04af00f774fff9a63e83e232b239f849edc1a5bbcabffaf4d68.png" />
 </div>
 </div>
 <p>As an alternative to a histogram, we can also plot the distribution of data using a kernel density plot. This is a smoothed version of a histogram. It is a good way to visualise the distribution of data when there are a lot of samples. To make a kernel density plot we use <code class="docutils literal notranslate"><span class="pre">kind='kde'</span></code>. For example, to make a kernel density plot of the weight of cars we would use the following,</p>
@@ -1336,7 +1337,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b7963c2097496ef6b650787c4259998de6751f4d105855c2a35c4569536b5d41.png" src="../../_images/b7963c2097496ef6b650787c4259998de6751f4d105855c2a35c4569536b5d41.png" />
+<img alt="../../_images/a07fff708c8e718fda3825b2c6a3d2d77f450ee9e6e6f7f35d24f5ca87d2059a.png" src="../../_images/a07fff708c8e718fda3825b2c6a3d2d77f450ee9e6e6f7f35d24f5ca87d2059a.png" />
 </div>
 </div>
 </section>
@@ -1352,7 +1353,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0787f00020c2b5b265bff48283f7e9198de5d25a262152e4070f2dd738dc4b23.png" src="../../_images/0787f00020c2b5b265bff48283f7e9198de5d25a262152e4070f2dd738dc4b23.png" />
+<img alt="../../_images/696ae0c4d12722212c2770d9e2fbe266eff151055e46fc2fa0a7ff1e1495cf73.png" src="../../_images/696ae0c4d12722212c2770d9e2fbe266eff151055e46fc2fa0a7ff1e1495cf73.png" />
 </div>
 </div>
 <p>Again, we can generate separate histogram for different catagories in our data by using the ‘hue’ parameter. For example, to make a histogram for each region we would use the following,</p>
@@ -1364,7 +1365,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/74faff23cf38136ecd92feef763cd87f1d0b1309353ddc8a7572ff1d3df19fbc.png" src="../../_images/74faff23cf38136ecd92feef763cd87f1d0b1309353ddc8a7572ff1d3df19fbc.png" />
+<img alt="../../_images/0a9d3f5468d106beafeee6d9f3f4943112c1210c91be50a1a89ab4f2c3f9826c.png" src="../../_images/0a9d3f5468d106beafeee6d9f3f4943112c1210c91be50a1a89ab4f2c3f9826c.png" />
 </div>
 </div>
 <p>Again, we could choose to use a kernel density plot instead of a histogram by setting the ‘kind’ parameter to ‘kde’. This would then produce smoothed contour plots to show the distribution of data. For this particular dataset there are not enough samples to use KDE and the result is unsatisfactory, but the code is shown below for the sake of reference.</p>
@@ -1376,7 +1377,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ec0384069a5f64ba67d854e618f5e5c96e9483943ef191ec047b9141b94d9a79.png" src="../../_images/ec0384069a5f64ba67d854e618f5e5c96e9483943ef191ec047b9141b94d9a79.png" />
+<img alt="../../_images/c5f222d188ef070d1b34319080c2186498db2322057e938dea34bb1fb0a0e65a.png" src="../../_images/c5f222d188ef070d1b34319080c2186498db2322057e938dea34bb1fb0a0e65a.png" />
 </div>
 </div>
 <p>Finally, Seaborn also provides ‘jointplot’, a figure-level plotting function that can combine plot types to show both a joint distribution and its marginal distributions in the same figure.</p>
@@ -1389,7 +1390,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/82cb4fc1e268b26646d675554508dbf39946ee9f1979aa5e5ac99fb79be118fc.png" src="../../_images/82cb4fc1e268b26646d675554508dbf39946ee9f1979aa5e5ac99fb79be118fc.png" />
+<img alt="../../_images/e2c42ebb5bf75b2d4ffe96112fc6606349cd8a86a40de7b1e0d15117ddfc1780.png" src="../../_images/e2c42ebb5bf75b2d4ffe96112fc6606349cd8a86a40de7b1e0d15117ddfc1780.png" />
 </div>
 </div>
 <p>For all Seaborn plots, if we want to tailor details of the figures appearance we can easily do so by using additional Matplotlib functions. To do this we need to get the Matplotlib figure object that is stored as an attribute of the Seaborn plot object returned by the Seaborn plotting function.</p>
@@ -1407,7 +1408,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/034a85a10dbf9801f62515a0ffb7549f97f706002f8e5b8e7badba36e0b3aadd.png" src="../../_images/034a85a10dbf9801f62515a0ffb7549f97f706002f8e5b8e7badba36e0b3aadd.png" />
+<img alt="../../_images/7fd7bbe7ac73676597df6907a972f119616979c4ef71b277e48bdd62535a6404.png" src="../../_images/7fd7bbe7ac73676597df6907a972f119616979c4ef71b277e48bdd62535a6404.png" />
 </div>
 </div>
 </section>
@@ -1422,7 +1423,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/db0db2f546e6be7ce144eb3008ae0967c06ff27b14d0f1d5d9c6932dd9401ede.png" src="../../_images/db0db2f546e6be7ce144eb3008ae0967c06ff27b14d0f1d5d9c6932dd9401ede.png" />
+<img alt="../../_images/7ee72427255ba6bc0b4703a90bd001b38889f9829d4971fd2ce47dec51a793d4.png" src="../../_images/7ee72427255ba6bc0b4703a90bd001b38889f9829d4971fd2ce47dec51a793d4.png" />
 </div>
 </div>
 <p>See the online tutorial for how we can customise these distribution plots further. <a class="reference external" href="https://seaborn.pydata.org/tutorial/distributions.html#">https://seaborn.pydata.org/tutorial/distributions.html#</a></p>
@@ -1442,7 +1443,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3bf7e1ed0e3c356330b51b695bcaed92f103010e26c1f8b936fa252ca4e84842.png" src="../../_images/3bf7e1ed0e3c356330b51b695bcaed92f103010e26c1f8b936fa252ca4e84842.png" />
+<img alt="../../_images/16042537971f63c1e69030ce1d8ef5f829f37d1f86f22ebfd615ba81280b1592.png" src="../../_images/16042537971f63c1e69030ce1d8ef5f829f37d1f86f22ebfd615ba81280b1592.png" />
 </div>
 </div>
 </section>
@@ -1457,7 +1458,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e67f3c9eb66057129eea35c7045284f019655def87d821a2249b553512beff76.png" src="../../_images/e67f3c9eb66057129eea35c7045284f019655def87d821a2249b553512beff76.png" />
+<img alt="../../_images/d960e9813e896da47a2a75f4090c1fa1d68ec070bc68496381a8e721419fca1e.png" src="../../_images/d960e9813e896da47a2a75f4090c1fa1d68ec070bc68496381a8e721419fca1e.png" />
 </div>
 </div>
 </section>
@@ -1471,7 +1472,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/277d0795d0d2dc5bf7c06a3fd9219580bb8785e17fb4326172b513e3b8c49692.png" src="../../_images/277d0795d0d2dc5bf7c06a3fd9219580bb8785e17fb4326172b513e3b8c49692.png" />
+<img alt="../../_images/3e7e95ab6cdaff03a1b259c4c5f2d67e063387c45b551c96f37952b5aa67829c.png" src="../../_images/3e7e95ab6cdaff03a1b259c4c5f2d67e063387c45b551c96f37952b5aa67829c.png" />
 </div>
 </div>
 </section>
@@ -1485,7 +1486,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2aaeadbab0196492d6e212a0d40d9ec5e2ee29cf927d7437ec656ab21a48b1d6.png" src="../../_images/2aaeadbab0196492d6e212a0d40d9ec5e2ee29cf927d7437ec656ab21a48b1d6.png" />
+<img alt="../../_images/aa5c6fb9a4b980cb362f993510c633ef1ade1887890a5cd507570faab5118cda.png" src="../../_images/aa5c6fb9a4b980cb362f993510c633ef1ade1887890a5cd507570faab5118cda.png" />
 </div>
 </div>
 </section>
@@ -1499,7 +1500,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/53411fe2596442e63605af3130700835d3ad0486991add4ff0ac9575f4c0bca0.png" src="../../_images/53411fe2596442e63605af3130700835d3ad0486991add4ff0ac9575f4c0bca0.png" />
+<img alt="../../_images/47f509c03cf86b2e387861580f74e6b63c980561fbb31b7479eec06a4a528921.png" src="../../_images/47f509c03cf86b2e387861580f74e6b63c980561fbb31b7479eec06a4a528921.png" />
 </div>
 </div>
 <p>All of these plots can be customised in various ways using the ideas that we have seen previously. For example, we can use the <code class="docutils literal notranslate"><span class="pre">hue</span></code> parameter to introduce a third variable. For example, to show the relationship between the weight of a car, its origin and the number of cylinders in its engine we would use the following,</p>
@@ -1511,7 +1512,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cef4ef6db5c385c7a916f9d91c673635b6156539c6b5814dc611d572ba2bc0f2.png" src="../../_images/cef4ef6db5c385c7a916f9d91c673635b6156539c6b5814dc611d572ba2bc0f2.png" />
+<img alt="../../_images/72f5cfa6357aa4c2d7965f5c9d8e330873f377f7ab27b93177c8b5e605751497.png" src="../../_images/72f5cfa6357aa4c2d7965f5c9d8e330873f377f7ab27b93177c8b5e605751497.png" />
 </div>
 </div>
 </section>
