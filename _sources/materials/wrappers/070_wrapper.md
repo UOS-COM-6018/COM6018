@@ -1,4 +1,4 @@
-# 060 An Introduction to Scikit-Learn
+# 070 Classification with Scikit-Learn
 
 ```{admonition} Click link below to view slides in new tab
 
