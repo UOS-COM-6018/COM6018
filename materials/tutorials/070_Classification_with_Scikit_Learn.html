@@ -216,6 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../solutions/040_working_with_pandas.html">040 Working with Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../solutions/050_using_matplotlib.html">050 Using Matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../solutions/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
 </ul>
 
     </div>
@@ -800,7 +801,7 @@ cd math-prog/cpo-dataset/machine-learn/WDBC/
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9790209790209791
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.972027972027972
 </pre></div>
 </div>
 </div>
@@ -832,7 +833,7 @@ cd math-prog/cpo-dataset/machine-learn/WDBC/
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.951048951048951
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9230769230769231
 </pre></div>
 </div>
 </div>
@@ -976,7 +977,7 @@ cd math-prog/cpo-dataset/machine-learn/WDBC/
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;max_depth&#39;: 10, &#39;min_samples_leaf&#39;: 3, &#39;min_samples_split&#39;: 6, &#39;n_estimators&#39;: 10}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;max_depth&#39;: 4, &#39;min_samples_leaf&#39;: 3, &#39;min_samples_split&#39;: 8, &#39;n_estimators&#39;: 10}
 </pre></div>
 </div>
 </div>
@@ -1011,7 +1012,7 @@ cd math-prog/cpo-dataset/machine-learn/WDBC/
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.965034965034965
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.972027972027972
 </pre></div>
 </div>
 </div>
@@ -1254,22 +1255,56 @@ cd math-prog/cpo-dataset/machine-learn/WDBC/
 <span class="g g-Whitespace">    </span><span class="mi">126</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">127</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File /opt/homebrew/anaconda3/envs/com6018_dev/lib/python3.11/site-packages/sklearn/ensemble/_forest.py:175,</span> in <span class="ni">_parallel_build_trees</span><span class="nt">(tree, bootstrap, X, y, sample_weight, tree_idx, n_trees, verbose, class_weight, n_samples_bootstrap)</span>
-<span class="g g-Whitespace">    </span><span class="mi">172</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">173</span>     <span class="n">curr_sample_weight</span> <span class="o">=</span> <span class="n">sample_weight</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">175</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">_generate_sample_indices</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">176</span>     <span class="n">tree</span><span class="o">.</span><span class="n">random_state</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_samples_bootstrap</span>
-<span class="g g-Whitespace">    </span><span class="mi">177</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">178</span> <span class="n">sample_counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">minlength</span><span class="o">=</span><span class="n">n_samples</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">179</span> <span class="n">curr_sample_weight</span> <span class="o">*=</span> <span class="n">sample_counts</span>
+<span class="nn">File /opt/homebrew/anaconda3/envs/com6018_dev/lib/python3.11/site-packages/sklearn/ensemble/_forest.py:188,</span> in <span class="ni">_parallel_build_trees</span><span class="nt">(tree, bootstrap, X, y, sample_weight, tree_idx, n_trees, verbose, class_weight, n_samples_bootstrap)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="k">elif</span> <span class="n">class_weight</span> <span class="o">==</span> <span class="s2">&quot;balanced_subsample&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span>         <span class="n">curr_sample_weight</span> <span class="o">*=</span> <span class="n">compute_sample_weight</span><span class="p">(</span><span class="s2">&quot;balanced&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="n">indices</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">188</span>     <span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="n">curr_sample_weight</span><span class="p">,</span> <span class="n">check_input</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">190</span>     <span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">,</span> <span class="n">check_input</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
-<span class="nn">File /opt/homebrew/anaconda3/envs/com6018_dev/lib/python3.11/site-packages/sklearn/ensemble/_forest.py:131,</span> in <span class="ni">_generate_sample_indices</span><span class="nt">(random_state, n_samples, n_samples_bootstrap)</span>
-<span class="g g-Whitespace">    </span><span class="mi">127</span> <span class="k">def</span> <span class="nf">_generate_sample_indices</span><span class="p">(</span><span class="n">random_state</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_samples_bootstrap</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">128</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">129</span><span class="sd">     Private function used to _parallel_build_trees function.&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">131</span>     <span class="n">random_instance</span> <span class="o">=</span> <span class="n">check_random_state</span><span class="p">(</span><span class="n">random_state</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span>     <span class="n">sample_indices</span> <span class="o">=</span> <span class="n">random_instance</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_samples_bootstrap</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="k">return</span> <span class="n">sample_indices</span>
+<span class="nn">File /opt/homebrew/anaconda3/envs/com6018_dev/lib/python3.11/site-packages/sklearn/base.py:1152,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1145</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1147</span> <span class="k">with</span> <span class="n">config_context</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1148</span>     <span class="n">skip_parameter_validation</span><span class="o">=</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1149</span>         <span class="n">prefer_skip_nested_validation</span> <span class="ow">or</span> <span class="n">global_skip_validation</span>
+<span class="g g-Whitespace">   </span><span class="mi">1150</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1151</span> <span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1152</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/homebrew/anaconda3/envs/com6018_dev/lib/python3.11/site-packages/sklearn/tree/_classes.py:959,</span> in <span class="ni">DecisionTreeClassifier.fit</span><span class="nt">(self, X, y, sample_weight, check_input)</span>
+<span class="g g-Whitespace">    </span><span class="mi">928</span> <span class="nd">@_fit_context</span><span class="p">(</span><span class="n">prefer_skip_nested_validation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">929</span> <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">check_input</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">930</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Build a decision tree classifier from the training set (X, y).</span>
+<span class="g g-Whitespace">    </span><span class="mi">931</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">932</span><span class="sd">     Parameters</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">956</span><span class="sd">         Fitted estimator.</span>
+<span class="g g-Whitespace">    </span><span class="mi">957</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">959</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">960</span>         <span class="n">X</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">961</span>         <span class="n">y</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">962</span>         <span class="n">sample_weight</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">963</span>         <span class="n">check_input</span><span class="o">=</span><span class="n">check_input</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">964</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">965</span>     <span class="k">return</span> <span class="bp">self</span>
+
+<span class="nn">File /opt/homebrew/anaconda3/envs/com6018_dev/lib/python3.11/site-packages/sklearn/tree/_classes.py:229,</span> in <span class="ni">BaseDecisionTree._fit</span><span class="nt">(self, X, y, sample_weight, check_input, missing_values_in_feature_mask)</span>
+<span class="g g-Whitespace">    </span><span class="mi">221</span> <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>     <span class="n">X</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span>     <span class="n">missing_values_in_feature_mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">228</span> <span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">229</span>     <span class="n">random_state</span> <span class="o">=</span> <span class="n">check_random_state</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span>     <span class="k">if</span> <span class="n">check_input</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">232</span>         <span class="c1"># Need to validate separately here.</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span>         <span class="c1"># We can&#39;t pass multi_output=True because that would allow y to be</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span>         <span class="c1"># _compute_missing_values_in_feature_mask will check for finite values and</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span>         <span class="c1"># compute the missing mask if the tree supports missing values</span>
+<span class="g g-Whitespace">    </span><span class="mi">238</span>         <span class="n">check_X_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">239</span>             <span class="n">dtype</span><span class="o">=</span><span class="n">DTYPE</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="s2">&quot;csc&quot;</span><span class="p">,</span> <span class="n">force_all_finite</span><span class="o">=</span><span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">240</span>         <span class="p">)</span>
 
 <span class="nn">File /opt/homebrew/anaconda3/envs/com6018_dev/lib/python3.11/site-packages/sklearn/utils/validation.py:1268,</span> in <span class="ni">check_random_state</span><span class="nt">(seed)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1266</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">mtrand</span><span class="o">.</span><span class="n">_rand</span>
@@ -1277,20 +1312,6 @@ cd math-prog/cpo-dataset/machine-learn/WDBC/
 <span class="ne">-&gt; </span><span class="mi">1268</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1269</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">):</span>
 <span class="g g-Whitespace">   </span><span class="mi">1270</span>     <span class="k">return</span> <span class="n">seed</span>
-
-<span class="nn">File numpy/random/mtrand.pyx:184,</span> in <span class="ni">numpy.random.mtrand.RandomState.__init__</span><span class="nt">()</span>
-
-<span class="nn">File _mt19937.pyx:131,</span> in <span class="ni">numpy.random._mt19937.MT19937.__init__</span><span class="nt">()</span>
-
-<span class="nn">File bit_generator.pyx:535,</span> in <span class="ni">numpy.random.bit_generator.BitGenerator.__init__</span><span class="nt">()</span>
-
-<span class="nn">File bit_generator.pyx:315,</span> in <span class="ni">numpy.random.bit_generator.SeedSequence.__init__</span><span class="nt">()</span>
-
-<span class="nn">File bit_generator.pyx:389,</span> in <span class="ni">numpy.random.bit_generator.SeedSequence.get_assembled_entropy</span><span class="nt">()</span>
-
-<span class="nn">File bit_generator.pyx:140,</span> in <span class="ni">numpy.random.bit_generator._coerce_to_uint32_array</span><span class="nt">()</span>
-
-<span class="nn">File bit_generator.pyx:78,</span> in <span class="ni">numpy.random.bit_generator._int_to_uint32_array</span><span class="nt">()</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>

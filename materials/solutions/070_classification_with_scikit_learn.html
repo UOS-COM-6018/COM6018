@@ -62,10 +62,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/labs/070_classification_with_scikit_learn';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/solutions/070_classification_with_scikit_learn';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="000 COM6018 Solutions" href="../solutions/000_Introduction.html" />
     <link rel="prev" title="060 Introduction to Scikit Learn" href="060_introducing_scikit_learn.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -195,8 +194,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/070_Classification_with_Scikit_Learn.html">070 Classification with Scikit-Learn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="010_python_intro.html">010 Getting Started with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="020_reading_data.html">020 Reading data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="030_introducing_numpy.html">030 Introducing NumPy</a></li>
@@ -204,17 +214,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="050_using_matplotlib.html">050 Using Matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">070 Classification with Scikit Learn</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../solutions/000_Introduction.html">000 COM6018 Solutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/010_python_intro.html">010 Getting Started with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/020_reading_data.html">020 Reading data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/030_introducing_numpy.html">030 Introducing NumPy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/040_working_with_pandas.html">040 Working with Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/050_using_matplotlib.html">050 Using Matplotlib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
 </ul>
 
     </div>
@@ -269,7 +268,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/labs/070_classification_with_scikit_learn.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/solutions/070_classification_with_scikit_learn.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -317,7 +316,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https:/github.com/UOS-COM-6018/COM6018/edit/main/materials/labs/070_classification_with_scikit_learn.ipynb" target="_blank"
+      <li><a href="https:/github.com/UOS-COM-6018/COM6018/edit/main/materials/solutions/070_classification_with_scikit_learn.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -334,7 +333,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https:/github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/labs/070_classification_with_scikit_learn.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https:/github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/solutions/070_classification_with_scikit_learn.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -364,7 +363,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/materials/labs/070_classification_with_scikit_learn.ipynb" target="_blank"
+      <li><a href="../../_sources/materials/solutions/070_classification_with_scikit_learn.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -524,7 +523,141 @@ document.write(`
 <p>Use the cell below to print the DESCR field. Read the description and make sure you understand it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">lfw_people</span><span class="o">.</span><span class="n">DESCR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.. _labeled_faces_in_the_wild_dataset:
+
+The Labeled Faces in the Wild face recognition dataset
+------------------------------------------------------
+
+This dataset is a collection of JPEG pictures of famous people collected
+over the internet, all details are available on the official website:
+
+    http://vis-www.cs.umass.edu/lfw/
+
+Each picture is centered on a single face. The typical task is called
+Face Verification: given a pair of two pictures, a binary classifier
+must predict whether the two images are from the same person.
+
+An alternative task, Face Recognition or Face Identification is:
+given the picture of the face of an unknown person, identify the name
+of the person by referring to a gallery of previously seen pictures of
+identified persons.
+
+Both Face Verification and Face Recognition are tasks that are typically
+performed on the output of a model trained to perform Face Detection. The
+most popular model for Face Detection is called Viola-Jones and is
+implemented in the OpenCV library. The LFW faces were extracted by this
+face detector from various online websites.
+
+**Data Set Characteristics:**
+
+    =================   =======================
+    Classes                                5749
+    Samples total                         13233
+    Dimensionality                         5828
+    Features            real, between 0 and 255
+    =================   =======================
+
+|details-start|
+**Usage**
+|details-split|
+
+``scikit-learn`` provides two loaders that will automatically download,
+cache, parse the metadata files, decode the jpeg and convert the
+interesting slices into memmapped numpy arrays. This dataset size is more
+than 200 MB. The first load typically takes more than a couple of minutes
+to fully decode the relevant part of the JPEG files into numpy arrays. If
+the dataset has  been loaded once, the following times the loading times
+less than 200ms by using a memmapped version memoized on the disk in the
+``~/scikit_learn_data/lfw_home/`` folder using ``joblib``.
+
+The first loader is used for the Face Identification task: a multi-class
+classification task (hence supervised learning)::
+
+  &gt;&gt;&gt; from sklearn.datasets import fetch_lfw_people
+  &gt;&gt;&gt; lfw_people = fetch_lfw_people(min_faces_per_person=70, resize=0.4)
+
+  &gt;&gt;&gt; for name in lfw_people.target_names:
+  ...     print(name)
+  ...
+  Ariel Sharon
+  Colin Powell
+  Donald Rumsfeld
+  George W Bush
+  Gerhard Schroeder
+  Hugo Chavez
+  Tony Blair
+
+The default slice is a rectangular shape around the face, removing
+most of the background::
+
+  &gt;&gt;&gt; lfw_people.data.dtype
+  dtype(&#39;float32&#39;)
+
+  &gt;&gt;&gt; lfw_people.data.shape
+  (1288, 1850)
+
+  &gt;&gt;&gt; lfw_people.images.shape
+  (1288, 50, 37)
+
+Each of the ``1140`` faces is assigned to a single person id in the ``target``
+array::
+
+  &gt;&gt;&gt; lfw_people.target.shape
+  (1288,)
+
+  &gt;&gt;&gt; list(lfw_people.target[:10])
+  [5, 6, 3, 1, 0, 1, 3, 4, 3, 0]
+
+The second loader is typically used for the face verification task: each sample
+is a pair of two picture belonging or not to the same person::
+
+  &gt;&gt;&gt; from sklearn.datasets import fetch_lfw_pairs
+  &gt;&gt;&gt; lfw_pairs_train = fetch_lfw_pairs(subset=&#39;train&#39;)
+
+  &gt;&gt;&gt; list(lfw_pairs_train.target_names)
+  [&#39;Different persons&#39;, &#39;Same person&#39;]
+
+  &gt;&gt;&gt; lfw_pairs_train.pairs.shape
+  (2200, 2, 62, 47)
+
+  &gt;&gt;&gt; lfw_pairs_train.data.shape
+  (2200, 5828)
+
+  &gt;&gt;&gt; lfw_pairs_train.target.shape
+  (2200,)
+
+Both for the :func:`sklearn.datasets.fetch_lfw_people` and
+:func:`sklearn.datasets.fetch_lfw_pairs` function it is
+possible to get an additional dimension with the RGB color channels by
+passing ``color=True``, in that case the shape will be
+``(2200, 2, 62, 47, 3)``.
+
+The :func:`sklearn.datasets.fetch_lfw_pairs` datasets is subdivided into
+3 subsets: the development ``train`` set, the development ``test`` set and
+an evaluation ``10_folds`` set meant to compute performance metrics using a
+10-folds cross validation scheme.
+
+|details-end|
+
+.. topic:: References:
+
+ * `Labeled Faces in the Wild: A Database for Studying Face Recognition
+   in Unconstrained Environments.
+   &lt;http://vis-www.cs.umass.edu/lfw/lfw.pdf&gt;`_
+   Gary B. Huang, Manu Ramesh, Tamara Berg, and Erik Learned-Miller.
+   University of Massachusetts, Amherst, Technical Report 07-49, October, 2007.
+
+
+.. topic:: Examples:
+
+   * :ref:`sphx_glr_auto_examples_applications_plot_face_recognition.py`
 </pre></div>
 </div>
 </div>
@@ -534,9 +667,19 @@ document.write(`
 <p>Hint: You can use <code class="docutils literal notranslate"><span class="pre">plt.axis('off')</span></code> to avoid displaying the axes and tick marks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">lfw_people</span><span class="o">.</span><span class="n">images</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/bb717c46b659249ecfb3144f9666b339d9e21fb4f6b421fecd091853cff9a154.png" src="../../_images/bb717c46b659249ecfb3144f9666b339d9e21fb4f6b421fecd091853cff9a154.png" />
 </div>
 </div>
 </section>
@@ -547,7 +690,11 @@ document.write(`
 <p>Write the code in the cell below and check that the training and test sets have the correct sizes by running the test cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">lfw_people</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">lfw_people</span><span class="o">.</span><span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -565,6 +712,12 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(390, 1850)
+All tests passed!
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="step-3-using-a-knn-classifier">
@@ -574,7 +727,20 @@ document.write(`
 <p>Score the classifier by calculating the accuracy on the test data and labels. Finally print the accuracy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5025641025641026
 </pre></div>
 </div>
 </div>
@@ -583,7 +749,26 @@ document.write(`
 <p>Now, use the <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> class to find the best value of k for the KNN classifier. Test all odd values of k from 1 to 21. Use 5-fold cross validation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">2</span><span class="p">)}</span>
+
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">knn</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;n_neighbors&#39;: 11}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.517948717948718
 </pre></div>
 </div>
 </div>
@@ -602,7 +787,12 @@ document.write(`
 <p>Note, you should <code class="docutils literal notranslate"><span class="pre">fit</span></code> the transform using the <code class="docutils literal notranslate"><span class="pre">X_train</span></code> data and apply the same transform to both the <code class="docutils literal notranslate"><span class="pre">X_train</span></code> and <code class="docutils literal notranslate"><span class="pre">X_test</span></code> data. Store the results as <code class="docutils literal notranslate"><span class="pre">X_train_scaled</span></code> and <code class="docutils literal notranslate"><span class="pre">X_test_scaled</span></code> respectively. You should use the <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> and <code class="docutils literal notranslate"><span class="pre">transform</span></code> methods.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION </span>
+
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="n">std_scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">std_scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_scaled</span> <span class="o">=</span> <span class="n">std_scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -616,7 +806,13 @@ document.write(`
 <p>Write the solution below and run the test cell to check that your data looks correct.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">)</span>
+<span class="n">X_test_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_scaled</span><span class="p">)</span>
+<span class="n">X_train_pca</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -630,6 +826,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="step-4-3-evaluating-the-reduced-feature-vector">
@@ -637,7 +838,26 @@ document.write(`
 <p>We will now repeat the KNN classification but this time we will use the <code class="docutils literal notranslate"><span class="pre">X_train_pca</span></code> and <code class="docutils literal notranslate"><span class="pre">X_test_pca</span></code> feature vectors instead of the original <code class="docutils literal notranslate"><span class="pre">X_train</span></code> and <code class="docutils literal notranslate"><span class="pre">X_test</span></code> feature vectors. Note, the optimal value of k may now have changed, so rerun a grid search with the <code class="docutils literal notranslate"><span class="pre">X_train_pca</span></code> and using 5-fold cross-validation as before.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">:</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">2</span><span class="p">)}</span>
+
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">knn</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_pca</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test_pca</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;n_neighbors&#39;: 5}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.541025641025641
 </pre></div>
 </div>
 </div>
@@ -653,7 +873,27 @@ document.write(`
 <p>What is the accuracy? It should be the same as the accuracy that you got in the previous step. The pipeline does not change the computation, it just makes it easier to manage.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">200</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;knn&#39;</span><span class="p">,</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)),</span>    
+<span class="p">])</span>
+
+<span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5461538461538461
 </pre></div>
 </div>
 </div>
@@ -664,7 +904,24 @@ document.write(`
 <p>Write your solution below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION </span>
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;knn__n_neighbors&#39;</span><span class="p">:</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">)}</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;knn__n_neighbors&#39;: 5}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5435897435897435
 </pre></div>
 </div>
 </div>
@@ -673,7 +930,39 @@ document.write(`
 <p>To avoid the recomputation, you can use sklearn’s ‘caching’ mechanism that is part of the <code class="docutils literal notranslate"><span class="pre">Memory</span></code> module in the <code class="docutils literal notranslate"><span class="pre">joblib</span></code> package. See the tutorial notes for an example of how to do this. Implement it below and now retry the search using odd values of k from 1 to 21 again.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">mkdtemp</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">Memory</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="n">cachedir</span> <span class="o">=</span> <span class="n">mkdtemp</span><span class="p">()</span>
+<span class="n">memory</span> <span class="o">=</span> <span class="n">Memory</span><span class="p">(</span><span class="n">cachedir</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">200</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;knn&#39;</span><span class="p">,</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)),</span>    
+    <span class="p">],</span><span class="n">memory</span><span class="o">=</span><span class="n">memory</span><span class="p">)</span>
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;knn__n_neighbors&#39;</span><span class="p">:</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">2</span><span class="p">)}</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;knn__n_neighbors&#39;: 7}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5487179487179488
 </pre></div>
 </div>
 </div>
@@ -695,7 +984,40 @@ document.write(`
 <p>For the GridSearch, search over both the number of trees and the number of PCA components. Use values of 10, 50 and 100 for the number of tree. Use values of 20, 50 and 100 for the number of PCA components. Use a cache to speed up the search. Also, when constructing the GridSearchCV object, set the <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter to -1. This instructs the GridSearchCV to use all available cores to perform the search. Depending on your computer, this may provide a significant speed up (on my Macbook Pro, using all the cores makes the processing about 8 times faster).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">mkdtemp</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">Memory</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">cachedir</span> <span class="o">=</span> <span class="n">mkdtemp</span><span class="p">()</span>
+<span class="n">memory</span> <span class="o">=</span> <span class="n">Memory</span><span class="p">(</span><span class="n">cachedir</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">200</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;rf&#39;</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)),</span>    
+    <span class="p">],</span><span class="n">memory</span><span class="o">=</span><span class="n">memory</span><span class="p">)</span>
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pca__n_components&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s1">&#39;rf__n_estimators&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]}</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;pca__n_components&#39;: 50, &#39;rf__n_estimators&#39;: 100}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5692307692307692
 </pre></div>
 </div>
 </div>
@@ -710,7 +1032,39 @@ document.write(`
 <p>(The processing takes 10 seconds on my laptop. It might take longer on yours, so be patient.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">mkdtemp</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">Memory</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="n">cachedir</span> <span class="o">=</span> <span class="n">mkdtemp</span><span class="p">()</span>
+<span class="n">memory</span> <span class="o">=</span> <span class="n">Memory</span><span class="p">(</span><span class="n">cachedir</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">200</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;svc&#39;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">()),</span>    
+    <span class="p">],</span><span class="n">memory</span><span class="o">=</span><span class="n">memory</span><span class="p">)</span>
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pca__n_components&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span> <span class="s1">&#39;svc__kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;poly&#39;</span><span class="p">,</span> <span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmoid&#39;</span><span class="p">],</span> <span class="s1">&#39;svc__C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]}</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;pca__n_components&#39;: 500, &#39;svc__C&#39;: 0.5, &#39;svc__kernel&#39;: &#39;linear&#39;}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8102564102564103
 </pre></div>
 </div>
 </div>
@@ -726,7 +1080,41 @@ document.write(`
 <p>Remember to use a cache and to set n_jobs to -1 to speed things up.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">from</span> <span class="nn">tempfile</span> <span class="kn">import</span> <span class="n">mkdtemp</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">Memory</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+
+<span class="n">cachedir</span> <span class="o">=</span> <span class="n">mkdtemp</span><span class="p">()</span>
+<span class="n">memory</span> <span class="o">=</span> <span class="n">Memory</span><span class="p">(</span><span class="n">cachedir</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="n">PCA</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;mlp&#39;</span><span class="p">,</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">early_stopping</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>    
+    <span class="p">],</span><span class="n">memory</span><span class="o">=</span><span class="n">memory</span><span class="p">)</span>
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pca__n_components&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span>
+              <span class="s1">&#39;mlp__hidden_layer_sizes&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="mi">50</span><span class="p">,),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,),</span> <span class="p">(</span><span class="mi">200</span><span class="p">,),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">)]}</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">best_estimator_</span>
+<span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;mlp__hidden_layer_sizes&#39;: (200,), &#39;pca__n_components&#39;: 200}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7769230769230769
 </pre></div>
 </div>
 </div>
@@ -750,7 +1138,22 @@ document.write(`
 <p>Then run the test cell to verify that your <code class="docutils literal notranslate"><span class="pre">y_pred</span></code> variable is a NumPy array with 390 elements.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;scaler&#39;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;pca&#39;</span><span class="p">,</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">500</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;svc&#39;</span><span class="p">,</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)),</span>    
+    <span class="p">])</span>
+
+
+<span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -760,6 +1163,11 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
 <span class="k">assert</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">390</span><span class="p">,)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -776,9 +1184,18 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span>  <span class="n">ConfusionMatrixDisplay</span>
+<span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_predictions</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">lfw_people</span><span class="o">.</span><span class="n">target_names</span><span class="p">,</span> <span class="n">xticks_rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;sklearn.metrics._plot.confusion_matrix.ConfusionMatrixDisplay at 0x14619de90&gt;
+</pre></div>
+</div>
+<img alt="../../_images/3e834453b06b81b00aa12c42497de2531a3117fe9dc920e06d30da04bcfaa90c.png" src="../../_images/3e834453b06b81b00aa12c42497de2531a3117fe9dc920e06d30da04bcfaa90c.png" />
 </div>
 </div>
 <p>Study the confusion matrix and make sure that you understand what it means. Which people appear most often in the test data? Which people are most often misclassified? Which misclassifications are the most common? When I ran this I found some surprising results. For example, Serena Williams is twice mistaken as Ariel Sharon! This is probably not a misclassification that a human would make…</p>
@@ -791,7 +1208,14 @@ document.write(`
 <p>Run the test cell to verify that your results have the correct format</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION </span>
+
+<span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span>
+
+<span class="n">precision</span> <span class="o">=</span> <span class="n">precision_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="n">recall_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -803,6 +1227,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">recall</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">12</span><span class="p">,)</span>
 <span class="k">assert</span> <span class="n">f1</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">12</span><span class="p">,)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -819,6 +1248,94 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_4df6b">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_4df6b_level0_col0" class="col_heading level0 col0" >Precision</th>
+      <th id="T_4df6b_level0_col1" class="col_heading level0 col1" >Recall</th>
+      <th id="T_4df6b_level0_col2" class="col_heading level0 col2" >F1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_4df6b_level0_row0" class="row_heading level0 row0" >Ariel Sharon</th>
+      <td id="T_4df6b_row0_col0" class="data row0 col0" >0.461538</td>
+      <td id="T_4df6b_row0_col1" class="data row0 col1" >0.800000</td>
+      <td id="T_4df6b_row0_col2" class="data row0 col2" >0.585366</td>
+    </tr>
+    <tr>
+      <th id="T_4df6b_level0_row1" class="row_heading level0 row1" >Colin Powell</th>
+      <td id="T_4df6b_row1_col0" class="data row1 col0" >0.838710</td>
+      <td id="T_4df6b_row1_col1" class="data row1 col1" >0.800000</td>
+      <td id="T_4df6b_row1_col2" class="data row1 col2" >0.818898</td>
+    </tr>
+    <tr>
+      <th id="T_4df6b_level0_row2" class="row_heading level0 row2" >Donald Rumsfeld</th>
+      <td id="T_4df6b_row2_col0" class="data row2 col0" >0.629630</td>
+      <td id="T_4df6b_row2_col1" class="data row2 col1" >0.586207</td>
+      <td id="T_4df6b_row2_col2" class="data row2 col2" >0.607143</td>
+    </tr>
+    <tr>
+      <th id="T_4df6b_level0_row3" class="row_heading level0 row3" >George W Bush</th>
+      <td id="T_4df6b_row3_col0" class="data row3 col0" >0.876812</td>
+      <td id="T_4df6b_row3_col1" class="data row3 col1" >0.909774</td>
+      <td id="T_4df6b_row3_col2" class="data row3 col2" >0.892989</td>
+    </tr>
+    <tr>
+      <th id="T_4df6b_level0_row4" class="row_heading level0 row4" >Gerhard Schroeder</th>
+      <td id="T_4df6b_row4_col0" class="data row4 col0" >0.866667</td>
+      <td id="T_4df6b_row4_col1" class="data row4 col1" >0.787879</td>
+      <td id="T_4df6b_row4_col2" class="data row4 col2" >0.825397</td>
+    </tr>
+    <tr>
+      <th id="T_4df6b_level0_row5" class="row_heading level0 row5" >Hugo Chavez</th>
+      <td id="T_4df6b_row5_col0" class="data row5 col0" >0.785714</td>
+      <td id="T_4df6b_row5_col1" class="data row5 col1" >0.687500</td>
+      <td id="T_4df6b_row5_col2" class="data row5 col2" >0.733333</td>
+    </tr>
+    <tr>
+      <th id="T_4df6b_level0_row6" class="row_heading level0 row6" >Jacques Chirac</th>
+      <td id="T_4df6b_row6_col0" class="data row6 col0" >0.714286</td>
+      <td id="T_4df6b_row6_col1" class="data row6 col1" >0.416667</td>
+      <td id="T_4df6b_row6_col2" class="data row6 col2" >0.526316</td>
+    </tr>
+    <tr>
+      <th id="T_4df6b_level0_row7" class="row_heading level0 row7" >Jean Chretien</th>
+      <td id="T_4df6b_row7_col0" class="data row7 col0" >0.875000</td>
+      <td id="T_4df6b_row7_col1" class="data row7 col1" >0.700000</td>
+      <td id="T_4df6b_row7_col2" class="data row7 col2" >0.777778</td>
+    </tr>
+    <tr>
+      <th id="T_4df6b_level0_row8" class="row_heading level0 row8" >John Ashcroft</th>
+      <td id="T_4df6b_row8_col0" class="data row8 col0" >0.933333</td>
+      <td id="T_4df6b_row8_col1" class="data row8 col1" >0.777778</td>
+      <td id="T_4df6b_row8_col2" class="data row8 col2" >0.848485</td>
+    </tr>
+    <tr>
+      <th id="T_4df6b_level0_row9" class="row_heading level0 row9" >Junichiro Koizumi</th>
+      <td id="T_4df6b_row9_col0" class="data row9 col0" >0.687500</td>
+      <td id="T_4df6b_row9_col1" class="data row9 col1" >1.000000</td>
+      <td id="T_4df6b_row9_col2" class="data row9 col2" >0.814815</td>
+    </tr>
+    <tr>
+      <th id="T_4df6b_level0_row10" class="row_heading level0 row10" >Serena Williams</th>
+      <td id="T_4df6b_row10_col0" class="data row10 col0" >0.941176</td>
+      <td id="T_4df6b_row10_col1" class="data row10 col1" >0.842105</td>
+      <td id="T_4df6b_row10_col2" class="data row10 col2" >0.888889</td>
+    </tr>
+    <tr>
+      <th id="T_4df6b_level0_row11" class="row_heading level0 row11" >Tony Blair</th>
+      <td id="T_4df6b_row11_col0" class="data row11 col0" >0.800000</td>
+      <td id="T_4df6b_row11_col1" class="data row11 col1" >0.827586</td>
+      <td id="T_4df6b_row11_col2" class="data row11 col2" >0.813559</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 <p>Look the results above. Which people have the highest F1 score and which have the lowest? What do you think determines whether a person is recognised correctly or not?</p>
 </section>
@@ -851,7 +1368,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./materials/labs"
+            path: "./materials/solutions"
         },
         predefinedOutput: true
     }
@@ -876,15 +1393,6 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">060 Introduction to Scikit Learn</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../solutions/000_Introduction.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">000 COM6018 Solutions</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
