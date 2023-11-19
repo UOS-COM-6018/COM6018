@@ -1,0 +1,1189 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>080 Curve Fitting with Scikit-Learn &#8212; COM6018 - Data Science with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/tutorials/080_Curve_Fitting_with_Scikit_Learn';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="000 COM6018 Lab Classes" href="../labs/000_Introduction.html" />
+    <link rel="prev" title="070 Classification with Scikit-Learn" href="070_Classification_with_Scikit_Learn.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="COM6018 - Data Science with Python - Home"/>
+    <script>document.write(`<img src="../../_static/uos_logo.png" class="logo__image only-dark" alt="COM6018 - Data Science with Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    The COM6018 module book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/000_Introduction.html">000 COM6018 Lecture Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/010_wrapper.html">010 Welcome to COM6018</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/015_wrapper.html">015 Getting set up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/020_wrapper.html">020 Using Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/025_wrapper.html">025 Reading and Writing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/030_wrapper.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/040_wrapper.html">040 Introducing Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/050_wrapper.html">050 Data Visualisation with Matplotlib and Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/060_wrapper.html">060 An Introduction to Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/070_wrapper.html">070 Classification with Scikit-Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Course Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="010_Introducing_Python.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="015_Further_Python.html">015 Further Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="020_Reading_Data.html">020 Reading and Writing Data Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="030_Introducing_Numpy.html">030 Numerical Computing with NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="035_Some_Common_Problems.html">035 Some Common Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="040_Introducing_Pandas.html">040 Processing Data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="045_Common_Pandas_Mistakes.html">045 Common Pandas Mistakes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="050_Introducing_Matplotlib.html">050 Exploratory Data Analysis and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="060_Introducing_Scikit_Learn.html">060 Introducing Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="070_Classification_with_Scikit_Learn.html">070 Classification with Scikit-Learn</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">080 Curve Fitting with Scikit-Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../solutions/000_Introduction.html">000 COM6018 Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/tutorials/080_Curve_Fitting_with_Scikit_Learn.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https:/github.com/UOS-COM-6018/COM6018" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https:/github.com/UOS-COM-6018/COM6018/edit/main/materials/tutorials/080_Curve_Fitting_with_Scikit_Learn.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https:/github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/tutorials/080_Curve_Fitting_with_Scikit_Learn.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/materials/tutorials/080_Curve_Fitting_with_Scikit_Learn.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>080 Curve Fitting with Scikit-Learn</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curve-fitting-and-data-modelling">2. Curve Fitting and Data Modelling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-toy-data-sets">3. Some toy data sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-curve">4. Fitting a curve</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#underfitting-a-curve">4.1 Underfitting a curve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-polynomial-curve">4.2 Fitting a polynomial curve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting-a-polynomial-curve">4.3 Overfitting a polynomial curve</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-periodic-curve">5. Fitting a periodic curve</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">6. Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="curve-fitting-with-scikit-learn">
+<h1>080 Curve Fitting with Scikit-Learn<a class="headerlink" href="#curve-fitting-with-scikit-learn" title="Permalink to this heading">#</a></h1>
+<blockquote>
+<div><p>COM6018</p>
+</div></blockquote>
+<p><em>Copyright © 2023 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>So far we have been using the Scikit-Learn package to perform <strong>classification</strong> tasks. The other main task in machine learning is <strong>regression</strong>. This is where we wish to predict the value of one or more <strong>continuous variables</strong>.</p>
+<p>Before we get into the details, it is worth considering how classification and regression differ:</p>
+<p>In a <strong>classification task</strong>, we need to predict a class label. The class label can be represented as <strong>a discrete variable</strong>, i.e., an integer. However, more significantly, the label is also often a <strong>nominal value</strong>, i.e., a value that does not have a natural ordering. For example, the class labels for the iris data set, that we used earlier in the module, were <code class="docutils literal notranslate"><span class="pre">setosa</span></code>, <code class="docutils literal notranslate"><span class="pre">versicolor</span></code> and <code class="docutils literal notranslate"><span class="pre">virginica</span></code>. There is no natural ordering to these labels. We may have used the integers 0, 1 and 2 to represent these labels, but we could equally well have used the integers 2, 1 and 0. The integers are just a convenient way of representing the labels.</p>
+<p>In a <strong>regression task</strong>, we are predicting <strong>a continuous value</strong>. For example, we may want to predict the temperature for some given date in the future. Or, we may want to estimate some quantity that is hard to measure directly from a set of values that are more easily measured. For many problems the value being estimated will be a scalar value, i.e., a single value, but it could also be a vector. For example, we may wish to predict the position in space of a planet at some time in the future. In this case we would be predicting a vector of three values, the <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z\)</span> coordinates of the planet.</p>
+<p>There are two important points to note about the above differences. First, unlike classification tasks, regression tasks do not have a fixed set of outcomes. This means that evaluation metrics such as percentage correct, and tools such as confusion matrices cannot be used. Second, for regression tasks, we can meaningfully talk about the ‘closeness’ of the predicted output to the true value (i.e., because the continuously valued outputs have a natural order.) So, we can evaluate the classifier by measuring the difference between the output and the true value. For example, we may use the mean squared error (MSE) or the mean absolute error (MAE). Note, that this idea of ‘closeness’ does not apply to classification tasks when the class labels are nominal values (if the true label is ‘cat’ then both ‘dog’ and ‘duck’ are equally wrong.).</p>
+<p>In this tutorial we will consider a particular type of regression problem, namely, fitting a curve through a set of data points. This is a very visual task that will help us understand the key concepts. We will then be able to apply these ideas to more general regression problems in later tutorials. Further, to keep things simple, we will consider data points that are plotted along a single axes (i.e., one <code class="docutils literal notranslate"><span class="pre">independent</span> <span class="pre">variable</span></code>, for example, a plot of <span class="math notranslate nohighlight">\(y\)</span> against <span class="math notranslate nohighlight">\(x\)</span>). But keep in mind that the ideas that we develop here can be extended to data points that are plotted in two or more dimensions (i.e., fitting a surface to a plot of <span class="math notranslate nohighlight">\(z\)</span> against <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>).</p>
+</section>
+<section id="curve-fitting-and-data-modelling">
+<h2>2. Curve Fitting and Data Modelling<a class="headerlink" href="#curve-fitting-and-data-modelling" title="Permalink to this heading">#</a></h2>
+<p>Before getting into specifics, it is worth spending some time to consider what we are really doing when to try to fit a curve through a set of data points.</p>
+<p>Curve fitting can be considered as a form of <strong>data modelling</strong>. We are drawing a curve in order to try and express a simple relationship between some input variable (i.e., the variable represented by the x-axis) and an output value which is represented on the y-axis.  For example, we may be trying to find the relationship between time and concentration of the carbon dioxide in the atmosphere.</p>
+<p>There are various reasons why we might want to be fitting a curve. We might want to be able to <strong>extrapolate</strong> into the future or back into the past. We might want to use the curve to <strong>interpolate</strong>, i.e., to estimate the value of <span class="math notranslate nohighlight">\(y\)</span> for some <span class="math notranslate nohighlight">\(x\)</span> for which we do not have a direct measurement. More generally, we might want to use curve fitting as a way to understand the mechanisms that are driving the relationship between the input and output variables. For example, if we can see that the data can be fitted with a periodically varying function, then the duration of the oscillations may give us some insight into the underlying mechanisms. Or, if we find that an exponential function fits the data, then this may give us some insight into the underlying processes, i.e., the growth rate being proportional to the current value tells us something about the mechanism that is driving the growth.</p>
+<p>How do we go about fitting a curve to some data? How will we decide which curve represents the best fit? What do we even mean by ‘best’? These questions gets to the heart of what we mean by ‘modelling’. Obviously, we could draw some very wriggly line that goes precisely through all our measured data points and the curve would fit the measured data perfectly. In fact, there are an infinite number of wriggly lines that would fit perfectly through any finite set of data points. These different curves would all have different values if we were to interpolate or extrapolate. So, we need some way to choose between these, i.e., some precise way to say what we mean by ‘best’. To do this we need to step back and consider the nature of the data that we are trying to model.</p>
+<p>When we model data, we work on the assumption that the output variable is made up of two components: <strong>a deterministic component</strong> and <strong>a stochastic component</strong>. The deterministic component is the part of the output variable that we can predict from the input variable. The stochastic component is the part of the output variable that we cannot predict, i.e. it is essentially random. Our model is an attempt to capture the deterministic component of the data. We will further assume that the deterministic component can be represented using a relatively simple function, and our job is to find the simplest function that captures this component accurately.</p>
+<p>For example, consider the case of carbon dioxide concentration in the atmosphere. There is an underlying growth trend coming from the burning of fossil fuels that drives the concentration upwards in a smooth way. In addition, there is also a seasonal variation due to the way that plants and trees absorb more carbon dioxide in the summer and less in winter. These two effects can be modelled with a curve that is controlled by a small number of parameters. For example, a parameterised quadratic curve to model the growth, and a sinusoidal function with a parameterised amplitude to model the seasonal variation. However, if you look at the data, you will observe that the precise readings bounce up and down by a small amount every day. This is the stochastic component. It is not possible to predict these fluctuations from the input variable (time). They are due to all sorts of random fluctuations, e.g., fluctuations in the weather around the measurement station, physical effects in the measurement instruments themselves. Fortunately, as we will see in this tutorial, because these random fluctuations behave very differently from the underlying trends, they do not prevent us estimating the trend parameters.</p>
+<p>Note that in the example above, we required some understanding of the problem to design a model. Our understanding led us to combine a smooth growth curve with a sinusoidal curve for seasonal variation. In general, because the space of possible ‘models’ is huge, this type of domain knowledge is essential to guide us to a good model. However, regardless of our understanding of the problem, our basic strategy is going to be the same. We will start out with a very simple model, and then gradually make it more complex until we have a model that fits the data well. The aim will always be to find the simplest model that fits the data well.</p>
+</section>
+<section id="some-toy-data-sets">
+<h2>3. Some toy data sets<a class="headerlink" href="#some-toy-data-sets" title="Permalink to this heading">#</a></h2>
+<p>To illustrate the ideas above, we will use some toy data sets. These data will not be from real problems but will be artificially created by taking simple functions and then adding some random noise. This will allow us to easily evaluate how well the models perform because we will know the true function that generated the data. In the lab class, you will use the same techniques but apply them to a real world dataset.</p>
+<p>We will look at two different types of data,</p>
+<ul class="simple">
+<li><p>polynomial data, where the data is generated from a polynomial function, and</p></li>
+<li><p>periodic data, where the data is generated from a periodic function.</p></li>
+</ul>
+<p>In the lab class, the data will require a model that combines polynomial and periodic functions.</p>
+<p>We will start with polynomial data. We will generate data for polynomials up to 4th order, i.e., linear, quadratic, cubic and quartic functions. We will use the following function to generate the data,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">polynomial</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">d</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="n">e</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">4</span> <span class="o">+</span> <span class="n">noise</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note, we can produce lower order polynomials by setting the higher order coefficients to zero. For example, to generate a quadratic function we would set <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">d</span></code> to zero. The function contains a noise term with a scale factor <code class="docutils literal notranslate"><span class="pre">noise</span></code> that adds a noise component to each term in the sequence. The noise is drawn from a normal distribution, independently for each data point.</p>
+<p>For the periodic data we will consider functions that are constructed from the sums of sine and cosine functions. These function will have terms <span class="math notranslate nohighlight">\(\sin(Ax)\)</span> and <span class="math notranslate nohighlight">\(\cos(Bx)\)</span> where <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are integers. <strong>Fourier theory</strong> tells us that any periodic function can be represented as a sum of sine and cosine functions in this way, if we use enough terms. To keep things simple we will used functions with values of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> in the range 1 to 3.</p>
+<p>We will use the following function to generate the data,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">periodic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">,</span> <span class="n">s3</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">s1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">s2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">s3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">c1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">c2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">c3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">noise</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note, as with our polynomial generator, we have included a noise term so that we can model real data that is not perfectly predictable.</p>
+<p>We will now use our functions to generate some data. We will generate 50 data points for each of our polynomial functions and 100 data points for each of our periodic functions. We will use the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> function <code class="docutils literal notranslate"><span class="pre">linspace</span></code> to generate the input values. This function generates a sequence of values between a start and end value. We will use the start value of -5 and the end value of 5 for the polynomials and a range of -10 to 10 for the periodic functions. The noise parameters have been tuned to add a small amount of random noise to the data - enough to make the estimation problem interesting but not so much that the deterministic component of the data is totally obscured.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">poly1</span> <span class="o">=</span> <span class="n">polynomial</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">poly2</span> <span class="o">=</span> <span class="n">polynomial</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">poly3</span> <span class="o">=</span> <span class="n">polynomial</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">poly4</span> <span class="o">=</span> <span class="n">polynomial</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.21</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
+
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">periodic1</span> <span class="o">=</span> <span class="n">periodic</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">periodic2</span> <span class="o">=</span> <span class="n">periodic</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">periodic3</span> <span class="o">=</span> <span class="n">periodic</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can plot the data using the <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> library. The polynomials are show below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">poly1</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">poly2</span><span class="p">,</span> <span class="s1">&#39;g.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">poly3</span><span class="p">,</span> <span class="s1">&#39;b.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">poly4</span><span class="p">,</span> <span class="s1">&#39;k.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/902beef411473ba6bfc010bae2db347ec580b62be455ee888cede6a8cfe273a8.png" src="../../_images/902beef411473ba6bfc010bae2db347ec580b62be455ee888cede6a8cfe273a8.png" />
+</div>
+</div>
+<p>The periodic data looks like this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">periodic1</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">periodic2</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">periodic3</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b6278a13788cb8798828cf355a79668f0eec7c3eefaada76ca2b10d291693838.png" src="../../_images/b6278a13788cb8798828cf355a79668f0eec7c3eefaada76ca2b10d291693838.png" />
+</div>
+</div>
+<p>For convenience later, we are going to reshape our <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">x2</span></code> axes data so that the values are stored in a 2D numpy array but with one dimension having a size of 1. This will make it easier to use the data with the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> library. The code to do this is shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the above step confuses you, look at the <code class="docutils literal notranslate"><span class="pre">shape</span></code> of <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">x2</span></code> before and after the <code class="docutils literal notranslate"><span class="pre">expand_dims</span></code> step. For example, you will see that the shape of <code class="docutils literal notranslate"><span class="pre">x1</span></code> changes from <code class="docutils literal notranslate"><span class="pre">(50,)</span></code> to <code class="docutils literal notranslate"><span class="pre">(50,</span> <span class="pre">1)</span></code>.</p>
+</div>
+</section>
+<section id="fitting-a-curve">
+<h2>4. Fitting a curve<a class="headerlink" href="#fitting-a-curve" title="Permalink to this heading">#</a></h2>
+<p>We will start out by considering how to fit curves to the polynomial data.</p>
+<p>In the first instance, we will start with the simplest possible model: a straight line. To do this we will use the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class from the <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> module. We will first try fitting a straight line to our <code class="docutils literal notranslate"><span class="pre">poly1</span></code> data. This will work well because the underlying function actually was a straight line.</p>
+<p>The code looks like this,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">linear_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">poly1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the above, the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method does the work of calculating the best straight line fit. It takes the <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> points from the original data, i.e., <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">poly1</span></code>, in our case.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">fit</span></code> method returns a model that stores the parameters of the linear fit. These parameters are stored in the <code class="docutils literal notranslate"><span class="pre">coef_</span></code> and <code class="docutils literal notranslate"><span class="pre">intercept_</span></code> attributes. We can print these out to see what they are,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.51244983]
+2.0114965988069184
+</pre></div>
+</div>
+</div>
+</div>
+<p>This can be understood as follows. The linear model is given by the equation, <span class="math notranslate nohighlight">\(y = mx + c\)</span>, where <span class="math notranslate nohighlight">\(m\)</span> is the slope of the line (stored as <code class="docutils literal notranslate"><span class="pre">coef_</span></code>) and <span class="math notranslate nohighlight">\(c\)</span> is the intercept (stored as <code class="docutils literal notranslate"><span class="pre">intercept_</span></code>). If you look back to where we generated the data, you will see that the real equation was <span class="math notranslate nohighlight">\(y = -1.5x + 2.0\)</span>. It turns out that the estimated values for <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span> are very close to the true values, -1.5 and 2.0, that were used to generate the data. So, the model has done a pretty good job of estimating the parameters despite the added noise.</p>
+<p>We can now look at this visually by plotting the data points and the fitted line. To do this we will use the <code class="docutils literal notranslate"><span class="pre">predict</span></code> method of the model. This method takes a set of <span class="math notranslate nohighlight">\(x\)</span> values and returns the corresponding <span class="math notranslate nohighlight">\(y\)</span> values. We can then plot the original data points and the fitted line on the same plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">poly1</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/1444bbb3d941d399eb0d31617e19a2f59c2f8a2d48889c9a96956324acfb9777.png" src="../../_images/1444bbb3d941d399eb0d31617e19a2f59c2f8a2d48889c9a96956324acfb9777.png" />
+</div>
+</div>
+<p>Note how the line passes very close to all of the data points. The mathematics of linear regression tells us that of all the possible straight lines, this particular line is the one that comes closest to the points on average, if our measure of closeness is the squared distance between the line and the points. This is why it is also called the <strong>least squares fit</strong>.</p>
+<section id="underfitting-a-curve">
+<h3>4.1 Underfitting a curve<a class="headerlink" href="#underfitting-a-curve" title="Permalink to this heading">#</a></h3>
+<p>Let us now repeat this exercise but this time we will use our 3rd order polynomial data (poly3) which was made from a sum of linear, quadratic and cubic functions. We will use the same straight line model as before.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">linear_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">poly3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let us plot the result,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">poly3</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3e44c9fb3129be67fe67cb324d4e077d2b2e5a21483de9df34bebc721c15be63.png" src="../../_images/3e44c9fb3129be67fe67cb324d4e077d2b2e5a21483de9df34bebc721c15be63.png" />
+</div>
+</div>
+<p>Notice now that although the blue predicted line follows the general trend of the red points, it is a long way from the data in some places. This is not a good fit. It is the best straight line that we could have plotted but our model was too simple. We say that the model is <strong>underfitting</strong> the data. We need to use a more complex model.</p>
+<p>Again, we can look at the parameters of the model</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-26.81487187]
+22.66387230978829
+</pre></div>
+</div>
+</div>
+</div>
+<p>This means that the line we have estimated has the equation,</p>
+<p><span class="math notranslate nohighlight">\(y = -27.7 x + 18.2\)</span></p>
+<p>If you look make at the parameters that generated the <code class="docutils literal notranslate"><span class="pre">poly3</span></code> data, you will see the correct equation is,</p>
+<p><span class="math notranslate nohighlight">\(y = -1.7 x^3 + 2.2 x^2 - 1.5 x + 2.0\)</span></p>
+<p>Note, that although we have found the best straight line fit, even the linear and intercept parameters are a long way from the correct values.</p>
+</section>
+<section id="fitting-a-polynomial-curve">
+<h3>4.2 Fitting a polynomial curve<a class="headerlink" href="#fitting-a-polynomial-curve" title="Permalink to this heading">#</a></h3>
+<p>Let us now try estimating the parameters for the third order polynomial using a model with linear, quadratic and cubic terms. Somewhat confusingly, this is also done using a linear regression model but now we will be looking for the linear sum of powers of x, i.e. we are looking for an equation of the form,</p>
+<p><span class="math notranslate nohighlight">\(y = a + bx + cx^2 + dx^3\)</span></p>
+<p>Here, <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(x^2\)</span> and <span class="math notranslate nohighlight">\(x^3\)</span> are fixed data values. The things were are looking for are the coefficients <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(d\)</span> which are being linearly combined, i.e. just scaled and summed. So in terms of the <em>parameters</em> this is still a linear model.</p>
+<p>To fit this model we will need to generate some new features to represent the <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(x^2\)</span> and <span class="math notranslate nohighlight">\(x^3\)</span> terms. We can do this most conveniently by using the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> class from the <code class="docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code> module. This class takes the original data, <code class="docutils literal notranslate"><span class="pre">x1</span></code>, and generates a new set of data that is the original data raised to the powers 1, 2, 3, etc. We can then use the linear regression model to fit this new data.</p>
+<p>The code will work in two steps. First we make the features,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">x_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">x_poly</span></code> will be a 2-D array with the same number of rows as the original <code class="docutils literal notranslate"><span class="pre">x1</span></code> but with a separate column for each of the 3 powers of <span class="math notranslate nohighlight">\(x\)</span>. We can look at <code class="docutils literal notranslate"><span class="pre">x_poly</span></code> to verify that this really is the case, i.e., looking at the first 5 rows,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x_poly</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[  -5.           25.         -125.        ]
+ [  -4.79591837   23.00083299 -110.31011738]
+ [  -4.59183673   21.0849646   -96.81871499]
+ [  -4.3877551    19.25239484  -84.47479367]
+ [  -4.18367347   17.5031237   -73.22735425]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we use these features to fit the model in much the same way as we did when using the <code class="docutils literal notranslate"><span class="pre">x1</span></code> data by alone.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">poly_reg_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">poly_reg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_poly</span><span class="p">,</span> <span class="n">poly3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can look at the model parameters as before,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.67899754  2.41880895 -1.76198533]
+1.6844069666832233
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note how the <code class="docutils literal notranslate"><span class="pre">coef_</span></code> variable is now an array of 3 numbers. These are the coefficients for the linear, quadratic and cubic terms. The <code class="docutils literal notranslate"><span class="pre">intercept_</span></code> variable has the same meaning as before. So, the equation for the model is,</p>
+<p><span class="math notranslate nohighlight">\(y = -1.8 x^3 + 2.1 x^2 - 0.6 x + 3.4\)</span></p>
+<p>We can compare this to the original equation,</p>
+<p><span class="math notranslate nohighlight">\(y = -1.7 x^3 + 2.2 x^2 - 1.5 x + 2.0\)</span></p>
+<p>and see that the model has done a pretty good job of estimating the parameters. It is more enlightening to look at the plot,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_poly</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">poly3</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/39c57610de2f503b26a626975ad925ec3680600a339dfe995520b2ce1ea49872.png" src="../../_images/39c57610de2f503b26a626975ad925ec3680600a339dfe995520b2ce1ea49872.png" />
+</div>
+</div>
+<p>We can see that, visually, this is a pretty good fit to the data despite the fact that the model’s estimate of the linear and intercept parameters were a little bit different from the true values. Note that the curve is dominated by the cubic and quadratic terms so the errors in the linear and intercept parameters do not have a big effect compared to the -200 to +300 range on the <span class="math notranslate nohighlight">\(y\)</span>-axis.</p>
+</section>
+<section id="overfitting-a-polynomial-curve">
+<h3>4.3 Overfitting a polynomial curve<a class="headerlink" href="#overfitting-a-polynomial-curve" title="Permalink to this heading">#</a></h3>
+<p>Now that we have seen how to fit higher order polynomial curves, we can look at what happens when a model is chosen that is too complicated for the underlying data.  For this example we will take our 2nd order polynomial data (<code class="docutils literal notranslate"><span class="pre">poly2</span></code>) and fit it with a 2nd order polynomial model but then again with a 22nd order polynomial, that has far too many parameters.</p>
+<p>Looking back, we can see that the <code class="docutils literal notranslate"><span class="pre">poly2</span></code> data was generated from the equation,</p>
+<p><span class="math notranslate nohighlight">\(y = 0.8 x^2 - 1.5 x + 2.0\)</span></p>
+<p>We will start with the 2nd order model. This is the correct model for the data and so we should expect to get a good fit. Below ww have performed the model estimation and plotting in a single cell,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">x_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">poly_reg_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">poly_reg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_poly</span><span class="p">,</span> <span class="n">poly2</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_poly</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">poly2</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2c3c7f6962969e8c56ff9a4c72ef2f2301629e926cf6c7e60ffa773759039335.png" src="../../_images/2c3c7f6962969e8c56ff9a4c72ef2f2301629e926cf6c7e60ffa773759039335.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.4095295   0.82216565]
+1.7114270189268996
+</pre></div>
+</div>
+</div>
+</div>
+<p>The coefficients are close to the original values and the plot looks good, i.e. the estimated curve is, <span class="math notranslate nohighlight">\(y = 0.8 x^2 -1.4 x + 2.1\)</span></p>
+<p>Now let us try fitting with a model that is too complicated. We will try with a 22nd order polynomial. We will use the same code as before but change the degree parameter to 22. A function called <code class="docutils literal notranslate"><span class="pre">fit_with_degree_n</span></code> has been defined to make this easier, i.e., so that we do not have to cut and paste the same code when comparing the 2nd and 22nd order curves.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_with_degree_n</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">x_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">poly_reg_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">poly_reg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_poly</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_poly</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">predicted</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="n">predicted2</span> <span class="o">=</span> <span class="n">fit_with_degree_n</span><span class="p">(</span><span class="n">poly2</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">predicted22</span> <span class="o">=</span> <span class="n">fit_with_degree_n</span><span class="p">(</span><span class="n">poly2</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now plot the results,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">poly2</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">predicted2</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">predicted22</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The green line is the correct 2nd order polynomial. The blue line is the 22nd order polynomial. We can see that the blue line is a very good fit to the actual data, however, it is not a good model because it is too complicated. It is being highly influenced by the noise and is is not a good predictor of the underlying function.</p>
+<p>The problems of overfitting becomes a lot clearer if we try to use this model to extrapolate outside the range of the original data. This can be seen below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">def</span> <span class="nf">fit_with_degree_n</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x_pred</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">x_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x_pred_poly</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">x_pred</span><span class="p">)</span>
+    <span class="n">poly_reg_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">poly_reg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_poly</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_pred_poly</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">predicted</span>
+
+<span class="c1"># Make a range for the predictions that extends beyond the range of the observed data.</span>
+<span class="n">x_extrapolate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">5.2</span><span class="p">,</span> <span class="mf">5.2</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">x_extrapolate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x_extrapolate</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">predicted2</span> <span class="o">=</span> <span class="n">fit_with_degree_n</span><span class="p">(</span><span class="n">poly2</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x_extrapolate</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">predicted22</span> <span class="o">=</span> <span class="n">fit_with_degree_n</span><span class="p">(</span><span class="n">poly2</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x_extrapolate</span><span class="p">,</span> <span class="mi">22</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">poly2</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_extrapolate</span><span class="p">,</span> <span class="n">predicted2</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_extrapolate</span><span class="p">,</span> <span class="n">predicted22</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In the above, we have made predictions between -5.2 and 5.2, so just moving a fraction beyond the range where the data lies (-5.0 to 5.0). Notice how the predicted values for the overfitted curve (blue) fit the red data points very well in the -5.0 to 5.0 region but then suddenly start to dramatically diverge from the actual data. This is a symptom of overfitting.</p>
+</section>
+</section>
+<section id="fitting-a-periodic-curve">
+<h2>5. Fitting a periodic curve<a class="headerlink" href="#fitting-a-periodic-curve" title="Permalink to this heading">#</a></h2>
+<p>We will now look at fitting a curve to our periodic data. Our main purpose here is to show that, by using Scikit-Learn, our code will look very similar to the code in the previous section.</p>
+<p>We will use the datasets <code class="docutils literal notranslate"><span class="pre">periodic1</span></code>, <code class="docutils literal notranslate"><span class="pre">periodic2</span></code> and <code class="docutils literal notranslate"><span class="pre">periodic3</span></code> that we constructed earlier. We have replotted them below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">periodic1</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">periodic2</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">periodic3</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b6278a13788cb8798828cf355a79668f0eec7c3eefaada76ca2b10d291693838.png" src="../../_images/b6278a13788cb8798828cf355a79668f0eec7c3eefaada76ca2b10d291693838.png" />
+</div>
+</div>
+<p>We will start with the simplest possible model, a straight line. We will use the same linear regression fitting approach as before.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">linear_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">periodic1</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">periodic1</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/c161ff0dd10ea0134fa6121822a95655bc526df272341684df057f1bc6b0a093.png" src="../../_images/c161ff0dd10ea0134fa6121822a95655bc526df272341684df057f1bc6b0a093.png" />
+</div>
+</div>
+<p>Unsurprisingly, this is a poor fit. We will now use a model that is a sum of sine and cosine functions that mirrors the way in which the data was actually generated. We will use the same approach as before but instead of the model being.</p>
+<p><span class="math notranslate nohighlight">\(y = a + bx + cx^2 + dx^3\)</span></p>
+<p>it will be</p>
+<p><span class="math notranslate nohighlight">\(y = a\sin(x) + b\cos(x) + c\sin(2x) + d\cos(2x) + e\sin(3x) + f\cos(3x)\)</span></p>
+<p>For the polynomial model we could use the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> class to make the array storing <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(x^2\)</span>, <span class="math notranslate nohighlight">\(x^3\)</span>, etc. For the periodic model, we will need to have an array storing <span class="math notranslate nohighlight">\(\sin(x)\)</span>, <span class="math notranslate nohighlight">\(\cos(x)\)</span>, <span class="math notranslate nohighlight">\(\sin(2x)\)</span>, etc. There is no class to do this for us, so we will have to construct the array ourselves using NumPy. The code to do this is shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">periodic_features</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The function takes the <span class="math notranslate nohighlight">\(x\)</span> data and returns an array with the same number of rows but with 6 columns. The columns are the sine and cosine of <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(2x\)</span> and <span class="math notranslate nohighlight">\(3x\)</span>. We can use this function to make the features and then use the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class to fit the model to the data, as before.</p>
+<p>So for the simplest dataset, <code class="docutils literal notranslate"><span class="pre">periodic1</span></code>, it will look like this</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_periodic</span> <span class="o">=</span> <span class="n">periodic_features</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">periodic_reg_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">periodic_reg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_periodic</span><span class="p">,</span> <span class="n">periodic1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we examine the model we will see that it has six coefficients, one for each of the sine and cosine terms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.99817951  0.50284981 -0.0102064   0.00277528  0.02228982 -0.01056503]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note how coefficients 3 to 6 are close to zero. This is because the <code class="docutils literal notranslate"><span class="pre">periodic1</span></code> data was made only from <span class="math notranslate nohighlight">\(\sin(x)\)</span> and <span class="math notranslate nohighlight">\(\cos(x)\)</span> terms.</p>
+<p>We can now examine the fit by plotting the data points and the predicted values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_periodic</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">periodic1</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3703ded48aea637ba7417ce9a96b1c5c3e116a2ae5461600c705603daecc3236.png" src="../../_images/3703ded48aea637ba7417ce9a96b1c5c3e116a2ae5461600c705603daecc3236.png" />
+</div>
+</div>
+<p>Let us repeat the exercise with the more complicated <code class="docutils literal notranslate"><span class="pre">periodic3</span></code> data that used all six cosine and sine terms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_periodic</span> <span class="o">=</span> <span class="n">periodic_features</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">periodic_reg_model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">periodic_reg_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_periodic</span><span class="p">,</span> <span class="n">periodic3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now none of the coefficients are close to zero.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.96035403  0.5048802  -0.51659385 -0.82665485 -0.20271093  0.31476252]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plotting the predicted values against the data points shows that the model has done a good job of fitting the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_periodic</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">periodic3</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">predicted</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/10da36e08a548a8024cd986f3f21dfa5205ff4255e9dc79a032fc2ec79962c63.png" src="../../_images/10da36e08a548a8024cd986f3f21dfa5205ff4255e9dc79a032fc2ec79962c63.png" />
+</div>
+</div>
+<p>Let us now see what happens if we try overfitting. We will first rewrite our periodic_features function so that it can generate a sequence of cosine and sine terms up to any given order, i.e. <span class="math notranslate nohighlight">\(\sin(x)\)</span>, <span class="math notranslate nohighlight">\(\sin(2x)\)</span>, …, <span class="math notranslate nohighlight">\(\sin(nx)\)</span> and similarly for cosine.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">periodic_features_order_n</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">sin_features</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="n">cos_features</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span><span class="n">sin_features</span> <span class="o">+</span> <span class="n">cos_features</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will now use this function to fit first with order 3 and then with order 30.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_periodic_3</span> <span class="o">=</span> <span class="n">periodic_features_order_n</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">x_periodic_30</span> <span class="o">=</span> <span class="n">periodic_features_order_n</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">periodic_reg_model3</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model_3</span> <span class="o">=</span> <span class="n">periodic_reg_model3</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_periodic_3</span><span class="p">,</span> <span class="n">periodic3</span><span class="p">)</span>
+
+<span class="n">periodic_reg_model30</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model_30</span> <span class="o">=</span> <span class="n">periodic_reg_model30</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_periodic_30</span><span class="p">,</span> <span class="n">periodic3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now plot the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">predicted_3</span> <span class="o">=</span> <span class="n">model_3</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_periodic_3</span><span class="p">)</span>
+<span class="n">predicted_30</span> <span class="o">=</span> <span class="n">model_30</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_periodic_30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">periodic3</span><span class="p">,</span> <span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">predicted_3</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">predicted_30</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/26341fd132da51a10eda56f4b77a8afa2fc5964d2cfbb6935d009902dc0b3ea4.png" src="../../_images/26341fd132da51a10eda56f4b77a8afa2fc5964d2cfbb6935d009902dc0b3ea4.png" />
+</div>
+</div>
+<p>The red curve is using the correct model parameters (i.e., the parameters that were used to produce the original data that we would not normally know.) Note how it is a smooth line that passes close to the data points. The blue curve which is using our 30th order model is too complicated. It produces a curve that passes very close to the data points but is not smooth. It is capturing random variation in the training data that is unlikely to be the same in future periods. We will explore this in more detail in the lab class.</p>
+</section>
+<section id="summary">
+<h2>6. Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>We have used Scikit-Learn’s <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class to fit curves to data using models based on either a sum of powers of <span class="math notranslate nohighlight">\(x\)</span> or on a sum of sine and cosine functions. The curves that we are predicting are not straight lines but the technique for fitting them is <strong>linear regression</strong> because the parameters that we are estimating are linearly combined. We have seen that if we use a model that is too simple, we will <strong>underfit</strong> the data. The model will lack sufficient complexity to mirror the real data leading to poor estimates even in regions where we have observations (i.e., in regions of the <span class="math notranslate nohighlight">\(x\)</span>-axis that are close to observed points). Alternatively, if we use a model that is too complex, we will <strong>overfit</strong> the data. The model will be too sensitive to the noise in the data and will not generalise well to new data (i.e., we will not be able to <strong>extrapolate</strong> or <strong>interpolate</strong> well).</p>
+<p>It should also be noted, that successful fitting of the curve required having a good model in the first place. This is known as the <strong>model selection</strong> problem. For example, if our data is periodic in nature, then no polynomial model will ever be able to fit it well. Similarly, if the data is polynomial in nature, then no periodic model will ever be able to fit it well. In general, we need to have some understanding of how the data has been generated in order to be able to choose a good model. This is why <strong>domain knowledge</strong> is so important in machine learning.</p>
+<p>In the lab class we will be making a model that has a mixture of polynomial and periodic components to model concentrations of gases in the atmosphere. We will then use our model to make some simple predictions about the future. We will see that this sophisticated analysis is quite straightforward to achieve using the techniques that we have learned in this tutorial.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./materials/tutorials"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="070_Classification_with_Scikit_Learn.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">070 Classification with Scikit-Learn</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../labs/000_Introduction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">000 COM6018 Lab Classes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curve-fitting-and-data-modelling">2. Curve Fitting and Data Modelling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-toy-data-sets">3. Some toy data sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-curve">4. Fitting a curve</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#underfitting-a-curve">4.1 Underfitting a curve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-polynomial-curve">4.2 Fitting a polynomial curve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting-a-polynomial-curve">4.3 Overfitting a polynomial curve</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fitting-a-periodic-curve">5. Fitting a periodic curve</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">6. Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jon Barker, University of Sheffield
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
