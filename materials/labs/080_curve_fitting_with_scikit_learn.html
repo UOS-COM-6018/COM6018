@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/labs/080_curve_fitting_with_sckikit_learn';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/labs/080_curve_fitting_with_scikit_learn';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="000 COM6018 Solutions" href="../solutions/000_Introduction.html" />
@@ -220,6 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../solutions/050_using_matplotlib.html">050 Using Matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../solutions/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../solutions/070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/080_curve_fitting_with_scikit_learn.html">080 Curve Fitting with Scikit Learn</a></li>
 </ul>
 
     </div>
@@ -274,7 +275,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/labs/080_curve_fitting_with_sckikit_learn.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/labs/080_curve_fitting_with_scikit_learn.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -322,7 +323,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https:/github.com/UOS-COM-6018/COM6018/edit/main/materials/labs/080_curve_fitting_with_sckikit_learn.ipynb" target="_blank"
+      <li><a href="https:/github.com/UOS-COM-6018/COM6018/edit/main/materials/labs/080_curve_fitting_with_scikit_learn.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -339,7 +340,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https:/github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/labs/080_curve_fitting_with_sckikit_learn.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https:/github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/labs/080_curve_fitting_with_scikit_learn.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -369,7 +370,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/materials/labs/080_curve_fitting_with_sckikit_learn.ipynb" target="_blank"
+      <li><a href="../../_sources/materials/labs/080_curve_fitting_with_scikit_learn.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -480,6 +481,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-2-predicting-the-future">Step 6.2 - Predicting the future</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
             </nav>
         </div>
@@ -505,9 +507,9 @@ document.write(`
 <section id="step-1-load-the-data">
 <h2>Step 1 - Load the data<a class="headerlink" href="#step-1-load-the-data" title="Permalink to this heading">#</a></h2>
 <p>We will start by loading the data from the file <code class="docutils literal notranslate"><span class="pre">co2.csv</span></code> into a Pandas DataFrame. The data is in the same format as the data we used in the previous lab.</p>
-<p>You can use the ‘read_csv’ method. The file contains comment lines that start with ‘%’ so you will need to use the read_csv ‘comment’ parameter to ignore these lines.</p>
-<p>Read the data such that the DataFrame columns are called ‘year’, ‘month’, ‘day’ and ‘co2’. The csv file also cantains columns called ‘NB’ and ‘scale’ but we will ignore these. You can use the ‘drop’ method to remove these columns from the DataFrame. Store the DataFrame in a variable called ‘co2_df’.</p>
-<p>Write the code below</p>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> method. The file contains comment lines that start with ‘%’ so you will need to use the <code class="docutils literal notranslate"><span class="pre">comment</span></code> parameter of the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> method to ignore these lines.</p>
+<p>Read the data such that the DataFrame columns are called ‘year’, ‘month’, ‘day’ and ‘co2’. The csv file also contains columns called ‘NB’ and ‘scale’ but we will ignore these. You can use the <code class="docutils literal notranslate"><span class="pre">drop</span></code> method to remove these columns from the DataFrame. Store the DataFrame in a variable called <code class="docutils literal notranslate"><span class="pre">co2_df</span></code>.</p>
+<p>Write the code below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
@@ -518,8 +520,8 @@ document.write(`
 </section>
 <section id="step-2-prepare-the-data">
 <h2>Step 2 - Prepare the data<a class="headerlink" href="#step-2-prepare-the-data" title="Permalink to this heading">#</a></h2>
-<p>We need to clean the data a little before we use it. For some of the rows the co2 value is missing and the file contains a ‘NaN’. We want to drop all of these rows from the dataframe. We have done this in previous labs, so look back at your notes if you need to.</p>
-<p>We also want to convert the year, month and day columns into a single column which we will call ‘decimal_year’ which is the year plus the fraction of the year. For example, 1st January 2019 would be 2019.0 and 1st July 2019 would be 2019.5. We will later use this column as the x-axis when we plot the data. Think carefully to work out the formula for combining the year, month and day to make this value.</p>
+<p>We need to clean the data a little before we use it. For some of the rows the <code class="docutils literal notranslate"><span class="pre">co2</span></code> value is missing and the file contains a <code class="docutils literal notranslate"><span class="pre">NaN</span></code> value. We want to drop all of these rows from the DataFrame. We have done this in previous labs, so look back at your notes if you need to.</p>
+<p>We also want to convert the year, month and day columns into a single column which we will call <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code> which is the year plus the fraction of the year. For example, 1st January 2019 would be 2019.0 and 1st July 2019 would be 2019.5. We will later use this column as the x-axis when we plot the data. Think carefully to work out the formula for combining the year, month and day to make this value.</p>
 <p>(Note, you can cheat a little and pretend that each month is 1/12 of a year. This is not exactly correct but it will be close enough for our purposes.)</p>
 <p>Write the code for these two steps in the cell below and run the test cell to check your code.</p>
 <div class="cell docutils container">
@@ -543,8 +545,8 @@ document.write(`
 </section>
 <section id="step-3-plotting-the-data">
 <h2>Step 3 - Plotting the data<a class="headerlink" href="#step-3-plotting-the-data" title="Permalink to this heading">#</a></h2>
-<p>We will now make a simple plot of the co2 concentration vs the decimal year. We can use the DataFrame’s plot method to do this. Set the x and y parameters to the column names of the DataFrame that you want to plot. You can use the ‘figsize’ parameter to make the plot bigger A size of 10 by 6 should be suitable.</p>
-<p>Write the line of code in the cell below and run to produce the plot.</p>
+<p>We will now make a simple plot of the CO<sub>2</sub> concentration versus the decimal year. We can use the DataFrame’s <code class="docutils literal notranslate"><span class="pre">plot</span></code> method to do this. Set the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> parameters to the column names of the DataFrame that you want to plot. You can use the <code class="docutils literal notranslate"><span class="pre">figsize</span></code> parameter to make the plot bigger. A size of 10 by 6 should be suitable.</p>
+<p>Write the line of code in the cell below and run it to produce the plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
@@ -552,18 +554,18 @@ document.write(`
 </div>
 </div>
 </div>
-<p>This should produce the famous ‘Keeling curve’. You will see that the carbon dioxide concentration has been increasing steadily since the earliest date in the data and also that there is a season variation, i.e., the curve has a periodic fluctuation with a period of one year.</p>
-<p>We are going to start by using a low order polynomial to fit the basic curve and we will then introduce periodic terms to model the seasonal fluctuations. Once we will use the model to try and predict the date that the co2 concentration will first reach 450ppm.</p>
+<p>This should produce the famous ‘Keeling curve’. You will see that the carbon dioxide concentration has been increasing steadily since the earliest date in the data and also that there is a seasonal variation, i.e., the curve has a periodic fluctuation with a period of one year.</p>
+<p>We are going to start by using a low order polynomial to fit the basic curve and we will then introduce periodic terms to model the seasonal fluctuations. Once we have fitting the model, we will use it to try and predict the date that the CO<sub>2</sub> concentration will first reach 450 ppm.</p>
 </section>
 <section id="step-4-fitting-a-polynomial-curve-using-scikit-learn">
 <h2>Step 4 - Fitting a polynomial curve using scikit-learn<a class="headerlink" href="#step-4-fitting-a-polynomial-curve-using-scikit-learn" title="Permalink to this heading">#</a></h2>
 <section id="step-4-1-fitting-a-straight-line">
 <h3>Step 4.1 - Fitting a straight line<a class="headerlink" href="#step-4-1-fitting-a-straight-line" title="Permalink to this heading">#</a></h3>
-<p>We will start by fitting a straight line to the data using the ‘LinearRegression’ class from sklearn.linear_model.</p>
-<p>Import LinearRegression for sklearn.linear_model and make an instance of the class which you can call ‘model’.  We will then use the model.fit method. The first parameter should be the decimal_year values (i.e., the x-axis values) and the second parameter should be the co2 values (i.e., the y-axis values). You can get these from the DataFrame.</p>
-<p>An important detail: the fit method requires that the x-axis values are passed as a 2-D array, i.e. you need to ensure that the shape of the decimal_year array is (n,1) rather than (n,). You can do this using the numpy reshape method or the expand_dims method. See the lecture notes for an example of how to do this.</p>
-<p>After calling the fit method you can use the model to predict co2 values by calling the predict method and passing the decimal_year values. Store the result in a variable called ‘co2_predicted’.</p>
-<p>Then make a plot of the original co2 values and the co2_predicted values plotted against the date. Plot these on the same axes so that you can compare the straight line fit with the actual values.</p>
+<p>We will start by fitting a straight line to the data using the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class from <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.</p>
+<p>Import <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> and make an instance of the class which you can call <code class="docutils literal notranslate"><span class="pre">model</span></code>.  We will then use the <code class="docutils literal notranslate"><span class="pre">model.fit</span></code> method. The first parameter should be the <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code> values (i.e., the x-axis values) and the second parameter should be the <code class="docutils literal notranslate"><span class="pre">co2</span></code> values (i.e., the y-axis values). You can get these from the DataFrame.</p>
+<p>An important detail: the fit method requires that the x-axis values are passed as a 2-D array, i.e., you need to ensure that the shape of the <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code> array is <code class="docutils literal notranslate"><span class="pre">(n,1)</span></code> rather than <code class="docutils literal notranslate"><span class="pre">(n,)</span></code>. You can do this using the NumPy <code class="docutils literal notranslate"><span class="pre">reshape</span></code> method or the <code class="docutils literal notranslate"><span class="pre">expand_dims</span></code> method. See the lecture notes for an example of how to do this.</p>
+<p>After calling the fit method, you can use the model to predict CO<sub>2</sub> concentrations by calling the <code class="docutils literal notranslate"><span class="pre">predict</span></code> method and passing the <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code> values. Store the result in a variable called <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code>.</p>
+<p>Then make a plot of the original <code class="docutils literal notranslate"><span class="pre">co2</span></code> values and the <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code> values plotted against the date. Plot these on the same axis so that you can compare the straight line fit with the actual values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
@@ -571,17 +573,17 @@ document.write(`
 </div>
 </div>
 </div>
-<p>If you have donme everything correctly, you should see that the straight line is a reasonable fit to the data except that it doesn’t capture the period component, but also the straight line is too steep in the 1960’s and not steep enough in the 2000’s and 2010’s. The pace of the co2 increase has been increasing over time.</p>
-<p>We can make a better fit using a higher order polynomial with x^2 and x^3 terms. We will do this in the next step.</p>
+<p>If you have done everything correctly, you should see that the straight line is a reasonable fit to the data except that it does not capture the period component, and that it is too steep in the 1960s and not steep enough in the 2000s and 2010s. The pace of the CO<sub>2</sub> concentration increase has been increasing over time.</p>
+<p>We can make a better fit using a higher order polynomial with <span class="math notranslate nohighlight">\(x^2\)</span> and <span class="math notranslate nohighlight">\(x^3\)</span> terms. We will do this in the next step.</p>
 </section>
 <section id="step-4-2-fitting-a-polynomial-curve">
 <h3>Step 4.2 - Fitting a polynomial curve<a class="headerlink" href="#step-4-2-fitting-a-polynomial-curve" title="Permalink to this heading">#</a></h3>
-<p>We will now fit a polynomial curve to the data. We will use the PolynomialFeatures class from sklearn.preprocessing to generate the polynomial features. We will then use the LinearRegression class to fit the model.</p>
-<p>Import PolynomialFeatures and LinearRegression from sklearn.preprocessing and sklearn.linear_model respectively. Make an instance of the PolynomialFeatures class and call it ‘poly’. Set the degree parameter to 3. Pass the decimal_year values to the poly.fit_transform method and store the result in a variable called ‘X’. (We will use a capital X to emphasise that this is a matrix).</p>
-<p>The poly.fit_transform method returns a matrix with 4 columns. The first column is the constant term, the second column is the x^1 term, the third column is the x^2 term and the fourth column is the x^3 term. We will use this matrix as the input to the LinearRegression fit method.</p>
-<p>Make an instance of the LinearRegression class and call it ‘model’. Call the model.fit method and pass the X matrix and the co2 values, just as you did in the previous step.</p>
-<p>Now we can called model.fit and pass the X matrix again to get the predicted co2 values. Store the result in a variable called ‘co2_predicted’.</p>
-<p>Make a plot of the original co2 values and the co2_predicted values plotted against the date. Plot these on the same axes so that you can compare the straight line fit with the actual values.</p>
+<p>We will now fit a polynomial curve to the data. We will use the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> class from <code class="docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code> to generate the polynomial features. We will then use the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class to fit the model.</p>
+<p>Import <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> and <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code> and <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> respectively. Make an instance of the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> class and call it <code class="docutils literal notranslate"><span class="pre">poly</span></code>. Set the <code class="docutils literal notranslate"><span class="pre">degree</span></code> parameter to 3. Pass the <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code> values to the <code class="docutils literal notranslate"><span class="pre">poly.fit_transform</span></code> method and store the result in a variable called <code class="docutils literal notranslate"><span class="pre">X</span></code>. (We will use a capital X to emphasise that this is a matrix, but note, in general, variables starting with capital letters should only be used for the names of classes).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">poly.fit_transform</span></code> method returns a matrix with 4 columns. The first column is the constant term, the second column is the <span class="math notranslate nohighlight">\(x^1\)</span> term, the third column is the <span class="math notranslate nohighlight">\(x^2\)</span> term and the fourth column is the <span class="math notranslate nohighlight">\(x^3\)</span> term. We will use this matrix as the input to the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> <code class="docutils literal notranslate"><span class="pre">fit</span></code> method.</p>
+<p>Make an instance of the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class and call it <code class="docutils literal notranslate"><span class="pre">model</span></code>. Call the <code class="docutils literal notranslate"><span class="pre">model.fit</span></code> method and pass the <code class="docutils literal notranslate"><span class="pre">X</span></code> matrix and the <code class="docutils literal notranslate"><span class="pre">co2</span></code> values, just as you did in the previous step.</p>
+<p>Now we can call <code class="docutils literal notranslate"><span class="pre">model.predict</span></code> and pass the <code class="docutils literal notranslate"><span class="pre">X</span></code> matrix again to get the predicted CO<sub>2</sub> concentration values. Store the result in a variable called <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code>.</p>
+<p>Make a plot of the original <code class="docutils literal notranslate"><span class="pre">co2</span></code> values and the <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code> values plotted against <code class="docutils literal notranslate"><span class="pre">date</span></code>. Plot these on the same axis so that you can compare the straight line fit with the actual values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
@@ -589,10 +591,10 @@ document.write(`
 </div>
 </div>
 </div>
-<p>You will now see that the curve fits much better to the data.</p>
-<p>We can quantify the goodness of the fit by computing the root mean squared error (RMSE) between the predicted co2 values and the actual ones.</p>
-<p>We can do this easily by using the mean_squared_error function from sklearn.metrics. Import this function and then call it passing the co2 values and the co2_predicted values. By default this function returns the mean squared error (MSE). To get the RMSE value you need to also pass the parameter ‘squared=False’.</p>
-<p>Store the result in a variable called ‘rmse’. Print the value of rmse.</p>
+<p>You can see that the curve fits much better to the data.</p>
+<p>We can quantify the goodness of the fit by computing the root mean squared error (RMSE) between the predicted CO<sub>2</sub> values and the actual ones.</p>
+<p>We can do this easily by using the <code class="docutils literal notranslate"><span class="pre">mean_squared_error</span></code> function from <code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>. Import this function and then call it passing the <code class="docutils literal notranslate"><span class="pre">co2</span></code> values and the <code class="docutils literal notranslate"><span class="pre">co2_predicted</span> <span class="pre">values</span></code>. By default, this function returns the mean squared error (MSE). To get the RMSE value you need to also pass the parameter <code class="docutils literal notranslate"><span class="pre">squared=False</span></code>.</p>
+<p>Store the result in a variable called <code class="docutils literal notranslate"><span class="pre">rmse</span></code>. Print the value of <code class="docutils literal notranslate"><span class="pre">rmse</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
@@ -603,8 +605,8 @@ document.write(`
 </section>
 <section id="step-4-3-finding-the-best-polynomial-degree">
 <h3>Step 4.3 - Finding the best polynomial degree<a class="headerlink" href="#step-4-3-finding-the-best-polynomial-degree" title="Permalink to this heading">#</a></h3>
-<p>In the previous section we used a polynomial of degree 3. We did this by passing the parameter ‘degree=3’ to the PolynomialFeatures constructor. We can try different values of the degree parameter to see which gives the best fit.</p>
-<p>In the cell below, use a loop to try values of degree from 1 to 10. For each value of degree, compute the RMSE and print it. You should be able to implement this quickly by cutting and pasting the code from the previous cells and then adding a loop around it.</p>
+<p>In the previous section, we used a polynomial of degree 3. We did this by passing the parameter <code class="docutils literal notranslate"><span class="pre">degree=3</span></code> to the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> constructor. We can try different values of the degree parameter to see which gives the best fit.</p>
+<p>In the cell below, use a loop to try values of <code class="docutils literal notranslate"><span class="pre">degree</span></code> from 1 to 10. For each value of <code class="docutils literal notranslate"><span class="pre">degree</span></code>, compute the RMSE and print it. You should be able to implement this quickly by cutting and pasting the code from the previous cells and then adding a loop around it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
@@ -612,13 +614,13 @@ document.write(`
 </div>
 </div>
 </div>
-<p>You should find that the error drops a lot going from degree 1 to degree 2, but then only drops a little bit more going from degree 2 to degree 3. After that, the error doesn’t drop much at all. This suggests that degree 3 (i.e. a 3rd order polynomial) is the best choice.</p>
+<p>You should find that the error drops a lot going from degree 1 to degree 2, but then only drops a little bit more going from degree 2 to degree 3. After that, the error does not drop much at all. This suggests that degree 2 or degree 3 (i.e., a 2nd or 3rd order polynomial) is the best choice.</p>
 </section>
 <section id="step-4-4-a-fairer-methodology-for-model-evaluation">
 <h3>Step 4.4 - A fairer methodology for model evaluation<a class="headerlink" href="#step-4-4-a-fairer-methodology-for-model-evaluation" title="Permalink to this heading">#</a></h3>
-<p>In the above, we tested our model by comparing the predictions against the actual values, but we made predictions at the same dates as were used when fitting the model. This is not a fair test because the model has already seen these data points and so it is not surprising that it fits them well. For our model to be useful we need it to work well when predicting values for dates that it has not seen before. So to test how well we can do this we want to fit the data using a subset of the dates (e.g. from the up to 2000) and then test the model by predicting the values for the dates that were not used for fitting (e.g. from 2000 to 2019).</p>
-<p>The easiest way to do this is to split our co2 and date data into two parts which we might call co2_train and date_train for the years up to 2000 and co2_test and date_test for the years from 2000 to 2019. We can then fit the model using the co2_train and date_train data and then test the model by predicting the co2 values for the date_test values. We can then compare the predicted values with the actual values in co2_test.</p>
-<p>We will first split the data. This can be done using the code below</p>
+<p>In the above, we tested our model by comparing the predictions against the actual values, but we made predictions at the same dates as were used when fitting the model. This is not a fair test because the model has already seen these data points and so it is not surprising that it fits them well. For our model to be useful, we need it to work well when predicting values for dates that it has not seen before. So to test how well we can do this, we want to fit the data using a subset of the dates (e.g., for dates up to 2000) and then test the model by predicting the values for the dates that were not used for fitting (e.g., from 2000 to 2019).</p>
+<p>The easiest way to do this is to split our <code class="docutils literal notranslate"><span class="pre">co2</span></code> and <code class="docutils literal notranslate"><span class="pre">date</span></code> data into two parts which we might call <code class="docutils literal notranslate"><span class="pre">co2_train</span></code> and <code class="docutils literal notranslate"><span class="pre">date_train</span></code> for the years up to 2000 and <code class="docutils literal notranslate"><span class="pre">co2_test</span></code> and <code class="docutils literal notranslate"><span class="pre">date_test</span></code> for the years from 2000 to 2019. We can then fit the model using the <code class="docutils literal notranslate"><span class="pre">co2_train</span></code> and <code class="docutils literal notranslate"><span class="pre">date_train</span></code> data and then test the model by predicting the CO<sub>2</sub> concentration values for the dates in <code class="docutils literal notranslate"><span class="pre">date_test</span></code>. We can then compare these predicted values with the actual values stored in <code class="docutils literal notranslate"><span class="pre">co2_test</span></code>.</p>
+<p>We will first split the data. This can be done using the code below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">co2</span> <span class="o">=</span> <span class="n">co2_df</span><span class="p">[</span><span class="s1">&#39;co2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">array</span>
@@ -632,7 +634,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Now rewrite the code from the previous section that used a loop to compute RMSE value for polynomials of order N. But substitute date and co2 with the date_train, date_test and co2_train, co2_test values as appropriate. Note, you will also need to make X_train and X_test matrices using the date_train and date_test values.</p>
+<p>Now rewrite the code from the previous section that used a loop to compute RMSE value for polynomials of order N. But substitute <code class="docutils literal notranslate"><span class="pre">date</span></code> and <code class="docutils literal notranslate"><span class="pre">co2</span></code> with the <code class="docutils literal notranslate"><span class="pre">date_train</span></code>, <code class="docutils literal notranslate"><span class="pre">date_test</span></code> and <code class="docutils literal notranslate"><span class="pre">co2_train</span></code>, <code class="docutils literal notranslate"><span class="pre">co2_test</span></code> values as appropriate. Note, you will also need to make separate <code class="docutils literal notranslate"><span class="pre">X_train</span></code> and <code class="docutils literal notranslate"><span class="pre">X_test</span></code> matrices using the <code class="docutils literal notranslate"><span class="pre">date_train</span></code> and <code class="docutils literal notranslate"><span class="pre">date_test</span></code> values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
@@ -644,17 +646,17 @@ document.write(`
 </section>
 <section id="step-5-modeling-the-periodic-component">
 <h3>Step 5 - Modeling the periodic component<a class="headerlink" href="#step-5-modeling-the-periodic-component" title="Permalink to this heading">#</a></h3>
-<p>We will now improve our model by adding periodic terms. In the lecture notes we saw examples of how to do this by summing sine and cosine terms. For this to work we have to assume we know the period of the periodic component. In this case we know that the period is one year.</p>
-<p>Our model is going to combine the polynomial terms with the periodic terms. So it</p>
+<p>We will now improve our model by adding periodic terms. In the lecture notes, we saw examples of how to do this by summing sine and cosine terms. For this to work, we have to assume we know the period of the periodic component. In this case we know that the period is one year.</p>
+<p>Our model is going to combine the polynomial terms with the periodic terms. So it will have the form,</p>
 <p><span class="math notranslate nohighlight">\(y = a + p_1 x + p_2 x^2 + ... + p_n x^{N_\alpha} + s_1 *sin(1 \times 2 \pi x) + c_1 *cos(1 \times 2 \pi x) + ... + s_n * sin (N_\beta \times 2 \pi x) + c_n * cos (N_\beta \times 2 \pi x)\)</span></p>
-<p>where x is the data in years and y is the co2 concentration. In the above equation, <span class="math notranslate nohighlight">\(N_\alpha\)</span> is the order of the polynomial and <span class="math notranslate nohighlight">\(N_\beta\)</span> is the number of periodic terms.</p>
-<p>To fit this model we will need to store the function x, x^2, …, x^N, and sin(1 \times 2 \pi x), cos(1 \times 2 \pi x), …, sin(n \times 2 \pi x), cos(n \times 2 \pi x) in the matrix X. We will then use the LinearRegression class to fit the model in much the same way as we did in the previous section.</p>
-<p>Making the X with the polynomial terms is easy. We just use the PolynomialFeatures class as we did before. But there is no equivalent function for making the periodic terms – we need to make those using the numpy sine and cosine functions and append them to the X matrix. See the lecture notes for an example.</p>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> is the date in years and <span class="math notranslate nohighlight">\(y\)</span> is the CO<sub>2</sub> concentration. In the above equation, <span class="math notranslate nohighlight">\(N_\alpha\)</span> is the order of the polynomial and <span class="math notranslate nohighlight">\(N_\beta\)</span> is the number of periodic terms, and <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(p_1\)</span>, <span class="math notranslate nohighlight">\(p_2\)</span>, …, <span class="math notranslate nohighlight">\(p_n\)</span>, <span class="math notranslate nohighlight">\(s_1\)</span>, <span class="math notranslate nohighlight">\(c_1\)</span>, …, <span class="math notranslate nohighlight">\(s_n\)</span>, <span class="math notranslate nohighlight">\(c_n\)</span> are the parameters that we need to estimate.</p>
+<p>To fit this model we will need to store the functions <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(x^2\)</span>, …, <span class="math notranslate nohighlight">\(x^N\)</span>, and <span class="math notranslate nohighlight">\(sin(1 \times 2 \pi x)\)</span>, <span class="math notranslate nohighlight">\(cos(1 \times 2 \pi x)\)</span>, …, <span class="math notranslate nohighlight">\(sin(n \times 2 \pi x)\)</span>, <span class="math notranslate nohighlight">\(cos(n \times 2 \pi x)\)</span> in the matrix <span class="math notranslate nohighlight">\(X\)</span>. We will then use the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class to fit the model in exactly the same way as we did in the previous section.</p>
+<p>Making the <code class="docutils literal notranslate"><span class="pre">X</span></code> with the polynomial terms is easy. We just use the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> class as we did before. But there is no equivalent function for making the periodic terms – we need to make those using the NumPy sine and cosine functions and append them to the <code class="docutils literal notranslate"><span class="pre">X</span></code> matrix. See the lecture notes for an example.</p>
 </section>
 <section id="step-5-1-making-the-x-matrix">
 <h3>Step 5.1 - Making the X matrix<a class="headerlink" href="#step-5-1-making-the-x-matrix" title="Permalink to this heading">#</a></h3>
-<p>In the cell below write a function called make_features to make the X matrix for the model above. The function should take the x values (i.e. the decimal_year values) and the order of the polynomial and the number of periodic terms as parameters. Call the parameters x, order_polynomial and order_periodic respectively. It should return the X matrix.</p>
-<p>The function can use the PolynomialFeatures class to make the polynomial terms and then append the periodic terms to the matrix. Or it may be similar to just make both the polynomial and periodic terms using numpy functions.</p>
+<p>In the cell below write a function called <code class="docutils literal notranslate"><span class="pre">make_features</span></code> to make the <code class="docutils literal notranslate"><span class="pre">X</span></code> matrix for the model above. The function should take the <span class="math notranslate nohighlight">\(x\)</span> values (i.e., the <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code> values) and the order of the polynomial and the number of periodic terms as parameters. Call the parameters <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">order_polynomial</span></code> and <code class="docutils literal notranslate"><span class="pre">order_periodic</span></code> respectively. It should return the <span class="math notranslate nohighlight">\(X\)</span> matrix.</p>
+<p>The function can use the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> class to make the polynomial terms and then append the periodic terms to the matrix. Or it may be clearer to just make both the polynomial and periodic terms using NumPy functions.</p>
 <p>When you have written the function, run the test cell to check that it works.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -675,9 +677,9 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Now use your function to make the feature matrix X_train for a model with polynomial order 2 and periodic order 1, i.e. by passing the model the date_train values that you used earlier.</p>
-<p>Then make a LinearRegression model and call its fit method passing X_train and co2_train.</p>
-<p>Finally call model.predict with the X_train values to get the predicted co2 values. Store the result in a variable called co2_predicted and plot the co2_predicted and co2_train values against the date_train values. You should see that the model fits the data well.</p>
+<p>Now use your function to make the feature matrix <code class="docutils literal notranslate"><span class="pre">X_train</span></code> for a model with polynomial order 2 and periodic order 1, i.e., by passing the model the <code class="docutils literal notranslate"><span class="pre">date_train</span></code> values that you used earlier.</p>
+<p>Then make a <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> model and call its <code class="docutils literal notranslate"><span class="pre">fit</span></code> method passing <code class="docutils literal notranslate"><span class="pre">X_train</span></code> and <code class="docutils literal notranslate"><span class="pre">co2_train</span></code>.</p>
+<p>Finally, call <code class="docutils literal notranslate"><span class="pre">model.predict</span></code> with the <code class="docutils literal notranslate"><span class="pre">X_train</span></code> values to get the predicted CO<sub>2</sub> concentration values. Store the result in a variable called <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code> and plot the <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code> and <code class="docutils literal notranslate"><span class="pre">co2_train</span></code> values against the <code class="docutils literal notranslate"><span class="pre">date_train</span></code> values. You should see that the model fits the data well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
@@ -685,12 +687,12 @@ document.write(`
 </div>
 </div>
 </div>
-<p>You can play with the periodic_order to see how it affects the fit. In the next section we will try to find the best value for the periodic_order using the same methodology that we used to find the best value for the polynomial_order.</p>
+<p>You can play with the <code class="docutils literal notranslate"><span class="pre">periodic_order</span></code> to see how it affects the fit. In the next section, we will try to find the best value for the <code class="docutils literal notranslate"><span class="pre">periodic_order</span></code> using the same methodology that we used to find the best value for the <code class="docutils literal notranslate"><span class="pre">polynomial_order</span></code>.</p>
 </section>
 <section id="step-5-2-finding-the-best-value-for-the-periodic-order">
 <h3>Step 5.2 - Finding the best value for the periodic order<a class="headerlink" href="#step-5-2-finding-the-best-value-for-the-periodic-order" title="Permalink to this heading">#</a></h3>
 <p>We will now use the same methodology that we used to find the best value for the polynomial order to find the best value for the periodic order.</p>
-<p>We will fix the polynomial order at the value of 2 but try periodic orders from 0 to 10. In each case we will fit the model using the date_train and co2_train values and then test the model by predicting the co2 values for the date_test values. We will compute the RMSE value for each value of the periodic order and print it to see which works best.</p>
+<p>We will fix the polynomial order at the value of 2 but try periodic orders from 0 to 10. In each case we will fit the model using the <code class="docutils literal notranslate"><span class="pre">date_train</span></code> and <code class="docutils literal notranslate"><span class="pre">co2_train</span></code> values and then test the model by predicting the CO<sub>2</sub> concentration values for the <code class="docutils literal notranslate"><span class="pre">date_test</span></code> values. We will compute the RMSE value for each value of the periodic order and print it to see which works best.</p>
 <p>You should be able to do all of this using code from the previous sections.</p>
 <p>Implement your solution in the cell below.</p>
 <div class="cell docutils container">
@@ -700,17 +702,17 @@ document.write(`
 </div>
 </div>
 </div>
-<p>You should find that the RMSE error with the periodic order set to 0 (i.e. the purely polynomial model) is about 2.57.  For the periodic order set to 1 (i.e. adding in just a simple sinusoidal variation)  and cosine term) it falls to about 1.21. Increasing to order 2 (i.e. adding in a second sinusoidal term) it falls a bit further to about 1.07. After that the prediction start to get worse again. i.e. the data is overfitting.</p>
-<p>So we will conclude that the best model to use is the one with polynomial order 2 and periodic order 2.</p>
+<p>You should find that the RMSE error with the periodic order set to 0 (i.e. the purely polynomial model) is about 2.57.  For the periodic order set to 1 (i.e. adding in just a simple sinusoidal variation),  it falls to about 1.21. Increasing to order 2 (i.e., adding in a second sinusoidal term) it falls a bit further to about 1.07. After that, the prediction start to get worse again, i.e., the model starts overfitting the data.</p>
+<p>So, we will conclude that the best model to use is the one with polynomial order 2 and periodic order 2.</p>
 </section>
 </section>
 <section id="step-6-using-our-model-to-predict-the-future">
 <h2>Step 6 - Using our model to predict the future<a class="headerlink" href="#step-6-using-our-model-to-predict-the-future" title="Permalink to this heading">#</a></h2>
-<p>We will now use our model to predict the date when the co2 concentration will first reach 450ppm.</p>
-<p>We will use the model of polynomial order 2 and periodic order 2 that we found was the best in the previous section.  We reestimate the model parameters using all the data (i.e. the date and co2 values from 1958 to 2019). We will then use the model to predict co2 levels up to the year 2100 and look to see when this value first reaches 450ppm.</p>
+<p>We will now use our model to predict the date when the CO<sub>2</sub> concentration will first reach 450 ppm.</p>
+<p>We will use the model of polynomial order 2 and periodic order 2 that we found was the best fit in the previous section.  We will re-estimate the model parameters using all the data (i.e., the date and CO<sub>2</sub> concentration values from 1958 to 2019). We will then use the model to predict CO<sub>2</sub> concentration levels up to the year 2040 and look to see when this value first reaches 450 ppm.</p>
 <section id="step-6-1-re-estimating-the-model-parameters">
 <h3>Step 6.1 - Re-estimating the model parameters<a class="headerlink" href="#step-6-1-re-estimating-the-model-parameters" title="Permalink to this heading">#</a></h3>
-<p>We will first re-estimate the model parameters using all the data. This is easy to do. We just need to make the X matrix using all the dates (i.e. passing ‘date’ to our make_features function). We then construct a new LinearRegression model and finally call the fit method on the model.</p>
+<p>We will first re-estimate the model parameters using all the data. This is easy to do. We just need to make the X matrix using all the dates (i.e., passing <code class="docutils literal notranslate"><span class="pre">date</span></code> to our <code class="docutils literal notranslate"><span class="pre">make_features</span></code> function). We then construct a new <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> model and finally, we call the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method on the model.</p>
 <p>Implement this in the cell below and run the test function that will check that your model has the correct number of parameters, (i.e., 7)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -733,10 +735,10 @@ document.write(`
 <section id="step-6-2-predicting-the-future">
 <h3>Step 6.2 - Predicting the future<a class="headerlink" href="#step-6-2-predicting-the-future" title="Permalink to this heading">#</a></h3>
 <p>Now make a new date axis with dates that run all the way from 2000 to 2040.</p>
-<p>You can do this using np.linspace to generate the date values. Choose a resolution of about 0.01 years. i.e., 100 values per year. Call this date axis ‘date_predict’.</p>
-<p>The pass this date axis to your make_features function to make the corresponding X matrix.</p>
-<p>Then pass this X matrx to model.predict method to get the predicted co2 values. Store the result in a variable called co2_predicted.</p>
-<p>Finally, plot the co2_predicted values against your date axis.</p>
+<p>You can do this using <code class="docutils literal notranslate"><span class="pre">np.linspace</span></code> to generate the date values. Choose a resolution of about 0.01 years, i.e., 100 values per year. Call this date axis <code class="docutils literal notranslate"><span class="pre">date_predict</span></code>.</p>
+<p>Then pass this date axis to your <code class="docutils literal notranslate"><span class="pre">make_features</span></code> function to make the corresponding <code class="docutils literal notranslate"><span class="pre">X</span></code> matrix.</p>
+<p>Then pass the <code class="docutils literal notranslate"><span class="pre">X</span></code> matrix to the <code class="docutils literal notranslate"><span class="pre">model.predict</span></code> method to get the predicted CO<sub>2</sub> concentration values. Store the result in a variable called <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code>.</p>
+<p>Finally, plot the <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code> values against your date axis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date_predict</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2040</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -747,19 +749,24 @@ document.write(`
 </div>
 </div>
 </div>
-<p>You can now find the earliest data at which the co2 is predicted to exceed 450 ppm using something like</p>
+<p>You can now find the earliest data at which the CO<sub>2</sub> concentration is predicted to exceed 450 ppm using something like,</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">date_predict</span><span class="p">[</span><span class="n">co2_predicted</span> <span class="o">&gt;</span> <span class="mi">450</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>alternatively, you can ask for the last date at which the co2 is predicted to be less than 450 ppm using something like</p>
+<p>alternatively, you can ask for the last date at which the CO<sub>2</sub> concentration is predicted to fall below 450 ppm using something like</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">date_predict</span><span class="p">[</span><span class="n">co2_predicted</span> <span class="o">&lt;</span> <span class="mi">450</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>These dates are a little different due to the annual fluctuations in the co2 concentration.</p>
+<p>These dates are a little different due to the annual fluctuations in the CO<sub>2</sub> concentration.</p>
 <p>You can compare your estimate with that made by other data scientists. There are many predictions that can be found with a bit of searching on the web. For example, the following page has a prediction of 2037.</p>
 <p><a class="reference external" href="https://insight.factset.com/atmospheric-carbon-levels-may-2023-update#:~:text=The%20resulting%2014.3%20tells%20us,global%20warming%20are%20reached%3A%202037">https://insight.factset.com/atmospheric-carbon-levels-may-2023-update#:~:text=The resulting 14.3 tells us,global warming are reached%3A 2037</a>.</p>
-<p>What we have to remember is that these are just predictions and that the future is uncertain. Our predictions have been made by modelling the past 60 years of data and extrapolating. This is making the big assumption that growth will continue on the same trajectory as it has in the past. Clearly though, this is not necessarily the case. For example, as the dangers of co2 emissions become more apparent, governments are taking action to reduce emissions. This would change the trajectory of the co2 concentration and so our model would no longer be valid.</p>
+<p>What we have to remember is that these are just predictions and that the future is uncertain. Our predictions have been made by modelling the past 60 years of data and extrapolating. This is making the big assumption that growth will continue on the same trajectory as it has in the past. Clearly though, this is not necessarily the case. For example, as the dangers of CO<sub>2</sub> emissions become more apparent, governments are taking action to reduce emissions. This will (hopefully!) change the trajectory of the CO<sub>2</sub> concentration and so our model will no longer be valid and our predicted date wll be incorrect. If emissions were cut drastically, it could even be the case that concentrations start to fall and than 450 ppm is never reached.</p>
 </section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>In this lab, we have used linear regression to fit a model to the atmospheric CO<sub>2</sub> concentration data. We have seen how to use the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> class to make polynomial features and how to use the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class to fit a model. We have also seen how to use the <code class="docutils literal notranslate"><span class="pre">mean_squared_error</span></code> function to compute the RMSE value for a model. We used the RMSE value to tune the hyperparameter (i.e., finding the polynomial order that produced the smallest error). We then saw how to use the <code class="docutils literal notranslate"><span class="pre">np.sin</span></code> and <code class="docutils literal notranslate"><span class="pre">np.cos</span></code> functions to make periodic features. We used these to make a model that had both polynomial and periodic terms that could fit the data much better. We then tuned the hyperparameters by training on a subset of the data and testing the model’s ability to predict the future. Finally, we used our model to predict the date when the CO<sub>2</sub> concentration will first reach 450 ppm.</p>
+<p>In this lab, we have used the basic least means squares approach to fitting a model. This approach works well but can have some drawbacks. When the number of parameters is large, the model can become unstable and overfit the data. There are more sophisticated approaches that can be used to <code class="docutils literal notranslate"><span class="pre">regularise</span></code> the model and prevent overfitting. For example, ridge regression and lasso regression. These are implemented in the <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> and <code class="docutils literal notranslate"><span class="pre">Lasso</span></code> classes in <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>. You can read about these in the Scikit Learn documentation.</p>
 </section>
 </section>
 
@@ -845,6 +852,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-2-predicting-the-future">Step 6.2 - Predicting the future</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>
 
