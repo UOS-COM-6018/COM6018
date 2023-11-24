@@ -208,6 +208,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../labs/050_using_matplotlib.html">050 Using Matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../labs/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../labs/070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/080_curve_fitting_with_sckikit_learn.html">080 Curve Fitting with Scikit Learn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
 <ul class="nav bd-sidenav">
@@ -803,7 +804,7 @@ cd math-prog/cpo-dataset/machine-learn/WDBC/
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.965034965034965
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.972027972027972
 </pre></div>
 </div>
 </div>
@@ -835,7 +836,7 @@ cd math-prog/cpo-dataset/machine-learn/WDBC/
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9300699300699301
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9440559440559441
 </pre></div>
 </div>
 </div>
@@ -979,7 +980,7 @@ cd math-prog/cpo-dataset/machine-learn/WDBC/
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;max_depth&#39;: 6, &#39;min_samples_leaf&#39;: 3, &#39;min_samples_split&#39;: 6, &#39;n_estimators&#39;: 50}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;max_depth&#39;: 6, &#39;min_samples_leaf&#39;: 3, &#39;min_samples_split&#39;: 6, &#39;n_estimators&#39;: 10}
 </pre></div>
 </div>
 </div>
@@ -1290,40 +1291,24 @@ cd math-prog/cpo-dataset/machine-learn/WDBC/
 <span class="g g-Whitespace">    </span><span class="mi">964</span>     <span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">965</span>     <span class="k">return</span> <span class="bp">self</span>
 
-<span class="nn">File /opt/homebrew/anaconda3/envs/com6018_dev/lib/python3.11/site-packages/sklearn/tree/_classes.py:229,</span> in <span class="ni">BaseDecisionTree._fit</span><span class="nt">(self, X, y, sample_weight, check_input, missing_values_in_feature_mask)</span>
-<span class="g g-Whitespace">    </span><span class="mi">221</span> <span class="k">def</span> <span class="nf">_fit</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">222</span>     <span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">223</span>     <span class="n">X</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">227</span>     <span class="n">missing_values_in_feature_mask</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">228</span> <span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">229</span>     <span class="n">random_state</span> <span class="o">=</span> <span class="n">check_random_state</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">random_state</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">231</span>     <span class="k">if</span> <span class="n">check_input</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">232</span>         <span class="c1"># Need to validate separately here.</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span>         <span class="c1"># We can&#39;t pass multi_output=True because that would allow y to be</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">236</span>         <span class="c1"># _compute_missing_values_in_feature_mask will check for finite values and</span>
-<span class="g g-Whitespace">    </span><span class="mi">237</span>         <span class="c1"># compute the missing mask if the tree supports missing values</span>
-<span class="g g-Whitespace">    </span><span class="mi">238</span>         <span class="n">check_X_params</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">239</span>             <span class="n">dtype</span><span class="o">=</span><span class="n">DTYPE</span><span class="p">,</span> <span class="n">accept_sparse</span><span class="o">=</span><span class="s2">&quot;csc&quot;</span><span class="p">,</span> <span class="n">force_all_finite</span><span class="o">=</span><span class="kc">False</span>
-<span class="g g-Whitespace">    </span><span class="mi">240</span>         <span class="p">)</span>
+<span class="nn">File /opt/homebrew/anaconda3/envs/com6018_dev/lib/python3.11/site-packages/sklearn/tree/_classes.py:372,</span> in <span class="ni">BaseDecisionTree._fit</span><span class="nt">(self, X, y, sample_weight, check_input, missing_values_in_feature_mask)</span>
+<span class="g g-Whitespace">    </span><span class="mi">366</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">367</span>         <span class="s2">&quot;Number of labels=</span><span class="si">%d</span><span class="s2"> does not match number of samples=</span><span class="si">%d</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">368</span>         <span class="o">%</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">369</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">371</span> <span class="k">if</span> <span class="n">sample_weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">372</span>     <span class="n">sample_weight</span> <span class="o">=</span> <span class="n">_check_sample_weight</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">DOUBLE</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">374</span> <span class="k">if</span> <span class="n">expanded_class_weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">375</span>     <span class="k">if</span> <span class="n">sample_weight</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 
-<span class="nn">File /opt/homebrew/anaconda3/envs/com6018_dev/lib/python3.11/site-packages/sklearn/utils/validation.py:1268,</span> in <span class="ni">check_random_state</span><span class="nt">(seed)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1266</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">mtrand</span><span class="o">.</span><span class="n">_rand</span>
-<span class="g g-Whitespace">   </span><span class="mi">1267</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Integral</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1268</span>     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1269</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1270</span>     <span class="k">return</span> <span class="n">seed</span>
+<span class="nn">File /opt/homebrew/anaconda3/envs/com6018_dev/lib/python3.11/site-packages/sklearn/utils/validation.py:1832,</span> in <span class="ni">_check_sample_weight</span><span class="nt">(sample_weight, X, dtype, copy, only_non_negative)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1830</span> <span class="k">if</span> <span class="n">sample_weight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1831</span>     <span class="n">sample_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1832</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sample_weight</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1833</span>     <span class="n">sample_weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">sample_weight</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1834</span> <span class="k">else</span><span class="p">:</span>
 
-<span class="nn">File numpy/random/mtrand.pyx:184,</span> in <span class="ni">numpy.random.mtrand.RandomState.__init__</span><span class="nt">()</span>
-
-<span class="nn">File _mt19937.pyx:132,</span> in <span class="ni">numpy.random._mt19937.MT19937.__init__</span><span class="nt">()</span>
-
-<span class="nn">File /opt/homebrew/anaconda3/envs/com6018_dev/lib/python3.11/contextlib.py:81,</span> in <span class="ni">ContextDecorator.__call__.&lt;locals&gt;.inner</span><span class="nt">(*args, **kwds)</span>
-<span class="g g-Whitespace">     </span><span class="mi">78</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">79</span> <span class="k">def</span> <span class="nf">inner</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">80</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_recreate_cm</span><span class="p">():</span>
-<span class="ne">---&gt; </span><span class="mi">81</span>         <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="nn">File &lt;frozen abc&gt;:117,</span> in <span class="ni">__instancecheck__</span><span class="nt">(cls, instance)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
