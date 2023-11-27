@@ -182,6 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/060_wrapper.html">060 An Introduction to Scikit-Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/070_wrapper.html">070 Classification with Scikit-Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/080_wrapper.html">080 Curve Fitting with Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/090_wrapper.html">090 Assignment 2 - Face Orientation Challenge</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
 <ul class="current nav bd-sidenav">
@@ -630,7 +631,7 @@ latter are NOT linearly separable from each other.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3df529e05a4f979c710c6032b50d71841ea4a50b1ed7553b0cc47f4a8e555fd2.png" src="../../_images/3df529e05a4f979c710c6032b50d71841ea4a50b1ed7553b0cc47f4a8e555fd2.png" />
+<img alt="../../_images/98508e555b22f3b44f3f0b39fdfb2089f265d5c4b2634df8ba22018ba641b3c8.png" src="../../_images/98508e555b22f3b44f3f0b39fdfb2089f265d5c4b2634df8ba22018ba641b3c8.png" />
 </div>
 </div>
 <p>Note, this is an improvement of the visualisation that we produced in the Matplotlib lab class because the diagonal elements (which only consider one feature) are displayed using histograms rather than scatter plots.</p>
@@ -648,7 +649,7 @@ latter are NOT linearly separable from each other.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/0fa4b0dfa8c5276782f696778d26d5423378536e58d5d9b4325dd1a1674bccea.png" src="../../_images/0fa4b0dfa8c5276782f696778d26d5423378536e58d5d9b4325dd1a1674bccea.png" />
+<img alt="../../_images/b320fe8a84fe7ca97107a4422376ad1fb7acc82c4e84f588dac578a50bcde8ff.png" src="../../_images/b320fe8a84fe7ca97107a4422376ad1fb7acc82c4e84f588dac578a50bcde8ff.png" />
 </div>
 </div>
 <p>Note, in the above, the <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> package is imported as <code class="docutils literal notranslate"><span class="pre">sns</span></code>. Again, this is just a convention but it is a common one and so it is a good idea to follow it.</p>
@@ -819,7 +820,7 @@ latter are NOT linearly separable from each other.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c769e6a288967edacba42d509784802736a32e89bfe4001ec84f8ddbee889fec.png" src="../../_images/c769e6a288967edacba42d509784802736a32e89bfe4001ec84f8ddbee889fec.png" />
+<img alt="../../_images/07ad262703db121b61baa79af166b8c2e2f1768e0815a1b4c2d64bb251cc3ba6.png" src="../../_images/07ad262703db121b61baa79af166b8c2e2f1768e0815a1b4c2d64bb251cc3ba6.png" />
 </div>
 </div>
 <p>To interpret the confusion matrix, we look at the <em>row</em> to see what the true class is and the <em>column</em> to see what the predicted class is. For example, the first row shows that there are 16 samples in the test set that are of class 0 (‘Setosa’). Of these, 16 were correctly classified as Setosa. The second row shows that there are 24 samples in the test set that are of class 1 (‘Versicolor’). Of these, 23 were correctly classified as ‘Versicolor’ and 1 was incorrectly classified as ‘Virginica’. The third row shows that there are 20 samples in the test set that are of class 2 (‘Virginica’). Of these, 20 were correctly classified as ‘Virginica’. The numbers on the diagonal of the matrix show the number of samples that were correctly classified. The off-diagonal elements show the number of samples that were incorrectly classified.</p>
@@ -864,7 +865,7 @@ latter are NOT linearly separable from each other.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/af24bbc14d4df890578e501fb046b592feaefa00d22aecebf59d245408e06125.png" src="../../_images/af24bbc14d4df890578e501fb046b592feaefa00d22aecebf59d245408e06125.png" />
+<img alt="../../_images/a9b57baf227ee5ce5cb382d752e0072b4985602f5a7cd035cf5e400108ba46fd.png" src="../../_images/a9b57baf227ee5ce5cb382d752e0072b4985602f5a7cd035cf5e400108ba46fd.png" />
 </div>
 </div>
 <p>To speed processing up, <code class="docutils literal notranslate"><span class="pre">cross_val_predict</span></code> can use multiple cores on the machine and you can tell it how many to use by setting the <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter. Note, in the above, the <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter of the <code class="docutils literal notranslate"><span class="pre">cross_val_predict</span></code> function is set to -1. This special values tells Scikit-Learn to use all the available cores on the machine. This can speed up the computation significantly. For this small dataset, and the simple k-nearest neighbours algorithm, it doesn’t make much difference, but for larger datasets it can make a big difference.</p>
