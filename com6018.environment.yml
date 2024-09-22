@@ -1,0 +1,18 @@
+name: com6018
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - numpy
+  - scikit-learn
+  - basemap-data-hires
+  - xlrd
+  - ipykernel
+  - matplotlib
+  - pandas
+  - docopt
+  - seaborn
+  - python=3.11
+  - notebook
+  - nb_conda_kernels
+  - jupyter_contrib_nbextensions
