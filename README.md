@@ -4,11 +4,11 @@
 
 ## Welcome
 
-This repository contains the teaching materials and other resources for the module COM6018 Data Science with Python, taught at the University of Sheffield.
+This repository contains the teaching materials and other resources for the module COM6018 Data Science with Python, taught at the University of Sheffield. If you are taking this module please see the [module website](https://vle.shef.ac.uk/ultra/courses/_108012_1/cl/outline) for more information
 
-If you are taking this module please see the [module website](https://vle.shef.ac.uk/ultra/courses/_108012_1/cl/outline) for more information and please use `git` to clone this repository to your own computer. The repository will be updated throughout the module and you will need to `git pull` regularly to get the latest materials.
+You can install the materials on your laptop use by 'cloning' this repository. If you have not used git before then please see the instructions below in the section [Using Git](#using-git) below.
 
-The materials in this repository are also available in Jupyter book format at [https://uos-com-6018.github.io/COM6018/](https://uos-com-6018.github.io/COM6018/).
+The materials in this repository are also available in Jupyter book format at [https://uos-com-6018.github.io/COM6018/](https://uos-com-6018.github.io/COM6018/). The Jupyter book is updated automatically when this repository is updated and so will show the latest version of the materials.
 
 ## Contents
 
@@ -48,3 +48,11 @@ You should now be able to open the `ipynb` files. For example, to open the first
 ```bash
 jupyter notebook  materials/labs/010_python_intro.ipynb
 ```
+
+Note, this repository will be updated with new materials regularly throughout the semester. To synchronise your local copy with the master repository run the command:
+
+```bash
+git pull
+```
+
+If you have changed any of the files you may need to `commit` your changes before you can pull the new files. If you are not sure how to do this please ask for help.
