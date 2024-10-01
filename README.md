@@ -43,10 +43,10 @@ conda env create -n com6018 -f com6018.environment.yml
 conda activate com6018
 ```
 
-You should now be able to open the `ipynb` files. For example, to open the first lab class run:
+You should now be able to open the `ipynb` files. For example, to open the first tutorial notebook, run:
 
 ```bash
-jupyter notebook  materials/labs/010_python_intro.ipynb
+jupyter notebook  materials/tutorials/010_Introducing_Python.ipynb
 ```
 
 Note, this repository will be updated with new materials regularly throughout the semester. To synchronise your local copy with the master repository run the command:
