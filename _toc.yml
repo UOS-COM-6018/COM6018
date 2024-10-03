@@ -43,10 +43,10 @@ parts:
   #      - file: materials/labs/070_classification_with_scikit_learn.ipynb
   #      - file: materials/labs/080_curve_fitting_with_scikit_learn.ipynb
   #      - file: materials/labs/090_face_orientation_estimation.ipynb
-#  - caption: Solutions
-#    chapters:
-#      - file: materials/solutions/000_Introduction.md
-#      - file: materials/solutions/010_python_intro.ipynb
+- caption: Solutions
+    chapters:
+      - file: materials/solutions/000_Introduction.md
+      - file: materials/solutions/010_python_intro.ipynb
 #      - file: materials/solutions/020_reading_data.ipynb
 #      - file: materials/solutions/030_introducing_numpy.ipynb
 #      - file: materials/solutions/040_working_with_pandas.ipynb
