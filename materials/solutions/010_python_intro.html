@@ -57,11 +57,10 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/labs/010_python_intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/solutions/010_python_intro';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="000 COM6018 Solutions" href="../solutions/000_Introduction.html" />
-    <link rel="prev" title="000 COM6018 Lab Classes" href="000_Introduction.html" />
+    <link rel="prev" title="000 COM6018 Solutions" href="000_Introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -192,14 +191,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/015_Further_Python.html">015 Further Python</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Lab Classes</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">010 Getting Started with Python</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/010_python_intro.html">010 Getting Started with Python</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../solutions/000_Introduction.html">000 COM6018 Solutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/010_python_intro.html">010 Getting Started with Python</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Solutions</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">010 Getting Started with Python</a></li>
 </ul>
 
     </div>
@@ -254,7 +253,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/labs/010_python_intro.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/solutions/010_python_intro.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -302,7 +301,7 @@
       
       
       
-      <li><a href="https://github.com/UOS-COM-6018/COM6018/edit/main/materials/labs/010_python_intro.ipynb" target="_blank"
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/edit/main/materials/solutions/010_python_intro.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -319,7 +318,7 @@
       
       
       
-      <li><a href="https://github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/labs/010_python_intro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/solutions/010_python_intro.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -349,7 +348,7 @@
       
       
       
-      <li><a href="../../_sources/materials/labs/010_python_intro.ipynb" target="_blank"
+      <li><a href="../../_sources/materials/solutions/010_python_intro.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -526,7 +525,12 @@ document.write(`
 <p>Implement your function in the cell below and then run the following cell to check that it works.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">sum_list</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
+        <span class="nb">sum</span> <span class="o">+=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="nb">sum</span>
 </pre></div>
 </div>
 </div>
@@ -538,6 +542,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">sum_list</span><span class="p">([</span><span class="o">-</span><span class="mi">100</span><span class="p">])</span> <span class="o">==</span> <span class="o">-</span><span class="mi">100</span>
 <span class="k">assert</span> <span class="n">sum_list</span><span class="p">([])</span> <span class="o">==</span> <span class="mi">0</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -553,7 +562,12 @@ document.write(`
 <p>should return <code class="docutils literal notranslate"><span class="pre">120</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">product_list</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+    <span class="n">product</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
+        <span class="n">product</span> <span class="o">*=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">product</span>
 </pre></div>
 </div>
 </div>
@@ -565,6 +579,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">product_list</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
 <span class="k">assert</span> <span class="n">product_list</span><span class="p">([])</span> <span class="o">==</span> <span class="mi">1</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -592,7 +611,13 @@ document.write(`
 <p>Implement this solution in the cell below and then run the following cell to check that it works.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">greater_than</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
 </div>
@@ -607,12 +632,19 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now, implement the <code class="docutils literal notranslate"><span class="pre">greater_than</span></code> function again but this time using a list comprehension rather than an for loop. Check the <a class="reference external" href="https://uos-com-6018.github.io/COM6018/materials/tutorials/015_Further_Python.html">tutorial on list comprehensions</a> if you are not sure how to do this. Hint, you should be able to write the function with a single line.</p>
 <p>Call your new function <code class="docutils literal notranslate"><span class="pre">greater_than_lc</span></code>, implement it in the cell below and then run the test cell to check that it works.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">greater_than_lc</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">my_list</span> <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -624,6 +656,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">greater_than_lc</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
 <span class="k">assert</span> <span class="n">greater_than_lc</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -642,10 +679,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32 ms ± 337 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> greater_than_lc(big_list, 500000)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22.2 ms ± 640 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -656,6 +703,14 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> greater_than(big_list, 1000000)
 <span class="o">%</span><span class="k">timeit</span> greater_than_lc(big_list, 1000000)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18.4 ms ± 773 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.7 ms ± 575 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -672,7 +727,9 @@ document.write(`
 <p>should return <code class="docutils literal notranslate"><span class="pre">['quick',</span> <span class="pre">'brown',</span> <span class="pre">'jumped',</span> <span class="pre">'over',</span> <span class="pre">'lazy']</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">long_words</span><span class="p">(</span><span class="n">word_list</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">word_list</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -686,6 +743,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">long_words</span><span class="p">([</span><span class="s2">&quot;hello&quot;</span><span class="p">,</span> <span class="s2">&quot;world&quot;</span><span class="p">,</span> <span class="s2">&quot;this&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">],</span> <span class="mi">5</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
 <span class="k">assert</span> <span class="n">long_words</span><span class="p">([],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -704,7 +766,12 @@ document.write(`
 <p>should return <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">find_item</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">i</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -717,6 +784,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">find_item</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">6</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
 <span class="k">assert</span> <span class="n">find_item</span><span class="p">([],</span> <span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -734,7 +806,13 @@ document.write(`
 <p>You can assume that the list being passed to the function will always contain at least one item.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">max_item</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+    <span class="nb">max</span> <span class="o">=</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="o">&gt;</span> <span class="nb">max</span><span class="p">:</span>
+            <span class="nb">max</span> <span class="o">=</span> <span class="n">item</span>
+    <span class="k">return</span> <span class="nb">max</span>
 </pre></div>
 </div>
 </div>
@@ -747,6 +825,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">max_item</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">==</span> <span class="mi">3</span>
 <span class="k">assert</span> <span class="n">max_item</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -763,7 +846,16 @@ document.write(`
 <p>Again, you can assume that the list being passed to the function will always contain at least one item.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">closest_value</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">min_diff</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span>
+    <span class="n">closest</span> <span class="o">=</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="n">diff</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">item</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">diff</span> <span class="o">&lt;</span> <span class="n">min_diff</span><span class="p">:</span>
+            <span class="n">min_diff</span> <span class="o">=</span> <span class="n">diff</span>
+            <span class="n">closest</span> <span class="o">=</span> <span class="n">item</span>
+    <span class="k">return</span> <span class="n">closest</span>
 </pre></div>
 </div>
 </div>
@@ -776,6 +868,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">closest_value</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
 <span class="k">assert</span> <span class="n">closest_value</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -794,7 +891,9 @@ document.write(`
 <p>should return <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">4,</span> <span class="pre">9,</span> <span class="pre">16,</span> <span class="pre">25]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">square_list</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -806,6 +905,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">square_list</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
 <span class="k">assert</span> <span class="n">square_list</span><span class="p">([])</span> <span class="o">==</span> <span class="p">[]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -826,7 +930,9 @@ document.write(`
 <p>For hints, see Section 3 of the tutorial on <a class="reference external" href="https://uos-com-6018.github.io/COM6018/materials/tutorials/015_Further_Python.html">Further Python</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">apply_to_list</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">]</span> 
 </pre></div>
 </div>
 </div>
@@ -841,6 +947,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">apply_to_list</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">],</span>  <span class="n">square</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
 <span class="k">assert</span> <span class="n">apply_to_list</span><span class="p">([],</span> <span class="n">square</span><span class="p">)</span> <span class="o">==</span> <span class="p">[]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -861,7 +972,15 @@ document.write(`
 <p>should return <code class="docutils literal notranslate"><span class="pre">[4,</span> <span class="pre">1,</span> <span class="pre">10,</span> <span class="pre">2,</span> <span class="pre">16]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">hailstone</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+    
+<span class="k">def</span> <span class="nf">hailstone_list</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">apply_to_list</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="n">hailstone</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -871,6 +990,11 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TESTS</span>
 <span class="k">assert</span> <span class="n">hailstone_list</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">28</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -892,7 +1016,21 @@ document.write(`
 <p>Experiment with different starting values and different numbers of iterations. What do you notice?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="k">def</span> <span class="nf">repeat_hailstone</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">hailstone_list</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">repeat_hailstone</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4.0, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 4.0, 1.0, 4.0]
 </pre></div>
 </div>
 </div>
@@ -912,7 +1050,10 @@ document.write(`
 <p>Note, your function should still work if the two lists are of different lengths.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">count_matches</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">):</span>
+    <span class="n">matched</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="n">y</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">matched</span><span class="p">)</span> 
 </pre></div>
 </div>
 </div>
@@ -926,6 +1067,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">count_matches</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span> <span class="o">==</span> <span class="mi">3</span>
 <span class="k">assert</span> <span class="n">count_matches</span><span class="p">([],</span> <span class="p">[])</span> <span class="o">==</span> <span class="mi">0</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -943,7 +1089,10 @@ document.write(`
 <p>Hint, this can be written in a couple of lines if you use list slicing. Understanding how -ve values work with list slicing is important for this problem. i.e., understand the meaning of my_list[-1:] and my_list[:-1].</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION </span>
+<span class="k">def</span> <span class="nf">rotate_list</span><span class="p">(</span><span class="n">my_list</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">my_list</span><span class="p">[</span><span class="o">-</span><span class="n">n</span><span class="p">:]</span> <span class="o">+</span> <span class="n">my_list</span><span class="p">[:</span><span class="o">-</span><span class="n">n</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -962,6 +1111,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="aligning-two">
@@ -974,7 +1128,16 @@ document.write(`
 <p>Hint, you can use the <code class="docutils literal notranslate"><span class="pre">rotate_list</span></code> and <code class="docutils literal notranslate"><span class="pre">count_matches</span></code> functions you wrote above to help you solve this problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">align_lists</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">):</span>
+    <span class="n">best_shift</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">best_matches</span> <span class="o">=</span> <span class="n">count_matches</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">list1</span><span class="p">)):</span>
+        <span class="n">matches</span> <span class="o">=</span> <span class="n">count_matches</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">rotate_list</span><span class="p">(</span><span class="n">list2</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">matches</span> <span class="o">&gt;</span> <span class="n">best_matches</span><span class="p">:</span>
+            <span class="n">best_matches</span> <span class="o">=</span> <span class="n">matches</span>
+            <span class="n">best_shift</span> <span class="o">=</span> <span class="n">i</span>  
+    <span class="k">return</span> <span class="n">best_shift</span>
 </pre></div>
 </div>
 </div>
@@ -987,6 +1150,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">align_lists</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="mi">4</span>
 <span class="k">assert</span> <span class="n">align_lists</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -1018,6 +1186,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Original sequences:
+GAATGCGGGGTAAAAAATGGCACTTAACCCTTCAAATGACGACCCTGCCTGAGCTGCCGCCGGAAGAGCGTCCGGCAGCT
+GGGTAAAAAAGGGCACTTAACCCTTCAGATGACGACCCTGCGTGAGCTGCCGCCAGAAGAGCGTCCGGCAGCTGGTGCGG
+These sequences have a match score of 25.0 %
+
+
+After shifting the second sequence 7 positions:
+GAATGCGGGGTAAAAAATGGCACTTAACCCTTCAAATGACGACCCTGCCTGAGCTGCCGCCGGAAGAGCGTCCGGCAGCT
+GGTGCGGGGGTAAAAAAGGGCACTTAACCCTTCAGATGACGACCCTGCGTGAGCTGCCGCCAGAAGAGCGTCCGGCAGCT
+These sequences have a match score of 88.75 %
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1032,7 +1214,9 @@ document.write(`
 <p>If the lists have unequal lengths the returned list should be the same length as the shorter list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">multiply_lists</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">)]</span>    
 </pre></div>
 </div>
 </div>
@@ -1046,6 +1230,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">multiply_lists</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
 <span class="k">assert</span> <span class="n">multiply_lists</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[])</span> <span class="o">==</span> <span class="p">[]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -1064,7 +1253,9 @@ document.write(`
 <p>should return <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">4,</span> <span class="pre">6,</span> <span class="pre">4,</span> <span class="pre">5]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">apply_to_lists</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list1</span><span class="p">,</span> <span class="n">list2</span><span class="p">)]</span>    
 </pre></div>
 </div>
 </div>
@@ -1075,6 +1266,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">apply_to_lists</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">250</span><span class="p">]</span>
 <span class="k">assert</span> <span class="n">apply_to_lists</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">55</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>   
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -1095,6 +1291,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1111,7 +1312,9 @@ document.write(`
 <p>Hint: this problem can be solved trivially with a single line of code if you use a set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">count_unique</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">my_list</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1124,6 +1327,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">count_unique</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">==</span> <span class="mi">5</span>
 <span class="k">assert</span> <span class="n">count_unique</span><span class="p">([])</span> <span class="o">==</span> <span class="mi">0</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -1140,7 +1348,15 @@ document.write(`
 <p>Hint: You will want to use the split() function to split the text into words. You will also want to use the lower() function to convert all the words to lower case so that words that differ only in case are counted as the same word. You will also want to use the strip() function to remove punctuation from the words. If you <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">string</span></code>, you can then use the <code class="docutils literal notranslate"><span class="pre">string.punctuation</span></code> variable to get a string containing all the punctuation characters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="k">def</span> <span class="nf">get_unique_words</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">]</span>
+    <span class="c1"># Remove any strings that have become empty</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span> <span class="k">if</span> <span class="n">word</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1157,6 +1373,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="finding-the-set-of-words-that-are-shared-between-two-text-passages">
@@ -1169,7 +1390,11 @@ document.write(`
 <p>should return <code class="docutils literal notranslate"><span class="pre">['the',</span> <span class="pre">'brown',</span> <span class="pre">'dog']</span></code> because these are the words that are shared between the two texts.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">shared_words</span><span class="p">(</span><span class="n">text1</span><span class="p">,</span> <span class="n">text2</span><span class="p">):</span>
+    <span class="n">set1</span> <span class="o">=</span> <span class="n">get_unique_words</span><span class="p">(</span><span class="n">text1</span><span class="p">)</span>
+    <span class="n">set2</span> <span class="o">=</span> <span class="n">get_unique_words</span><span class="p">(</span><span class="n">text2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">set1</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">set2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1180,6 +1405,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">shared_words</span><span class="p">(</span><span class="s1">&#39;The quick brown fox jumped over the lazy dog.&#39;</span><span class="p">,</span> <span class="s1">&#39;the lazy brown dog sat in the sun&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;the&#39;</span><span class="p">,</span> <span class="s1">&#39;lazy&#39;</span><span class="p">,</span> <span class="s1">&#39;brown&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">}</span>
 <span class="k">assert</span> <span class="n">shared_words</span><span class="p">(</span><span class="s1">&#39;These two strings&#39;</span><span class="p">,</span> <span class="s1">&#39;have no shared words&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -1195,7 +1425,11 @@ document.write(`
 <p>should return <code class="docutils literal notranslate"><span class="pre">{'quick',</span> <span class="pre">'fox',</span> <span class="pre">'jumped',</span> <span class="pre">'over'}</span></code> because these are the words that occur in the first text but not the second.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">non_shared_words</span><span class="p">(</span><span class="n">text1</span><span class="p">,</span> <span class="n">text2</span><span class="p">):</span>
+    <span class="n">set1</span> <span class="o">=</span> <span class="n">get_unique_words</span><span class="p">(</span><span class="n">text1</span><span class="p">)</span>
+    <span class="n">set2</span> <span class="o">=</span> <span class="n">get_unique_words</span><span class="p">(</span><span class="n">text2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">set1</span> <span class="o">-</span> <span class="n">set2</span>  
 </pre></div>
 </div>
 </div>
@@ -1209,6 +1443,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">non_shared_words</span><span class="p">(</span><span class="s1">&#39;1 2 3 4 5&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">}</span>
 <span class="k">assert</span> <span class="n">non_shared_words</span><span class="p">(</span><span class="s1">&#39;1 2 3 4 5&#39;</span><span class="p">,</span> <span class="s1">&#39;1 2 3 4 5&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="nb">set</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -1228,7 +1467,9 @@ document.write(`
 <p>This is a trivial function that is just a single line of code. This is just an exercise. It wouldn’t be useful in a real program.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">has_key</span><span class="p">(</span><span class="n">dictionary</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dictionary</span>
 </pre></div>
 </div>
 </div>
@@ -1239,6 +1480,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">has_key</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span>
 <span class="k">assert</span> <span class="n">has_key</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -1254,7 +1500,15 @@ document.write(`
 <p>should return <code class="docutils literal notranslate"><span class="pre">{'a':</span> <span class="pre">4,</span> <span class="pre">'b':</span> <span class="pre">2,</span> <span class="pre">'c':</span> <span class="pre">1,</span> <span class="pre">'d':</span> <span class="pre">1}</span></code> because <code class="docutils literal notranslate"><span class="pre">'a'</span></code> occurs four times, <code class="docutils literal notranslate"><span class="pre">'b'</span></code> occurs twice, <code class="docutils literal notranslate"><span class="pre">'c'</span></code> and <code class="docutils literal notranslate"><span class="pre">'d'</span></code> occur once.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">count_occurrences</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">:</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">counts</span><span class="p">[</span><span class="n">item</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">counts</span>
 </pre></div>
 </div>
 </div>
@@ -1266,6 +1520,11 @@ document.write(`
 <span class="k">assert</span> <span class="n">count_occurrences</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
 <span class="k">assert</span> <span class="n">count_occurrences</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">20</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">30</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -1303,7 +1562,38 @@ document.write(`
 <p>:warning: This is a difficult problem. Don’t worry if you can’t solve it. Some hints: a function can be defined inside a function and returned. Try writing it for a specifically for the ‘add’ function first. Then try to make it work for any function. If you get stuck just skip and go onto the next problem. Study the solution when it is posted.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">cache</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A function that takes a function as an argument and returns a new function that caches the results of the function calls. If the function is called again with the same arguments, the cached result is returned instead of calling the function again.</span>
+
+<span class="sd">    For example:</span>
+
+<span class="sd">    &gt;&gt;&gt; def add(x, y):</span>
+<span class="sd">    ...     print(&#39;called add&#39;)</span>
+<span class="sd">    ...     return x + y</span>
+<span class="sd">    &gt;&gt;&gt; cached_add = cache(add)</span>
+<span class="sd">    &gt;&gt;&gt; cached_add(1, 2)</span>
+<span class="sd">    called add</span>
+<span class="sd">    3</span>
+<span class="sd">    &gt;&gt;&gt; cached_add(1, 2)</span>
+<span class="sd">    3</span>
+<span class="sd">    &gt;&gt;&gt; cached_add(2, 3)</span>
+<span class="sd">    called add</span>
+<span class="sd">    5</span>
+<span class="sd">    &gt;&gt;&gt; cached_add(2, 3)</span>
+<span class="sd">    5</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cache</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">def</span> <span class="nf">cached_func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">cache</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;retrieved from cache&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">cache</span><span class="p">[</span><span class="n">args</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;called function&quot;</span><span class="p">)</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+            <span class="n">cache</span><span class="p">[</span><span class="n">args</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
+            <span class="k">return</span> <span class="n">result</span>
+    <span class="k">return</span> <span class="n">cached_func</span>
 </pre></div>
 </div>
 </div>
@@ -1320,6 +1610,15 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>called function
+retrieved from cache
+called function
+retrieved from cache
+All tests passed
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="map-two-lists-into-a-dictionary">
@@ -1332,7 +1631,9 @@ document.write(`
 <p>should return <code class="docutils literal notranslate"><span class="pre">{'a':</span> <span class="pre">1,</span> <span class="pre">'b':</span> <span class="pre">2,</span> <span class="pre">'c':</span> <span class="pre">3}</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">make_dictionary</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1342,6 +1643,11 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TESTS</span>
 <span class="k">assert</span> <span class="n">make_dictionary</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -1357,7 +1663,15 @@ document.write(`
 <p>should return <code class="docutils literal notranslate"><span class="pre">{'a':</span> <span class="pre">5,</span> <span class="pre">'b':</span> <span class="pre">7,</span> <span class="pre">'c':</span> <span class="pre">3,</span> <span class="pre">'d':</span> <span class="pre">6}</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">merge_dictionaries</span><span class="p">(</span><span class="n">dict1</span><span class="p">,</span> <span class="n">dict2</span><span class="p">):</span>
+    <span class="n">dict_new</span> <span class="o">=</span> <span class="n">dict1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">dict2</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">dict_new</span><span class="p">:</span>
+            <span class="n">dict_new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dict_new</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="k">return</span> <span class="n">dict_new</span>
 </pre></div>
 </div>
 </div>
@@ -1374,6 +1688,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="merging-a-list-of-dictionaries">
@@ -1387,7 +1706,12 @@ document.write(`
 <p>You can use your <code class="docutils literal notranslate"><span class="pre">merge_dictionaries</span></code> function from the previous problem to help you solve this problem.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">merge_list_of_dictionaries</span><span class="p">(</span><span class="n">list_of_dicts</span><span class="p">):</span>
+    <span class="n">dict_new</span> <span class="o">=</span> <span class="n">list_of_dicts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="nb">dict</span> <span class="ow">in</span> <span class="n">list_of_dicts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="n">dict_new</span> <span class="o">=</span> <span class="n">merge_dictionaries</span><span class="p">(</span><span class="n">dict_new</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dict_new</span>
 </pre></div>
 </div>
 </div>
@@ -1397,6 +1721,11 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TESTS</span>
 <span class="k">assert</span> <span class="n">merge_list_of_dictionaries</span><span class="p">([{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}])</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
 </pre></div>
 </div>
 </div>
@@ -1419,7 +1748,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./materials/labs"
+            path: "./materials/solutions"
         },
         predefinedOutput: true
     }
@@ -1442,17 +1771,8 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">000 COM6018 Lab Classes</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../solutions/000_Introduction.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">000 COM6018 Solutions</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
