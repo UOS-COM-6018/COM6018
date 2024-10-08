@@ -1,0 +1,1042 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>020 Reading data &#8212; COM6018 - Data Science with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/labs/020_reading_data';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="000 COM6018 Solutions" href="../solutions/000_Introduction.html" />
+    <link rel="prev" title="010 Getting Started with Python" href="010_python_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="COM6018 - Data Science with Python - Home"/>
+    <script>document.write(`<img src="../../_static/uos_logo_for_dark.png" class="logo__image only-dark" alt="COM6018 - Data Science with Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    The COM6018 module book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/000_Introduction.html">000 COM6018 Lecture Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/010_wrapper.html">010 Welcome to COM6018</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/015_wrapper.html">015 Getting set up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/020_wrapper.html">020 Using Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/025_wrapper.html">025 Reading and Writing Data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/000_Introduction.html">000 COM6018 Course Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/010_Introducing_Python.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/015_Further_Python.html">015 Further Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/020_Reading_Data.html">020 Reading and Writing Data Files</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">020 Reading data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../solutions/000_Introduction.html">000 COM6018 Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/010_python_intro.html">010 Getting Started with Python</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/labs/020_reading_data.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/edit/main/materials/labs/020_reading_data.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/labs/020_reading_data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/materials/labs/020_reading_data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>020 Reading data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-reading-the-co2-data">Step 1 - Reading the CO2 data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-reading-the-ch4-data">Step 2 - Reading the CH4 data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-simplifying-the-data">Step 3 - Simplifying the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-dealing-with-missing-values">Step 4 - Dealing with missing values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-fixing-the-data-types">Step 5 - Fixing the data types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-1-fixing-the-types">Step 5.1 - Fixing the types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-2-fixing-the-units">Step 5.2 - Fixing the units</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-making-an-index">Step 6 - Making an index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-joining-the-data">Step 7 - Joining the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-1-the-naive-algorithm">Step 7.1 - The naive algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-2-a-more-efficient-way-to-join-data">Step 7.2 - A more efficient way to join data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-processing-the-data">Step 8 - Processing the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-plotting-the-data">Step 9 – Plotting the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-2-making-a-meaningful-time-axis">Step 9.2 - Making a meaningful time axis</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="reading-data">
+<h1>020 Reading data<a class="headerlink" href="#reading-data" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>COM6018</p>
+</div></blockquote>
+<p><em>Copyright © 2023, 2024 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
+<p>In this lab class, we are going to be working with some real datasets that store atmospheric carbon dioxide and methane concentrations measured over several decades. We will read the data from csv files and do all the data processing using the Python standard library and ideas that we saw in the previous lab class. Our aim will be to plot an easily interpretable graph that shows how the concentration of these gases has changed over time.</p>
+<p>If you have used numpy and pandas packages before, you may realise that these would make this task easier, and indeed, this is the basic point of this lab. By first seeing how things would be done in pure Python, we will better appreciate the benefits of using specialised data science packages when we come to study them in the next couple of weeks.</p>
+<section id="step-1-reading-the-co2-data">
+<h2>Step 1 - Reading the CO2 data<a class="headerlink" href="#step-1-reading-the-co2-data" title="Link to this heading">#</a></h2>
+<p>The data is stored in two files.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data/co2.csv</span></code>  - the carbon diaoxide data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data/ch4.csv</span></code>  - the methane data</p></li>
+</ul>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">read_co2_csv</span></code> that takes the file name and returns a list of dictionaries storing the data. i.e. the ‘co2.csv’ file would be read with,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">co2_data</span> <span class="o">=</span> <span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/co2.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Hint: Use the csv.DictReader function and refer to the course notes if necessary.  You will need to manually set the fieldnames parameter of the csv.DictReader to the correct value, i.e., <code class="docutils literal notranslate"><span class="pre">['Yr',</span> <span class="pre">'Mn',</span> <span class="pre">'Dy',</span> <span class="pre">'CO2',</span> <span class="pre">'NB',</span> <span class="pre">'scale',</span> <span class="pre">'sta']</span></code></p>
+<p>You will also find that the first twenty or so items are not valid because the csv file has ‘comment lines’ starting with a ‘%’ symbol. DictReader does not know how to skip these lines and will try to read them as data.  Try to think how you can filter out these entries in a general way. If you can’t manage this just count how many invalid lines there are and remove them from the list of dictionaries before returning the list from your function eg.  list_of_dicts = list_of_dicts[12:]</p>
+<p>After you have written your function, run the test cell below to check that it works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="n">co2_data</span> <span class="o">=</span> <span class="n">read_co2_csv</span><span class="p">(</span><span class="s1">&#39;data/co2.csv&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">co2_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;Yr&#39;</span><span class="p">:</span> <span class="s1">&#39;1958&#39;</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">:</span> <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">:</span> <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;CO2&#39;</span><span class="p">:</span> <span class="s1">&#39;NaN&#39;</span><span class="p">,</span> <span class="s1">&#39;NB&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="s1">&#39;12.0&#39;</span><span class="p">,</span> <span class="s1">&#39;sta&#39;</span><span class="p">:</span><span class="s1">&#39;mlo&#39;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-reading-the-ch4-data">
+<h2>Step 2 - Reading the CH4 data<a class="headerlink" href="#step-2-reading-the-ch4-data" title="Link to this heading">#</a></h2>
+<p>The methane data ‘data/ch4.csv’ comes from another source and the file has a slightly different format. This time, comment lines start with a ‘#’ symbol. There are 148 lines of comments at the start of the file. The 149th line contains the field names. The data start on the 150th line. The fields are separated by spaces rather than commas.</p>
+<p>Write a function called ‘read_ch4_csv’ that takes the file name and returns a list of dictionaries that store the data. i.e. the ‘ch4.csv’ file would be read with,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ch4_data</span> <span class="o">=</span> <span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/ch4.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="n">ch4_data</span> <span class="o">=</span> <span class="n">read_ch4_csv</span><span class="p">(</span><span class="s1">&#39;data/ch4.csv&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">ch4_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;site_code&#39;</span><span class="p">:</span> <span class="s1">&#39;MLO&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="s1">&#39;1987&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;hour&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;minute&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;second&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;datetime&#39;</span><span class="p">:</span> <span class="s1">&#39;1987-01-01T00:00:00Z&#39;</span><span class="p">,</span> <span class="s1">&#39;time_decimal&#39;</span><span class="p">:</span> <span class="s1">&#39;1987.0&#39;</span><span class="p">,</span> <span class="s1">&#39;midpoint_time&#39;</span><span class="p">:</span> <span class="s1">&#39;536500800&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;-999.99&#39;</span><span class="p">,</span> <span class="s1">&#39;value_std_dev&#39;</span><span class="p">:</span> <span class="s1">&#39;-99.99&#39;</span><span class="p">,</span> <span class="s1">&#39;nvalue&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="s1">&#39;19.536&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="s1">&#39;-155.576&#39;</span><span class="p">,</span> <span class="s1">&#39;altitude&#39;</span><span class="p">:</span> <span class="s1">&#39;3387.1&#39;</span><span class="p">,</span> <span class="s1">&#39;elevation&#39;</span><span class="p">:</span> <span class="s1">&#39;3397.0&#39;</span><span class="p">,</span> <span class="s1">&#39;intake_height&#39;</span><span class="p">:</span> <span class="s1">&#39;-9.9&#39;</span><span class="p">,</span> <span class="s1">&#39;qcflag&#39;</span><span class="p">:</span> <span class="s1">&#39;*..&#39;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-simplifying-the-data">
+<h2>Step 3 - Simplifying the data<a class="headerlink" href="#step-3-simplifying-the-data" title="Link to this heading">#</a></h2>
+<p>Now that we have read the two datasets into memory, we need to simplify them. You will see that the two datasets have a lot of different fields. We are only interested in the date and the concentration of the gas. It would be convenient to convert both datasets into a common format, i.e., a list of dictionaries with just four fields, ‘year’, ‘month’, ‘day’ and ‘co2_concentration’ (or ‘ch4_concentration’)</p>
+<p>Note that these fields have different names in the two datasets. In the co2 data they are called ‘Yr’, ‘Mn’, ‘Dy’ and ‘CO2’. In the ch4 data they are called ‘year’, ‘month’, ‘day’ and ‘value’.</p>
+<p>Write a function called ‘simplify_data’ that takes two parameters: a list of dictionaries and a parameter called ‘fields’. The fields parameter should be a dictionary that maps the field names in the original data to the field names in the simplified data. The function should return a list of dictionaries with the simplified data.</p>
+<p>For example, the co2 data would be simplified with the following call,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">co2_data</span> <span class="o">=</span> <span class="n">simplify_data</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Yr&#39;</span><span class="p">:</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">:</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">:</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;CO2&#39;</span><span class="p">:</span><span class="s1">&#39;co2_concentration&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>and the ch4 data would be simplified with the following call,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ch4_data</span> <span class="o">=</span> <span class="n">simplify_data</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="n">ch4_data</span> <span class="o">=</span> <span class="n">simplify_data</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">})</span>
+<span class="n">co2_data</span> <span class="o">=</span> <span class="n">simplify_data</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Yr&#39;</span><span class="p">:</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">:</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">:</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;CO2&#39;</span><span class="p">:</span><span class="s1">&#39;co2_concentration&#39;</span><span class="p">})</span>
+
+<span class="k">assert</span> <span class="n">ch4_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="s1">&#39;1987&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span> <span class="s1">&#39;-999.99&#39;</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">co2_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="s1">&#39;1958&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span> <span class="s1">&#39;NaN&#39;</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4-dealing-with-missing-values">
+<h2>Step 4 - Dealing with missing values<a class="headerlink" href="#step-4-dealing-with-missing-values" title="Link to this heading">#</a></h2>
+<p>The next thing to note is that the data are incomplete. For some days there is no concentration data. In the ch4 data, these missing values are indicated by a value of -999.99. In the co2 data, these missing values are indicated by a value of ‘NaN’. In the next step, we are simply going to remove these entries from the list of dictionaries.</p>
+<p>Write a function called ‘remove_missing_values’ that takes a list of dictionaries and a parameter called ‘missing_value’. The ‘missing_value’ is the value that is used to mark missing data, i.e. ‘NaN’ for the co2 data. The function should return a list of dictionaries in which any entries that have missing values have been removed. Note that the missing values appear in the ‘concentration’ field in this case, but the function should check all the fields; if any field has a missing value, the whole entry should be removed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="n">ch4_data</span> <span class="o">=</span> <span class="n">remove_missing_values</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">,</span> <span class="s1">&#39;-999.99&#39;</span><span class="p">)</span>
+<span class="n">co2_data</span> <span class="o">=</span> <span class="n">remove_missing_values</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="s1">&#39;NaN&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">12728</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">co2_data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">18056</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-5-fixing-the-data-types">
+<h2>Step 5 - Fixing the data types<a class="headerlink" href="#step-5-fixing-the-data-types" title="Link to this heading">#</a></h2>
+<section id="step-5-1-fixing-the-types">
+<h3>Step 5.1 - Fixing the types<a class="headerlink" href="#step-5-1-fixing-the-types" title="Link to this heading">#</a></h3>
+<p>You will notice that all the values in the data are strings. We need to convert them to the appropriate data types. For example, the year, month and date should all be integers, the concentration should be a float.</p>
+<p>Write a function called ‘fix_data_types’ that takes a list of dictionaries and a parameter called field_types. The field_types parameter is a dictionary that maps field names to the appropriate data type. The function should return a list of dictionaries in which the values have been converted to the appropriate data types.</p>
+<p>For example, the co2 data would be converted with the following call,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">co2_data</span> <span class="o">=</span> <span class="n">fix_data_types</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span><span class="nb">float</span><span class="p">})</span>
+</pre></div>
+</div>
+<p>Note that a variable’s type can be changed with the following syntax,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or, if the type int is stored as a variable called ‘my_type’,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_type</span> <span class="o">=</span> <span class="nb">int</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">my_type</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="n">ch4_data</span> <span class="o">=</span> <span class="n">fix_data_types</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span><span class="nb">float</span><span class="p">})</span>
+<span class="n">co2_data</span> <span class="o">=</span> <span class="n">fix_data_types</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span><span class="nb">float</span><span class="p">})</span>
+<span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;year&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="nb">int</span>
+<span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;month&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="nb">int</span>
+<span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;day&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="nb">int</span>
+<span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="nb">float</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-5-2-fixing-the-units">
+<h3>Step 5.2 - Fixing the units<a class="headerlink" href="#step-5-2-fixing-the-units" title="Link to this heading">#</a></h3>
+<p>There is a small detail that we must not overlook. The co2 data and ch4 data both have entries called ‘co2_concentration’ and ‘ch4_concentration’ respectively. However, the units of these values are different. The co2 data are expressed as parts per million (ppm) and the ch4 data is expressed as parts per billion (ppb). To avoid confusion later, we need to convert the ch4 data to ppm.</p>
+<p>We could write a general function to do this but to keep things simple we’ll write a function called ‘convert_ch4_concentration_to_ppm’ that takes a list of dictionaries and converts the ‘ch4_concentration’ field to ppm by dividing its value by 1000. The function should return a list of dictionaries in which the ‘ch4_concentration’ field has been converted to ppm.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="n">ch4_data</span> <span class="o">=</span> <span class="n">convert_ch4_concentration_to_ppm</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">ch4_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.70002</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="step-6-making-an-index">
+<h2>Step 6 - Making an index<a class="headerlink" href="#step-6-making-an-index" title="Link to this heading">#</a></h2>
+<p>In the next, step we are going to combine the co2 and ch4 data into a single list of dictionaries with entries for year, month, day, co2 concentration and ch4 concentration.</p>
+<p>This is not entirely straightforward because we can not assume that all dates have both a co2 and a ch4 reading and we can’t assume that the data are in the same order in both lists. In fact, you will see that the co2 data starts and 1958 and the ch4 data starts in 1987.</p>
+<p>In order to match up the entries, we will add an index to each dictionary. The index is a field that has a unique value and will be the same when both entries correspond to each other, i.e., in this case it can be made by combining the year, month and day fields into a single data string. e.g ‘1958-3-29’.</p>
+<p>Write a function called ‘make_index’ that takes a list of dictionaries and a parameter called index_fields. The index_fields parameter is a list of the names of the fields to use to form the index. It should return a list of dictionaries with an extra field called ‘index’. The value of the index field should be a string made by combining the values of the index_fields with a ‘-’ character between them.</p>
+<p>For example, the co2 data would be converted with the following call,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">co2_data</span> <span class="o">=</span> <span class="n">make_index</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>After this is done, the co2_data will be a list of dictionaries with entries that look like,</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;year&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1958</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;month&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;day&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;concentration&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">315.71</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1958-3-29&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">co2_data</span> <span class="o">=</span> <span class="n">make_index</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">])</span>
+<span class="n">ch4_data</span> <span class="o">=</span> <span class="n">make_index</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">])</span>
+<span class="k">assert</span> <span class="n">co2_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1958</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span> <span class="mf">316.16</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;1958-3-30&#39;</span><span class="p">}</span>
+<span class="k">assert</span> <span class="n">ch4_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1987</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span> <span class="mf">1.70002</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;1987-4-3&#39;</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-7-joining-the-data">
+<h2>Step 7 - Joining the data<a class="headerlink" href="#step-7-joining-the-data" title="Link to this heading">#</a></h2>
+<section id="step-7-1-the-naive-algorithm">
+<h3>Step 7.1 - The naive algorithm<a class="headerlink" href="#step-7-1-the-naive-algorithm" title="Link to this heading">#</a></h3>
+<p>Now that we have an index, we can join the two datasets together. We will do this by creating a new list of dictionaries with entries for year, month, day, co2 concentration and ch4 concentration.</p>
+<p>This is potentially a computationally expensive process. We will do it in a naive way first and then we will implement a more efficient algorithm.</p>
+<p>When performing the merge, we are looking for index entries that appear in both datasets.</p>
+<p>The basic approach requires a nested loop:</p>
+<ul class="simple">
+<li><p>For each entry in the first dataset</p>
+<ul>
+<li><p>take the index (call this index1)</p></li>
+<li><p>for each entry in the second dataset</p>
+<ul>
+<li><p>take the index (call this index2)</p></li>
+<li><p>if index1 == index2</p>
+<ul>
+<li><p>create a new entry in the merged dataset with the fields from the first dataset and the fields from the second dataset</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Write a function called ‘join_data’ that takes two lists of dictionaries and returns a list of dictionaries with the merged data. The function should use the naive algorithm described above.</p>
+<p>Note that this might take a while to run. It takes about 7 seconds on my Macbook Pro.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+
+<span class="n">joined_data</span> <span class="o">=</span> <span class="n">join_data</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="n">ch4_data</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">joined_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1987</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span> <span class="mf">350.84</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;1987-4-3&#39;</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span> <span class="mf">1.70002</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-7-2-a-more-efficient-way-to-join-data">
+<h3>Step 7.2 - A more efficient way to join data<a class="headerlink" href="#step-7-2-a-more-efficient-way-to-join-data" title="Link to this heading">#</a></h3>
+<p>The previous algorithm is very inefficient because it has a nested loop that needs to run over all the entries in both datasets. This will be slow and, worse, it will scale with the order of the product of the number of entries in the two datasets.</p>
+<p>A more efficient approach is to make use of the fact that the index is unique. Rather than having to look through the second list to find the index, we could store that list as a dictionary, i.e. using the index as the key and the data entry’s dictionary as the value.</p>
+<p>The new algorithm would be:</p>
+<ul class="simple">
+<li><p>convert the second list of dictionaries into a dictionary with the index as the key (call this index_dict)</p></li>
+<li><p>for each entry in the first list of dictionaries</p>
+<ul>
+<li><p>take the index (call this index1)</p></li>
+<li><p>Lookup index1 in the index_dict, if it exists</p>
+<ul>
+<li><p>create a new entry in the merged dataset with the fields from the first entry</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Write a function called ‘join_data_fast’ that takes two lists of dictionaries and returns a list of dictionaries with the merged data using this faster approach.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="n">joined_data</span> <span class="o">=</span> <span class="n">join_data_fast</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="n">ch4_data</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">joined_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1987</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span> <span class="mf">350.84</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;1987-4-3&#39;</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span> <span class="mf">1.70002</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can time the two functions using the special <code class="docutils literal notranslate"><span class="pre">%timeit</span></code> function that is available in the Jupyter environment. For example, you can time the two functions with the following commands,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">timeit</span> <span class="n">join_data</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="n">ch4_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">timeit</span> <span class="n">join_data_fast</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="n">ch4_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Try this in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>On my Macbook Pro, the first approach takes about 6 seconds to complete and the second takes about 3 milliseconds. That’s a speed up of 2000 times!</p>
+<p>Using the right algorithm can make a huge difference to the performance of your code. Fortunately, we do not normally need to worry about this. Later in the module, we will be using Pandas for this type of processing. Not only does it have all these algorithms built in, it is written in C, which makes it much faster than Python.</p>
+</section>
+</section>
+<section id="step-8-processing-the-data">
+<h2>Step 8 - Processing the data<a class="headerlink" href="#step-8-processing-the-data" title="Link to this heading">#</a></h2>
+<p>Now that we have transformed the data into a single, simple format, we can start to do some analysis.</p>
+<p>Our first task will be to reduce the concentrations of co2 and ch4 into a single value. We are particularly interested in the warming effect that these gases have. For a given concentration, the warming effect of ch4 is much greater than that of co2, however, the picture is a bit complicated because ch4 also breaks down much faster than co2. These two effects can be combined into one number called the ‘Global Warming Potential’ (GWP). The GWP is a measure of the total warming effect of a gas over a given time period. The GWP of co2 is defined to be 1, the GWP of ch4 is 25. Using this, we can calculate the total warming effect of a given concentration of ch4 by multiplying the concentration by 25. This is called the ‘CO2 equivalent’ (CO2e) concentration. We can then just sum the CO2e values for all the gases that we want to consider.</p>
+<p>So let us add a new field to our data called co2e which will be formed by summing the co2 and ch4 concentrations multiplied by their GWP (i.e., 1 and 4 respectively).</p>
+<p>Write a function called ‘add_co2e’ that takes a list of dictionaries and returns a list of dictionaries with an extra field called ‘co2e’. The value of the co2e field should be the sum of the concentrations of co2 and ch4 multiplied by their GWP.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST </span>
+<span class="n">co2e_data</span> <span class="o">=</span> <span class="n">add_co2e</span><span class="p">(</span><span class="n">joined_data</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">co2e_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;co2e&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">393.34049999999996</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-9-plotting-the-data">
+<h2>Step 9 – Plotting the data<a class="headerlink" href="#step-9-plotting-the-data" title="Link to this heading">#</a></h2>
+<p>We are now ready to try and plot the data. We want to see a graph of the co2e concentration over time.</p>
+<p>We will perform the plot using the matplotlib library. This is a very powerful library for plotting data. It is also very complicated. Today, we will only be using a small part of its functionality. We will look at how to use its more advanced features later in the module.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;co2_concentration&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">co2e_data</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;co2e&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">co2e_data</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="step-9-2-making-a-meaningful-time-axis">
+<h3>Step 9.2 - Making a meaningful time axis<a class="headerlink" href="#step-9-2-making-a-meaningful-time-axis" title="Link to this heading">#</a></h3>
+<p>In the previous plot, the x-axis is just the index number of the dictionary entry, i.e. it runs from 0 to about 9000. The plot makes some sort of sense because the data are sorted by date, but it would be much better if we could have a time axis that shows the date more meanigfully. One way to do this is to plot the data against a floating point number that represents the day in units of years in a fractional way, i.e. 1985.5 would be half way through 1985. This is called the ‘decimal year’ and it is a common way to plot time series data. Let us write a function that takes the year, month and day and returns the decimal year.</p>
+<p>Write a function called ‘get_decimal_year’ that takes three parameters, year, month and day, and returns the decimal year. This is complicated by the fact that the months have different numbers of days. For your function, simplify it by considering all months to be exactly 1/12 of a year and all days to be exactly 1/365 of a year. This is not exactly correct, but it is good enough for our purposes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">get_decimal_year</span><span class="p">(</span><span class="mi">1958</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">get_decimal_year</span><span class="p">(</span><span class="mi">1958</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1958.2461187214612</span>
+<span class="k">assert</span> <span class="n">get_decimal_year</span><span class="p">(</span><span class="mi">1987</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1987</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now write a function called add_decimal_year that adds a decimal_year field to each row of data. You can use the get_decimal_year function that you just wrote.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="n">co2e_data</span> <span class="o">=</span> <span class="n">add_decimal_year</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">])</span>
+<span class="k">assert</span> <span class="n">co2e_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1987.2554794520547</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will now replot the data using the decimal year for the x-axis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">co2e_data</span><span class="p">],</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;co2e&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">co2e_data</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">co2e_data</span><span class="p">],</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;co2_concentration&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">co2e_data</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The plot below shows only the methane concentration over time. Note how it was rising during the 1990’s and then seemed to level off during the 2000’s. But, alarmingly, it started to rapidly rise again from about 2007 onwards. This is a worrying trend. As you can see from the previous plot, although methane concentrations are much lower than co2 concentrations, they make a significant contribution to the total global warming potential – equivalent to more than 50 ppm of CO2, or two decades worth of increases in CO2 emissions at current rates. So, rapid increases in methane concentrations are a major concern.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">co2e_data</span><span class="p">],</span> <span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">co2e_data</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><em>Copyright © 2023, 2024 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "conda-env-com6018_dev-py"
+        },
+        kernelOptions: {
+            name: "conda-env-com6018_dev-py",
+            path: "./materials/labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'conda-env-com6018_dev-py'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="010_python_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">010 Getting Started with Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../solutions/000_Introduction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">000 COM6018 Solutions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-reading-the-co2-data">Step 1 - Reading the CO2 data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-reading-the-ch4-data">Step 2 - Reading the CH4 data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-simplifying-the-data">Step 3 - Simplifying the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-dealing-with-missing-values">Step 4 - Dealing with missing values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-fixing-the-data-types">Step 5 - Fixing the data types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-1-fixing-the-types">Step 5.1 - Fixing the types</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-2-fixing-the-units">Step 5.2 - Fixing the units</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-making-an-index">Step 6 - Making an index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-joining-the-data">Step 7 - Joining the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-1-the-naive-algorithm">Step 7.1 - The naive algorithm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-2-a-more-efficient-way-to-join-data">Step 7.2 - A more efficient way to join data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-processing-the-data">Step 8 - Processing the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-plotting-the-data">Step 9 – Plotting the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-2-making-a-meaningful-time-axis">Step 9.2 - Making a meaningful time axis</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jon Barker, University of Sheffield
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
