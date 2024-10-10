@@ -543,30 +543,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">co2_data</span> <span class="o">=</span> <span class="n">read_co2_csv</span><span class="p">(</span><span class="s1">&#39;data/co2.csv&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">assert</span> <span class="n">co2_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;Yr&#39;</span><span class="p">:</span> <span class="s1">&#39;1958&#39;</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">:</span> <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">:</span> <span class="s1">&#39;01&#39;</span><span class="p">,</span> <span class="s1">&#39;CO2&#39;</span><span class="p">:</span> <span class="s1">&#39;NaN&#39;</span><span class="p">,</span> <span class="s1">&#39;NB&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="s1">&#39;12.0&#39;</span><span class="p">,</span> <span class="s1">&#39;sta&#39;</span><span class="p">:</span><span class="s1">&#39;mlo&#39;</span><span class="p">}</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
-
-<span class="nn">Cell In[2], line 5,</span> in <span class="ni">read_co2_csv</span><span class="nt">(filename)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">read_co2_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="n">lines</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">),</span> <span class="n">fp</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Yr&#39;</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">,</span> <span class="s1">&#39;CO2&#39;</span><span class="p">,</span> <span class="s1">&#39;NB&#39;</span><span class="p">,</span> <span class="s1">&#39;scale&#39;</span><span class="p">,</span> <span class="s1">&#39;sta&#39;</span><span class="p">],</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py:310,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">303</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
-<span class="g g-Whitespace">    </span><span class="mi">304</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">305</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">306</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">308</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">310</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/co2.csv&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -604,31 +581,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">ch4_data</span> <span class="o">=</span> <span class="n">read_ch4_csv</span><span class="p">(</span><span class="s1">&#39;data/ch4.csv&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">assert</span> <span class="n">ch4_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;site_code&#39;</span><span class="p">:</span> <span class="s1">&#39;MLO&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="s1">&#39;1987&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;hour&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;minute&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;second&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;datetime&#39;</span><span class="p">:</span> <span class="s1">&#39;1987-01-01T00:00:00Z&#39;</span><span class="p">,</span> <span class="s1">&#39;time_decimal&#39;</span><span class="p">:</span> <span class="s1">&#39;1987.0&#39;</span><span class="p">,</span> <span class="s1">&#39;midpoint_time&#39;</span><span class="p">:</span> <span class="s1">&#39;536500800&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;-999.99&#39;</span><span class="p">,</span> <span class="s1">&#39;value_std_dev&#39;</span><span class="p">:</span> <span class="s1">&#39;-99.99&#39;</span><span class="p">,</span> <span class="s1">&#39;nvalue&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="s1">&#39;19.536&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="s1">&#39;-155.576&#39;</span><span class="p">,</span> <span class="s1">&#39;altitude&#39;</span><span class="p">:</span> <span class="s1">&#39;3387.1&#39;</span><span class="p">,</span> <span class="s1">&#39;elevation&#39;</span><span class="p">:</span> <span class="s1">&#39;3397.0&#39;</span><span class="p">,</span> <span class="s1">&#39;intake_height&#39;</span><span class="p">:</span> <span class="s1">&#39;-9.9&#39;</span><span class="p">,</span> <span class="s1">&#39;qcflag&#39;</span><span class="p">:</span> <span class="s1">&#39;*..&#39;</span><span class="p">}</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
-
-<span class="nn">Cell In[4], line 3,</span> in <span class="ni">read_ch4_csv</span><span class="nt">(filename)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">def</span> <span class="nf">read_ch4_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>         <span class="n">lines</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="ow">not</span> <span class="n">x</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">),</span> <span class="n">fp</span><span class="o">.</span><span class="n">readlines</span><span class="p">())</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="c1"># This time we don&#39;t need to provide fields because there is a header row</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="c1"># in the file, but we need to specify the delimiter because it is not a comma</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py:310,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">303</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
-<span class="g g-Whitespace">    </span><span class="mi">304</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">305</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">306</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">308</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">310</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/ch4.csv&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -686,15 +639,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">ch4_data</span> <span class="o">=</span> <span class="n">simplify_data</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">})</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">co2_data</span> <span class="o">=</span> <span class="n">simplify_data</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;Yr&#39;</span><span class="p">:</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">:</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">:</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;CO2&#39;</span><span class="p">:</span><span class="s1">&#39;co2_concentration&#39;</span><span class="p">})</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">assert</span> <span class="n">ch4_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="s1">&#39;1987&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span> <span class="s1">&#39;-999.99&#39;</span><span class="p">}</span>
-
-<span class="ne">NameError</span>: name &#39;ch4_data&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -721,19 +666,6 @@ document.write(`
 <span class="n">co2_data</span> <span class="o">=</span> <span class="n">remove_missing_values</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="s1">&#39;NaN&#39;</span><span class="p">)</span>
 <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">12728</span>
 <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">co2_data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">18056</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">ch4_data</span> <span class="o">=</span> <span class="n">remove_missing_values</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">,</span> <span class="s1">&#39;-999.99&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">co2_data</span> <span class="o">=</span> <span class="n">remove_missing_values</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="s1">&#39;NaN&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">12728</span>
-
-<span class="ne">NameError</span>: name &#39;ch4_data&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -784,15 +716,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">ch4_data</span> <span class="o">=</span> <span class="n">fix_data_types</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span><span class="nb">float</span><span class="p">})</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">co2_data</span> <span class="o">=</span> <span class="n">fix_data_types</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span><span class="nb">float</span><span class="p">})</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;year&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="nb">int</span>
-
-<span class="ne">NameError</span>: name &#39;ch4_data&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -824,15 +748,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">ch4_data</span> <span class="o">=</span> <span class="n">convert_ch4_concentration_to_ppm</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">assert</span> <span class="n">ch4_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.70002</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;ch4_data&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -876,14 +792,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">co2_data</span> <span class="o">=</span> <span class="n">make_index</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ch4_data</span> <span class="o">=</span> <span class="n">make_index</span><span class="p">(</span><span class="n">ch4_data</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">assert</span> <span class="n">co2_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1958</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span> <span class="mf">316.16</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;1958-3-30&#39;</span><span class="p">}</span>
-
-<span class="ne">NameError</span>: name &#39;co2_data&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -943,15 +852,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">joined_data</span> <span class="o">=</span> <span class="n">join_data</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="n">ch4_data</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">assert</span> <span class="n">joined_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1987</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span> <span class="mf">350.84</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;1987-4-3&#39;</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span> <span class="mf">1.70002</span><span class="p">}</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;co2_data&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -996,15 +897,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">joined_data</span> <span class="o">=</span> <span class="n">join_data_fast</span><span class="p">(</span><span class="n">co2_data</span><span class="p">,</span> <span class="n">ch4_data</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">assert</span> <span class="n">joined_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1987</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span> <span class="mf">350.84</span><span class="p">,</span> <span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;1987-4-3&#39;</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span> <span class="mf">1.70002</span><span class="p">}</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;co2_data&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -1059,15 +952,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST </span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">co2e_data</span> <span class="o">=</span> <span class="n">add_co2e</span><span class="p">(</span><span class="n">joined_data</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">assert</span> <span class="n">co2e_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;co2e&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">393.34049999999996</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;joined_data&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -1154,15 +1039,8 @@ All tests passed!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">28</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">co2e_data</span> <span class="o">=</span> <span class="n">add_decimal_year</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">assert</span> <span class="n">co2e_data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1987.2554794520547</span>
-
-<span class="ne">NameError</span>: name &#39;co2e_data&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1987.2554794520547
+All tests passed!
 </pre></div>
 </div>
 </div>
