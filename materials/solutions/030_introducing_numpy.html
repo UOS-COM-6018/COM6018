@@ -1,0 +1,1456 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>030 Introducing NumPy &#8212; COM6018 - Data Science with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/solutions/030_introducing_numpy';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="020 Reading data" href="020_reading_data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="COM6018 - Data Science with Python - Home"/>
+    <script>document.write(`<img src="../../_static/uos_logo_for_dark.png" class="logo__image only-dark" alt="COM6018 - Data Science with Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    The COM6018 module book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/000_Introduction.html">000 COM6018 Lecture Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/010_wrapper.html">010 Welcome to COM6018</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/015_wrapper.html">015 Getting set up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/020_wrapper.html">020 Using Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/025_wrapper.html">025 Reading and Writing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/030_wrapper.html">030 Introducing NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/000_Introduction.html">000 COM6018 Course Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/010_Introducing_Python.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/015_Further_Python.html">015 Further Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/020_Reading_Data.html">020 Reading and Writing Data Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/030_Introducing_Numpy.html">030 Numerical Computing with NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/035_Some_Common_Problems.html">035 Some Common Problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/030_introducing_numpy.html">030 Introducing NumPy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">030 Introducing NumPy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/solutions/030_introducing_numpy.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/edit/main/materials/solutions/030_introducing_numpy.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/solutions/030_introducing_numpy.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/materials/solutions/030_introducing_numpy.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>030 Introducing NumPy</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-reading-the-data">Step 1 - Reading the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-extracting-the-data">Step 2 - Extracting the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-smoothing-the-data">Step 3 - Smoothing the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-finding-the-peaks">Step 4 - Finding the peaks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-finding-the-peaks-with-numpy">Step 5 - Finding the peaks with NumPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-computing-statistics">Step 6 - Computing statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-what-is-the-average-difference-between-the-annual-peak-and-dip-values">Q1. What is the average difference between the annual peak and dip values?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-what-is-the-average-time-in-days-between-a-peak-and-the-next-dip">Q2. What is the average time (in days) between a peak and the next dip?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-what-is-the-average-time-in-days-between-a-dip-and-the-next-peak">Q3. What is the average time (in days) between a dip and the next peak?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-on-which-day-of-the-year-on-average-do-the-peaks-and-dips-occurs">Q4. On which day of the year on average do the peaks and dips occurs?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introducing-numpy">
+<h1>030 Introducing NumPy<a class="headerlink" href="#introducing-numpy" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>COM6018</p>
+</div></blockquote>
+<p><em>Copyright © 2023, 2024 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
+<p>In this lab class we are going to use NumPy to analyse the atmospheric gas concentration data that we saw in the previous lab. We will start by performing some simple tasks without using NumPy, and then we will see how NumPy can make our lives easier.</p>
+<section id="step-1-reading-the-data">
+<h2>Step 1 - Reading the data<a class="headerlink" href="#step-1-reading-the-data" title="Link to this heading">#</a></h2>
+<p>Use ideas from the previous lab class to read the file <code class="docutils literal notranslate"><span class="pre">data/co2e.csv</span></code> into a variable called <code class="docutils literal notranslate"><span class="pre">co2e_data</span></code> that represents the file contents as a list of dictionaries. Make sure that the dictionary entries are of the correct type (i.e., the <code class="docutils literal notranslate"><span class="pre">year</span></code> entry should be an integer, and the <code class="docutils literal notranslate"><span class="pre">co2_concentration</span></code> entry should be a float).</p>
+<p>Write your solution in the cell below and then run the test cell to check your solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">def</span> <span class="nf">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="k">def</span> <span class="nf">fix_data_types</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fields</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+            <span class="n">row</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="n">k</span><span class="p">](</span><span class="n">row</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="n">co2e_data</span> <span class="o">=</span> <span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/co2e.csv&#39;</span><span class="p">)</span>
+<span class="n">co2e_data</span> <span class="o">=</span> <span class="n">fix_data_types</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span>  <span class="nb">float</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s1">&#39;co2e&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s1">&#39;decimal_year&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">16</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>             <span class="n">row</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">fields</span><span class="p">[</span><span class="n">k</span><span class="p">](</span><span class="n">row</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="k">return</span> <span class="n">data</span>
+<span class="ne">---&gt; </span><span class="mi">16</span> <span class="n">co2e_data</span> <span class="o">=</span> <span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/co2e.csv&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">co2e_data</span> <span class="o">=</span> <span class="n">fix_data_types</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span>  <span class="nb">float</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s1">&#39;co2e&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="s1">&#39;decimal_year&#39;</span><span class="p">:</span> <span class="nb">float</span><span class="p">})</span>
+
+<span class="nn">Cell In[1], line 5,</span> in <span class="ni">read_csv</span><span class="nt">(filename)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">def</span> <span class="nf">read_csv</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">]</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py:310,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">303</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
+<span class="g g-Whitespace">    </span><span class="mi">304</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">310</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/co2e.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;co2e_data&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="k">assert</span> <span class="p">(</span><span class="n">co2e_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1987</span><span class="p">,</span>
+ <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+ <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+ <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span> <span class="mf">350.84</span><span class="p">,</span>
+ <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span> <span class="mf">1.70002</span><span class="p">,</span>
+ <span class="s1">&#39;co2e&#39;</span><span class="p">:</span> <span class="mf">393.34049999999996</span><span class="p">,</span>
+ <span class="s1">&#39;decimal_year&#39;</span><span class="p">:</span> <span class="mf">1987.2554794520547</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">assert</span> <span class="p">(</span><span class="n">co2e_data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1987</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>  <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>  <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>  <span class="s1">&#39;co2_concentration&#39;</span><span class="p">:</span> <span class="mf">350.84</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>  <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">:</span> <span class="mf">1.70002</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>  <span class="s1">&#39;co2e&#39;</span><span class="p">:</span> <span class="mf">393.34049999999996</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>  <span class="s1">&#39;decimal_year&#39;</span><span class="p">:</span> <span class="mf">1987.2554794520547</span><span class="p">}</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;co2e_data&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-extracting-the-data">
+<h2>Step 2 - Extracting the data<a class="headerlink" href="#step-2-extracting-the-data" title="Link to this heading">#</a></h2>
+<p>We want to analyse the atmospheric gas concentrations as a sequence of values that change over time. The way that the data is currently stored does not make this very easy. We need to extract the data from each field in the list of dictionaries and store it in a more convenient form, such as a list. For example, we would like all of the <code class="docutils literal notranslate"><span class="pre">co2_concentration</span></code> values to be stored in a list called <code class="docutils literal notranslate"><span class="pre">co2_concentrations</span></code>.</p>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">extract_data</span></code> that takes the list of dictionaries and a field name as input and returns a list of values for that field. For example, <code class="docutils literal notranslate"><span class="pre">extract_data(co2e_data,</span> <span class="pre">'co2_concentration')</span></code> should return a list of CO<sub>2</sub> concentrations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="k">def</span> <span class="nf">extract_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">field</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">entry</span><span class="p">[</span><span class="n">field</span><span class="p">]</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">co2_concentration</span> <span class="o">=</span> <span class="n">extract_data</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">co2_concentration</span> <span class="o">=</span> <span class="n">extract_data</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;co2e_data&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="n">co2_concentration</span> <span class="o">=</span> <span class="n">extract_data</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">)</span>
+<span class="n">ch4_concentration</span> <span class="o">=</span> <span class="n">extract_data</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">)</span>
+<span class="n">decimal_year</span> <span class="o">=</span> <span class="n">extract_data</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">,</span> <span class="s1">&#39;decimal_year&#39;</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">co2_concentration</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">350.84</span>
+<span class="k">assert</span> <span class="n">ch4_concentration</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.70002</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">co2_concentration</span> <span class="o">=</span> <span class="n">extract_data</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ch4_concentration</span> <span class="o">=</span> <span class="n">extract_data</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">,</span> <span class="s1">&#39;ch4_concentration&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">decimal_year</span> <span class="o">=</span> <span class="n">extract_data</span><span class="p">(</span><span class="n">co2e_data</span><span class="p">,</span> <span class="s1">&#39;decimal_year&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;co2e_data&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-smoothing-the-data">
+<h2>Step 3 - Smoothing the data<a class="headerlink" href="#step-3-smoothing-the-data" title="Link to this heading">#</a></h2>
+<p>Before we do anything with the data it is a good idea to visualise it. We can do this using matplotlib. For example, the following code will plot the CO<sub>2</sub> concentrations against time:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">,</span> <span class="n">co2_concentration</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Copy this into the cell below and run it to see the plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">,</span> <span class="n">co2_concentration</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">,</span> <span class="n">co2_concentration</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;decimal_year&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should see a graph that trends upwards over time but which also has a season oscillation, i.e., the concentration of CO<sub>2</sub> in the atmosphere increases and decreases over the course of a year. This is because the concentration of CO<sub>2</sub> in the atmosphere is affected by the seasons. In the summer, plants grow and absorb CO<sub>2</sub> from the atmosphere, and in the winter they die and release CO<sub>2</sub> back into the atmosphere.</p>
+<p>Let’s say that we now want to calculate the date and value of the maximum and minimum CO<sub>2</sub> concentrations, i.e., the peaks and the dips in the graph. One way of finding a peak is to look for a value that is greater than the values either side of it. For example, if we have a list of values <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">2,</span> <span class="pre">1]</span></code> then the value 3 is a peak because it is greater than the values either side of it. However, if we apply this logic to the data directly we will find that there are many peaks and dips that are not of interest, i.e., if we zoom in on one year we will see that the data is very noisy.</p>
+<p>In the cell below, repeat the plot but only using the first 300 elements of <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code> and <code class="docutils literal notranslate"><span class="pre">co2_concentration</span></code>. By looking at just this small segment of the data, you should be able to see these unwanted peaks and dips more clearly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">300</span><span class="p">],</span> <span class="n">co2_concentration</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">300</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">300</span><span class="p">],</span> <span class="n">co2_concentration</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">300</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;decimal_year&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The solution to this is to apply a ‘smoothing filter’ to the data before we look for the picks and dips. A smoothing filter is a function that takes a list of numbers as input and returns a new list of numbers that are ‘smoothed’ versions of the input. It does this by sliding a window over the input list and calculating the weighted sum of the numbers in the window.</p>
+<p>For example, say that we have a list of numbers <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">2,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">1]</span></code> and we want to apply a smoothing filter with a window size of 3 with the window values <code class="docutils literal notranslate"><span class="pre">[0.25,</span> <span class="pre">0.5,</span> <span class="pre">0.25]</span></code>.  The first smoothed output value will be calculated by taking the first three numbers <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code> and computing the weighted sum <code class="docutils literal notranslate"><span class="pre">0.25*1</span> <span class="pre">+</span> <span class="pre">0.5*2</span> <span class="pre">+</span> <span class="pre">0.25*3</span> <span class="pre">=</span> <span class="pre">2</span></code>. We then step forward one place and take the numbers <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">3,</span> <span class="pre">2]</span></code> and compute the smoothed value as  <code class="docutils literal notranslate"><span class="pre">0.25*2</span> <span class="pre">+</span> <span class="pre">0.5*3</span> <span class="pre">+</span> <span class="pre">0.25*2</span> <span class="pre">=</span> <span class="pre">2.25</span></code>, and so on.</p>
+<p>Note, the weights in the window must sum to 1.0. This is because we want the smoothed values to be on the same scale as the input values. If the weights do not sum to one we can simply normalise them by dividing each weight by the sum of the weights.</p>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">smooth_series(series,</span> <span class="pre">window)</span></code> that takes two parameters: <code class="docutils literal notranslate"><span class="pre">series</span></code> - a list of numbers to smooth, and <code class="docutils literal notranslate"><span class="pre">window</span></code> - a list of numbers to use as the weights. Remember to normalise the weights so that they sum to 1.0. The function should return a new list of smoothed values.</p>
+<p>Write the function below and then check it by running the test cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="k">def</span> <span class="nf">smooth_series</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">window</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+    <span class="n">window_sum</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span><span class="o">-</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">w</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">w</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">N</span><span class="p">],</span> <span class="n">window</span><span class="p">)))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">yi</span><span class="o">/</span><span class="n">window_sum</span> <span class="k">for</span> <span class="n">yi</span> <span class="ow">in</span> <span class="n">y</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="n">series</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">smooth_series</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="n">series</span>
+<span class="k">assert</span> <span class="n">smooth_series</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will now use the smoothing function to smooth the data. The function allows the window to be of different lengths. The longer the window is, the smoother the data will be. If we make the window too long, then we will lose the annual peaks and dips that we are interested in (this is called ‘over-smoothing’).</p>
+<p>Test the smoothing by using window lengths of 7, 60, 360 and plot the result. Store the smoothed data in variables called <code class="docutils literal notranslate"><span class="pre">co2_concentration_smooth7</span></code>, <code class="docutils literal notranslate"><span class="pre">co2_concentration_smooth_60</span></code> and <code class="docutils literal notranslate"><span class="pre">co2_concentration_smooth360</span></code> respectively.  Plot the smoothed data on the same graph as the original data to compare them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">co2_concentration_smooth7</span> <span class="o">=</span> <span class="n">smooth_series</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">co2_concentration_smooth60</span> <span class="o">=</span> <span class="n">smooth_series</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="n">co2_concentration_smooth360</span> <span class="o">=</span> <span class="n">smooth_series</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">360</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">[</span><span class="mi">1000</span><span class="p">:</span><span class="mi">1600</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">co2_concentration_smooth7</span><span class="p">[</span><span class="mi">1000</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mi">1600</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">co2_concentration_smooth60</span><span class="p">[</span><span class="mi">1000</span><span class="o">-</span><span class="mi">30</span><span class="p">:</span><span class="mi">1600</span><span class="o">-</span><span class="mi">30</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">co2_concentration_smooth360</span><span class="p">[</span><span class="mi">1000</span><span class="o">-</span><span class="mi">180</span><span class="p">:</span><span class="mi">1600</span><span class="o">-</span><span class="mi">180</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">co2_concentration_smooth7</span> <span class="o">=</span> <span class="n">smooth_series</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">7</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">co2_concentration_smooth60</span> <span class="o">=</span> <span class="n">smooth_series</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">co2_concentration_smooth360</span> <span class="o">=</span> <span class="n">smooth_series</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="mi">360</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;co2_concentration&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should observe that the using a window of 7 is too short and the peaks and dips are still very noisy.  A window of 360 is too long and the peaks and dips are no longer correct. The window of 60 is about right.</p>
+</section>
+<section id="step-4-finding-the-peaks">
+<h2>Step 4 - Finding the peaks<a class="headerlink" href="#step-4-finding-the-peaks" title="Link to this heading">#</a></h2>
+<p>We will now locate the peaks and dips in the smoothed data. We will look for peaks by looking for values that are greater than the values either side of them. We can also call these ‘local maxima’. We will write a function that takes a list of values and compares each value with its neighbours. If the value is greater than both of its neighbours then it is a peak and we will add the value to a list of peaks. We will also record the index of the peak in a list of peak indices. The function will return the list of peaks and the list of peak indices.</p>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">find_peaks</span></code> that takes a list of values as input and returns a list of peak values and a list of peak indices. Test your function by running the test cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="k">def</span> <span class="nf">find_peaks</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="n">peaks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="n">peaks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">peaks</span><span class="p">,</span> <span class="n">indices</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="n">peaks</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">peaks</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">assert</span> <span class="n">indices</span> <span class="o">==</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, in the cell below, run the <code class="docutils literal notranslate"><span class="pre">find_peaks</span></code> function on the smoothed CO<sub>2</sub> concentration data. How many peaks are there? Does there seem to be about one per year (remember, the data spans a 35 year period). Are the indices of the peaks regularly spaced by about 365 days?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">peaks</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">(</span><span class="n">co2_concentration_smooth60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">peaks</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">find_peaks</span><span class="p">(</span><span class="n">co2_concentration_smooth60</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;co2_concentration_smooth60&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>You will find that there are still too many peaks because the data smoothing is not perfect. Rather then increasing the smoothing window length, we can fix things by using a more robust definition of ‘peak’. We will say that a peak needs to be larger than all surrounding values up to a distance of 2 steps away (i.e., the 3 in 1, 2, 3, 2, 1 would be a peak, but the 3 in 4, 2, 3, 2, 1 would not).</p>
+<p>Implement this new definition of peak in a function called <code class="docutils literal notranslate"><span class="pre">find_peaks2</span></code> and test it by running the test cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="k">def</span> <span class="nf">find_peaks2</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="n">peaks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span><span class="o">-</span><span class="mi">3</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="ow">and</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="ow">and</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="ow">and</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">]:</span>
+            <span class="n">peaks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">indices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">peaks</span><span class="p">,</span> <span class="n">indices</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+
+<span class="n">peaks</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">find_peaks2</span><span class="p">(</span><span class="n">co2_concentration_smooth60</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">peaks</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">find_peaks2</span><span class="p">(</span><span class="n">co2_concentration_smooth60</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;co2_concentration_smooth60&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>You’ll see that there are <em>still</em> too many peaks, i.e. more than one per year. We can quickly see what is going on by plotting points at the peak positions overlaid on the original data. Run the cell below to see this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">co2_concentration_smooth60</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">peaks</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">co2_concentration_smooth60</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">peaks</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;co2_concentration_smooth60&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Observe the figure above. You should see several problems,</p>
+<ul class="simple">
+<li><p>At least one of the genuine peaks has been missed.</p></li>
+<li><p>One peak has been detected twice.</p></li>
+<li><p>Strangely, there are many peaks being detected at the location of minima.</p></li>
+</ul>
+<p>Peaks are located at the location of minima because the gradient of the curve is low at the minima, so a small amount of noise can raise a false peak, despite all the smoothing.</p>
+<p>This exercise has illustrated how difficult it can be to extract something as simple as a peak from a noisy signal. The peaks are clear to the human eye, but it is difficult to write a program that can detect them reliably. We need more sophisticated statistical modelling approaches if we want to do this robustly.</p>
+<p>You will have also noticed that we have had to write Python code for some very low level operations, such as smoothing and finding peaks. This is a lot of work and it is easy to make mistakes. Also, the code has involved using loops to process the values in the list. This is slow and inefficient. We will now see how NumPy can help us to solve these problems.</p>
+</section>
+<section id="step-5-finding-the-peaks-with-numpy">
+<h2>Step 5 - Finding the peaks with NumPy<a class="headerlink" href="#step-5-finding-the-peaks-with-numpy" title="Link to this heading">#</a></h2>
+<p>We will now repeat the exercise above using NumPy. We will start with the original data series <code class="docutils literal notranslate"><span class="pre">co2_concentration</span></code> and <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code>.</p>
+<p>Currently, the data are stored as a Python list. To turn them into NumPy arrays, we can use the NumPy.array function. For example, the following code will convert the list of <code class="docutils literal notranslate"><span class="pre">co2_concentration</span></code> values into a NumPy array called <code class="docutils literal notranslate"><span class="pre">co2_concentration_array</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">co2_concentration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">co2_concentrations</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Convert the <code class="docutils literal notranslate"><span class="pre">co2_concentration</span></code> and <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code> lists into NumPy arrays and then plot the <code class="docutils literal notranslate"><span class="pre">co2_concentration_array</span></code> against the <code class="docutils literal notranslate"><span class="pre">decimal_year_array</span></code>. You should see the same graph as before.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION </span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">co2_concentration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">)</span>
+<span class="n">decimal_year</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">,</span> <span class="n">co2_concentration</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION </span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">co2_concentration</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">decimal_year</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">,</span> <span class="n">co2_concentration</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;co2_concentration&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+
+<span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">assert</span> <span class="nb">type</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">)</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;co2_concentration&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will now rewrite the <code class="docutils literal notranslate"><span class="pre">smooth_series</span></code> function so that it takes the series and window parameters as NumPy arrays. The function should return a NumPy array of smoothed values. The function should work for any window size.</p>
+<p>Note, you can use the fact the NumPy allows two vectors to be multiplied together in an element-wise fashion, e.g. x*y will multiply the first element of x by the first element of y, the second element of x by the second element of y, and so on. You can also make use of the <code class="docutils literal notranslate"><span class="pre">numpy.sum</span></code> function to sum the elements of an array. You will still need to pass the window over the series using a loop and use slicing notation to extract segments of the series to operate on.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="k">def</span> <span class="nf">smooth_series</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">window</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+    <span class="n">smoothed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">N</span><span class="p">]</span> <span class="o">*</span> <span class="n">window</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">series</span><span class="p">)</span><span class="o">-</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="n">smoothed</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">window</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="n">series</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="k">assert</span> <span class="p">(</span><span class="n">smooth_series</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">]))</span> <span class="o">==</span> <span class="n">series</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="k">assert</span> <span class="p">(</span><span class="n">smooth_series</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]))</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
+</pre></div>
+</div>
+</div>
+</div>
+<p>The NumPy implementation will have been a little shorter and will run faster. However, we can do much better. The operation of sliding a window over a single and multiplying and summing is known as a ‘convolution’. NumPy has a function called <code class="docutils literal notranslate"><span class="pre">numpy.convolve</span></code> that will do this for us. The following code will apply a smoothing window to a series of values:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">smoothed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">window</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is actually better than our smoothing function because the <code class="docutils literal notranslate"><span class="pre">mode='same'</span></code> parameter ensures that the function correctly pads the single to make sure the output and input have the same number of elements.</p>
+<p>Try using the convolve function to smooth the <code class="docutils literal notranslate"><span class="pre">co2_concentration_array</span></code> using a window of 90. Store the results in a variable called <code class="docutils literal notranslate"><span class="pre">co2_concentration_smooth90</span></code>. Plot the result and compare it to the previous result. You should see that the results are the same. Note that when plotting, you will need to ignore the first and last 45 samples because the zero padding will mean that these will not have valid values.</p>
+<p>Note that you can use the <code class="docutils literal notranslate"><span class="pre">np.ones</span></code> function to make the window array. You will need to divide the window by the sum of the window values to make sure that the weights sum to 1.0 (the <code class="docutils literal notranslate"><span class="pre">convolve</span></code> function does not do this for you).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">co2_concentration_smooth90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="o">/</span><span class="mi">90</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">],</span> <span class="n">co2_concentration</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">],</span> <span class="n">co2_concentration_smooth90</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">co2_concentration_smooth90</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="o">/</span><span class="mi">90</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">],</span> <span class="n">co2_concentration</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">],</span> <span class="n">co2_concentration_smooth90</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;co2_concentration&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="k">assert</span> <span class="n">co2_concentration</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">co2_concentration_smooth90</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">assert</span> <span class="n">co2_concentration</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">co2_concentration_smooth90</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="ne">NameError</span>: name &#39;co2_concentration&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>You will have noticed that the smoothed function consistently underestimates the height of the peaks. This is because it is based on an average over 90 days, and so the values before and after the peaks pull the average down. You can improve the situation by using a window function that has bigger weights at the centre of the window and that tapers to zero at the edges. There are many window shapes that can be used (e.g., a triangle), but a common one in signal processing is the Hamming window. The values for an N-element Hamming window can be produced with NumPy using the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">window</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hamming</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Try using the <code class="docutils literal notranslate"><span class="pre">np.convolve</span></code> function again but now use <code class="docutils literal notranslate"><span class="pre">np.hamming</span></code> to generate the window. Remember, you will need to divide the window values by their sum so that it sums to 1.0.</p>
+<p>Store the new smoothed data in a variable, <code class="docutils literal notranslate"><span class="pre">co2_concentration_smooth90_h</span></code>.</p>
+<p>To make the comparison, plot the <code class="docutils literal notranslate"><span class="pre">co2_concentration</span></code> data, and the 90-day smoothed versions using both the window of ones and the Hamming window. To see the difference more clearly, just look at the first 500 samples of the signals. You should see that the peaks are now better estimated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">co2_concentration_smooth90_h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">hamming</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hamming</span><span class="p">(</span><span class="mi">90</span><span class="p">)),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="mi">500</span><span class="p">],</span> <span class="n">co2_concentration</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="mi">500</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="mi">500</span><span class="p">],</span> <span class="n">co2_concentration_smooth90</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="mi">500</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="mi">500</span><span class="p">],</span> <span class="n">co2_concentration_smooth90_h</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="mi">500</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">co2_concentration_smooth90_h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">co2_concentration</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">hamming</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hamming</span><span class="p">(</span><span class="mi">90</span><span class="p">)),</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="mi">500</span><span class="p">],</span> <span class="n">co2_concentration</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="mi">500</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="mi">500</span><span class="p">],</span> <span class="n">co2_concentration_smooth90</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="mi">500</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;co2_concentration&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will now rewrite the <code class="docutils literal notranslate"><span class="pre">find_peaks2</span></code> function so that it takes a NumPy array as input and returns a NumPy array of peak values and a NumPy array of peak indices.</p>
+<p>The function should be implemented without using any for-loops. Instead, you should use NumPy array operations to compare each element of the input array to its neighbours. There are many different ways to do this. The approach should be to build an array of logic values that has ‘True’ at the location of the peaks. You can then use the <code class="docutils literal notranslate"><span class="pre">numpy.where</span></code> function to extract the indices of the peaks and the values of the peaks.</p>
+<p>You might find it useful to use the <code class="docutils literal notranslate"><span class="pre">numpy.roll</span></code> function to shift the array by one element. Once the array is shifted, you can compare the values in the original array to the shifted array. You can also effectively shift the array using slicing notation, e.g., consider the arrays <code class="docutils literal notranslate"><span class="pre">series[4:]</span></code>, <code class="docutils literal notranslate"><span class="pre">series[3:-1]</span></code>, <code class="docutils literal notranslate"><span class="pre">series[2:-2]</span></code>, <code class="docutils literal notranslate"><span class="pre">series[1:-3]</span></code>, <code class="docutils literal notranslate"><span class="pre">series[:-4]</span></code>. These all have the same length, but are shifted by different amounts.</p>
+<p>You can then use the <code class="docutils literal notranslate"><span class="pre">numpy.logical_and</span></code> function to combine the results of the comparisons.</p>
+<p>If you are very stuck then seek assistance from a demonstrator.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="k">def</span> <span class="nf">find_peaks2</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="n">peaks</span> <span class="o">=</span> <span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">series</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">series</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">series</span><span class="p">[</span><span class="mi">4</span><span class="p">:])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">series</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">peaks</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">series</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">indices</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+
+<span class="n">peaks</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">find_peaks2</span><span class="p">(</span><span class="n">co2_concentration_smooth90_h</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">],</span><span class="n">co2_concentration_smooth90_h</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">peaks</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">peaks</span><span class="p">,</span> <span class="n">indices</span> <span class="o">=</span> <span class="n">find_peaks2</span><span class="p">(</span><span class="n">co2_concentration_smooth90_h</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">],</span><span class="n">co2_concentration_smooth90_h</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">peaks</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;co2_concentration_smooth90_h&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-6-computing-statistics">
+<h2>Step 6 - Computing statistics<a class="headerlink" href="#step-6-computing-statistics" title="Link to this heading">#</a></h2>
+<p>We will now extend the analysis. We will first write a function to extract the date and value of the dips in the data. We will then compute some statistics on the peaks and dips: the average year-on-year increase in the peak and dip values, the average time between peaks and dips, and the average difference between the peak and dip values.</p>
+<p>First, write a function that uses NumPy to find the dips in the data, which you can call find_dips. The function should take a NumPy array as input and return a NumPy array of dip values and a NumPy array of dip indices. It should be very similar to the find_peaks function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="k">def</span> <span class="nf">find_dips</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="n">peaks</span> <span class="o">=</span> <span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">series</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">series</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">series</span><span class="p">[</span><span class="mi">4</span><span class="p">:])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">series</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">series</span><span class="p">[:</span><span class="o">-</span><span class="mi">4</span><span class="p">])</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">peaks</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">series</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">indices</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+
+<span class="n">dips</span><span class="p">,</span> <span class="n">dip_indices</span> <span class="o">=</span> <span class="n">find_dips</span><span class="p">(</span><span class="n">co2_concentration_smooth90_h</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">],</span><span class="n">co2_concentration_smooth90_h</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">peaks</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="n">dip_indices</span><span class="p">],</span> <span class="n">dips</span><span class="p">,</span> <span class="s1">&#39;go&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">28</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">dips</span><span class="p">,</span> <span class="n">dip_indices</span> <span class="o">=</span> <span class="n">find_dips</span><span class="p">(</span><span class="n">co2_concentration_smooth90_h</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">],</span><span class="n">co2_concentration_smooth90_h</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="o">-</span><span class="mi">45</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">peaks</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;co2_concentration_smooth90_h&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we can write a function to compute the average year-on-year increase in the peak and dip values. The function should take a NumPy array of dip or peak values as input and return the average year-on-year increase. (You can assume that your list of dip and peak values has correctly identified the annual peak and dip.)</p>
+<p>Call this function compute_average_difference and test it by running the test cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_average_difference</span><span class="p">(</span><span class="n">series</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">series</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="c1"># Note, first and last values are not included in the average as they are likely to be incorrect</span>
+<span class="n">average_peak_difference</span> <span class="o">=</span> <span class="n">compute_average_difference</span><span class="p">(</span><span class="n">peaks</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">average_dip_difference</span> <span class="o">=</span> <span class="n">compute_average_difference</span><span class="p">(</span><span class="n">dips</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">average_peak_difference</span><span class="p">,</span> <span class="n">average_dip_difference</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/numpy/_core/fromnumeric.py:3596: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/numpy/_core/_methods.py:138: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">30</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># Note, first and last values are not included in the average as they are likely to be incorrect</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">average_peak_difference</span> <span class="o">=</span> <span class="n">compute_average_difference</span><span class="p">(</span><span class="n">peaks</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">average_dip_difference</span> <span class="o">=</span> <span class="n">compute_average_difference</span><span class="p">(</span><span class="n">dips</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">average_peak_difference</span><span class="p">,</span> <span class="n">average_dip_difference</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;dips&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The average increases should be close to 2. i.e. the CO<sub>2</sub> concentration is increasing by about 2 parts per million per year.</p>
+<p>Now write short pieces of code to find answers to the following questions.</p>
+<section id="q1-what-is-the-average-difference-between-the-annual-peak-and-dip-values">
+<h3>Q1. What is the average difference between the annual peak and dip values?<a class="headerlink" href="#q1-what-is-the-average-difference-between-the-annual-peak-and-dip-values" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">peaks</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">dips</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">31</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">peaks</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">dips</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;dips&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should have got an answer of about 5 parts per million.</p>
+</section>
+<section id="q2-what-is-the-average-time-in-days-between-a-peak-and-the-next-dip">
+<h3>Q2. What is the average time (in days) between a peak and the next dip?<a class="headerlink" href="#q2-what-is-the-average-time-in-days-between-a-peak-and-the-next-dip" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">peak_indices</span> <span class="o">=</span> <span class="n">indices</span>
+<span class="n">delays</span> <span class="o">=</span> <span class="n">decimal_year</span><span class="p">[</span><span class="n">dip_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span> <span class="o">-</span> <span class="n">decimal_year</span><span class="p">[</span><span class="n">peak_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">delays</span><span class="p">)</span> <span class="o">*</span> <span class="mi">365</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">32</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">peak_indices</span> <span class="o">=</span> <span class="n">indices</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">delays</span> <span class="o">=</span> <span class="n">decimal_year</span><span class="p">[</span><span class="n">dip_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span> <span class="o">-</span> <span class="n">decimal_year</span><span class="p">[</span><span class="n">peak_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">delays</span><span class="p">)</span> <span class="o">*</span> <span class="mi">365</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;decimal_year&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should get an answer of about 140 days.</p>
+</section>
+<section id="q3-what-is-the-average-time-in-days-between-a-dip-and-the-next-peak">
+<h3>Q3. What is the average time (in days) between a dip and the next peak?<a class="headerlink" href="#q3-what-is-the-average-time-in-days-between-a-dip-and-the-next-peak" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">delays</span> <span class="o">=</span> <span class="n">decimal_year</span><span class="p">[</span><span class="n">peak_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">-</span> <span class="n">decimal_year</span><span class="p">[</span><span class="n">dip_indices</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">delays</span><span class="p">)</span> <span class="o">*</span> <span class="mi">365</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">33</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">delays</span> <span class="o">=</span> <span class="n">decimal_year</span><span class="p">[</span><span class="n">peak_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">-</span> <span class="n">decimal_year</span><span class="p">[</span><span class="n">dip_indices</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">delays</span><span class="p">)</span> <span class="o">*</span> <span class="mi">365</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;decimal_year&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should get an answer of about 225 days.</p>
+<p>Note that the average peak-to-dip and average dip-to-peak sums to about 365 days, that is, one year, but the dips are not exactly half way between the peaks. This is because the co2 concentration is increasing over time.</p>
+</section>
+<section id="q4-on-which-day-of-the-year-on-average-do-the-peaks-and-dips-occurs">
+<h3>Q4. On which day of the year on average do the peaks and dips occurs?<a class="headerlink" href="#q4-on-which-day-of-the-year-on-average-do-the-peaks-and-dips-occurs" title="Link to this heading">#</a></h3>
+<p>To compute this, you need to consider just the fractional part of the decimal year value of the peak and dip locations. You can retrieve this using the np.mod function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">peak_day</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="n">peak_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="mi">1</span><span class="p">))</span><span class="o">*</span> <span class="mi">365</span>
+<span class="n">dip_day</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="n">dip_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="mi">1</span><span class="p">))</span><span class="o">*</span> <span class="mi">365</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">peak_day</span><span class="p">,</span> <span class="n">dip_day</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">34</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">peak_day</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="n">peak_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="mi">1</span><span class="p">))</span><span class="o">*</span> <span class="mi">365</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">dip_day</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">decimal_year</span><span class="p">[</span><span class="n">dip_indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="mi">1</span><span class="p">))</span><span class="o">*</span> <span class="mi">365</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">peak_day</span><span class="p">,</span> <span class="n">dip_day</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;decimal_year&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>I calculate this to be day 135 (peak) and day 273 (dip), i.e., the peaks occur in mid-May and the dips occur at the end of September.</p>
+<p>If you are interested in the reason for this, see</p>
+<p><a class="reference external" href="https://keelingcurve.ucsd.edu/2013/06/04/why-does-atmospheric-co2-peak-in-may/">https://keelingcurve.ucsd.edu/2013/06/04/why-does-atmospheric-co2-peak-in-may/</a></p>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>This lab class has provided a very short introduction to NumPy covering some basic methods for manipulating simple 1-dimensional data series. Later in the module we will be using it in more mathematical contexts for performing more complex operations involving higher dimensional arrays, e.g. 2-D matrix data. However, we will see that the basic ideas remain the same. We will be leveraging NumPy’s ability to perform operations on arrays very efficiently without the need for for-loops. This will allow us to write code that is more concise and easier to understand and which runs much faster than the equivalent code using only native Python data structures and for-loops.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./materials/solutions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="020_reading_data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">020 Reading data</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-reading-the-data">Step 1 - Reading the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-extracting-the-data">Step 2 - Extracting the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-smoothing-the-data">Step 3 - Smoothing the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-finding-the-peaks">Step 4 - Finding the peaks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-finding-the-peaks-with-numpy">Step 5 - Finding the peaks with NumPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-computing-statistics">Step 6 - Computing statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-what-is-the-average-difference-between-the-annual-peak-and-dip-values">Q1. What is the average difference between the annual peak and dip values?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-what-is-the-average-time-in-days-between-a-peak-and-the-next-dip">Q2. What is the average time (in days) between a peak and the next dip?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-what-is-the-average-time-in-days-between-a-dip-and-the-next-peak">Q3. What is the average time (in days) between a dip and the next peak?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-on-which-day-of-the-year-on-average-do-the-peaks-and-dips-occurs">Q4. On which day of the year on average do the peaks and dips occurs?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jon Barker, University of Sheffield
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
