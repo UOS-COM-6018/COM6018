@@ -189,6 +189,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/020_wrapper.html">020 Using Git and GitHub</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/025_wrapper.html">025 Reading and Writing Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/030_wrapper.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/040_wrapper.html">040 Introducing Pandas</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
 <ul class="current nav bd-sidenav">
@@ -198,6 +199,7 @@
 <li class="toctree-l1"><a class="reference internal" href="020_Reading_Data.html">020 Reading and Writing Data Files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="030_Introducing_Numpy.html">030 Numerical Computing with NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="035_Some_Common_Problems.html">035 Some Common Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="040_Introducing_Pandas.html">040 Processing Data with Pandas</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
 <ul class="nav bd-sidenav">
@@ -632,7 +634,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.08905691900002921
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.08436684200000855
 </pre></div>
 </div>
 </div>
@@ -649,7 +651,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06600499099999979
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06496242700001176
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
@@ -847,19 +852,19 @@ f(20) = 8000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function square at 0x7f5c44145c10&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function square at 0x7f72688c2b80&gt;
 f(1) = 1
 f(2) = 4
 f(3) = 9
 f(4) = 16
 f(5) = 25
-&lt;function cube at 0x7f5c44145ca0&gt;
+&lt;function cube at 0x7f72688c2940&gt;
 f(1) = 1
 f(2) = 8
 f(3) = 27
 f(4) = 64
 f(5) = 125
-&lt;function times7 at 0x7f5c44145d30&gt;
+&lt;function times7 at 0x7f72688c2dc0&gt;
 f(1) = 7
 f(2) = 14
 f(3) = 21
