@@ -537,16 +537,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Conventional Python practice is to import Pandas using the alias <code class="docutils literal notranslate"><span class="pre">pd</span></code>. This is not essential, but it is recommended. Following existing conventions will make your code easier to read for other Python programmers.</p>
 </section>
@@ -571,17 +561,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/windfarm.csv&#39;</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function will parse the file and return the results as a Pandas DataFrame object. (It is common to use the variable name <code class="docutils literal notranslate"><span class="pre">df</span></code> for a DataFrame object in simple code examples. You may want to give the DataFrame a more descriptive name when writing more complex code.)</p>
 <p>We can now print the resulting DataFrame object to see what it contains:</p>
@@ -592,12 +571,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       id   &quot;turbines&quot;   &quot;height&quot;   &quot;power&quot;
+0  WF1355           13         53   19500.0
+1  WF1364            3         60    8250.0
+2  WF1356           12         60   24000.0
+3  WF1357           36         60   72000.0
 </pre></div>
 </div>
 </div>
@@ -619,13 +597,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/windfarm.no_names.csv&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;turbines&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">,</span> <span class="s1">&#39;power&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       id  turbines  height    power
+0  WF1355        13      53  19500.0
+1  WF1364         3      60   8250.0
+2  WF1356        12      60  24000.0
+3  WF1357        36      60  72000.0
 </pre></div>
 </div>
 </div>
@@ -639,13 +615,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_id</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/windfarm.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">df_id</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        &quot;turbines&quot;  &quot;height&quot;  &quot;power&quot;
+id                                   
+WF1355          13        53  19500.0
+WF1364           3        60   8250.0
+WF1356          12        60  24000.0
+WF1357          36        60  72000.0
 </pre></div>
 </div>
 </div>
@@ -675,17 +650,6 @@ WF1357           36         60   72000.0
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;data/climate.json&#39;</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>We can now print the resulting DataFrame object to see what it contains:</p>
 <div class="cell docutils container">
@@ -695,12 +659,33 @@ WF1357           36         60   72000.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      id            city        country  \
+0      1       Amsterdam    Netherlands   
+1      2          Athens         Greece   
+2      3      Atlanta GA  United States   
+3      4        Auckland    New Zealand   
+4      5       Austin TX  United States   
+..   ...             ...            ...   
+100  101  Albuquerque NM  United States   
+101  102      Vermont IL  United States   
+102  103    Nashville TE  United States   
+103  104    St. Louis MO  United States   
+104  105  Minneapolis MN  United States   
 
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+                                            monthlyAvg  
+0    [{&#39;high&#39;: 7, &#39;low&#39;: 3, &#39;dryDays&#39;: 19, &#39;snowDay...  
+1    [{&#39;high&#39;: 12, &#39;low&#39;: 7, &#39;dryDays&#39;: 21, &#39;snowDa...  
+2    [{&#39;high&#39;: 12, &#39;low&#39;: 2, &#39;dryDays&#39;: 18, &#39;snowDa...  
+3    [{&#39;high&#39;: 23, &#39;low&#39;: 16, &#39;dryDays&#39;: 24, &#39;snowD...  
+4    [{&#39;high&#39;: 18, &#39;low&#39;: 6, &#39;dryDays&#39;: 15, &#39;snowDa...  
+..                                                 ...  
+100  [{&#39;high&#39;: 10, &#39;low&#39;: -4, &#39;dryDays&#39;: 24, &#39;snowD...  
+101  [{&#39;high&#39;: 3, &#39;low&#39;: -8, &#39;dryDays&#39;: 18, &#39;snowDa...  
+102  [{&#39;high&#39;: 9, &#39;low&#39;: -1, &#39;dryDays&#39;: 18, &#39;snowDa...  
+103  [{&#39;high&#39;: 7, &#39;low&#39;: -4, &#39;dryDays&#39;: 16, &#39;snowDa...  
+104  [{&#39;high&#39;: -3, &#39;low&#39;: -13, &#39;dryDays&#39;: 20, &#39;snow...  
+
+[105 rows x 4 columns]
 </pre></div>
 </div>
 </div>
@@ -714,13 +699,20 @@ WF1357           36         60   72000.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df_monthly</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;monthlyAvg&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">df_monthly</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">))</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     high   low  dryDays  snowDays  rainfall
+0     7.0   3.0     19.0       4.0      68.0
+1    12.0   7.0     21.0       1.0      53.0
+2    12.0   2.0     18.0       2.0      99.5
+3    23.0  16.0     24.0       0.0      25.6
+4    18.0   6.0     15.0       1.0      67.8
+..    ...   ...      ...       ...       ...
+100  10.0  -4.0     24.0       4.0      10.7
+101   3.0  -8.0     18.0      11.0      52.1
+102   9.0  -1.0     18.0       8.0      84.4
+103   7.0  -4.0     16.0      10.0      69.8
+104  -3.0 -13.0     20.0      16.0      19.9
 
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+[105 rows x 5 columns]
 </pre></div>
 </div>
 </div>
@@ -740,17 +732,6 @@ WF1357           36         60   72000.0
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/seaice.csv&#39;</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -759,12 +740,33 @@ WF1357           36         60   72000.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Year   Month   Day       Extent      Missing  \
+0      1978      10    26       10.231          0.0   
+1      1978      10    28       10.420          0.0   
+2      1978      10    30       10.557          0.0   
+3      1978      11     1       10.670          0.0   
+4      1978      11     3       10.777          0.0   
+...     ...     ...   ...          ...          ...   
+26349  2019       5    27       10.085          0.0   
+26350  2019       5    28       10.078          0.0   
+26351  2019       5    29       10.219          0.0   
+26352  2019       5    30       10.363          0.0   
+26353  2019       5    31       10.436          0.0   
 
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+                                             Source Data hemisphere  
+0       [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsid...      north  
+1       [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsid...      north  
+2       [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsid...      north  
+3       [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsid...      north  
+4       [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsid...      north  
+...                                                  ...        ...  
+26349  [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsidc...      south  
+26350  [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsidc...      south  
+26351  [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsidc...      south  
+26352  [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsidc...      south  
+26353  [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsidc...      south  
+
+[26354 rows x 7 columns]
 </pre></div>
 </div>
 </div>
@@ -778,12 +780,9 @@ WF1357           36         60   72000.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Year&#39;, &#39; Month&#39;, &#39; Day&#39;, &#39;     Extent&#39;, &#39;    Missing&#39;, &#39; Source Data&#39;,
+       &#39;hemisphere&#39;],
+      dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
@@ -804,17 +803,6 @@ WF1357           36         60   72000.0
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/seaice.csv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -823,12 +811,9 @@ WF1357           36         60   72000.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Year&#39;, &#39;Month&#39;, &#39;Day&#39;, &#39;Extent&#39;, &#39;Missing&#39;, &#39;Source Data&#39;,
+       &#39;hemisphere&#39;],
+      dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
@@ -844,13 +829,18 @@ WF1357           36         60   72000.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">extent</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Extent&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">extent</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        10.231
+1        10.420
+2        10.557
+3        10.670
+4        10.777
+          ...  
+26349    10.085
+26350    10.078
+26351    10.219
+26352    10.363
+26353    10.436
+Name: Extent, Length: 26354, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -880,14 +870,8 @@ Name: Extent, Length: 26354, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>  <span class="c1"># This will print &lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">extent</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Extent&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">extent</span><span class="p">))</span> <span class="c1"># This will print &lt;class &#39;pandas.core.series.Series&#39;&gt;</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+&lt;class &#39;pandas.core.series.Series&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -900,12 +884,14 @@ Name: Extent, Length: 26354, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year             int64
+Month            int64
+Day              int64
+Extent         float64
+Missing        float64
+Source Data     object
+hemisphere      object
+dtype: object
 </pre></div>
 </div>
 </div>
@@ -932,14 +918,14 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Source Data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Source Data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year                    int64
+Month                   int64
+Day                     int64
+Extent                float64
+Missing               float64
+Source Data    string[python]
+hemisphere     string[python]
+dtype: object
 </pre></div>
 </div>
 </div>
@@ -953,13 +939,7 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">extent</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Extent&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">extent</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># print the first element</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.231
 </pre></div>
 </div>
 </div>
@@ -973,13 +953,12 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">extent</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Extent&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">extent</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span> <span class="c1"># print a subseries from index 5 to 9</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5    10.968
+6    11.080
+7    11.189
+8    11.314
+9    11.460
+Name: Extent, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -995,16 +974,6 @@ dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">row</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1013,12 +982,14 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;row&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Year                                                        1978
+Month                                                         10
+Day                                                           26
+Extent                                                    10.231
+Missing                                                      0.0
+Source Data    [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsidc...
+hemisphere                                                 north
+Name: 0, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1031,12 +1002,7 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">row</span><span class="p">))</span> <span class="c1"># This will print &lt;class &#39;pandas.core.series.Series&#39;&gt;</span>
-
-<span class="ne">NameError</span>: name &#39;row&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.series.Series&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -1049,16 +1015,6 @@ dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">rows</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1067,12 +1023,19 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">25</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Year  Month  Day  Extent  Missing  \
+0  1978     10   26  10.231      0.0   
+1  1978     10   28  10.420      0.0   
+2  1978     10   30  10.557      0.0   
+3  1978     11    1  10.670      0.0   
+4  1978     11    3  10.777      0.0   
 
-<span class="ne">NameError</span>: name &#39;rows&#39; is not defined
+                                         Source Data hemisphere  
+0  [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsidc...      north  
+1  [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsidc...      north  
+2  [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsidc...      north  
+3  [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsidc...      north  
+4  [&#39;ftp://sidads.colorado.edu/pub/DATASETS/nsidc...      north  
 </pre></div>
 </div>
 </div>
@@ -1085,12 +1048,7 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">rows</span><span class="p">))</span>
-
-<span class="ne">NameError</span>: name &#39;rows&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 </pre></div>
 </div>
 </div>
@@ -1109,16 +1067,6 @@ dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">27</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Source Data&#39;</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>There are now only 6 columns in the DataFrame and they can all be viewed at once,</p>
 <div class="cell docutils container">
@@ -1128,12 +1076,20 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">28</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Year  Month  Day  Extent  Missing hemisphere
+0      1978     10   26  10.231      0.0      north
+1      1978     10   28  10.420      0.0      north
+2      1978     10   30  10.557      0.0      north
+3      1978     11    1  10.670      0.0      north
+4      1978     11    3  10.777      0.0      north
+...     ...    ...  ...     ...      ...        ...
+26349  2019      5   27  10.085      0.0      south
+26350  2019      5   28  10.078      0.0      south
+26351  2019      5   29  10.219      0.0      south
+26352  2019      5   30  10.363      0.0      south
+26353  2019      5   31  10.436      0.0      south
 
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+[26354 rows x 6 columns]
 </pre></div>
 </div>
 </div>
@@ -1142,16 +1098,6 @@ dtype: object
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;Month&#39;</span><span class="p">,</span> <span class="s1">&#39;Day&#39;</span><span class="p">,</span> <span class="s1">&#39;Extent&#39;</span><span class="p">,</span> <span class="s1">&#39;Missing&#39;</span><span class="p">,</span> <span class="s1">&#39;hemisphere&#39;</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">29</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="s1">&#39;Month&#39;</span><span class="p">,</span> <span class="s1">&#39;Day&#39;</span><span class="p">,</span> <span class="s1">&#39;Extent&#39;</span><span class="p">,</span> <span class="s1">&#39;Missing&#39;</span><span class="p">,</span> <span class="s1">&#39;hemisphere&#39;</span><span class="p">]]</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1168,17 +1114,6 @@ dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">30</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">selector</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Extent&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">5.0</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df_low_extent</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">selector</span><span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>We have done this in two steps. The first line takes the Extent series and compares every value to 5.0. This produces a series of boolean (i.e, True or False) values which we have stored in a variable called <code class="docutils literal notranslate"><span class="pre">selector</span></code>. The second line uses this boolean series as an index which has the effect of selecting only the rows where the value is True.</p>
 <p>If we now print the resulting DataFrame we can see that it only contains about 3000 rows of the original 26,354 rows in the dataset, i.e., these are the samples where the sea ice extent has fallen below 5.0 billion square kilometers.</p>
@@ -1189,12 +1124,20 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">31</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">df_low_extent</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Year  Month  Day  Extent  Missing hemisphere
+8874   2007      8   20   4.997      0.0      north
+8875   2007      8   21   4.923      0.0      north
+8876   2007      8   22   4.901      0.0      north
+8877   2007      8   23   4.872      0.0      north
+8878   2007      8   24   4.837      0.0      north
+...     ...    ...  ...     ...      ...        ...
+26296  2019      4    4   4.564      0.0      south
+26297  2019      4    5   4.730      0.0      south
+26298  2019      4    6   4.856      0.0      south
+26299  2019      4    7   4.902      0.0      south
+26300  2019      4    8   4.993      0.0      south
 
-<span class="ne">NameError</span>: name &#39;df_low_extent&#39; is not defined
+[2988 rows x 6 columns]
 </pre></div>
 </div>
 </div>
@@ -1207,33 +1150,12 @@ dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">32</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">filter</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;north&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>If we wanted to combine these two filters to select only the rows where the sea ice extent is less than 5.0 billion square kilometers and the hemisphere is ‘north’, we could do this using the <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> operator,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">filter</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;north&#39;</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Extent&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">5.0</span><span class="p">)</span>
 <span class="n">df_low_extent_north</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="nb">filter</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">33</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">filter</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;north&#39;</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Extent&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">5.0</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df_low_extent_north</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="nb">filter</span><span class="p">]</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1245,12 +1167,20 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">34</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">df_low_extent_north</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       Year  Month  Day  Extent  Missing hemisphere
+8874   2007      8   20   4.997      0.0      north
+8875   2007      8   21   4.923      0.0      north
+8876   2007      8   22   4.901      0.0      north
+8877   2007      8   23   4.872      0.0      north
+8878   2007      8   24   4.837      0.0      north
+...     ...    ...  ...     ...      ...        ...
+12932  2018      9   29   4.846      0.0      north
+12933  2018      9   30   4.875      0.0      north
+12934  2018     10    1   4.947      0.0      north
+12935  2018     10    2   4.988      0.0      north
+12936  2018     10    3   4.975      0.0      north
 
-<span class="ne">NameError</span>: name &#39;df_low_extent_north&#39; is not defined
+[339 rows x 6 columns]
 </pre></div>
 </div>
 </div>
@@ -1278,13 +1208,7 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">35</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">mean_value</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Extent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">mean_value</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11.494986301889654
 </pre></div>
 </div>
 </div>
@@ -1297,12 +1221,7 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">36</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Extent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Extent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.08 20.201
 </pre></div>
 </div>
 </div>
@@ -1315,12 +1234,15 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">37</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>               Year         Month           Day        Extent       Missing
+count  26354.000000  26354.000000  26354.000000  26354.000000  26354.000000
+mean    2000.591941      6.507399     15.740685     11.494986      0.000003
+std       10.896821      3.451938      8.801607      4.611734      0.000227
+min     1978.000000      1.000000      1.000000      2.080000      0.000000
+25%     1992.000000      4.000000      8.000000      7.601000      0.000000
+50%     2001.000000      7.000000     16.000000     12.217000      0.000000
+75%     2010.000000     10.000000     23.000000     15.114000      0.000000
+max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </pre></div>
 </div>
 </div>
@@ -1349,16 +1271,6 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">38</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>This returns a special <code class="docutils literal notranslate"><span class="pre">DataFrameGroupBy</span></code> object. This object is a special type of DataFrame that contains the data grouped by the column we specified. We can then compute statistics on groups by selecting a column and using the same methods that we used earlier. For example, to compute the mean sea ice extent for each month we can use</p>
 <div class="cell docutils container">
@@ -1368,12 +1280,20 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">grouped</span><span class="p">[</span><span class="s1">&#39;Extent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-
-<span class="ne">NameError</span>: name &#39;grouped&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Month
+1      9.587706
+2      9.057401
+3      9.621926
+4     10.678099
+5     11.637163
+6     12.476158
+7     12.563403
+8     12.288473
+9     12.265863
+10    13.044214
+11    13.152069
+12    11.514823
+Name: Extent, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1388,13 +1308,32 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">40</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">,</span> <span class="s1">&#39;Month&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">grouped</span><span class="p">[</span><span class="s1">&#39;Extent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hemisphere  Month
+north       1        14.176006
+            2        15.044512
+            3        15.205876
+            4        14.481141
+            5        13.072172
+            6        11.516788
+            7         9.090173
+            8         6.784248
+            9         5.988981
+            10        7.929377
+            11       10.448120
+            12       12.638618
+south       1         4.999406
+            2         3.070290
+            3         4.037976
+            4         6.875058
+            5        10.202155
+            6        13.435529
+            7        16.036633
+            8        17.792698
+            9        18.542745
+            10       18.159051
+            11       15.856019
+            12       10.391028
+Name: Extent, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1410,13 +1349,19 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">41</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">grouped</span><span class="p">[</span><span class="s1">&#39;Extent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hemisphere  Year
+north       1978    10.231
+            1979     6.895
+            1980     7.533
+            1981     6.902
+            1982     7.160
+                     ...  
+south       2015     3.544
+            2016     2.616
+            2017     2.080
+            2018     2.150
+            2019     2.444
+Name: Extent, Length: 84, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -1433,16 +1378,7 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">42</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ice_extent</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="s1">&#39;Extent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()[</span><span class="s1">&#39;north&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">my_plot</span> <span class="o">=</span> <span class="n">ice_extent</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/dea3815a07beea91d517441f4fa26b24ac655f4b09a25c285c71712b6e2cb93c.png" src="../../_images/dea3815a07beea91d517441f4fa26b24ac655f4b09a25c285c71712b6e2cb93c.png" />
 </div>
 </div>
 <p>You can see that the sea ice extent has been broadly trending downwards but the values at the extremes of the x-axis look a bit odd, i.e., there are very large values for the first and last year in the dataset. This is an ‘artifact’ caused by the data for these years being incomplete. The data for 1978 only start in November and the data for 2019 only go up to July. The code has computed the average for the few months that are available, but this is not representative of the average for the full year. We can fix this problem by simply removing these years from the data before plotting.</p>
@@ -1459,16 +1395,7 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">43</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;hemisphere&#39;</span><span class="p">,</span> <span class="s1">&#39;Year&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ice_extent</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="s1">&#39;Extent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()[</span><span class="s1">&#39;north&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ice_extent</span> <span class="o">=</span> <span class="n">ice_extent</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># remove first and last years</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/1e5ec1b98dc7bbe328076e8c4c52c671557e502ad309fd7ff5307c1d8f4c6faa.png" src="../../_images/1e5ec1b98dc7bbe328076e8c4c52c671557e502ad309fd7ff5307c1d8f4c6faa.png" />
 </div>
 </div>
 <p>Notice how the sea ice minimum fluctuates seemingly at random from year to year. This kind of unexplained variation in data is often referred to as noise. However, ignoring the fluctuations, we can see that there also appears to be a downward trend in the sea ice minimum. If we want to be sure that there is a genuine downward trend and that the low values in recent years are not just part of the usual random fluctuations, then we need to perform some statistical analysis. We will look at how to do this later in the module.</p>
@@ -1484,16 +1411,6 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">44</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/employee.csv&#39;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <p>Note, below, the presence of ‘NaN’ in the age and gender columns.</p>
 <div class="cell docutils container">
@@ -1503,12 +1420,17 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">45</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ID    Surname   Age  Gender
+0   1      Smith  32.0    Male
+1   2    Johnson  45.0  Female
+2   3   Gonzalez   NaN     NaN
+3   4         Li  37.0  Female
+4   5      Brown  41.0    Male
+5   6  Rodriguez  29.0  Female
+6   7      Kumar  32.0     NaN
+7   8      Lopez  36.0  Female
+8   9     Nguyen   NaN    Male
+9  10      Patel  40.0    Male
 </pre></div>
 </div>
 </div>
@@ -1521,12 +1443,17 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">46</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
-
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      ID  Surname    Age  Gender
+0  False    False  False   False
+1  False    False  False   False
+2  False    False   True    True
+3  False    False  False   False
+4  False    False  False   False
+5  False    False  False   False
+6  False    False  False    True
+7  False    False  False   False
+8  False    False   True   False
+9  False    False  False   False
 </pre></div>
 </div>
 </div>
@@ -1542,12 +1469,13 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">47</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;Gender not provided&quot;</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2121/1817109800.py:1: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
 
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  df[&#39;Gender&#39;].fillna(&quot;Gender not provided&quot;, inplace = True)
 </pre></div>
 </div>
 </div>
@@ -1559,12 +1487,17 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">48</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ID    Surname   Age               Gender
+0   1      Smith  32.0                 Male
+1   2    Johnson  45.0               Female
+2   3   Gonzalez   NaN  Gender not provided
+3   4         Li  37.0               Female
+4   5      Brown  41.0                 Male
+5   6  Rodriguez  29.0               Female
+6   7      Kumar  32.0  Gender not provided
+7   8      Lopez  36.0               Female
+8   9     Nguyen   NaN                 Male
+9  10      Patel  40.0                 Male
 </pre></div>
 </div>
 </div>
@@ -1582,12 +1515,13 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">49</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2121/2940318962.py:1: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
 
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
+
+
+  df[&#39;Age&#39;].fillna(df[&#39;Age&#39;].mean(), inplace = True)
 </pre></div>
 </div>
 </div>
@@ -1600,12 +1534,17 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">50</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ID    Surname   Age               Gender
+0   1      Smith  32.0                 Male
+1   2    Johnson  45.0               Female
+2   3   Gonzalez  36.5  Gender not provided
+3   4         Li  37.0               Female
+4   5      Brown  41.0                 Male
+5   6  Rodriguez  29.0               Female
+6   7      Kumar  32.0  Gender not provided
+7   8      Lopez  36.0               Female
+8   9     Nguyen  36.5                 Male
+9  10      Patel  40.0                 Male
 </pre></div>
 </div>
 </div>
@@ -1647,17 +1586,6 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">51</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">co2_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/co2_ex.csv&#39;</span><span class="p">,</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ch4_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/ch4_ex.csv&#39;</span><span class="p">,</span>  <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1667,13 +1595,17 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">52</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">co2_df</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">ch4_df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;co2_df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   year  month  day  co2
+0  2020      1    2  442
+1  2020      1    3  444
+2  2020      1    4  441
+3  2020      1    7  446
+   year  month  day  ch4
+0  2020      1    2  442
+1  2020      1    3  444
+2  2020      1    5  441
+3  2020      1    6  442
+4  2020      1    7  446
 </pre></div>
 </div>
 </div>
@@ -1691,13 +1623,10 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">53</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">combined_df</span> <span class="o">=</span> <span class="n">co2_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">ch4_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">combined_df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;co2_df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   year  month  day  co2  ch4
+0  2020      1    2  442  442
+1  2020      1    3  444  444
+2  2020      1    7  446  446
 </pre></div>
 </div>
 </div>
@@ -1713,13 +1642,13 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">54</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">combined_df</span> <span class="o">=</span> <span class="n">co2_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">ch4_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">combined_df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;co2_df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   year  month  day    co2    ch4
+0  2020      1    2  442.0  442.0
+1  2020      1    3  444.0  444.0
+2  2020      1    4  441.0    NaN
+3  2020      1    5    NaN  441.0
+4  2020      1    6    NaN  442.0
+5  2020      1    7  446.0  446.0
 </pre></div>
 </div>
 </div>
@@ -1735,13 +1664,11 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">55</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">combined_df</span> <span class="o">=</span> <span class="n">co2_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">ch4_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">combined_df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;co2_df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   year  month  day  co2    ch4
+0  2020      1    2  442  442.0
+1  2020      1    3  444  444.0
+2  2020      1    4  441    NaN
+3  2020      1    7  446  446.0
 </pre></div>
 </div>
 </div>
@@ -1757,13 +1684,12 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">56</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">combined_df</span> <span class="o">=</span> <span class="n">co2_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">ch4_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">combined_df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;co2_df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   year  month  day    co2  ch4
+0  2020      1    2  442.0  442
+1  2020      1    3  444.0  444
+2  2020      1    5    NaN  441
+3  2020      1    6    NaN  442
+4  2020      1    7  446.0  446
 </pre></div>
 </div>
 </div>
@@ -1779,13 +1705,27 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">57</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">combined_df</span> <span class="o">=</span> <span class="n">co2_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">ch4_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">combined_df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;co2_df&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    year  month_x  day_x  co2  month_y  day_y  ch4
+0   2020        1      2  442        1      2  442
+1   2020        1      2  442        1      3  444
+2   2020        1      2  442        1      5  441
+3   2020        1      2  442        1      6  442
+4   2020        1      2  442        1      7  446
+5   2020        1      3  444        1      2  442
+6   2020        1      3  444        1      3  444
+7   2020        1      3  444        1      5  441
+8   2020        1      3  444        1      6  442
+9   2020        1      3  444        1      7  446
+10  2020        1      4  441        1      2  442
+11  2020        1      4  441        1      3  444
+12  2020        1      4  441        1      5  441
+13  2020        1      4  441        1      6  442
+14  2020        1      4  441        1      7  446
+15  2020        1      7  446        1      2  442
+16  2020        1      7  446        1      3  444
+17  2020        1      7  446        1      5  441
+18  2020        1      7  446        1      6  442
+19  2020        1      7  446        1      7  446
 </pre></div>
 </div>
 </div>
@@ -1803,17 +1743,6 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">58</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">co2_df_indexed</span> <span class="o">=</span> <span class="n">co2_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">ch4_df_indexed</span> <span class="o">=</span> <span class="n">ch4_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">])</span>
-
-<span class="ne">NameError</span>: name &#39;co2_df&#39; is not defined
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1823,13 +1752,19 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">59</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">co2_df_indexed</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">ch4_df_indexed</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;co2_df_indexed&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                co2
+year month day     
+2020 1     2    442
+           3    444
+           4    441
+           7    446
+                ch4
+year month day     
+2020 1     2    442
+           3    444
+           5    441
+           6    442
+           7    446
 </pre></div>
 </div>
 </div>
@@ -1843,13 +1778,14 @@ max     2019.000000     12.000000     31.000000     20.201000      0.024000
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">60</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">combined_df</span> <span class="o">=</span> <span class="n">co2_df_indexed</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ch4_df_indexed</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">combined_df</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;co2_df_indexed&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                  co2    ch4
+year month day              
+2020 1     2    442.0  442.0
+           3    444.0  444.0
+           4    441.0    NaN
+           5      NaN  441.0
+           6      NaN  442.0
+           7    446.0  446.0
 </pre></div>
 </div>
 </div>
