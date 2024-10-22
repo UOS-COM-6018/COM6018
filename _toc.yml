@@ -37,7 +37,7 @@ parts:
       - file: materials/labs/010_python_intro.ipynb
       - file: materials/labs/020_reading_data.ipynb
       - file: materials/labs/030_introducing_numpy.ipynb
-  #     - file: materials/labs/040_working_with_pandas.ipynb
+      - file: materials/labs/040_working_with_pandas.ipynb
   #      - file: materials/labs/050_using_matplotlib.ipynb
   #      - file: materials/labs/060_introducing_scikit_learn.ipynb
   #      - file: materials/labs/070_classification_with_scikit_learn.ipynb
