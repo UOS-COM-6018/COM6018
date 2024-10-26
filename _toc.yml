@@ -26,7 +26,7 @@ parts:
       - file: materials/tutorials/030_Introducing_Numpy.ipynb
       - file: materials/tutorials/035_Some_Common_Problems.ipynb
       - file: materials/tutorials/040_Introducing_Pandas.ipynb
-  #      - file: materials/tutorials/045_Common_Pandas_Mistakes.ipynb
+      - file: materials/tutorials/045_Common_Pandas_Mistakes.ipynb
   #      - file: materials/tutorials/050_Introducing_Matplotlib.ipynb
   #      - file: materials/tutorials/060_Introducing_Scikit_Learn.ipynb
   #      - file: materials/tutorials/070_Classification_with_Scikit_Learn.ipynb
@@ -49,7 +49,7 @@ parts:
       - file: materials/solutions/010_python_intro.ipynb
       - file: materials/solutions/020_reading_data.ipynb
       - file: materials/solutions/030_introducing_numpy.ipynb
-#      - file: materials/solutions/040_working_with_pandas.ipynb
+      - file: materials/solutions/040_working_with_pandas.ipynb
 #      - file: materials/solutions/050_using_matplotlib.ipynb
 #      - file: materials/solutions/060_introducing_scikit_learn.ipynb
 #      - file: materials/solutions/070_classification_with_scikit_learn.ipynb
