@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'materials/tutorials/040_Introducing_Pandas';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="000 COM6018 Lab Classes" href="../labs/000_Introduction.html" />
+    <link rel="next" title="045 Common Pandas Mistakes" href="045_Common_Pandas_Mistakes.html" />
     <link rel="prev" title="035 Some Common Problems" href="035_Some_Common_Problems.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -187,6 +187,7 @@
 <li class="toctree-l1"><a class="reference internal" href="030_Introducing_Numpy.html">030 Numerical Computing with NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="035_Some_Common_Problems.html">035 Some Common Problems</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">040 Processing Data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="045_Common_Pandas_Mistakes.html">045 Common Pandas Mistakes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
 <ul class="nav bd-sidenav">
@@ -202,6 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../solutions/010_python_intro.html">010 Getting Started with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../solutions/020_reading_data.html">020 Reading data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../solutions/030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/040_working_with_pandas.html">040 Working with Pandas</a></li>
 </ul>
 
     </div>
@@ -1451,7 +1453,7 @@ Name: Extent, Length: 84, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2046/1817109800.py:1: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1977/1817109800.py:1: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
 
 For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
@@ -1497,7 +1499,7 @@ For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2046/2940318962.py:1: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1977/2940318962.py:1: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
 
 For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
@@ -1821,11 +1823,11 @@ year month day
       </div>
     </a>
     <a class="right-next"
-       href="../labs/000_Introduction.html"
+       href="045_Common_Pandas_Mistakes.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">000 COM6018 Lab Classes</p>
+        <p class="prev-next-title">045 Common Pandas Mistakes</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

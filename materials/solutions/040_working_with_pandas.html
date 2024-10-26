@@ -60,10 +60,9 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/labs/040_working_with_pandas';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/solutions/040_working_with_pandas';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="000 COM6018 Solutions" href="../solutions/000_Introduction.html" />
     <link rel="prev" title="030 Introducing NumPy" href="030_introducing_numpy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -190,20 +189,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/045_Common_Pandas_Mistakes.html">045 Common Pandas Mistakes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/040_working_with_pandas.html">040 Working with Pandas</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="010_python_intro.html">010 Getting Started with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="020_reading_data.html">020 Reading data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="030_introducing_numpy.html">030 Introducing NumPy</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">040 Working with Pandas</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../solutions/000_Introduction.html">000 COM6018 Solutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/010_python_intro.html">010 Getting Started with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/020_reading_data.html">020 Reading data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/030_introducing_numpy.html">030 Introducing NumPy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/040_working_with_pandas.html">040 Working with Pandas</a></li>
 </ul>
 
     </div>
@@ -258,7 +257,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/labs/040_working_with_pandas.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/solutions/040_working_with_pandas.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -306,7 +305,7 @@
       
       
       
-      <li><a href="https://github.com/UOS-COM-6018/COM6018/edit/main/materials/labs/040_working_with_pandas.ipynb" target="_blank"
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/edit/main/materials/solutions/040_working_with_pandas.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -323,7 +322,7 @@
       
       
       
-      <li><a href="https://github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/labs/040_working_with_pandas.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/solutions/040_working_with_pandas.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -353,7 +352,7 @@
       
       
       
-      <li><a href="../../_sources/materials/labs/040_working_with_pandas.ipynb" target="_blank"
+      <li><a href="../../_sources/materials/solutions/040_working_with_pandas.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -483,11 +482,26 @@
 </div>
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.2.3
+2.0.2
+</pre></div>
+</div>
+</div>
+</div>
 <p>First, we will use the <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code> method to load the carbon dioxide data from the CSV file, <code class="docutils literal notranslate"><span class="pre">data/co2.csv</span></code>. The loaded data will be stored in a Pandas dataframe which we will call <code class="docutils literal notranslate"><span class="pre">co2_df</span></code>. The CSV file has six fields which we will name as follows: ‘Yr’, ‘Mn’, ‘Dy’, ‘CO2’, ‘NB’, ‘scale’. The <code class="docutils literal notranslate"><span class="pre">co2.csv</span></code> file has comment lines starting with a ‘%’ symbol. These can be automatically skipped. If you are unsure how to do this then look again at the tutorial notebook, or check the documentation for <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>.</p>
 <p>Complete the cell below such that the TEST cell passes correctly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="n">co2_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/co2.csv&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Yr&#39;</span><span class="p">,</span><span class="s1">&#39;Mn&#39;</span><span class="p">,</span><span class="s1">&#39;Dy&#39;</span><span class="p">,</span><span class="s1">&#39;CO2&#39;</span><span class="p">,</span><span class="s1">&#39;NB&#39;</span><span class="p">,</span><span class="s1">&#39;scale&#39;</span><span class="p">,</span> <span class="s1">&#39;sta&#39;</span><span class="p">],</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -498,12 +512,35 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         Yr  Mn  Dy  CO2   NB  scale  sta
+0      1958   1   1  NaN  0.0   12.0  mlo
+1      1958   1   2  NaN  0.0   12.0  mlo
+2      1958   1   3  NaN  0.0   12.0  mlo
+3      1958   1   4  NaN  0.0   12.0  mlo
+4      1958   1   5  NaN  0.0   12.0  mlo
+...     ...  ..  ..  ...  ...    ...  ...
+24406  2024  10  27  NaN  0.0   12.0  mlo
+24407  2024  10  28  NaN  0.0   12.0  mlo
+24408  2024  10  29  NaN  0.0   12.0  mlo
+24409  2024  10  30  NaN  0.0   12.0  mlo
+24410  2024  10  31  NaN  0.0   12.0  mlo
+
+[24411 rows x 7 columns]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
 <span class="k">assert</span> <span class="nb">dict</span><span class="p">(</span><span class="n">co2_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1000</span><span class="p">])</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;Yr&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">(</span><span class="mi">1960</span><span class="p">),</span> <span class="s1">&#39;Mn&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="s1">&#39;Dy&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">(</span><span class="mi">27</span><span class="p">),</span> <span class="s1">&#39;CO2&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mf">313.31</span><span class="p">),</span> <span class="s1">&#39;NB&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mf">3.0</span><span class="p">),</span> <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mf">12.0</span><span class="p">),</span> <span class="s1">&#39;sta&#39;</span><span class="p">:</span> <span class="s1">&#39;mlo&#39;</span><span class="p">}</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -517,7 +554,8 @@
 <p>Write the code below and then check it by running the test cell.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="n">ch4_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/ch4.csv&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">na_values</span><span class="o">=</span><span class="s1">&#39;-999.99&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -537,7 +575,9 @@
 <p>Making a new dataframe from a subset of columns of an existing one is a very common operation. Check the tutorial notes if you cannot remember how to do this. To rename the fields we can use the DataFrame <code class="docutils literal notranslate"><span class="pre">rename</span></code> method. These two steps can be written in a single line of code. (Again, compare this with the equivalent step when we implemented this in Lab Class 020 without using Pandas.)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="n">co2_df</span> <span class="o">=</span> <span class="n">co2_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Yr&#39;</span><span class="p">:</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;Mn&#39;</span><span class="p">:</span><span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;Dy&#39;</span><span class="p">:</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;CO2&#39;</span><span class="p">:</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">})[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">]]</span>
+<span class="n">ch4_df</span> <span class="o">=</span> <span class="n">ch4_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;value&#39;</span><span class="p">:</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">})[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39;day&#39;</span><span class="p">,</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -552,6 +592,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="step-4-dealing-with-missing-values">
@@ -559,7 +604,19 @@
 <p>In the next step we will remove any rows from the dataframes that contain missing concentration values. Check the notes on selecting rows. Hint: you can use the <code class="docutils literal notranslate"><span class="pre">isna()</span></code> method which returns True for data entries that have NaN values, or, better, you can use the special purpose <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION </span>
+<span class="n">co2_df</span> <span class="o">=</span> <span class="n">co2_df</span><span class="p">[</span><span class="o">~</span><span class="n">co2_df</span><span class="o">.</span><span class="n">co2_concentration</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+<span class="n">ch4_df</span> <span class="o">=</span> <span class="n">ch4_df</span><span class="p">[</span><span class="o">~</span><span class="n">ch4_df</span><span class="o">.</span><span class="n">ch4_concentration</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The same result can be achieved more simply by using the <code class="docutils literal notranslate"><span class="pre">dropna</span></code> method which removes rows that contain NaN values. Below, the <code class="docutils literal notranslate"><span class="pre">subset</span></code> parameter is used so that the frames are only dropped in the NaN values are in the <code class="docutils literal notranslate"><span class="pre">co2_concentration</span></code> or <code class="docutils literal notranslate"><span class="pre">ch4_concentration</span></code> columns.</p>
+<div class="cell tag_REMOVE docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="n">co2_df</span> <span class="o">=</span> <span class="n">co2_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;co2_concentration&#39;</span><span class="p">])</span>
+<span class="n">ch4_df</span> <span class="o">=</span> <span class="n">ch4_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -573,6 +630,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="step-5-fixing-the-units">
@@ -581,7 +643,8 @@
 <p>Scaling a single column of a dataframe is very easy and can be done with a single line. Do this in the cell below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION </span>
+<span class="n">ch4_df</span><span class="o">.</span><span class="n">ch4_concentration</span> <span class="o">=</span> <span class="n">ch4_df</span><span class="p">[</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span>
 </pre></div>
 </div>
 </div>
@@ -591,6 +654,12 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ch4_df</span><span class="o">.</span><span class="n">ch4_concentration</span><span class="p">[</span><span class="mi">92</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.70002
+All tests passed!
 </pre></div>
 </div>
 </div>
@@ -609,10 +678,25 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(year                   int64
+ month                  int64
+ day                    int64
+ ch4_concentration    float64
+ dtype: object,
+ year                   int64
+ month                  int64
+ day                    int64
+ co2_concentration    float64
+ dtype: object)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">co2_df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">ch4_df</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -626,11 +710,21 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed
+</pre></div>
+</div>
+</div>
 </div>
 <p>Another advantage of using Pandas is that it is very fast. In the cell below, ‘%timeit’ is used to time the <code class="docutils literal notranslate"><span class="pre">merge</span></code> command. On my machine is takes about 2 ms. This is faster than the function that we wrote in lab 2 when implementing the <code class="docutils literal notranslate"><span class="pre">merge</span></code> using Python.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> co2_df.merge(ch4_df, how=&#39;inner&#39;, on=[&#39;day&#39;, &#39;month&#39;, &#39;year&#39;])
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.54 ms ± 10.1 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -642,7 +736,8 @@
 <p>So we will make a new column in the dataframe that we will call <code class="docutils literal notranslate"><span class="pre">co2e</span></code> and which will be equal to <code class="docutils literal notranslate"><span class="pre">co2_concentration</span> <span class="pre">+</span> <span class="pre">28</span> <span class="pre">*</span> <span class="pre">ch4_concentration</span></code>. This should be a single line of code. Refer to the notes if you are unsure how to do it. Write this in the cell below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;co2e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;co2_concentration&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">28</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -652,6 +747,11 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
 <span class="k">assert</span> <span class="n">df</span><span class="o">.</span><span class="n">co2e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mf">398.44056</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -667,9 +767,14 @@
 <p>You will find that the x-axis will be the index of the row, ie from 0 to 9375. We would like it to be the year. Don’t worry about this for now, we will fix it in the next step.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">my_plot</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;co2e&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;CO2e over time&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;CO2e (ppm)&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/6ae0430f2e50cd070c4859b3e63d2f9bf40ed33ede28d82e0d1113fd59dac8c0.png" src="../../_images/6ae0430f2e50cd070c4859b3e63d2f9bf40ed33ede28d82e0d1113fd59dac8c0.png" />
 </div>
 </div>
 </section>
@@ -682,7 +787,8 @@
 <p>Add a new column to the DataFrame called <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code> that is formed using the above equation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">year</span> <span class="o">+</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">month</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">12</span> <span class="o">+</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">day</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">365</span>
 </pre></div>
 </div>
 </div>
@@ -695,14 +801,24 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
+</pre></div>
+</div>
+</div>
 </div>
 <p>We can now plot the <code class="docutils literal notranslate"><span class="pre">co2_e</span></code> values against decimal year. To plot one column against another we can use the <code class="docutils literal notranslate"><span class="pre">plot</span></code> method of the dataframe itself and use the ‘x’ and ‘y’ parameters: this looks like <code class="docutils literal notranslate"><span class="pre">df.plot(x='decimial_year,</span> <span class="pre">y='co2e')</span></code></p>
 <p>Try this below, but remember to also give the plot a title and axes labels.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">my_plot</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;co2e&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;CO2e over time&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;CO2e (ppm)&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/16ed3ee78fac222572d9912b4386985c476116df9ebe2cd725466d325b9c16b1.png" src="../../_images/16ed3ee78fac222572d9912b4386985c476116df9ebe2cd725466d325b9c16b1.png" />
 </div>
 </div>
 <p>We have now used Pandas to repeat everything we did in Lab class 020. Although it has taken a similar number of steps, each step could be completed with a single line of code using pre-existing Pandas functions. Each step will also have run faster.</p>
@@ -715,7 +831,26 @@
 <p>Be careful to interpret the data correctly, i.e. the nitrous oxide data is recorded in parts per billion and the sulfur hexaflouride is measured as parts per trillion (i.e., 10^9). When computing the CO<sub>2</sub>e figure you can use the following multipliers: 265 for nitrous oxide and 23,500 for sulphur hexaflouride. (These values have been taken from the (IPCC fifth assessment report)[<a class="reference external" href="https://ghgprotocol.org/sites/default/files/ghgp/Global-Warming-Potential-Values%20%28Feb%2016%202016%29_1.pdf">https://ghgprotocol.org/sites/default/files/ghgp/Global-Warming-Potential-Values (Feb 16 2016)_1.pdf</a>])</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="c1"># Load and process n2o data</span>
+<span class="n">n2o_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/n2o.csv&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">n2o_df</span> <span class="o">=</span> <span class="n">n2o_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;N2OcatsMLOyr&#39;</span><span class="p">:</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;N2OcatsMLOmon&#39;</span><span class="p">:</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;N2OcatsMLOday&#39;</span><span class="p">:</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;N2OcatsMLOm&#39;</span><span class="p">:</span><span class="s1">&#39;n2o_concentration&#39;</span><span class="p">})[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39;day&#39;</span><span class="p">,</span><span class="s1">&#39;n2o_concentration&#39;</span><span class="p">]]</span>
+<span class="n">n2o_df</span> <span class="o">=</span> <span class="n">n2o_df</span><span class="p">[</span><span class="o">~</span><span class="n">n2o_df</span><span class="o">.</span><span class="n">n2o_concentration</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+<span class="n">n2o_df</span><span class="o">.</span><span class="n">n2o_concentration</span> <span class="o">=</span> <span class="n">n2o_df</span><span class="p">[</span><span class="s1">&#39;n2o_concentration&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span>
+
+<span class="c1"># Load and process sf6 data</span>
+<span class="n">sf6_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/sf6.csv&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">sf6_df</span> <span class="o">=</span> <span class="n">sf6_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;SF6catsMLOyr&#39;</span><span class="p">:</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;SF6catsMLOmon&#39;</span><span class="p">:</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;SF6catsMLOday&#39;</span><span class="p">:</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;SF6catsMLOm&#39;</span><span class="p">:</span><span class="s1">&#39;sf6_concentration&#39;</span><span class="p">})[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39;day&#39;</span><span class="p">,</span><span class="s1">&#39;sf6_concentration&#39;</span><span class="p">]]</span>
+<span class="n">sf6_df</span> <span class="o">=</span> <span class="n">sf6_df</span><span class="p">[</span><span class="o">~</span><span class="n">sf6_df</span><span class="o">.</span><span class="n">sf6_concentration</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+<span class="n">sf6_df</span><span class="o">.</span><span class="n">sf6_concentration</span> <span class="o">=</span> <span class="n">sf6_df</span><span class="p">[</span><span class="s1">&#39;sf6_concentration&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000000</span>
+
+<span class="c1"># Merge into the main dataframe</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">n2o_df</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">sf6_df</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
+
+<span class="c1"># Compute the CO2e figure</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;co2e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;co2_concentration&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">28</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;ch4_concentration&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">265</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;n2o_concentration&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">23500</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sf6_concentration&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -723,23 +858,35 @@
 <p>Now make a plot of the total CO2e.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">my_plot</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;co2e&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;CO2e over time&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;CO2e (ppm)&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/8541f821935ba81e2d9add5cd18192e252ec6a101225972e4649a5075a3cdd35.png" src="../../_images/8541f821935ba81e2d9add5cd18192e252ec6a101225972e4649a5075a3cdd35.png" />
 </div>
 </div>
 <p>You can plot multiple series on the same axes by setting the plot method’s y parameter to be a list of the names of the series you want to plot, e.g., <code class="docutils literal notranslate"><span class="pre">y=['co2e',</span> <span class="pre">'co2_concentration']</span></code>. Make a plot that shows the CO<sub>2</sub>e value for each of the four gases and the total CO<sub>2</sub>e, all plotted on the same axes. (Hint: in order to do this, you will first need to add new columns to the dataframe to store the CO<sub>2</sub>e of each of the separate gases.)</p>
 <p>Write your code in the cell below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;ch4_co2e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">ch4_concentration</span> <span class="o">*</span> <span class="mi">28</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;sf6_co2e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sf6_concentration</span> <span class="o">*</span> <span class="mi">23500</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;n2o_co2e&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">n2o_concentration</span> <span class="o">*</span> <span class="mi">265</span>
+<span class="n">my_plot</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;co2e&#39;</span><span class="p">,</span> <span class="s1">&#39;co2_concentration&#39;</span><span class="p">,</span> <span class="s1">&#39;ch4_co2e&#39;</span><span class="p">,</span> <span class="s1">&#39;sf6_co2e&#39;</span><span class="p">,</span> <span class="s1">&#39;n2o_co2e&#39;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;CO2e over time&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;CO2e (ppm)&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/b990d6ea76796d85319b0d0de57bf2a3e5556c2209330287ac41e9d98afad35d.png" src="../../_images/b990d6ea76796d85319b0d0de57bf2a3e5556c2209330287ac41e9d98afad35d.png" />
 </div>
 </div>
 <p>You should see from the plot that although the total CO<sub>2</sub>e has been steadily rising, nearly all of the increase is due to co2. i.e., the total CO<sub>2</sub>e line runs in parallel to the CO<sub>2</sub> line.</p>
 <p>If all have gone well you should have produced a plot looking like the one below.</p>
-<p><a class="reference download internal" download="" href="../../_downloads/df3f17773f5e93c044d26873f711f911/co2e_plot.png"><span class="xref download myst">final plot</span></a></p>
+<p><a class="reference internal" href="#figures/co2e_plot.png"><span class="xref myst">final plot</span></a></p>
 </section>
 <section id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
@@ -762,7 +909,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./materials/labs"
+            path: "./materials/solutions"
         },
         predefinedOutput: true
     }
@@ -787,15 +934,6 @@
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">030 Introducing NumPy</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../solutions/000_Introduction.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">000 COM6018 Solutions</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

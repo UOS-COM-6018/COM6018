@@ -63,6 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'materials/solutions/030_introducing_numpy';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="040 Working with Pandas" href="040_working_with_pandas.html" />
     <link rel="prev" title="020 Reading data" href="020_reading_data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -186,6 +187,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/030_Introducing_Numpy.html">030 Numerical Computing with NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/035_Some_Common_Problems.html">035 Some Common Problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/040_Introducing_Pandas.html">040 Processing Data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/045_Common_Pandas_Mistakes.html">045 Common Pandas Mistakes</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
 <ul class="nav bd-sidenav">
@@ -201,6 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="010_python_intro.html">010 Getting Started with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="020_reading_data.html">020 Reading data</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="040_working_with_pandas.html">040 Working with Pandas</a></li>
 </ul>
 
     </div>
@@ -592,7 +595,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd7e0aaf340&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f279a5423d0&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/4fafb65d6450ae6137eab283f07b1fb5d9e549ecca7108fb9d8bf6a3d8559396.png" src="../../_images/4fafb65d6450ae6137eab283f07b1fb5d9e549ecca7108fb9d8bf6a3d8559396.png" />
@@ -610,7 +613,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd7dea22070&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f27984ba0a0&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/b544d092d7e671dbe8767595a87043f4f2654cf7b8baf0f54e585c9736ceb750.png" src="../../_images/b544d092d7e671dbe8767595a87043f4f2654cf7b8baf0f54e585c9736ceb750.png" />
@@ -812,7 +815,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd7de77ccd0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f2798212d30&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/4fafb65d6450ae6137eab283f07b1fb5d9e549ecca7108fb9d8bf6a3d8559396.png" src="../../_images/4fafb65d6450ae6137eab283f07b1fb5d9e549ecca7108fb9d8bf6a3d8559396.png" />
@@ -882,7 +885,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd7de7f5520&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f279827c5b0&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/71379acf9379bb0a3230b54ce986abb6f1392a9b39cb42bf61e9af1975263ca4.png" src="../../_images/71379acf9379bb0a3230b54ce986abb6f1392a9b39cb42bf61e9af1975263ca4.png" />
@@ -915,7 +918,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd7de7194f0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f27981b1490&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/779b3439102b479e8d817cec2a17db7726a90b31f95ec5782f38a1f20f2c7571.png" src="../../_images/779b3439102b479e8d817cec2a17db7726a90b31f95ec5782f38a1f20f2c7571.png" />
@@ -1143,6 +1146,15 @@
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">020 Reading data</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="040_working_with_pandas.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">040 Working with Pandas</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
