@@ -873,7 +873,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3d87ba8b823b1e4cd609961021067d68a01eb0d582a1944d7948d8f44ac0ee6b.png" src="../../_images/3d87ba8b823b1e4cd609961021067d68a01eb0d582a1944d7948d8f44ac0ee6b.png" />
+<img alt="../../_images/eaba188e12e9a3193476b85abff6c07b5633dee469dccf68dac7b968b6b2a9f4.png" src="../../_images/eaba188e12e9a3193476b85abff6c07b5633dee469dccf68dac7b968b6b2a9f4.png" />
 </div>
 </div>
 <p>Matplotlib also provides a function called ‘bar’ for plotting bar charts. Do not confuse this with the ‘hist’ function. The ‘bar’ function can take a set of x, y numeric value pairs as in the example below:</p>
@@ -924,7 +924,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/820da8564409ef5da809d0ff091aa8c634f025837bf9835826b5882f973e4b2e.png" src="../../_images/820da8564409ef5da809d0ff091aa8c634f025837bf9835826b5882f973e4b2e.png" />
+<img alt="../../_images/40d116617f87e8e98b9f86cfb531df03ff5e39d907c02947518a524725fd5b28.png" src="../../_images/40d116617f87e8e98b9f86cfb531df03ff5e39d907c02947518a524725fd5b28.png" />
 </div>
 </div>
 <p>In the above, we have 1000 samples each with two features, <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">x2</span></code>. The scatter plot gives us a clear indication of the relationship between the two variables. In this case, we can see that the points are clustered around a straight line. This indicates that there is a strong correlation between the two variables. This is not surprising in this case because <code class="docutils literal notranslate"><span class="pre">x2</span></code> has been constructed from a linear function of <code class="docutils literal notranslate"><span class="pre">x1</span></code> (that is, <span class="math notranslate nohighlight">\(15 x_1 + 10\)</span>) with some random noise added.</p>
@@ -1126,31 +1126,11 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">31</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>Seaborn comes with some inbuilt datasets that can be used for testing and demonstrations. We can load these using the <code class="docutils literal notranslate"><span class="pre">load_dataset</span></code> function. The following example loads the <code class="docutils literal notranslate"><span class="pre">mpg</span></code> dataset, which contains data on the fuel consumption of various cars.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mpg</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;mpg&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">32</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">mpg</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;mpg&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1163,12 +1143,19 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">33</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">mpg</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    mpg  cylinders  displacement  horsepower  weight  acceleration  \
+0  18.0          8         307.0       130.0    3504          12.0   
+1  15.0          8         350.0       165.0    3693          11.5   
+2  18.0          8         318.0       150.0    3436          11.0   
+3  16.0          8         304.0       150.0    3433          12.0   
+4  17.0          8         302.0       140.0    3449          10.5   
 
-<span class="ne">NameError</span>: name &#39;mpg&#39; is not defined
+   model_year origin                       name  
+0          70    usa  chevrolet chevelle malibu  
+1          70    usa          buick skylark 320  
+2          70    usa         plymouth satellite  
+3          70    usa              amc rebel sst  
+4          70    usa                ford torino  
 </pre></div>
 </div>
 </div>
@@ -1178,16 +1165,6 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">34</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1205,15 +1182,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">35</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/dda36dd1dd2cdccf95a7c2e54455d162770b0ca63cacd732bdae4be04445ddc8.png" src="../../_images/dda36dd1dd2cdccf95a7c2e54455d162770b0ca63cacd732bdae4be04445ddc8.png" />
 </div>
 </div>
 <p>Note that we could have produced this plot using Matplotlib directly, but it would have taken a lot more code, i.e., we would have had to extract the data from the DataFrame, label the axes, set up the grid, etc.</p>
@@ -1227,15 +1196,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">36</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/f8e43860a84b460a10a25a701bd251d820daef984092fdeda394c37ec75c6213.png" src="../../_images/f8e43860a84b460a10a25a701bd251d820daef984092fdeda394c37ec75c6213.png" />
 </div>
 </div>
 <p>Note how Seaborn has automatically labelled the axes for us and added a legend.</p>
@@ -1248,15 +1209,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">37</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/aa40372b4c2e6a2b15eb449bb033990e2f765383fb765c381ea63f289cf87900.png" src="../../_images/aa40372b4c2e6a2b15eb449bb033990e2f765383fb765c381ea63f289cf87900.png" />
 </div>
 </div>
 <p>From this plot we can see that cars from Japan and Europe tend to be lighter and more fuel efficient than cars from the United States. Note that this dataset consists of cars from the 1970s and 1980s. The differences between the regions may be less pronounced in more recent years. Petrol used to be very cheap in the USA, so fuel efficiency was not a priority, whereas, in recent years, cars have become heavier in order to provide more protection in accidents.</p>
@@ -1269,15 +1222,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">38</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;line&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/a33fc1c521f3f46b34f3fe7464ff737bdb59862d292078f09fd610fb9149cd58.png" src="../../_images/a33fc1c521f3f46b34f3fe7464ff737bdb59862d292078f09fd610fb9149cd58.png" />
 </div>
 </div>
 <p>It is important to think carefully about whether to use a line plot or a scatter plot. Line plots emphasise the continuity of the data along the x-axis. A scatter plot emphasises the individual data points. In this particular case, the scatter plot is probably more appropriate because each point represents a different car and there is no continuity between cars.</p>
@@ -1290,15 +1235,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">39</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/0d9f182649b96dec62f1abc8cecd87e23342abf3f33d1c503b9c2e4bdbeaf96d.png" src="../../_images/0d9f182649b96dec62f1abc8cecd87e23342abf3f33d1c503b9c2e4bdbeaf96d.png" />
 </div>
 </div>
 <p>In the above plots, we have tried to show several variables on the same axes. An alternative approach, particularly for categorical variables, is to use multiple axes. Seaborn has the concept of a FacetGrid which is a grid of axes. Each axis shows a different subset of the data. A FacetGrid can be constructed simply by setting the <code class="docutils literal notranslate"><span class="pre">col</span></code> and/or <code class="docutils literal notranslate"><span class="pre">row</span></code> parameters.</p>
@@ -1311,15 +1248,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">40</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">relplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;horsepower&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="s2">&quot;cylinders&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/99691f5baeef6666585a8605d67cd7d5e650e9d791ef5022d6ae9ccb19f5c098.png" src="../../_images/99691f5baeef6666585a8605d67cd7d5e650e9d791ef5022d6ae9ccb19f5c098.png" />
 </div>
 </div>
 <p>In the above, the <code class="docutils literal notranslate"><span class="pre">height</span></code> parameter is used to set the height of each plot in the grid. The default height is 5 inches. Here we have reduced it to 2.5 so that the entire grid fits on the page a bit better. Note that some of the plots have no data, i.e., there are no 8-cylinder cars from Europe or Japan in this dataset.</p>
@@ -1340,15 +1269,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">41</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/bdcc9bcb5d3ed4407f827efeaf7525bbc0f1b8c5bf4d3dfd7fbe53de207a7e6f.png" src="../../_images/bdcc9bcb5d3ed4407f827efeaf7525bbc0f1b8c5bf4d3dfd7fbe53de207a7e6f.png" />
 </div>
 </div>
 <p>Seaborn has automatically chosen the number of bins to use in the histogram. It tries to pick something that is sensible based on the variance of the data and the number of samples. However, we can override this by setting the <code class="docutils literal notranslate"><span class="pre">bins</span></code> parameter. For example, if we wanted to use 20 bins, we would use the following,</p>
@@ -1360,15 +1281,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">42</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/2325e3c661ddc2ca84444314009dbe7802028fd57cb068cbf60025a9c28a8647.png" src="../../_images/2325e3c661ddc2ca84444314009dbe7802028fd57cb068cbf60025a9c28a8647.png" />
 </div>
 </div>
 <p>Or we can specify a bin width. For example, if we want each bin to represent a 200 kg range, we would use the following,</p>
@@ -1380,15 +1293,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">43</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">binwidth</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/441ccd8fdda74901db824ff00873cb2b2e88ba9cda7e40540885c5d41444bde4.png" src="../../_images/441ccd8fdda74901db824ff00873cb2b2e88ba9cda7e40540885c5d41444bde4.png" />
 </div>
 </div>
 <p>In the previous plots, we have created a single histogram for the entire car database. Let us say that we instead wanted to see the distribution of the car weights for each origin separately, i.e., separate distributions for Japan, US and Europe. To do this, we can introduce the ‘hue’ parameter to get separate histograms for each region, each one in a different colour.</p>
@@ -1400,15 +1305,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">44</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/3e33f62dbde602ecb9b088b4d6e6203d6ecd08653f4fde14c74fcd25954520f4.png" src="../../_images/3e33f62dbde602ecb9b088b4d6e6203d6ecd08653f4fde14c74fcd25954520f4.png" />
 </div>
 </div>
 <p>In this case, the result is not very clear because the distributions have a large overlap. We can make things clearer by using the ‘multiple’ parameter which can be set to ‘stack’ to make a stacked histogram, or ‘dodge’ to make interlaced histograms. For example, using the ‘dodge’ option would look like this,</p>
@@ -1420,15 +1317,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">45</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">multiple</span><span class="o">=</span><span class="s2">&quot;dodge&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/461fa37257ed6500a86d10e041f5dfaf306970ddd5ef5353c939ff3214d0e386.png" src="../../_images/461fa37257ed6500a86d10e041f5dfaf306970ddd5ef5353c939ff3214d0e386.png" />
 </div>
 </div>
 <p>As an alternative to a histogram, we can also plot the distribution of data using a kernel density plot. This is a smoothed version of a histogram. It is a good way to visualise the distribution of data when there are a large number of samples. To make a kernel density plot we use <code class="docutils literal notranslate"><span class="pre">kind='kde'</span></code>. For example, to make a kernel density plot of the weight of cars we would use the following,</p>
@@ -1440,15 +1329,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">46</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/26bee17a47de19f6d135f528465c027ff6e77fee069dcc6eef9760df410b299d.png" src="../../_images/26bee17a47de19f6d135f528465c027ff6e77fee069dcc6eef9760df410b299d.png" />
 </div>
 </div>
 </section>
@@ -1464,15 +1345,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">47</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/71d540824445bb9adf4eb0a9868b873d767b338f142e2d5f3d844f895aa5078f.png" src="../../_images/71d540824445bb9adf4eb0a9868b873d767b338f142e2d5f3d844f895aa5078f.png" />
 </div>
 </div>
 <p>Again, we can generate a separate histogram for different categories in our data by using the ‘hue’ parameter. For example, to make a histogram for each region, we would use the following,</p>
@@ -1484,15 +1357,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">48</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/f318a4b151bb7a9fcc9e491519754ddbf0d923262a87e5de7b7497014c5ba04f.png" src="../../_images/f318a4b151bb7a9fcc9e491519754ddbf0d923262a87e5de7b7497014c5ba04f.png" />
 </div>
 </div>
 <p>Again, we could choose to use a kernel density plot instead of a histogram by setting the ‘kind’ parameter to ‘kde’. This would then produce smoothed contour plots to show the distribution of data. For this particular dataset, there are not enough samples to use KDE, and the result is unsatisfactory, but the code is shown below for reference.</p>
@@ -1504,15 +1369,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">49</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;kde&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/3319d9de647e5cadbbcf34c1e9f513633763b1834224da844327fcf8e7ba00ea.png" src="../../_images/3319d9de647e5cadbbcf34c1e9f513633763b1834224da844327fcf8e7ba00ea.png" />
 </div>
 </div>
 <p>Finally, Seaborn also provides ‘jointplot’, a figure-level plotting function that can combine plot types to show both a joint distribution and its marginal distributions in the same figure.</p>
@@ -1525,15 +1382,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">50</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/eeca697d50543c3d6130c2c31c39ebb72216cb0bc08f2571a25d38005e5fd905.png" src="../../_images/eeca697d50543c3d6130c2c31c39ebb72216cb0bc08f2571a25d38005e5fd905.png" />
 </div>
 </div>
 <p>For all Seaborn plots, if we want to tailor details of the figure’s appearance we can easily do so by using additional Matplotlib functions. To do this we need to get the Matplotlib figure object that is stored as an attribute of the Seaborn plot object returned by the Seaborn plotting function.</p>
@@ -1551,16 +1400,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">51</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;weight&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># &#39;g&#39; is a Seaborn plot object. It has a &#39;fig&#39; attribute that stores the Matplotlib figure object</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">matplotlib_figure</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">fig</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/f689abbb3cf60b5d93e0cb33f8e00b813336dcc2e3eec39de997b7bf425b7e2c.png" src="../../_images/f689abbb3cf60b5d93e0cb33f8e00b813336dcc2e3eec39de997b7bf425b7e2c.png" />
 </div>
 </div>
 </section>
@@ -1575,15 +1415,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">52</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">mpg</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/c91d7568822e4d16be6ae5045016cd04b043d2f829af1031533430411fd0f1c1.png" src="../../_images/c91d7568822e4d16be6ae5045016cd04b043d2f829af1031533430411fd0f1c1.png" />
 </div>
 </div>
 <p>See the online tutorial for how we can customise these distribution plots further. <a class="reference external" href="https://seaborn.pydata.org/tutorial/distributions.html#">https://seaborn.pydata.org/tutorial/distributions.html#</a></p>
@@ -1603,15 +1435,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">53</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;strip&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/de0c8924e60a92b31b17f859777098e5193765ab70bb7f6947b8c643fa721ae2.png" src="../../_images/de0c8924e60a92b31b17f859777098e5193765ab70bb7f6947b8c643fa721ae2.png" />
 </div>
 </div>
 </section>
@@ -1626,16 +1450,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">54</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;swarm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># The default marker size value has been reduced to 4 for display purposes</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/f3dec600d7011001292722e27053085f4e3be855ad764656ef4f67bcb030cefa.png" src="../../_images/f3dec600d7011001292722e27053085f4e3be855ad764656ef4f67bcb030cefa.png" />
 </div>
 </div>
 </section>
@@ -1649,15 +1464,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">55</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;box&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/e6fcc49b7569c49b4d3f9f8bf8cedbcf8ad2f5f242cf9aaf41b3aa016ba72652.png" src="../../_images/e6fcc49b7569c49b4d3f9f8bf8cedbcf8ad2f5f242cf9aaf41b3aa016ba72652.png" />
 </div>
 </div>
 </section>
@@ -1671,15 +1478,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">56</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;boxen&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/68ce51c251c68aef44fb1b295b5648bcc187b6f16e3dd1514517e83ca3c5b442.png" src="../../_images/68ce51c251c68aef44fb1b295b5648bcc187b6f16e3dd1514517e83ca3c5b442.png" />
 </div>
 </div>
 </section>
@@ -1693,15 +1492,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">57</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;violin&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/4321e568bd1fd54ab814b0c92faa76941e5507e653eadd407755c5631e76afda.png" src="../../_images/4321e568bd1fd54ab814b0c92faa76941e5507e653eadd407755c5631e76afda.png" />
 </div>
 </div>
 <p>All of these plots can be customised in various ways using the ideas that we have seen previously. For example, we can use the <code class="docutils literal notranslate"><span class="pre">hue</span></code> parameter to introduce a third variable. For example, to show the relationship between the weight of a car, its origin and the number of cylinders in its engine, we would use the following.</p>
@@ -1713,15 +1504,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">58</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">mpg</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;origin&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;mpg&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;cylinders&quot;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;swarm&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">NameError</span>: name &#39;sns&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/0c04d697de6f8ab70880da8b1f11bde48b8bfb5dc5e3309a4c310d749abbc55d.png" src="../../_images/0c04d697de6f8ab70880da8b1f11bde48b8bfb5dc5e3309a4c310d749abbc55d.png" />
 </div>
 </div>
 </section>
