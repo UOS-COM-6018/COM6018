@@ -1,0 +1,742 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>050 Using Matplotlib &#8212; COM6018 - Data Science with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/labs/050_using_matplotlib';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="000 COM6018 Solutions" href="../solutions/000_Introduction.html" />
+    <link rel="prev" title="040 Working with Pandas" href="040_working_with_pandas.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="COM6018 - Data Science with Python - Home"/>
+    <img src="../../_static/uos_logo_for_dark.png" class="logo__image only-dark pst-js-only" alt="COM6018 - Data Science with Python - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    The COM6018 module book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/000_Introduction.html">000 COM6018 Lecture Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/010_wrapper.html">010 Welcome to COM6018</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/015_wrapper.html">015 Getting set up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/020_wrapper.html">020 Using Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/025_wrapper.html">025 Reading and Writing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/030_wrapper.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/040_wrapper.html">040 Introducing Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/050_wrapper.html">050 Data Visualisation with Matplotlib and Seaborn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/000_Introduction.html">000 COM6018 Course Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/010_Introducing_Python.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/015_Further_Python.html">015 Further Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/020_Reading_Data.html">020 Reading and Writing Data Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/030_Introducing_Numpy.html">030 Numerical Computing with NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/035_Some_Common_Problems.html">035 Some Common Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/040_Introducing_Pandas.html">040 Processing Data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/045_Common_Pandas_Mistakes.html">045 Common Pandas Mistakes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/050_Introducing_Matplotlib.html">050 Exploratory Data Analysis and Visualization</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">050 Using Matplotlib</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../solutions/000_Introduction.html">000 COM6018 Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/040_working_with_pandas.html">040 Working with Pandas</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/labs/050_using_matplotlib.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/edit/main/materials/labs/050_using_matplotlib.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/labs/050_using_matplotlib.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/materials/labs/050_using_matplotlib.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>050 Using Matplotlib</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-1-simple-line-plot">Plot 1 - Simple line plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-1b-using-subplots">Plot 1b - Using subplots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-2-stackplot-and-pie-charts">Plot 2 - Stackplot and pie charts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-3-grid-of-scatter-plots">Plot 3 - Grid of scatter plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-4-geographic-data-plot">Plot 4 - Geographic data plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-5-contour-plot-of-function">Plot 5 - Contour plot of function</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="using-matplotlib">
+<h1>050 Using Matplotlib<a class="headerlink" href="#using-matplotlib" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>COM6018</p>
+</div></blockquote>
+<p><em>Copyright © 2023, 2024 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
+<p>In this lab class we are going to get practice with using Matplotlib. We will be using the <a class="reference external" href="https://matplotlib.org/3.1.1/contents.html">Matplotlib documentation</a> and the Introducing Matplotlib notebook as a reference.</p>
+<p>The lab class is organised as a sequence of exercises. For each one you are provided with a dataset and an image of a plot of the data. Your task is to write code to reproduce the plot as closely as possible. After the lab class the solution code will be released so you can check your answers. The exercises start with simple plots and get progressively more complex.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="plot-1-simple-line-plot">
+<h2>Plot 1 - Simple line plot<a class="headerlink" href="#plot-1-simple-line-plot" title="Link to this heading">#</a></h2>
+<p>The first plot is a simple line plot. The plot, shown below, shows worldwide renewable energy consumption from 1989 to 2022. The data for the plot is in file <code class="docutils literal notranslate"><span class="pre">data/renewable_energy.csv</span></code>. Your task is to write code to reproduce the plot as closely as possible.</p>
+<p>Some hints:</p>
+<ul class="simple">
+<li><p>You will need to filter the pandas dataframe to select only the data for the ‘World’ region.</p></li>
+<li><p>You can read the data using pandas <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function.</p></li>
+<li><p>The plotting can be done with a series of calls to <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code>.</p></li>
+<li><p>Getting the grid lines right is is a bit tricky. You’ll need to to use the ‘plt.grid’ function and <code class="docutils literal notranslate"><span class="pre">plt.yticks</span></code> to set the spacing of major and minor tick marks.</p></li>
+</ul>
+<p>Write your code in the cell below. Run the cell to display your plot and make adjustments to the code until it matches the target plot.</p>
+<img alt="plot1" src="../../_images/energy.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="plot-1b-using-subplots">
+<h3>Plot 1b - Using subplots<a class="headerlink" href="#plot-1b-using-subplots" title="Link to this heading">#</a></h3>
+<p>The second plot uses the same data but uses subplots to compare energy consumption for the world, the EU and the UK.</p>
+<p>Hints:</p>
+<ul class="simple">
+<li><p>Start with the command <code class="docutils literal notranslate"><span class="pre">plt.figure(figsize=(15,</span> <span class="pre">5))</span></code> to set the size of the figure.</p></li>
+<li><p>You can use the <code class="docutils literal notranslate"><span class="pre">plt.subplot</span></code> command to place the subplots on a 1x3 grid.</p></li>
+<li><p>Write a function to generate each subplot, i.e. the function can take a filtered version of the dataframe and a title string as arguments.</p></li>
+</ul>
+<img alt="plot1b" src="../../_images/energy_subplots.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="plot-2-stackplot-and-pie-charts">
+<h2>Plot 2 - Stackplot and pie charts<a class="headerlink" href="#plot-2-stackplot-and-pie-charts" title="Link to this heading">#</a></h2>
+<p>The next plot shows the same worldwide energy consumption data but this time as a ‘stackplot’. There are also two pie charts showing the proportion of energy of each type in 1989 and 2022.</p>
+<p>Hints:</p>
+<ul class="simple">
+<li><p>The layout can be made using plt.subplot.</p></li>
+<li><p>You can use the <code class="docutils literal notranslate"><span class="pre">plt.stackplot</span></code> function to generate the stackplot. Check the matlplot lib documentation for details.</p></li>
+<li><p>The pie charts can be made with <code class="docutils literal notranslate"><span class="pre">plt.pie</span></code>. Again, check the documentation for details.</p></li>
+<li><p>You will need to retrieve the first and last value in each data series to use as the data for the pie charts (i.e. 1989 and 2022). You can do this using the <code class="docutils literal notranslate"><span class="pre">iloc</span></code> method of the dataframe.</p></li>
+<li><p>Note, the first pie chart groups wind, solar and other into ‘all other’.</p></li>
+</ul>
+<img alt="plot2" src="../../_images/energy_stacked.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-3-grid-of-scatter-plots">
+<h2>Plot 3 - Grid of scatter plots<a class="headerlink" href="#plot-3-grid-of-scatter-plots" title="Link to this heading">#</a></h2>
+<p>The next plot illustrates a famous dataset known as the ‘iris’ dataset. The dataset contains measurements of the sepal and petal length and width for three species of iris flower. This dataset was first published in 1936 by the British statistician and biologist Ronald Fisher. The dataset is widely used in machine learning and data science to illustrate classification and clustering algorithms.</p>
+<p>The plot shows a grid of scatter plots comparing each pair of measurements. The data is in file <code class="docutils literal notranslate"><span class="pre">data/iris.csv</span></code>.</p>
+<p>This plot is a bit more complex than the previous ones.</p>
+<p>Hints:</p>
+<ul class="simple">
+<li><p>Write a function that can generate each subplot. The function should take the dataframe and the column names for the x and y axes as arguments.</p></li>
+<li><p>Use a nested loop to loop over all combinations of x and y axes.</p></li>
+<li><p>Note, the legend has only been placed on the diagonal subplots where it doesn’t overlap with the data.</p></li>
+<li><p>You can use the <code class="docutils literal notranslate"><span class="pre">plt.tight_layout()</span></code> function as the final command to ensure that the subplot axes titles don’t overlap other subplots.</p></li>
+</ul>
+<img alt="plot3" src="../../_images/iris_scatter.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-4-geographic-data-plot">
+<h2>Plot 4 - Geographic data plot<a class="headerlink" href="#plot-4-geographic-data-plot" title="Link to this heading">#</a></h2>
+<p>The next plot is showing the location and generation capacity of wind farms in the UK. The data is in file <code class="docutils literal notranslate"><span class="pre">data/wind_farms.csv</span></code>. The plot is basically a scatter plot but the points are shown over a map of the UK. This has been achieved using the <code class="docutils literal notranslate"><span class="pre">basemap</span></code> matplotlib toolkit.</p>
+<p>The first lines of the solution are as follows</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.basemap</span> <span class="kn">import</span> <span class="n">Basemap</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/wind_farms_uk.csv&#39;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Basemap</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;lcc&#39;</span><span class="p">,</span> <span class="n">resolution</span><span class="o">=</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> 
+            <span class="n">lat_0</span><span class="o">=</span><span class="mi">55</span><span class="p">,</span> <span class="n">lon_0</span><span class="o">=-</span><span class="mf">3.5</span><span class="p">,</span>
+            <span class="n">width</span><span class="o">=</span><span class="mf">1E6</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">1.2E6</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You will now need to use the function <code class="docutils literal notranslate"><span class="pre">m.fillcontinents</span></code>, <code class="docutils literal notranslate"><span class="pre">m.drawcoastlines</span></code> and <code class="docutils literal notranslate"><span class="pre">m.drawmapboundary</span></code> to draw the map. You will also need to use the <code class="docutils literal notranslate"><span class="pre">m.scatter</span></code> function to plot the wind farm locations.</p>
+<p>Hints:</p>
+<ul class="simple">
+<li><p>Note, that the <em>area</em> of the circles is proportional to the wind farm capacity.</p></li>
+<li><p>You will need to use <code class="docutils literal notranslate"><span class="pre">m.scatter</span></code>’s parameters <code class="docutils literal notranslate"><span class="pre">latlon=True</span></code> so that the coordinates are interpreted as latitude and longitude.</p></li>
+<li><p>The legend in the bottom left corner is quite tricky to generate. It can be made by placing invisible ‘dummy’ points on the plot that have labels attached. Try Googling for a solution but don’t worry if you can’t get this bit to work, wait for the solution code to be released.</p></li>
+</ul>
+<img alt="plot4" src="../../_images/wind_farms.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-5-contour-plot-of-function">
+<h2>Plot 5 - Contour plot of function<a class="headerlink" href="#plot-5-contour-plot-of-function" title="Link to this heading">#</a></h2>
+<p>The last example is a contour plot of the function is <span class="math notranslate nohighlight">\(f(x,y) = sin(4x) + cos(xy)\)</span></p>
+<p>This looks complicated but can actually be made with just a few lines of code. If you are unsure on how to proceed then check the contour plot example in the course notes.</p>
+<p>Hints:</p>
+<ul class="simple">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">np.meshgrid</span></code> to generate the x and y coordinates.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">plt.contour</span></code> to generate the contour plot.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">plt.clabel</span></code> to add the contour labels.</p></li>
+<li><p>The plot is using the colourmap called ‘RdBu’ which use red to represent low values and blue to represent high values.</p></li>
+<li><p>Write a Python function called ‘f’ to compute the function values for each x and y coordinate. This will make the code easier to read. This function should take a pair of numpy arrays to represent the x and y coordinates of all the points that need to be computed and return the function values as a numpy array. (The x and y arrays can be generated using <code class="docutils literal notranslate"><span class="pre">np.meshgrid</span></code>.)</p></li>
+</ul>
+<p>You can easily change the function to plot by changing the definition of the function ‘f’. By using sines and cosines of different sums, products and powers of x and y you can generate a wide range of interesting patterns.</p>
+<img alt="plot5" src="../../_images/contours.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./materials/labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="040_working_with_pandas.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">040 Working with Pandas</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../solutions/000_Introduction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">000 COM6018 Solutions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-1-simple-line-plot">Plot 1 - Simple line plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-1b-using-subplots">Plot 1b - Using subplots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-2-stackplot-and-pie-charts">Plot 2 - Stackplot and pie charts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-3-grid-of-scatter-plots">Plot 3 - Grid of scatter plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-4-geographic-data-plot">Plot 4 - Geographic data plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-5-contour-plot-of-function">Plot 5 - Contour plot of function</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jon Barker, University of Sheffield
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

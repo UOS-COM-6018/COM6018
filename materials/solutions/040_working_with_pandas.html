@@ -197,6 +197,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../labs/020_reading_data.html">020 Reading data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../labs/030_introducing_numpy.html">030 Introducing NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../labs/040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/050_using_matplotlib.html">050 Using Matplotlib</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
 <ul class="current nav bd-sidenav">
@@ -493,7 +494,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.2.3
-2.0.2
+1.26.4
 </pre></div>
 </div>
 </div>
@@ -726,7 +727,7 @@ All tests passed!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.53 ms ± 11.7 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.73 ms ± 16.9 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -776,7 +777,7 @@ All tests passed!
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6ae0430f2e50cd070c4859b3e63d2f9bf40ed33ede28d82e0d1113fd59dac8c0.png" src="../../_images/6ae0430f2e50cd070c4859b3e63d2f9bf40ed33ede28d82e0d1113fd59dac8c0.png" />
+<img alt="../../_images/fa80c8f740516d3cf02ae1b0148d7007a5aaa2085640aa87a138b491400c9e03.png" src="../../_images/fa80c8f740516d3cf02ae1b0148d7007a5aaa2085640aa87a138b491400c9e03.png" />
 </div>
 </div>
 </section>
@@ -820,7 +821,7 @@ All tests passed!
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/16ed3ee78fac222572d9912b4386985c476116df9ebe2cd725466d325b9c16b1.png" src="../../_images/16ed3ee78fac222572d9912b4386985c476116df9ebe2cd725466d325b9c16b1.png" />
+<img alt="../../_images/a6f43d5901a34a3371113553af33b8f6a30b6b460fbd9fd63660171261ab36a7.png" src="../../_images/a6f43d5901a34a3371113553af33b8f6a30b6b460fbd9fd63660171261ab36a7.png" />
 </div>
 </div>
 <p>We have now used Pandas to repeat everything we did in Lab class 020. Although it has taken a similar number of steps, each step could be completed with a single line of code using pre-existing Pandas functions. Each step will also have run faster.</p>
@@ -867,7 +868,7 @@ All tests passed!
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8541f821935ba81e2d9add5cd18192e252ec6a101225972e4649a5075a3cdd35.png" src="../../_images/8541f821935ba81e2d9add5cd18192e252ec6a101225972e4649a5075a3cdd35.png" />
+<img alt="../../_images/02ceadd614bde32997e10ed3df7701eca718552e776a719be5c517a438ef2e3b.png" src="../../_images/02ceadd614bde32997e10ed3df7701eca718552e776a719be5c517a438ef2e3b.png" />
 </div>
 </div>
 <p>You can plot multiple series on the same axes by setting the plot method’s y parameter to be a list of the names of the series you want to plot, e.g., <code class="docutils literal notranslate"><span class="pre">y=['co2e',</span> <span class="pre">'co2_concentration']</span></code>. Make a plot that shows the CO<sub>2</sub>e value for each of the four gases and the total CO<sub>2</sub>e, all plotted on the same axes. (Hint: in order to do this, you will first need to add new columns to the dataframe to store the CO<sub>2</sub>e of each of the separate gases.)</p>
@@ -883,7 +884,7 @@ All tests passed!
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b990d6ea76796d85319b0d0de57bf2a3e5556c2209330287ac41e9d98afad35d.png" src="../../_images/b990d6ea76796d85319b0d0de57bf2a3e5556c2209330287ac41e9d98afad35d.png" />
+<img alt="../../_images/21cc7462022300cf591568aae8c1d47fab7ec2ea113585e2d1158a394fb6f3f3.png" src="../../_images/21cc7462022300cf591568aae8c1d47fab7ec2ea113585e2d1158a394fb6f3f3.png" />
 </div>
 </div>
 <p>You should see from the plot that although the total CO<sub>2</sub>e has been steadily rising, nearly all of the increase is due to co2. i.e., the total CO<sub>2</sub>e line runs in parallel to the CO<sub>2</sub> line.</p>
