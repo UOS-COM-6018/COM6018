@@ -24,7 +24,7 @@ jobs:
             - name: Install Jupyter Book
               run: |
                   python -m pip install --upgrade pip
-                  pip install jupyter-book matplotlib pandas seaborn basemap basemap-data-hires libtiff
+                  pip install jupyter-book matplotlib numpy pandas seaborn basemap basemap-data-hires libtiff
 
             # Step 4: Clean and build the Jupyter Book
             - name: Build Jupyter Book
