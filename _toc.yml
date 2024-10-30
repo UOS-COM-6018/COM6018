@@ -50,7 +50,7 @@ parts:
       - file: materials/solutions/020_reading_data.ipynb
       - file: materials/solutions/030_introducing_numpy.ipynb
       - file: materials/solutions/040_working_with_pandas.ipynb
-#      - file: materials/solutions/050_using_matplotlib.ipynb
+      - file: materials/solutions/050_using_matplotlib.ipynb
 #      - file: materials/solutions/060_introducing_scikit_learn.ipynb
 #      - file: materials/solutions/070_classification_with_scikit_learn.ipynb
 #      - file: materials/solutions/080_curve_fitting_with_scikit_learn.ipynb
