@@ -13,7 +13,7 @@ parts:
       - file: materials/wrappers/030_wrapper.md
       - file: materials/wrappers/040_wrapper.md
       - file: materials/wrappers/050_wrapper.md
-  #     - file: materials/wrappers/060_wrapper.md
+      - file: materials/wrappers/060_wrapper.md
   #     - file: materials/wrappers/070_wrapper.md
   #     - file: materials/wrappers/080_wrapper.md
   #     - file: materials/wrappers/090_wrapper.md
@@ -28,7 +28,7 @@ parts:
       - file: materials/tutorials/040_Introducing_Pandas.ipynb
       - file: materials/tutorials/045_Common_Pandas_Mistakes.ipynb
       - file: materials/tutorials/050_Introducing_Matplotlib.ipynb
-  #      - file: materials/tutorials/060_Introducing_Scikit_Learn.ipynb
+      - file: materials/tutorials/060_Introducing_Scikit_Learn.ipynb
   #      - file: materials/tutorials/070_Classification_with_Scikit_Learn.ipynb
   #      - file: materials/tutorials/080_Curve_Fitting_with_Scikit_Learn.ipynb
   - caption: Lab Classes
