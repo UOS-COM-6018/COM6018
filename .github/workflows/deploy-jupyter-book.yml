@@ -1,46 +1,46 @@
 name: Deploy Jupyter Book
 
 on:
-    push:
-        branches:
-            - main # Change to the branch you are building from
+  push:
+    branches:
+      - main # Change to the branch you are building from
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-            # Step 1: Check out the repository
-            - name: Check out repository
-              uses: actions/checkout@v3
+    steps:
+      # Step 1: Check out the repository
+      - name: Check out repository
+        uses: actions/checkout@v3
 
-            # Step 2: Set up Python environment
-            - name: Set up Python
-              uses: actions/setup-python@v4
-              with:
-                  python-version: "3.9" # or the Python version you're using
+      # Step 2: Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9" # or the Python version you're using
 
-            # Step 3: Install dependencies (Jupyter Book, etc.)
-            - name: Install Jupyter Book
-              run: |
-                  python -m pip install --upgrade pip
-                  pip install jupyter-book matplotlib numpy pandas seaborn basemap basemap-data-hires
+      # Step 3: Install dependencies (Jupyter Book, etc.)
+      - name: Install Jupyter Book
+        run: |
+          python -m pip install --upgrade pip
+          pip install jupyter-book matplotlib numpy pandas seaborn basemap basemap-data-hires scikit-learn
 
-            # Step 4: Clean and build the Jupyter Book
-            - name: Build Jupyter Book
-              run: |
-                  jb clean .
-                  jb build . --keep-going
+      # Step 4: Clean and build the Jupyter Book
+      - name: Build Jupyter Book
+        run: |
+          jb clean .
+          jb build . --keep-going
 
-            # Step 5: Copy additional materials (lectures, etc.)
-            - name: Copy additional materials
-              run: cp -r materials/lectures _build/html/materials
+      # Step 5: Copy additional materials (lectures, etc.)
+      - name: Copy additional materials
+        run: cp -r materials/lectures _build/html/materials
 
-            # Step 6: Deploy to gh-pages branch
-            - name: Deploy to GitHub Pages
-              uses: peaceiris/actions-gh-pages@v4
-              with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  publish_dir: ./_build/html
-                  # Optionally, you can specify a custom branch like `gh-pages`
-                  # but this action defaults to `gh-pages`
+      # Step 6: Deploy to gh-pages branch
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_build/html
+          # Optionally, you can specify a custom branch like `gh-pages`
+          # but this action defaults to `gh-pages`
