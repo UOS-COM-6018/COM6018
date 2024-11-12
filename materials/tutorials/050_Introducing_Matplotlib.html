@@ -203,6 +203,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../labs/030_introducing_numpy.html">030 Introducing NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../labs/040_working_with_pandas.html">040 Working with Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../labs/050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
 <ul class="nav bd-sidenav">
@@ -877,7 +878,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5f5f4e87b0006509fa3dfa3907be27c577d3ebb94482336b5febf3012a54bcb4.png" src="../../_images/5f5f4e87b0006509fa3dfa3907be27c577d3ebb94482336b5febf3012a54bcb4.png" />
+<img alt="../../_images/9033603343835051c57e60c8479561f1fb377908c419beac7ffc029e87cf9dc7.png" src="../../_images/9033603343835051c57e60c8479561f1fb377908c419beac7ffc029e87cf9dc7.png" />
 </div>
 </div>
 <p>Matplotlib also provides a function called ‘bar’ for plotting bar charts. Do not confuse this with the ‘hist’ function. The ‘bar’ function can take a set of x, y numeric value pairs as in the example below:</p>
@@ -928,7 +929,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/abf283909bd2434321db6769ebef8b4d03a3a9d44315df357320185d257f0904.png" src="../../_images/abf283909bd2434321db6769ebef8b4d03a3a9d44315df357320185d257f0904.png" />
+<img alt="../../_images/40bf636b57f126ec7198a45bf3615bf2c70ef8960b7d0585ceb7294f4afed5af.png" src="../../_images/40bf636b57f126ec7198a45bf3615bf2c70ef8960b7d0585ceb7294f4afed5af.png" />
 </div>
 </div>
 <p>In the above, we have 1000 samples each with two features, <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">x2</span></code>. The scatter plot gives us a clear indication of the relationship between the two variables. In this case, we can see that the points are clustered around a straight line. This indicates that there is a strong correlation between the two variables. This is not surprising in this case because <code class="docutils literal notranslate"><span class="pre">x2</span></code> has been constructed from a linear function of <code class="docutils literal notranslate"><span class="pre">x1</span></code> (that is, <span class="math notranslate nohighlight">\(15 x_1 + 10\)</span>) with some random noise added.</p>
@@ -1226,7 +1227,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7b00578c8f3c90ed513cd28751ced21eaa71febc3eefb17d57a170b10d84b015.png" src="../../_images/7b00578c8f3c90ed513cd28751ced21eaa71febc3eefb17d57a170b10d84b015.png" />
+<img alt="../../_images/65560aa461b307c5877d540b93aec657a3542e135bfaa01076754d07016f9dd5.png" src="../../_images/65560aa461b307c5877d540b93aec657a3542e135bfaa01076754d07016f9dd5.png" />
 </div>
 </div>
 <p>It is important to think carefully about whether to use a line plot or a scatter plot. Line plots emphasise the continuity of the data along the x-axis. A scatter plot emphasises the individual data points. In this particular case, the scatter plot is probably more appropriate because each point represents a different car and there is no continuity between cars.</p>
@@ -1439,7 +1440,7 @@ We will now use NumPy to generate some simple data to plot. <code class="docutil
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5a34f12ad6358319ef1259fd24f16266c7af39f8f00af7026088d76ba3d4f018.png" src="../../_images/5a34f12ad6358319ef1259fd24f16266c7af39f8f00af7026088d76ba3d4f018.png" />
+<img alt="../../_images/511cc5422cea9fe2be2f93ab93a20852ebda28f19e797c89d0bcbed70ff2d0e2.png" src="../../_images/511cc5422cea9fe2be2f93ab93a20852ebda28f19e797c89d0bcbed70ff2d0e2.png" />
 </div>
 </div>
 </section>
