@@ -1,0 +1,1304 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>060 Introduction to Scikit Learn &#8212; COM6018 - Data Science with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/solutions/060_introducing_scikit_learn';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="050 Using Matplotlib" href="050_using_matplotlib.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="COM6018 - Data Science with Python - Home"/>
+    <img src="../../_static/uos_logo_for_dark.png" class="logo__image only-dark pst-js-only" alt="COM6018 - Data Science with Python - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    The COM6018 module book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/000_Introduction.html">000 COM6018 Lecture Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/010_wrapper.html">010 Welcome to COM6018</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/015_wrapper.html">015 Getting set up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/020_wrapper.html">020 Using Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/025_wrapper.html">025 Reading and Writing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/030_wrapper.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/040_wrapper.html">040 Introducing Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/050_wrapper.html">050 Data Visualisation with Matplotlib and Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/060_wrapper.html">060 An Introduction to Scikit-Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/000_Introduction.html">000 COM6018 Course Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/010_Introducing_Python.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/015_Further_Python.html">015 Further Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/020_Reading_Data.html">020 Reading and Writing Data Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/030_Introducing_Numpy.html">030 Numerical Computing with NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/035_Some_Common_Problems.html">035 Some Common Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/040_Introducing_Pandas.html">040 Processing Data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/045_Common_Pandas_Mistakes.html">045 Common Pandas Mistakes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/050_Introducing_Matplotlib.html">050 Exploratory Data Analysis and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/060_Introducing_Scikit_Learn.html">060 Introducing Scikit-Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">060 Introduction to Scikit Learn</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/solutions/060_introducing_scikit_learn.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/edit/main/materials/solutions/060_introducing_scikit_learn.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/solutions/060_introducing_scikit_learn.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/materials/solutions/060_introducing_scikit_learn.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>060 Introduction to Scikit Learn</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-loading-the-data">Step 1 - Loading the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-visualise-the-data">Step 2 - Visualise the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-generating-a-training-and-testing-set">Step 3 - Generating a training and testing set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-training-a-classifier">Step 4 - Training a classifier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-evaluate-the-model">Step 5 - Evaluate the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-tuning-the-model-s-hyperparameters">Step 6 - Tuning the model’s hyperparameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-analyzing-the-model-performance">Step 7 - Analyzing the model performance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-evaluate-the-model-using-cross-validation">Step 8 - Evaluate the model using cross-validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-retraining-the-model-using-two-classes">Step 9: Retraining the model using two classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-scikit-learn">
+<h1>060 Introduction to Scikit Learn<a class="headerlink" href="#introduction-to-scikit-learn" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>COM6018</p>
+</div></blockquote>
+<p><em>Copyright © 2023, 2024 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
+<p>In this lab class, we will use the scikit-learn library to implement a k-nearest neighbour classifier and apply it to a simple classification problem. Before attempting this lab, make sure that you have read the corresponding tutorial notes <a class="reference external" href="https://uos-com-6018.github.io/COM6018/materials/tutorials/060_Introducing_Scikit_Learn.html">060_Introducing_Scikit_Learn</a>.</p>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
+<p>The classification task that we will tackle in this lab concerns the passive detection of land mines. The data set is described in the <a class="reference external" href="https://archive.ics.uci.edu/dataset/763/land+mines-1">UCI Machine Learning Repository</a> and in the following publication,</p>
+<ul class="simple">
+<li><p>Yilmaz, C., Kahraman, H. T., &amp; Söyler, S. (2018). <em>Passive mine detection and classification method based on hybrid model</em>. IEEE Access, 6, 47870-47888 <a class="reference external" href="https://archive.ics.uci.edu/dataset/763/land+mines-1">DOI:10.1109/ACCESS.2018.2866538</a>.</p></li>
+</ul>
+<p>Landmines can be detected using a passive sensor similar to a metal detector. The detector is swept above the ground and produces a voltage signal output. If the value is high, then that indicates that there is possibly a mine present. This mine can then be carefully cleared. The problem is that there are other things that can cause a signal. Furthermore, the strength of the signal depends on the level of the sensor above the ground and the type of soil.</p>
+<p>Data is provide for 338 detections some of which are landmines and some of which are not. For each sample, the following three measurements are provided:</p>
+<ul class="simple">
+<li><p>Voltage (V): The output voltage value from a magnetic sensor.</p></li>
+<li><p>High (H): The height of the sensor above the ground.</p></li>
+<li><p>Soil Type (S): A value that corresponds to the amount of moisture in the soil.</p></li>
+</ul>
+<p>The output label that we wish to predict is one of 5 classes:</p>
+<ul class="simple">
+<li><p>1: No Landmine</p></li>
+<li><p>2: Anti-Tank Mine</p></li>
+<li><p>3: Anti-Personnel Mine</p></li>
+<li><p>4: Booby-trapped Anti-Tank Mine</p></li>
+<li><p>5: M14 Anti-Personnel Mine</p></li>
+</ul>
+<p>There are a roughly equal number of samples for each class.</p>
+<p>The primary task is to distinguish between class 1 (i.e., no mine) and the other classes (i.e., some type of mine). This is a binary classification problem, i.e., a <code class="docutils literal notranslate"><span class="pre">detection</span></code> problem. But we will consider the multi-class problem of distinguishing between all 5 classes. If the detector could tell us which type of mine is likely to be present, this would be useful information for the team that has to clear the mine.</p>
+</section>
+<section id="step-1-loading-the-data">
+<h2>Step 1 - Loading the data<a class="headerlink" href="#step-1-loading-the-data" title="Link to this heading">#</a></h2>
+<p>The data is stored in an Excel spreadsheet file called <code class="docutils literal notranslate"><span class="pre">data/Mine_Dataset.xls</span></code>. If you open the file, you will see that it has several sheets. The one with the data is called <code class="docutils literal notranslate"><span class="pre">Normalized_Data</span></code>.</p>
+<p>We can read data from an Excel spreadsheet using the <code class="docutils literal notranslate"><span class="pre">read_excel</span></code> function from the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library. The function takes the name of the file as its first argument and the name of the sheet as its second argument. It returns a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object. Do this now in the cell below.</p>
+<p>(Recall that you will first need to import the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Mine_Dataset.xls&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Normalized_Data&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/pandas/compat/_optional.py:135,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">135</span>     <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/importlib/__init__.py:127,</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span>         <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">127</span> <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1030,</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1007,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:984,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;xlrd&#39;
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/Mine_Dataset.xls&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Normalized_Data&#39;</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/pandas/io/excel/_base.py:495,</span> in <span class="ni">read_excel</span><span class="nt">(io, sheet_name, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, date_format, thousands, decimal, comment, skipfooter, storage_options, dtype_backend, engine_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">ExcelFile</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span>     <span class="n">should_close</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">--&gt; </span><span class="mi">495</span>     <span class="n">io</span> <span class="o">=</span> <span class="n">ExcelFile</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="n">io</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">497</span>         <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">498</span>         <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">499</span>         <span class="n">engine_kwargs</span><span class="o">=</span><span class="n">engine_kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">500</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">501</span> <span class="k">elif</span> <span class="n">engine</span> <span class="ow">and</span> <span class="n">engine</span> <span class="o">!=</span> <span class="n">io</span><span class="o">.</span><span class="n">engine</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">502</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span>         <span class="s2">&quot;Engine should not be specified when passing &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">504</span>         <span class="s2">&quot;an ExcelFile - ExcelFile already has the engine set&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">505</span>     <span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/pandas/io/excel/_base.py:1567,</span> in <span class="ni">ExcelFile.__init__</span><span class="nt">(self, path_or_buffer, engine, storage_options, engine_kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1564</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine</span>
+<span class="g g-Whitespace">   </span><span class="mi">1565</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_options</span> <span class="o">=</span> <span class="n">storage_options</span>
+<span class="ne">-&gt; </span><span class="mi">1567</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engines</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span>
+<span class="g g-Whitespace">   </span><span class="mi">1568</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_io</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1569</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1570</span>     <span class="n">engine_kwargs</span><span class="o">=</span><span class="n">engine_kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1571</span> <span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/pandas/io/excel/_xlrd.py:45,</span> in <span class="ni">XlrdReader.__init__</span><span class="nt">(self, filepath_or_buffer, storage_options, engine_kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span><span class="sd"> Reader using xlrd engine.</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span><span class="sd">     Arbitrary keyword arguments passed to excel engine.</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;Install xlrd &gt;= 2.0.1 for xls Excel support&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">45</span> <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;xlrd&quot;</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="n">err_msg</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span>     <span class="n">filepath_or_buffer</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">49</span>     <span class="n">engine_kwargs</span><span class="o">=</span><span class="n">engine_kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/pandas/compat/_optional.py:138,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="k">if</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">138</span>         <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="k">return</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">141</span> <span class="c1"># Handle submodules: if we have submodule, grab parent module from sys.modules</span>
+
+<span class="ne">ImportError</span>: Missing optional dependency &#39;xlrd&#39;. Install xlrd &gt;= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">338</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">338</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the features are stored in the columns labelled <code class="docutils literal notranslate"><span class="pre">V</span></code>, <code class="docutils literal notranslate"><span class="pre">H</span></code> and <code class="docutils literal notranslate"><span class="pre">S</span></code>. The labels are stored in the column labelled <code class="docutils literal notranslate"><span class="pre">M</span></code>.</p>
+</section>
+<section id="step-2-visualise-the-data">
+<h2>Step 2 - Visualise the data<a class="headerlink" href="#step-2-visualise-the-data" title="Link to this heading">#</a></h2>
+<p>We will now form a grid of scatter plots using the <code class="docutils literal notranslate"><span class="pre">pairplot</span></code> method from the seaborn library. Again, check the tutorial notes if you are not sure how to do this. Be sure to set the <code class="docutils literal notranslate"><span class="pre">pairplot</span></code> argument <code class="docutils literal notranslate"><span class="pre">hue</span></code> to the name of the column containing the labels.</p>
+<p>Implement this in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the scatter plot you can see that the data for the Soil (S) and Height (H) features are ‘quantized’, i.e., they only take a small number of values. The Soil feature can have one of six possible values, (0.0, 0.2, …, 1.0); The Height feature can have on of 12 possible values. All the features have been normalized to lie in the range [0,1].</p>
+</section>
+<section id="step-3-generating-a-training-and-testing-set">
+<h2>Step 3 - Generating a training and testing set<a class="headerlink" href="#step-3-generating-a-training-and-testing-set" title="Link to this heading">#</a></h2>
+<p>We will now split the data into training and test sets. We will use 75% of the data for training and 25% for testing. We will do this using the <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> function from the <code class="docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code> module.</p>
+<p>First of all, we will need to separate the features (columns ‘V’, ‘H’ and ‘S’) and the labels (column ‘M’) into separate DataFrames. We can do this using the <code class="docutils literal notranslate"><span class="pre">drop</span></code> method of the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object. The <code class="docutils literal notranslate"><span class="pre">drop</span></code> method takes a list of column names as its first argument and returns a new <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object with the specified columns removed. The <code class="docutils literal notranslate"><span class="pre">drop</span></code> method does not modify the original <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> object.</p>
+<p>Store the features in a variable called <code class="docutils literal notranslate"><span class="pre">mine_data</span></code> and the labels as <code class="docutils literal notranslate"><span class="pre">mine_labels</span></code>. Then use <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> to make the split. Set the train_test_split <code class="docutils literal notranslate"><span class="pre">random_state</span></code> parameter to 1. This will ensure that the data is split in the same way each time the code is run. Store the results of the split in variables <code class="docutils literal notranslate"><span class="pre">X_train</span></code>, <code class="docutils literal notranslate"><span class="pre">X_test</span></code> (for the data) and <code class="docutils literal notranslate"><span class="pre">y_train</span></code>, <code class="docutils literal notranslate"><span class="pre">y_test</span></code> (for the labels).</p>
+<p>Write the code in the cell below and then check your code by running the test cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">mine_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;M&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">mine_labels</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">]</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">mine_data</span><span class="p">,</span> <span class="n">mine_labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">mine_data</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;M&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">mine_labels</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;M&#39;</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="ne">NameError</span>: name &#39;df&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="k">assert</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">253</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">85</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">253</span><span class="p">,)</span>
+<span class="k">assert</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">85</span><span class="p">,)</span>
+<span class="k">assert</span> <span class="n">X_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">V</span> <span class="o">==</span> <span class="mf">0.480361964603055</span>
+<span class="k">assert</span> <span class="n">y_train</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">assert</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">253</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">assert</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">85</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">assert</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">253</span><span class="p">,)</span>
+
+<span class="ne">NameError</span>: name &#39;X_train&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4-training-a-classifier">
+<h2>Step 4 - Training a classifier<a class="headerlink" href="#step-4-training-a-classifier" title="Link to this heading">#</a></h2>
+<p>We will now use a k-Nearest Neighbours classifier to classify the data. We will use the <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code> class from the <code class="docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code> library. Initially use a value of k=1.</p>
+<p>In the cell below, create a <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code> object and assign it to a variable called <code class="docutils literal notranslate"><span class="pre">model</span></code> and then call the fit function with the training data defined above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;X_train&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">model</span><span class="o">.</span><span class="n">get_params</span><span class="p">()[</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">model</span><span class="o">.</span><span class="n">_fit_X</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">253</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">assert</span> <span class="n">model</span><span class="o">.</span><span class="n">get_params</span><span class="p">()[</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">assert</span> <span class="n">model</span><span class="o">.</span><span class="n">_fit_X</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">253</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+
+<span class="ne">AttributeError</span>: &#39;KNeighborsClassifier&#39; object has no attribute &#39;_fit_X&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-5-evaluate-the-model">
+<h2>Step 5 - Evaluate the model<a class="headerlink" href="#step-5-evaluate-the-model" title="Link to this heading">#</a></h2>
+<p>We will now use the model’s <code class="docutils literal notranslate"><span class="pre">predict</span></code> method to predict the labels for the test data. Assign the predicted labels to a variable called <code class="docutils literal notranslate"><span class="pre">y_pred</span></code>. And then use the <code class="docutils literal notranslate"><span class="pre">metrics.accuracy_score</span></code> function to calculate the accuracy of the model. Store the accuracy in a variable called <code class="docutils literal notranslate"><span class="pre">score</span></code> and print the value to the screen.</p>
+<p>Write the code in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;X_test&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+
+<span class="k">assert</span> <span class="n">score</span> <span class="o">==</span> <span class="mf">0.29411764705882354</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">assert</span> <span class="n">score</span> <span class="o">==</span> <span class="mf">0.29411764705882354</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;score&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The accuracy is very low, around 0.29, i.e., 29%. Given there are 5 classes we would expect to get around 20% accuracy by chance. The classifier is doing better than chance but it is still getting more classifications wrong than right.</p>
+<p>We will try to improve the score in the next step.</p>
+</section>
+<section id="step-6-tuning-the-model-s-hyperparameters">
+<h2>Step 6 - Tuning the model’s hyperparameters<a class="headerlink" href="#step-6-tuning-the-model-s-hyperparameters" title="Link to this heading">#</a></h2>
+<p>In the previous section, we used a k-NN classifier with a value of <span class="math notranslate nohighlight">\(k\)</span> set to 1, i.e., this is just a nearest neighbour classifier. We will now try to improve the accuracy by trying different values of <span class="math notranslate nohighlight">\(k\)</span>. We will try values of <span class="math notranslate nohighlight">\(k\)</span> for all odd values in the range of 1 to 21.</p>
+<p>We can tune <span class="math notranslate nohighlight">\(k\)</span> by combining the above steps and placing them inside a for loop which iterates over the values of <span class="math notranslate nohighlight">\(k\)</span>. Inside the for loop add a print statement to print the value of k and the corresponding accuracy score.</p>
+<p>Write the code in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;X_train&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should find that the best result comes from using a value of k = 5. This gives an accuracy of around 0.38, i.e., 38%. This is a significant improvement over the previous result.</p>
+</section>
+<section id="step-7-analyzing-the-model-performance">
+<h2>Step 7 - Analyzing the model performance<a class="headerlink" href="#step-7-analyzing-the-model-performance" title="Link to this heading">#</a></h2>
+<p>We will now rerun the classifier using k = 5 and then use the <code class="docutils literal notranslate"><span class="pre">confusion_matrix</span></code> function to calculate the confusion matrix. Assign the result to a variable called <code class="docutils literal notranslate"><span class="pre">cm</span></code>.</p>
+<p>Then use <code class="docutils literal notranslate"><span class="pre">ConfusionMatrixDisplay</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code> to display the confusion matrix. You can set the <code class="docutils literal notranslate"><span class="pre">display_labels</span></code> parameter so that meaningful labels are displayed, e.g., <code class="docutils literal notranslate"><span class="pre">display_labels=['None',</span> <span class="pre">'AP</span> <span class="pre">Mine',</span> <span class="pre">'AT</span> <span class="pre">Mine',</span> <span class="pre">'Booby',</span> <span class="pre">'M14']</span></code></p>
+<p>Refer to the module lecture notes if you are unsure how to compute and display confusion matrices.</p>
+<p>Write the code in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">ConfusionMatrixDisplay</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="n">cm</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="s1">&#39;AP Mine&#39;</span><span class="p">,</span> <span class="s1">&#39;AT Mine&#39;</span><span class="p">,</span> <span class="s1">&#39;Booby&#39;</span><span class="p">,</span> <span class="s1">&#39;M14&#39;</span><span class="p">]</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">ConfusionMatrixDisplay</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">cm</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;X_train&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="k">assert</span> <span class="n">cm</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">11</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">assert</span> <span class="n">cm</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">assert</span> <span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">11</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;cm&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Examine the confusion matrix. You should see that there are a lot of correct classifications (i.e., numbers on the diagonal). However, there are also some cells off the diagonal which have high values. For example, the classifier is confuses AT mines and M14 mines. More worryingly, the M14 and Booby-trapped AT mine classes are often classified as ‘None’. This is a serious problem as it means that the classifier is failing to detect these mines. (In the context of <code class="docutils literal notranslate"><span class="pre">detection</span></code> this is called a <code class="docutils literal notranslate"><span class="pre">false</span> <span class="pre">negative</span></code>.) We can also see some false positives, e.g., the classifier is classifying some ‘None’ samples as AT Mines.</p>
+<p>Consider a real-world application of this classifier. Which type of error would be more consequential? If the classifier was used to detect landmines in a field, false positives would cause the field to be unnecessarily cleared. This would be expensive and time consuming. However, the false negatives are much more serious. If the classifier fails to detect a mine, it could result in the loss of life.</p>
+</section>
+<section id="step-8-evaluate-the-model-using-cross-validation">
+<h2>Step 8 - Evaluate the model using cross-validation<a class="headerlink" href="#step-8-evaluate-the-model-using-cross-validation" title="Link to this heading">#</a></h2>
+<p>In the previous evaluation, we used 75% of the data for training and just 25% for testing. This meant that the test set was quite small and so the accuracy score and the values in the confusion matrix might not be very reliable.</p>
+<p>We will now use the leave-one-out training/test paradigm to evaluate the 5-nearest neighbour classifier more reliably.</p>
+<p>To do this, you will need to use the <code class="docutils literal notranslate"><span class="pre">cross_val_predict</span></code> method and the <code class="docutils literal notranslate"><span class="pre">LeaveOneOut</span></code> class from <code class="docutils literal notranslate"><span class="pre">sklearn.model_selection</span></code>.</p>
+<p>Run the leave-one-out cross-validation and then calculate the accuracy score and the confusion matrix. Display the confusion matrix using the <code class="docutils literal notranslate"><span class="pre">ConfusionMatrixDisplay</span></code> class. Also compute the accuracy (stored it in a variable called <code class="docutils literal notranslate"><span class="pre">accuracy</span></code>) and print it.</p>
+<p>An example of how to use these can be found in the tutorial notebook. Please reread it if you are not sure.</p>
+<p>Write the code in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">LeaveOneOut</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_predict</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">ConfusionMatrixDisplay</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">cv</span> <span class="o">=</span> <span class="n">LeaveOneOut</span><span class="p">()</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">mine_data</span><span class="p">,</span> <span class="n">mine_labels</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cm</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">mine_labels</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">mine_labels</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">cv</span> <span class="o">=</span> <span class="n">LeaveOneOut</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">14</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">mine_data</span><span class="p">,</span> <span class="n">mine_labels</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">cm</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">mine_labels</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;mine_data&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+
+<span class="k">assert</span> <span class="n">cm</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">accuracy</span> <span class="o">==</span> <span class="mf">0.378698224852071</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">assert</span> <span class="n">cm</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">assert</span> <span class="n">accuracy</span> <span class="o">==</span> <span class="mf">0.378698224852071</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;cm&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should see that the classifier is now making a significant number of false negative type errors, i.e. many of the mines are being classified as ‘None’.</p>
+<p>Consider the task as a basic two-class detection problem, i.e. with outputs ‘Mine’ or ‘None’, i.e. grouping all the mine classes into a single class. What is the accuracy of the classifier for this task?</p>
+<p>Calculate this by summing values from the confusion matrix.</p>
+<p>Write Python code to compute this accuracy in the cell below. Store it in a variable called <code class="docutils literal notranslate"><span class="pre">detection_accuracy.</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">false_positives</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">false_negatives</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">errors</span> <span class="o">=</span> <span class="n">false_positives</span> <span class="o">+</span> <span class="n">false_negatives</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;False positive rate = &#39;</span><span class="p">,</span> <span class="n">false_positives</span> <span class="o">/</span> <span class="n">cm</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;False negative rate = &#39;</span><span class="p">,</span> <span class="n">false_negatives</span> <span class="o">/</span> <span class="n">cm</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="n">detection_accuracy</span> <span class="o">=</span> <span class="p">(</span><span class="n">cm</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="n">errors</span><span class="p">)</span> <span class="o">/</span> <span class="n">cm</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">detection_accuracy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">false_positives</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">false_negatives</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">errors</span> <span class="o">=</span> <span class="n">false_positives</span> <span class="o">+</span> <span class="n">false_negatives</span>
+
+<span class="ne">NameError</span>: name &#39;cm&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="k">assert</span> <span class="n">detection_accuracy</span> <span class="o">==</span> <span class="mf">0.7840236686390533</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># TEST</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">assert</span> <span class="n">detection_accuracy</span> <span class="o">==</span> <span class="mf">0.7840236686390533</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;detection_accuracy&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We should have found that the accuracy is about 78%.</p>
+<p>We can also work out the ‘false negative rate’, i.e. the percentage of detections where a land mine is missed. We want this to be very low.</p>
+<p>This is computed by summing the errors in the first column of the confusion matrix and dividing by the total number of detections.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">false_negatives</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;False negative rate = &#39;</span><span class="p">,</span> <span class="n">false_negatives</span> <span class="o">/</span> <span class="n">cm</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">false_negatives</span> <span class="o">=</span> <span class="n">cm</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;False negative rate = &#39;</span><span class="p">,</span> <span class="n">false_negatives</span> <span class="o">/</span> <span class="n">cm</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;%&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;cm&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>The value is about 15%. This is far too high for a real-world application.</p>
+</section>
+<section id="step-9-retraining-the-model-using-two-classes">
+<h2>Step 9: Retraining the model using two classes<a class="headerlink" href="#step-9-retraining-the-model-using-two-classes" title="Link to this heading">#</a></h2>
+<p>If we are interested in making a two-class detection system, then we can retrain the classifier using just the ‘None’ and ‘Mine’ classes. The easiest way to do this is simply to make a new version of <code class="docutils literal notranslate"><span class="pre">mine_labels</span></code> in which all the mine class labels (i.e., 2, 3, 4 and 5) are replaced with a single label, 2. i.e., the new <code class="docutils literal notranslate"><span class="pre">mine_labels</span></code> variable will only contain the values 1 and 2.</p>
+<p>Once we have done this we can simply repeat the LeaveOneOut cross-validation that we used in the previous section and compute the new accuracy and the new (2 class) confusion matrix.</p>
+<p>Do this in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">mine_labels_2</span> <span class="o">=</span> <span class="n">mine_labels</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">mine_labels_2</span><span class="p">[</span><span class="n">mine_labels_2</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">cv</span> <span class="o">=</span> <span class="n">LeaveOneOut</span><span class="p">()</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">mine_data</span><span class="p">,</span> <span class="n">mine_labels_2</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cm</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">mine_labels_2</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;No mine&#39;</span><span class="p">,</span> <span class="s1">&#39;Mine&#39;</span><span class="p">])</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">mine_labels_2</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">mine_labels_2</span> <span class="o">=</span> <span class="n">mine_labels</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">mine_labels_2</span><span class="p">[</span><span class="n">mine_labels_2</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;mine_labels&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>When I try this, I find that the performance actually gets a bit poorer, i.e., about 75.1% accuracy compared with 78.4% in the previous section. This is counter-intuitive because we have taken a more direct approach to the problem (i.e., learning just the mine vs non-mine classes) and so would expect to get a better performance. The reason here for this is that we previously tuned the value of <span class="math notranslate nohighlight">\(k\)</span> for the 5-class problem. This value of <span class="math notranslate nohighlight">\(k\)</span> is not necessarily optimal for the 2-class problem.</p>
+<p>Cut and paste the code above into the cell below and run it with different values of <span class="math notranslate nohighlight">\(k\)</span> to see if you can improve the performance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">mine_labels_2</span> <span class="o">=</span> <span class="n">mine_labels</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">mine_labels_2</span><span class="p">[</span><span class="n">mine_labels_2</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">cv</span> <span class="o">=</span> <span class="n">LeaveOneOut</span><span class="p">()</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">mine_data</span><span class="p">,</span> <span class="n">mine_labels_2</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">cm</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">mine_labels_2</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;No mine&#39;</span><span class="p">,</span> <span class="s1">&#39;Mine&#39;</span><span class="p">])</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">mine_labels_2</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># SOLUTION</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">mine_labels_2</span> <span class="o">=</span> <span class="n">mine_labels</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">mine_labels_2</span><span class="p">[</span><span class="n">mine_labels_2</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;mine_labels&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>After some trial and error I find that the best value of <span class="math notranslate nohighlight">\(k\)</span> is 3. This gives an accuracy of 82.2%, a false negative rate of 4.5%, and a false positive rate of 67.6%. Note that 12 of the 267 mines are still being missed. The system is probably not sufficiently reliable for real-world application.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>In this lab class, you have seen how to use Scikit-Learn to quickly implement a k-nearest neighbour classifier and apply it to a simple classification problem. You have also seen how to use the <code class="docutils literal notranslate"><span class="pre">cross_val_predict</span></code> method to perform leave-one-out cross-validation and how to use the <code class="docutils literal notranslate"><span class="pre">ConfusionMatrixDisplay</span></code> class to display a confusion matrix.</p>
+<p>We have also tuned the value of the hyperparameter <span class="math notranslate nohighlight">\(k\)</span> to improve the performance of the classifier. We also saw how the best version of <span class="math notranslate nohighlight">\(k\)</span> depended on how we set up the classification problem and that it needed to be retuned for the 2-class problem. Our approach to tuning was rather ad hoc and relied on cutting-and-pasting code. This can easily lead to the introduction of mistakes. Things get even trickier when we use more sophisticated classifiers with a greater number of hyperparameters. Luckily, Scikit-Learn provides a lot of tools to help us deal with this problem. Next week and in the next lab class, we will use these tools to develop a more systematic approach to tuning hyperparameters.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./materials/solutions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="050_using_matplotlib.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">050 Using Matplotlib</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-loading-the-data">Step 1 - Loading the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-visualise-the-data">Step 2 - Visualise the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-generating-a-training-and-testing-set">Step 3 - Generating a training and testing set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-training-a-classifier">Step 4 - Training a classifier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-evaluate-the-model">Step 5 - Evaluate the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-tuning-the-model-s-hyperparameters">Step 6 - Tuning the model’s hyperparameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-analyzing-the-model-performance">Step 7 - Analyzing the model performance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-evaluate-the-model-using-cross-validation">Step 8 - Evaluate the model using cross-validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-9-retraining-the-model-using-two-classes">Step 9: Retraining the model using two classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jon Barker, University of Sheffield
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
