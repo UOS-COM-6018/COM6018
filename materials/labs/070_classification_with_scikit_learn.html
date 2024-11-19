@@ -1,0 +1,977 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>070 Classification with Scikit Learn &#8212; COM6018 - Data Science with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/labs/070_classification_with_scikit_learn';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="000 COM6018 Solutions" href="../solutions/000_Introduction.html" />
+    <link rel="prev" title="060 Introduction to Scikit Learn" href="060_introducing_scikit_learn.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="COM6018 - Data Science with Python - Home"/>
+    <img src="../../_static/uos_logo_for_dark.png" class="logo__image only-dark pst-js-only" alt="COM6018 - Data Science with Python - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    The COM6018 module book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/000_Introduction.html">000 COM6018 Lecture Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/010_wrapper.html">010 Welcome to COM6018</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/015_wrapper.html">015 Getting set up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/020_wrapper.html">020 Using Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/025_wrapper.html">025 Reading and Writing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/030_wrapper.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/040_wrapper.html">040 Introducing Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/050_wrapper.html">050 Data Visualisation with Matplotlib and Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/060_wrapper.html">060 An Introduction to Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/070_wrapper.html">070 Classification with Scikit-Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/000_Introduction.html">000 COM6018 Course Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/010_Introducing_Python.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/015_Further_Python.html">015 Further Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/020_Reading_Data.html">020 Reading and Writing Data Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/030_Introducing_Numpy.html">030 Numerical Computing with NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/035_Some_Common_Problems.html">035 Some Common Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/040_Introducing_Pandas.html">040 Processing Data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/045_Common_Pandas_Mistakes.html">045 Common Pandas Mistakes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/050_Introducing_Matplotlib.html">050 Exploratory Data Analysis and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/060_Introducing_Scikit_Learn.html">060 Introducing Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/070_Classification_with_Scikit_Learn.html">070 Classification with Scikit-Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">070 Classification with Scikit Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../solutions/000_Introduction.html">000 COM6018 Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/labs/070_classification_with_scikit_learn.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/edit/main/materials/labs/070_classification_with_scikit_learn.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/labs/070_classification_with_scikit_learn.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/materials/labs/070_classification_with_scikit_learn.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>070 Classification with Scikit Learn</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-loading-and-viewing-the-data">Step 1 - Loading and viewing the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-splitting-the-data-into-training-and-test-sets">Step 2 - Splitting the data into training and test sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-using-a-knn-classifier">Step 3 - Using a KNN classifier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-applying-a-dimensionality-reduction-technique">Step 4 - Applying a dimensionality reduction technique</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-1-standardising-the-data">Step 4.1 - Standardising the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-2-applying-pca">Step 4.2 - Applying PCA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-3-evaluating-the-reduced-feature-vector">Step 4.3 - Evaluating the reduced feature vector</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-using-a-pipeline-to-combine-feature-extraction-and-classification">Step 5 - Using a `pipeline`` to combine feature extraction and classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-experimenting-with-different-classifiers">Step 6 - Experimenting with different classifiers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-1-using-a-random-forest-classifier">Step 6.1 - Using a Random Forest Classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-2-using-a-support-vector-machine-svm-classifier">Step 6.2 - Using a Support Vector Machine (SVM) Classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-3-using-a-neural-network-classifier">Step 6.3 - Using a Neural Network Classifier</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-analysing-the-classifier-performance">Step 7 - Analysing the classifier performance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-1-generating-a-confusion-matrix">Step 7.1 - Generating a Confusion matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-2-per-class-precision-and-recall">Step 7.2 - Per class precision and recall.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="classification-with-scikit-learn">
+<h1>070 Classification with Scikit Learn<a class="headerlink" href="#classification-with-scikit-learn" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>COM6018</p>
+</div></blockquote>
+<p><em>Copyright © 2023, 2024 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>In this lab class we will be using Scikit Learn to build a face classification system.</p>
+<p>We will be using another of Scikit Learn’s builtin data sets, the ‘Labeled faces in the Wild’ face recognition dataset. This dataset is a collection of pictures of famous people gathered from the internet. It contains 13233 images of 5749 famous people. For some people there are many examples (e.g., 530 images of George W. Bush). For other people there are only a few (e.g., 2 images of Donald Rumsfeld). The faces are all labeled with the person’s identity. More details can be found at <a class="reference external" href="http://vis-www.cs.umass.edu/lfw/">http://vis-www.cs.umass.edu/lfw/</a>.</p>
+<p>We will be using a subset of the data, namely, the people who are represented by at least 50 images in the database. This will give us a dataset of 12 people and 1560 images in total. We will then treat this as a 12 class classification problem, i.e., given one of the images, which of the 12 people is it?</p>
+</section>
+<section id="step-1-loading-and-viewing-the-data">
+<h2>Step 1 - Loading and viewing the data<a class="headerlink" href="#step-1-loading-and-viewing-the-data" title="Link to this heading">#</a></h2>
+<p>To load the data run the cell below which loads the data and also resizes the images to 37 pixels wide by 50 pixels high. (Note, the first time this is run it may take a few minutes to complete. You can use this time to read the rest of this notebook.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">fetch_lfw_people</span>
+<span class="n">lfw_people</span> <span class="o">=</span> <span class="n">fetch_lfw_people</span><span class="p">(</span><span class="n">min_faces_per_person</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">resize</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The returned data is stored in <code class="docutils literal notranslate"><span class="pre">lfw_people</span></code> which is a dictionary-like object with the following keys:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> - the list of feature vectors, one per image,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">images</span></code> - the list of 37 by 50 pixel images,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target</span></code> - the list of labels for the images, i.e., the identity of the person in each image,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">target_names</span></code> - the set of labels, i.e., the names of the 12 people in the images,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DESCR</span></code> - a string describing the dataset.</p></li>
+</ul>
+<p>Use the cell below to print the DESCR field. Read the description and make sure you understand it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The images field contains the list of images, i.e. one image per sample, with each image stored as a 2-D NumPy array. We can display these using the <code class="docutils literal notranslate"><span class="pre">imshow</span></code> method of <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>.</p>
+<p>In the cell below, import `matplotlib.pyplot`` and use it to show the first 16 images in the dataset arranged as a 4 by 4 grid of images.</p>
+<p>Hint: You can use <code class="docutils literal notranslate"><span class="pre">plt.axis('off')</span></code> to avoid displaying the axes and tick marks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-splitting-the-data-into-training-and-test-sets">
+<h2>Step 2 - Splitting the data into training and test sets<a class="headerlink" href="#step-2-splitting-the-data-into-training-and-test-sets" title="Link to this heading">#</a></h2>
+<p>Following the approaches used in the previous lab class and tutorial, split the data into training and test sets. Use 75% of the data for training and 25% for testing. Store the training data as the variable, <code class="docutils literal notranslate"><span class="pre">X_train</span></code>, and the test data as <code class="docutils literal notranslate"><span class="pre">X_test</span></code>. The training labels should be named <code class="docutils literal notranslate"><span class="pre">y_train</span></code> and the test labels, <code class="docutils literal notranslate"><span class="pre">y_test</span></code>.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">random_state=0</span></code> to ensure that the data is split in the same way each time the code is run.</p>
+<p>Write the code in the cell below and check that the training and test sets have the correct sizes by running the test cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1170</span><span class="p">,</span> <span class="mi">1850</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">390</span><span class="p">,</span> <span class="mi">1850</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1170</span><span class="p">,)</span>
+<span class="k">assert</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">390</span><span class="p">,)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All tests passed!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-using-a-knn-classifier">
+<h2>Step 3 - Using a KNN classifier<a class="headerlink" href="#step-3-using-a-knn-classifier" title="Link to this heading">#</a></h2>
+<p>We will start by using the KNN classifier that we introduced in the previous lab class.</p>
+<p>In the cell below, import the <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.neighbors</span></code> and create a classifier that uses 1 neighbour. Train the classifier on the training data and labels. Then use the classifier to predict the labels for the test data. Call the predicted labels <code class="docutils literal notranslate"><span class="pre">y_pred</span></code>.</p>
+<p>Score the classifier by calculating the accuracy on the test data and labels. Finally print the accuracy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should get an accuracy of about 50.2%.</p>
+<p>Now, use the <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> class to find the best value of k for the KNN classifier. Test all odd values of k from 1 to 21. Use 5-fold cross validation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should find that with a value of k=11 you get an accuracy of about 51.8%, i.e., a little better than when k=1.</p>
+<p>However, this is still not very good. We can do better by using a more sophisticated classifier but we may also be able to improve performance by representing the images in a different way.</p>
+<p>One of the problems here is that the feature vector has 1850 dimensions (i.e., a separate value for every pixel). This is a lot of dimensions for a KNN classifier to work with and it can result in a problem known as <code class="docutils literal notranslate"><span class="pre">overfitting</span></code>. In the next section we will reduce the number of features by using a <code class="docutils literal notranslate"><span class="pre">dimensionality</span> <span class="pre">reduction</span></code> technique to transform the feature vector into a lower dimensional space.</p>
+</section>
+<section id="step-4-applying-a-dimensionality-reduction-technique">
+<h2>Step 4 - Applying a dimensionality reduction technique<a class="headerlink" href="#step-4-applying-a-dimensionality-reduction-technique" title="Link to this heading">#</a></h2>
+<p>Our samples are described by the values of 1850 pixels. Many of these pixels are irrelevant to the task, e.g., pixels in the corners of the image which capture information about the background. Also, many of the pixels are highly correlated with each other, e.g., neighbouring pixels will have similar values, meaning that there is a lot of <code class="docutils literal notranslate"><span class="pre">redundancy</span></code> in the data. It is generally easier to train a classifier if we can describe our samples using a smaller number of features, and using features that are not highly correlated with each other.</p>
+<p>Fortunately, there are very powerful and easy-to-implement approaches that can be used to learn a  <code class="docutils literal notranslate"><span class="pre">transform</span></code> that can reduce a high-dimensional feature vector into a lower-dimensional one. These are called <code class="docutils literal notranslate"><span class="pre">dimensionality</span> <span class="pre">reduction</span></code> techniques. They are a very important part of machine learning and we will be looking at them in more detail later in the module. For now we will just use one of these techniques, called <code class="docutils literal notranslate"><span class="pre">Principal</span> <span class="pre">Component</span> <span class="pre">Analysis</span></code> (PCA) and see how it can be applied in SciKit Learn.</p>
+<section id="step-4-1-standardising-the-data">
+<h3>Step 4.1 - Standardising the data<a class="headerlink" href="#step-4-1-standardising-the-data" title="Link to this heading">#</a></h3>
+<p>Before using PCA we will first <code class="docutils literal notranslate"><span class="pre">standardise</span></code> the data. i.e., apply a scaling and offset to each feature so that all features have a mean of zero and a variance of one. This can be done using the <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> class from <code class="docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code> module. See the example in the tutorial notes and write the necessary code below.</p>
+<p>Note, you should <code class="docutils literal notranslate"><span class="pre">fit</span></code> the transform using the <code class="docutils literal notranslate"><span class="pre">X_train</span></code> data and apply the same transform to both the <code class="docutils literal notranslate"><span class="pre">X_train</span></code> and <code class="docutils literal notranslate"><span class="pre">X_test</span></code> data. Store the results as <code class="docutils literal notranslate"><span class="pre">X_train_scaled</span></code> and <code class="docutils literal notranslate"><span class="pre">X_test_scaled</span></code> respectively. You should use the <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> and <code class="docutils literal notranslate"><span class="pre">transform</span></code> methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4-2-applying-pca">
+<h3>Step 4.2 - Applying PCA<a class="headerlink" href="#step-4-2-applying-pca" title="Link to this heading">#</a></h3>
+<p>The PCA technique learns a specific dimensionality reducing transform from the training data features (in Scikit-Learn this stage is called ‘fitting’). Once a transform has been learnt it can then be applied to the training and test data to produce the new lower-dimensioned feature vectors.</p>
+<p>We will now perform the PCA fitting and transforming steps in the cell below. This can be done using the <code class="docutils literal notranslate"><span class="pre">PCA</span></code> class that can be imported from <code class="docutils literal notranslate"><span class="pre">sklearn.decompostion</span></code>. This can be used in a very similar way to the <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> class, i.e., using methods called <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> and <code class="docutils literal notranslate"><span class="pre">transform</span></code>. The PCA class has a parameter called <code class="docutils literal notranslate"><span class="pre">n_components</span></code> that can be used to specify the number of features that we want for the output. Set this to 200.</p>
+<p>Note, remember to use the <code class="docutils literal notranslate"><span class="pre">X_train_scaled</span></code> data to learn the PCA transform. Store the transformed data in the variable <code class="docutils literal notranslate"><span class="pre">X_test_pca</span></code> and <code class="docutils literal notranslate"><span class="pre">X_train_pca</span></code>.</p>
+<p>Write the solution below and run the test cell to check that your data looks correct.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="k">assert</span> <span class="n">X_test_pca</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">390</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">X_train_pca</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1170</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4-3-evaluating-the-reduced-feature-vector">
+<h3>Step 4.3 - Evaluating the reduced feature vector<a class="headerlink" href="#step-4-3-evaluating-the-reduced-feature-vector" title="Link to this heading">#</a></h3>
+<p>We will now repeat the KNN classification but this time we will use the <code class="docutils literal notranslate"><span class="pre">X_train_pca</span></code> and <code class="docutils literal notranslate"><span class="pre">X_test_pca</span></code> feature vectors instead of the original <code class="docutils literal notranslate"><span class="pre">X_train</span></code> and <code class="docutils literal notranslate"><span class="pre">X_test</span></code> feature vectors. Note, the optimal value of k may now have changed, so rerun a grid search with the <code class="docutils literal notranslate"><span class="pre">X_train_pca</span></code> and using 5-fold cross-validation as before.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The result should now be slightly better than before. When I ran this I got a score of 54.6% correct with the optimum value of k being 5. This is a little better than the 51.7% that we got before using the original feature vectors.</p>
+</section>
+</section>
+<section id="step-5-using-a-pipeline-to-combine-feature-extraction-and-classification">
+<h2>Step 5 - Using a `pipeline`` to combine feature extraction and classification<a class="headerlink" href="#step-5-using-a-pipeline-to-combine-feature-extraction-and-classification" title="Link to this heading">#</a></h2>
+<p>In the previous steps, we have seen how to use Scikit-Learn to standardise data, perform dimensionality reduction, tune hyperparameters and then perform classification. The data pre-processing and classification steps were performed separately. This is not ideal as it can lead to errors. For example, we end up with multiple different versions of the data, e.g. X_train, X_train_scaled, X_train_pca, and similarly for the test data, so it would be very easy to get these variables confused. In this section we are going to use a construct called a ‘pipeline’ to combine the feature extraction and classification steps into a single stage.</p>
+<p>Review the material in the tutorial notes to see how to use a pipeline. Then, create a pipeline that combines the StandardScaler transform, the PCA transform with the number of components set to 200 and the KNN classifier with the number of neighbours set to 5.</p>
+<p>Store the pipeline as a variable called <code class="docutils literal notranslate"><span class="pre">pipeline</span></code>. Run the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method with <code class="docutils literal notranslate"><span class="pre">X_train</span></code> on the pipeline and then the <code class="docutils literal notranslate"><span class="pre">score</span></code> method with <code class="docutils literal notranslate"><span class="pre">X_test</span></code> and <code class="docutils literal notranslate"><span class="pre">y_test</span></code>.</p>
+<p>What is the accuracy? It should be the same as the accuracy that you got in the previous step. The pipeline does not change the computation, it just makes it easier to manage.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The pipeline can itself be used with the GridSearchCV class in order to tune its hyperparameters. Using GridSearchCV with a pipeline is just the same as using it with one of the builtin models. The only thing to note is that the parameter names have the form &lt;step_name&gt;__&lt;parameter_name&gt;. For example, if the KNeighborsClassifier step of the pipeline has been called <code class="docutils literal notranslate"><span class="pre">knn</span></code>, then to tune its <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> parameter we would refer to the parameter as <code class="docutils literal notranslate"><span class="pre">knn__n_neighbors</span></code>.</p>
+<p>Write code to tune the pipelines <code class="docutils literal notranslate"><span class="pre">n_neighbour</span></code> parameter and then evaluate the resulting model using the <code class="docutils literal notranslate"><span class="pre">X_test</span></code> data.</p>
+<p>Note, if we search for values of k from 1 to 21 as we did before, then the GridSearch will take quite a long time to run (several minutes on my macbook pro). Just use k values of 1,3,5 and 7 in the grid search so that you don’t have to wait too long.</p>
+<p>Write your solution below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The reason that the GridSearch is slow is that it is re-running the entire pipeline for every value of k that it is testing. This means that the computationally expensive PCA fitting step is getting run many times. This is inefficient because the PCA step is part of the data pre-processing and will be the same for every value of k used by the classifier.</p>
+<p>To avoid the recomputation, you can use sklearn’s ‘caching’ mechanism that is part of the <code class="docutils literal notranslate"><span class="pre">Memory</span></code> module in the <code class="docutils literal notranslate"><span class="pre">joblib</span></code> package. See the tutorial notes for an example of how to do this. Implement it below and now retry the search using odd values of k from 1 to 21 again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-6-experimenting-with-different-classifiers">
+<h2>Step 6 - Experimenting with different classifiers<a class="headerlink" href="#step-6-experimenting-with-different-classifiers" title="Link to this heading">#</a></h2>
+<p>Now that we have a pipeline for training and evaluating classifiers, we can easily experiment with different classifiers. We will try the following classifiers:</p>
+<ul class="simple">
+<li><p>Random Forests</p></li>
+<li><p>Support Vector Machines (SVM)</p></li>
+<li><p>Neural Network</p></li>
+</ul>
+<p>For each one, we will use the techniques used previously to tune hyperparameters before evaluating the classifier on the test set.</p>
+<section id="step-6-1-using-a-random-forest-classifier">
+<h3>Step 6.1 - Using a Random Forest Classifier<a class="headerlink" href="#step-6-1-using-a-random-forest-classifier" title="Link to this heading">#</a></h3>
+<p>We will now replace the KNearestNeighbour classifier with a Random Forest classifier. The pipeline should again start with the StandardScalar and PCA transforms but the classifier at the end of the pipeline will be changed. The Random Forest classifier is provided by the <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code> class in the <code class="docutils literal notranslate"><span class="pre">sklearn.ensemble</span></code> module.</p>
+<p>The Random Forest classifier has many hyperparameters but one of the most important is the number of trees in the forest, which is specified by the parameter <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code>.</p>
+<p>For the GridSearch, search over both the number of trees and the number of PCA components. Use values of 10, 50 and 100 for the number of tree. Use values of 20, 50 and 100 for the number of PCA components. Use a cache to speed up the search. Also, when constructing the GridSearchCV object, set the <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter to -1. This instructs the GridSearchCV to use all available cores to perform the search. Depending on your computer, this may provide a significant speed up (on my Macbook Pro, using all the cores makes the processing about 8 times faster).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What is the final accuracy? When I ran this, I got a score of 56.7%, i.e., significantly better than the best score achieved with the KNN classifier (54.6%).</p>
+</section>
+<section id="step-6-2-using-a-support-vector-machine-svm-classifier">
+<h3>Step 6.2 - Using a Support Vector Machine (SVM) Classifier<a class="headerlink" href="#step-6-2-using-a-support-vector-machine-svm-classifier" title="Link to this heading">#</a></h3>
+<p>We will now use a Support Vector Machine (SVM) classifier. Again this should require just a minor edit to the previous code. The pipeline should again start with the StandardScalar and PCA transforms but the classifier on the end will be changed. The SVM classifier is provided by the <code class="docutils literal notranslate"><span class="pre">sklearn.svm.SVC</span></code> class.</p>
+<p>The key parameter for the SVC is the kernel, which is specified by the parameter <code class="docutils literal notranslate"><span class="pre">kernel</span></code>. The kernel is specified using a string and can be one of <code class="docutils literal notranslate"><span class="pre">linear</span></code>, <code class="docutils literal notranslate"><span class="pre">poly</span></code>, <code class="docutils literal notranslate"><span class="pre">rbf</span></code> or <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code>. The SVC also has a parameter called C that controls the amount of regularisation. The default value of C is 1.0.</p>
+<p>For the GridSearch, search over the kernel type, the C parameter and the number of PCA components. Use values of <code class="docutils literal notranslate"><span class="pre">linear</span></code>, <code class="docutils literal notranslate"><span class="pre">poly</span></code>, <code class="docutils literal notranslate"><span class="pre">rbf</span></code> and <code class="docutils literal notranslate"><span class="pre">sigmoid</span></code> for the kernel and values of 0.5, 1.0 and 2.0 for C. SVM work well in high dimensional feature spaces so use values of 100, 200 and 500 for the number of PCA components. Note, we are now searching over 3 parameters with a total of 4 x 3 x 3 = 36 configurations being tested. Use a cache to speed up the search and set the n_jobs to -1 to use all the cores on your machine.</p>
+<p>(The processing takes 10 seconds on my laptop. It might take longer on yours, so be patient.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What score do you get? When I ran this I achieved an accuracy of 81.3% which is hugely better than the previous classifiers that had scores in the 50’s.</p>
+</section>
+<section id="step-6-3-using-a-neural-network-classifier">
+<h3>Step 6.3 - Using a Neural Network Classifier<a class="headerlink" href="#step-6-3-using-a-neural-network-classifier" title="Link to this heading">#</a></h3>
+<p>In this final task, we will use a neural network classifier to classify the data. We will use the <code class="docutils literal notranslate"><span class="pre">MLPClassifier</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.neural_network</span></code>.</p>
+<p>The MLPClassifier has many parameters that can be set, but the key parameters are the number of hidden layers and the number of neurons in each hidden layer. This is set using the <code class="docutils literal notranslate"><span class="pre">hidden_layer_sizes</span></code> parameter. For example, <code class="docutils literal notranslate"><span class="pre">hidden_layer_sizes=(10,</span> <span class="pre">10)</span></code> will create a neural network with two hidden layers, each with 10 neurons. The default is <code class="docutils literal notranslate"><span class="pre">hidden_layer_sizes=(100,)</span></code>, which creates a neural network with one hidden layer with 100 neurons.</p>
+<p>For all other parameters we will keep the default values, except: we will set <code class="docutils literal notranslate"><span class="pre">max_iter=1000</span></code> which will allow the network to train for more iterations; <code class="docutils literal notranslate"><span class="pre">random_state=0</span></code> which will ensure that the results are reproducible;  and <code class="docutils literal notranslate"><span class="pre">early_stopping=True</span></code> which will stop the training if the validation score does not improve for 10 iterations. Set these parameters in the <code class="docutils literal notranslate"><span class="pre">MLPClassifier</span></code> constructor when defining the pipeline.</p>
+<p>For the GridSearchCV, we will search over PCA n_components values of 20, 50, 100, 200, 500, and we will try the following neural network architectures: (50,), (100,), (200,), (100, 100), (100, 100, 100) and (200, 100, 50). This will results in 5 x 6 = 30 different parameter combinations.</p>
+<p>Remember to use a cache and to set n_jobs to -1 to speed things up.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What performance do you get with the best model? When I ran this I got a score of 75.9% using an MLP with a single hidden layer with 200 neurons.</p>
+</section>
+</section>
+<section id="step-7-analysing-the-classifier-performance">
+<h2>Step 7 - Analysing the classifier performance<a class="headerlink" href="#step-7-analysing-the-classifier-performance" title="Link to this heading">#</a></h2>
+<p>In this final step we will analyse the performance of the best classifier from the previous section.</p>
+<p>You probably found that the Support Vector Machine (SVM) classifier performed best with a classification accuaracy of over 80%. We will therefore use this classifier to analyse the performance.</p>
+<p>We will first look at the confusion matrix to see which classes are most often confused with each other. We will then look at the precision, recall and F1 scores for each class.</p>
+<section id="step-7-1-generating-a-confusion-matrix">
+<h3>Step 7.1 - Generating a Confusion matrix<a class="headerlink" href="#step-7-1-generating-a-confusion-matrix" title="Link to this heading">#</a></h3>
+<p>In the cell below, perform the following steps:</p>
+<ul class="simple">
+<li><p>Make a pipeline for the feature standardisation, PCA and SVC classifier. Set the n_components of the PCA and the kernel type and C value of the SVM classifier to the best values you found in the previous section.</p></li>
+<li><p>Call the pipeline’s <code class="docutils literal notranslate"><span class="pre">fit</span></code> function using the <code class="docutils literal notranslate"><span class="pre">X_train</span></code> and <code class="docutils literal notranslate"><span class="pre">y_train</span></code> data.</p></li>
+<li><p>Call the <code class="docutils literal notranslate"><span class="pre">predict</span></code> function of the pipeline using the <code class="docutils literal notranslate"><span class="pre">X_test</span></code> data and store the result in a variable called <code class="docutils literal notranslate"><span class="pre">y_pred</span></code>.</p></li>
+</ul>
+<p>Then run the test cell to verify that your <code class="docutils literal notranslate"><span class="pre">y_pred</span></code> variable is a NumPy array with 390 elements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="k">assert</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">390</span><span class="p">,)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To compute and display a confusion matrix for the above result, perform the following steps in the cell below:</p>
+<ul class="simple">
+<li><p>import <code class="docutils literal notranslate"><span class="pre">ConfusionMatrixDisplay</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code></p></li>
+<li><p>call <code class="docutils literal notranslate"><span class="pre">ConfusionMatrixDisplay.from_predictions</span></code> passing <code class="docutils literal notranslate"><span class="pre">y_test</span></code> and <code class="docutils literal notranslate"><span class="pre">y_pred</span></code> as arguments.</p></li>
+</ul>
+<p>Tips:</p>
+<ul class="simple">
+<li><p>To make the confusion matrix easier to interpret you can set the <code class="docutils literal notranslate"><span class="pre">display_labels</span></code> argument of the <code class="docutils literal notranslate"><span class="pre">from_predictions</span></code> method to be the list of the names of the classes, i.e. the people’s names. This list can be found in <code class="docutils literal notranslate"><span class="pre">lfw_people.target_names</span></code>.</p></li>
+<li><p>The names on the x-axis will be printed horizontally and will overlap. You can fix this by setting the <code class="docutils literal notranslate"><span class="pre">xticks_rotation</span></code> argument to ‘vertical’.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Study the confusion matrix and make sure that you understand what it means. Which people appear most often in the test data? Which people are most often misclassified? Which misclassifications are the most common? When I ran this I found some surprising results. For example, Serena Williams is twice mistaken as Ariel Sharon! This is probably not a misclassification that a human would make…</p>
+</section>
+<section id="step-7-2-per-class-precision-and-recall">
+<h3>Step 7.2 - Per class precision and recall.<a class="headerlink" href="#step-7-2-per-class-precision-and-recall" title="Link to this heading">#</a></h3>
+<p>We will now compute precision, recall and F1 scores for each class. If you have forgotten, then remind yourself what these score mean by looking at the notes.</p>
+<p>To compute these values use the <code class="docutils literal notranslate"><span class="pre">precision_score</span></code>, <code class="docutils literal notranslate"><span class="pre">recall_score</span></code> and <code class="docutils literal notranslate"><span class="pre">f1_score</span></code> functions from <code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>. Each of these function takes two arguments: the true labels and the predicted labels. By default they return a single value that is made by averaging over all the classes. To get the per class scores, set the <code class="docutils literal notranslate"><span class="pre">average</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>Store the results in variables called <code class="docutils literal notranslate"><span class="pre">precision</span></code>, <code class="docutils literal notranslate"><span class="pre">recall</span></code> and <code class="docutils literal notranslate"><span class="pre">f1</span></code>.</p>
+<p>Run the test cell to verify that your results have the correct format</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+<span class="k">assert</span> <span class="n">precision</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">12</span><span class="p">,)</span>
+<span class="k">assert</span> <span class="n">recall</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">12</span><span class="p">,)</span>
+<span class="k">assert</span> <span class="n">f1</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">12</span><span class="p">,)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To display the results in an easy-to-read format, we can store them in a pandas DataFrame. Run the code that is written for you below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Store results in a pandas DataFrame</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">precision</span><span class="p">,</span> <span class="n">recall</span><span class="p">,</span> <span class="n">f1</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>  <span class="c1"># Store the results in the columns of a numpy array</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Precision&#39;</span><span class="p">,</span> <span class="s1">&#39;Recall&#39;</span><span class="p">,</span> <span class="s1">&#39;F1&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">lfw_people</span><span class="o">.</span><span class="n">target_names</span><span class="p">)</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">style</span>  <span class="c1"># Display the DataFrame using a nice HTML table styling</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Look the results above. Which people have the highest F1 score and which have the lowest? What do you think determines whether a person is recognised correctly or not?</p>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>This lab class has covered a lot of ground. We have looked at the following:</p>
+<ul class="simple">
+<li><p>How to use scikit-learn to perform classification</p></li>
+<li><p>How to build perform feature normalisation and dimensionality reduction.</p></li>
+<li><p>How to build a pipeline to perform feature preprocessing and classification in a single stage.</p></li>
+<li><p>How to use our pipeline in a grid search to find the best hyperparameters for our model.</p></li>
+<li><p>How to analyse results using a confusion matrix and metrics such as precision, recall and F1 score.</p></li>
+</ul>
+<p>Along the way we have also covered a few important details including how to use a cache and multiple cores to speed up the grid search.</p>
+<p>With the techniques that you have covered in this lab you should now be able to apply scikit-learn to a wide range of classification problems. You are encouraged to study the solution code when it is released and to play around with the ideas and to read the documentation of the various functions that we have used. Many of the functions have advanced features that have not been covered in this lab class. As a challenge, see if you can find a classifier and hyper-parameter tuning that performs better than the 81% score that has been achieved in the solution code.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./materials/labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="060_introducing_scikit_learn.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">060 Introduction to Scikit Learn</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../solutions/000_Introduction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">000 COM6018 Solutions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-loading-and-viewing-the-data">Step 1 - Loading and viewing the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-splitting-the-data-into-training-and-test-sets">Step 2 - Splitting the data into training and test sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-using-a-knn-classifier">Step 3 - Using a KNN classifier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-applying-a-dimensionality-reduction-technique">Step 4 - Applying a dimensionality reduction technique</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-1-standardising-the-data">Step 4.1 - Standardising the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-2-applying-pca">Step 4.2 - Applying PCA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-3-evaluating-the-reduced-feature-vector">Step 4.3 - Evaluating the reduced feature vector</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-using-a-pipeline-to-combine-feature-extraction-and-classification">Step 5 - Using a `pipeline`` to combine feature extraction and classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-experimenting-with-different-classifiers">Step 6 - Experimenting with different classifiers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-1-using-a-random-forest-classifier">Step 6.1 - Using a Random Forest Classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-2-using-a-support-vector-machine-svm-classifier">Step 6.2 - Using a Support Vector Machine (SVM) Classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-3-using-a-neural-network-classifier">Step 6.3 - Using a Neural Network Classifier</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-analysing-the-classifier-performance">Step 7 - Analysing the classifier performance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-1-generating-a-confusion-matrix">Step 7.1 - Generating a Confusion matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-2-per-class-precision-and-recall">Step 7.2 - Per class precision and recall.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jon Barker, University of Sheffield
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
