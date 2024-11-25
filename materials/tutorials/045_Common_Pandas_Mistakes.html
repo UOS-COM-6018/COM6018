@@ -476,8 +476,8 @@
 <p><em>Copyright © 2023, 2024 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
 <section id="introducing">
 <h2>1. Introducing<a class="headerlink" href="#introducing" title="Link to this heading">#</a></h2>
-<p>This notebook considers a few common issues that you may encounter when using Pandas. If you have any suggestions for other common problems to include, please let me know.</p>
-<p>Below we will import NumPy and Pandas which will be used in the examples that follow.</p>
+<p>This notebook considers some common issues that you may encounter when using Pandas. If you have any suggestions for other common problems to include, please let me know.</p>
+<p>Below we will import NumPy and Pandas, which will be used in the examples that follow.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -489,7 +489,7 @@
 </section>
 <section id="the-settingwithcopywarning">
 <h2>2. The SettingWithCopyWarning<a class="headerlink" href="#the-settingwithcopywarning" title="Link to this heading">#</a></h2>
-<p>The ‘SettingWithCopyWarning’ is one of the mostly commonly encountered problems for new users of Pandas. You will find many people asking about it online. As it is a warning, it is easy to ignore. However, it is important to understand what it means and how to fix your code when you see it because it means you are doing something that is not guaranteed to work.</p>
+<p>The ‘SettingWithCopyWarning’ is one of the most commonly encountered problems for new users of Pandas. You will find many people asking about it online. As it is a warning, it is easy to ignore. However, it is important to understand what it means and how to fix your code when you see it because it means that you are doing something that is not guaranteed to work.</p>
 <p>In order to explain the warning, we will first make a simple example that generates it. We will start with a simple DataFrame with some age and height data for a few people.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -502,7 +502,7 @@
 </div>
 </div>
 </div>
-<p>Now let’s say that we want to change Bill’s age to be 100. We might try to do this as follows:</p>
+<p>Now, let us say that we want to change Bill’s age to be 100. We might try to do this as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s1">&#39;Bill&#39;</span><span class="p">][</span><span class="s2">&quot;age&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
@@ -522,7 +522,7 @@
 4  Maryam   64    1.54
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2180/753014212.py:1: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2207/753014212.py:1: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -532,9 +532,9 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 </div>
-<p>This seems very natural but it (probably) hasn’t worked and it has generated a SettingWithCopyWarning.</p>
-<p>To understand the origins of the problem it is necessary to understand that Pandas operations can either return a copy of the data or a view of the data. A copy is a new DataFrame that contains a completely new copy of the original data (or some part of it). A view is a new DataFrame that contains a reference to the original data (or some part of it). If you change the data in a copy then the original data is unchanged. If you change the data in a view then the original data is also changed. (This is similar to the difference between a copy and a reference in Python.)</p>
-<p>In our code above, the expression <code class="docutils literal notranslate"><span class="pre">df[df.name=='Bill']</span></code> has returned a <strong>copy</strong> of a slice of the DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code> and not a <strong>view</strong>. This means that when we then use <code class="docutils literal notranslate"><span class="pre">[&quot;age&quot;]</span> <span class="pre">=</span> <span class="pre">100</span></code> to set the age of Bill to 100, we are actually setting the age of Bill to 100 in a copy, i.e., and not in the original DataFrame. The original DataFrame is unchanged.</p>
+<p>This seems very natural, but it (probably) hasn’t worked and it has generated a SettingWithCopyWarning.</p>
+<p>To understand the origins of the problem, it is necessary to understand that Pandas operations can return either a copy of the data or a view of the data. A copy is a new DataFrame that contains a completely new copy of the original data (or some part of it). A view is a new DataFrame that contains a reference to the original data (or some part of it). If you change the data in a copy, then the original data remains unchanged. If you change the data in a view, then the original data is also changed. (This is similar to the difference between a copy and a reference in Python.)</p>
+<p>In our code above, the expression <code class="docutils literal notranslate"><span class="pre">df[df.name=='Bill']</span></code> has returned a <strong>copy</strong> of a slice of the DataFrame <code class="docutils literal notranslate"><span class="pre">df</span></code> and not a <strong>view</strong>. This means that when we use <code class="docutils literal notranslate"><span class="pre">[&quot;age&quot;]</span> <span class="pre">=</span> <span class="pre">100</span></code> to set the age of Bill to 100, we are actually setting the age of Bill to 100 in a copy, i.e., and not in the original DataFrame. The original DataFrame is unchanged.</p>
 <p>The code above is actually equivalent to the following:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -556,7 +556,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 4  Maryam   64    1.54
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2180/2079350034.py:2: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2207/2079350034.py:2: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -567,7 +567,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <p>In the above, we would not be surprised the <code class="docutils literal notranslate"><span class="pre">df</span></code> has not been changed by <code class="docutils literal notranslate"><span class="pre">df_copy[&quot;age&quot;]</span> <span class="pre">=</span> <span class="pre">100</span></code>.</p>
-<p>In fact, the situation is worse than this. Whether or not the operation <code class="docutils literal notranslate"><span class="pre">df[df.name=='Bill']</span></code> returns a copy or a view is ‘undetermined’, i.e., it is neither guaranteed to return one or the other. The choice depends on a lot of things: the type of data in the DataFrame, the version of Pandas that you are using, etc. So it is best not to ignore this warning <em>even if the code appears to work</em>. It is basically telling you that you are doing something that is not guaranteed to work.</p>
+<p>In fact, the situation is worse than this. Whether or not the operation <code class="docutils literal notranslate"><span class="pre">df[df.name=='Bill']</span></code> returns a copy or a view is ‘undetermined,’ i.e., it is neither guaranteed to return one or the other. The choice depends on a lot of things: the type of data in the DataFrame, the version of Pandas that you are using, etc. So, it is best not to ignore this warning <em>even if the code appears to work</em>. It is tells you that you are doing something that is not guaranteed to work.</p>
 <p>As noted in the warning message, the correct way to set Bill’s age to 100 is to index the element that you want to change in a single step using <code class="docutils literal notranslate"><span class="pre">loc</span></code> as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -590,11 +590,11 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 </div>
-<p>Note, that no warning has appeared and Bill’s age has successfully changed to 100.</p>
+<p>Note that no warning has appeared and Bill’s age has successfully changed to 100.</p>
 </section>
 <section id="settingwithcopywarning-another-example">
 <h2>3. SettingWithCopyWarning - another example<a class="headerlink" href="#settingwithcopywarning-another-example" title="Link to this heading">#</a></h2>
-<p>Let’s say that we want to make a new DataFrame containing just the people over 50 years old, and in this new DataFrame we want to change the height so that it is measured in centimetres rather than metres. We might try to do this as follows:</p>
+<p>Let us say that we want to make a new DataFrame containing just the people over 50 years old, and in this new DataFrame we want to change the height so that it is measured in centimetres rather than metres. We might try to do this as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_centimeter</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">]</span>
@@ -624,7 +624,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 4  Maryam   64   154.0
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2180/2966837033.py:2: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2207/2966837033.py:2: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -634,9 +634,9 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 </div>
-<p>Again, we get the same warning. The problem is again that we cannot be sure whether <code class="docutils literal notranslate"><span class="pre">df_centimeter</span></code> is a copy or a view of df. So whether the conversion to centimetres is also applied to the original df if undetermined. Even if it appears to work, it may not work in a different version of Pandas.</p>
-<p>We need to rewrite the code so that it is guaranteed to work as we expect. There are two cases: either we didn’t want the original DataFrame to be changed or we did.</p>
-<p>If we want the original DataFrame to be left unchanged then we need to be explicit that <code class="docutils literal notranslate"><span class="pre">df_centimeter</span></code> is a copy of <code class="docutils literal notranslate"><span class="pre">df</span></code>. This is done using the <code class="docutils literal notranslate"><span class="pre">copy()</span></code> method as follows,</p>
+<p>Again, we get the same warning. The problem is again that we cannot be sure whether <code class="docutils literal notranslate"><span class="pre">df_centimeter</span></code> is a copy or a view of df. So, whether the conversion to centimetres is also applied to the original df is undetermined. Even if it appears to work, it may not work in a different version of Pandas.</p>
+<p>We need to rewrite the code so that it is guaranteed to work as expected. There are two cases: either we didn’t want the original DataFrame to be changed or we did.</p>
+<p>If we want the original DataFrame to remain unchanged, then we need to explicitly state that <code class="docutils literal notranslate"><span class="pre">df_centimeter</span></code> is a copy of <code class="docutils literal notranslate"><span class="pre">df</span></code>. This is done using the <code class="docutils literal notranslate"><span class="pre">copy()</span></code> method as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_centimeter</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">age</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -693,7 +693,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <p>Note that neither of the above solutions will generate the SettingWithCopyWarning.</p>
 <div class="admonition-note admonition">
 <p class="admonition-title">Note</p>
-<p>The above example is for illustrative purpose only. Making a DataFrame in which the height of people over 50 is measured in centimetres but the height of people under 50 is measured in metres is probably not a good idea!</p>
+<p>The above example is only for illustrative purposes. Making a DataFrame in which the height of people over 50 is measured in centimetres but the height of people under 50 is measured in metres is not a good idea!</p>
 </div>
 </section>
 <section id="submit-your-own">
