@@ -30,7 +30,7 @@ parts:
       - file: materials/tutorials/050_Introducing_Matplotlib.ipynb
       - file: materials/tutorials/060_Introducing_Scikit_Learn.ipynb
       - file: materials/tutorials/070_Classification_with_Scikit_Learn.ipynb
-  #      - file: materials/tutorials/080_Curve_Fitting_with_Scikit_Learn.ipynb
+      - file: materials/tutorials/080_Curve_Fitting_with_Scikit_Learn.ipynb
   - caption: Lab Classes
     chapters:
       - file: materials/labs/000_Introduction.md
