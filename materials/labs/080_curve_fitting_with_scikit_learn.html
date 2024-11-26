@@ -1,0 +1,920 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>080 Curve Fitting with Scikit Learn &#8212; COM6018 - Data Science with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/labs/080_curve_fitting_with_scikit_learn';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="000 COM6018 Solutions" href="../solutions/000_Introduction.html" />
+    <link rel="prev" title="070 Classification with Scikit Learn" href="070_classification_with_scikit_learn.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="COM6018 - Data Science with Python - Home"/>
+    <img src="../../_static/uos_logo_for_dark.png" class="logo__image only-dark pst-js-only" alt="COM6018 - Data Science with Python - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    The COM6018 module book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/000_Introduction.html">000 COM6018 Lecture Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/010_wrapper.html">010 Welcome to COM6018</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/015_wrapper.html">015 Getting set up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/020_wrapper.html">020 Using Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/025_wrapper.html">025 Reading and Writing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/030_wrapper.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/040_wrapper.html">040 Introducing Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/050_wrapper.html">050 Data Visualisation with Matplotlib and Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/060_wrapper.html">060 An Introduction to Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/070_wrapper.html">070 Classification with Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/080_wrapper.html">080 Curve Fitting with Scikit-Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/000_Introduction.html">000 COM6018 Course Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/010_Introducing_Python.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/015_Further_Python.html">015 Further Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/020_Reading_Data.html">020 Reading and Writing Data Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/030_Introducing_Numpy.html">030 Numerical Computing with NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/035_Some_Common_Problems.html">035 Some Common Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/040_Introducing_Pandas.html">040 Processing Data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/045_Common_Pandas_Mistakes.html">045 Common Pandas Mistakes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/050_Introducing_Matplotlib.html">050 Exploratory Data Analysis and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/060_Introducing_Scikit_Learn.html">060 Introducing Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/070_Classification_with_Scikit_Learn.html">070 Classification with Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/080_Curve_Fitting_with_Scikit_Learn.html">080 Curve Fitting with Scikit-Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">080 Curve Fitting with Scikit Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../solutions/000_Introduction.html">000 COM6018 Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solutions/070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/labs/080_curve_fitting_with_scikit_learn.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/edit/main/materials/labs/080_curve_fitting_with_scikit_learn.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/labs/080_curve_fitting_with_scikit_learn.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/materials/labs/080_curve_fitting_with_scikit_learn.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>080 Curve Fitting with Scikit Learn</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-load-the-data">Step 1 - Load the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-prepare-the-data">Step 2 - Prepare the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-plotting-the-data">Step 3 - Plotting the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-fitting-a-polynomial-curve-using-scikit-learn">Step 4 - Fitting a polynomial curve using scikit-learn</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-1-fitting-a-straight-line">Step 4.1 - Fitting a straight line</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-2-fitting-a-polynomial-curve">Step 4.2 - Fitting a polynomial curve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-3-finding-the-best-polynomial-degree">Step 4.3 - Finding the best polynomial degree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-4-a-fairer-methodology-for-model-evaluation">Step 4.4 - A fairer methodology for model evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-modeling-the-periodic-component">Step 5 - Modeling the periodic component</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-1-making-the-x-matrix">Step 5.1 - Making the X matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-2-finding-the-best-value-for-the-periodic-order">Step 5.2 - Finding the best value for the periodic order</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-using-our-model-to-predict-the-future">Step 6 - Using our model to predict the future</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-1-re-estimating-the-model-parameters">Step 6.1 - Re-estimating the model parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-2-predicting-the-future">Step 6.2 - Predicting the future</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="curve-fitting-with-scikit-learn">
+<h1>080 Curve Fitting with Scikit Learn<a class="headerlink" href="#curve-fitting-with-scikit-learn" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>COM6018</p>
+</div></blockquote>
+<p><em>Copyright © 2023, 2024 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>In this lab we will be using linear regression to fit a model to the atmospheric gas concentration data that we have been working with in this module.</p>
+<p>The lab assumes that you have read and understood the lecture notes, Curve Fitting with Scikit learn. We will be using ideas from these notes in the lab.</p>
+<p>In the cell below, we will import some of the libraries that we will be using in the lab.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-1-load-the-data">
+<h2>Step 1 - Load the data<a class="headerlink" href="#step-1-load-the-data" title="Link to this heading">#</a></h2>
+<p>We will start by loading the data from the file <code class="docutils literal notranslate"><span class="pre">co2.csv</span></code> into a Pandas DataFrame. The data is in the same format as the data we used in the previous lab.</p>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> method. The file contains comment lines that start with ‘%’ so you will need to use the <code class="docutils literal notranslate"><span class="pre">comment</span></code> parameter of the <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> method to ignore these lines.</p>
+<p>Read the data such that the DataFrame columns are called ‘year’, ‘month’, ‘day’ and ‘co2’. The csv file also contains columns called ‘NB’ and ‘scale’, but we will ignore these. You can use the <code class="docutils literal notranslate"><span class="pre">drop</span></code> method to remove these columns from the DataFrame. Store the DataFrame in a variable called <code class="docutils literal notranslate"><span class="pre">co2_df</span></code>.</p>
+<p>Write the code below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">co2_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-prepare-the-data">
+<h2>Step 2 - Prepare the data<a class="headerlink" href="#step-2-prepare-the-data" title="Link to this heading">#</a></h2>
+<p>We need to clean the data a little before we use it. For some of the rows the <code class="docutils literal notranslate"><span class="pre">co2</span></code> value is missing and the file contains a <code class="docutils literal notranslate"><span class="pre">NaN</span></code> value. We want to drop all of these rows from the DataFrame. We have done this in previous labs, so look back at your notes if you need to.</p>
+<p>We also want to convert the year, month and day columns into a single column which we will call <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code> which is the year plus the fraction of the year. For example, 1st January 2019 would be 2019.0 and 1st July 2019 would be 2019.5. We will later use this column as the x-axis when we plot the data. Think carefully to work out the formula for combining the year, month and day to make this value.</p>
+<p>(Note that you can cheat a little and pretend that each month is 1/12 of a year. This is not exactly correct, but it will be close enough for our purposes.)</p>
+<p>Write the code for these two steps in the cell below and run the test cell to check your code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+
+<span class="k">assert</span> <span class="n">co2_df</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">18056</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="s2">&quot;The dataframe has the wrong shape&quot;</span>
+<span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">co2_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;co2&#39;</span><span class="p">,</span> <span class="s1">&#39;decimal_year&#39;</span><span class="p">,</span> <span class="s1">&#39;sta&#39;</span><span class="p">},</span> <span class="s2">&quot;The dataframe has the wrong columns&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-plotting-the-data">
+<h2>Step 3 - Plotting the data<a class="headerlink" href="#step-3-plotting-the-data" title="Link to this heading">#</a></h2>
+<p>We will now make a simple plot of the CO<sub>2</sub> concentration versus the decimal year. We can use the DataFrame’s <code class="docutils literal notranslate"><span class="pre">plot</span></code> method to do this. Set the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> parameters to the column names of the DataFrame that you want to plot. You can use the <code class="docutils literal notranslate"><span class="pre">figsize</span></code> parameter to make the plot larger. A size of 10 by 6 should be suitable.</p>
+<p>Write the line of code in the cell below and run it to produce the plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This should produce the famous ‘Keeling curve’. You will see that the carbon dioxide concentration has been increasing steadily since the earliest date in the data and also that there is a seasonal variation, i.e., the curve has a periodic fluctuation with a period of one year.</p>
+<p>We are going to start by using a low-order polynomial to fit the basic curve and we will then introduce periodic terms to model the seasonal fluctuations. Once we have fitted the model, we will use it to try and predict the date that the CO<sub>2</sub> concentration will first reach 450 ppm.</p>
+</section>
+<section id="step-4-fitting-a-polynomial-curve-using-scikit-learn">
+<h2>Step 4 - Fitting a polynomial curve using scikit-learn<a class="headerlink" href="#step-4-fitting-a-polynomial-curve-using-scikit-learn" title="Link to this heading">#</a></h2>
+<section id="step-4-1-fitting-a-straight-line">
+<h3>Step 4.1 - Fitting a straight line<a class="headerlink" href="#step-4-1-fitting-a-straight-line" title="Link to this heading">#</a></h3>
+<p>We will start by fitting a straight line to the data using the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class from <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.</p>
+<p>Import <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> and make an instance of the class which you can call <code class="docutils literal notranslate"><span class="pre">model</span></code>.  We will then use the <code class="docutils literal notranslate"><span class="pre">model.fit</span></code> method. The first parameter should be the <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code> values (i.e., the x-axis values) and the second parameter should be the <code class="docutils literal notranslate"><span class="pre">co2</span></code> values (i.e., the y-axis values). You can get these from the DataFrame.</p>
+<p>An important detail: the fit method requires that the x-axis values be passed as a 2-D array, i.e., you need to ensure that the shape of the <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code> array is <code class="docutils literal notranslate"><span class="pre">(n,1)</span></code> rather than <code class="docutils literal notranslate"><span class="pre">(n,)</span></code>. You can do this using the NumPy <code class="docutils literal notranslate"><span class="pre">reshape</span></code> method or the <code class="docutils literal notranslate"><span class="pre">expand_dims</span></code> method. See the lecture notes for an example of how to do this.</p>
+<p>After calling the fit method, you can use the model to predict CO<sub>2</sub> concentrations by calling the <code class="docutils literal notranslate"><span class="pre">predict</span></code> method and passing the <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code> values. Store the result in a variable called <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code>.</p>
+<p>Then make a plot of the original <code class="docutils literal notranslate"><span class="pre">co2</span></code> values and the <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code> values plotted against the date. Plot these on the same axis so that you can compare the straight-line fit with the actual values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you have done everything correctly, you should see that the straight line is a reasonable fit to the data except that it does not capture the period component and that it is too steep in the 1960s and not steep enough in the 2000s and 2010s. The pace of the CO<sub>2</sub> concentration increase has been increasing over time.</p>
+<p>We can make a better fit using a higher-order polynomial with <span class="math notranslate nohighlight">\(x^2\)</span> and <span class="math notranslate nohighlight">\(x^3\)</span> terms. We will do this in the next step.</p>
+</section>
+<section id="step-4-2-fitting-a-polynomial-curve">
+<h3>Step 4.2 - Fitting a polynomial curve<a class="headerlink" href="#step-4-2-fitting-a-polynomial-curve" title="Link to this heading">#</a></h3>
+<p>We will now fit a polynomial curve to the data. We will use the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> class from <code class="docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code> to generate the polynomial features. We will then use the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class to fit the model.</p>
+<p>Import <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> and <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn.preprocessing</span></code> and <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code> respectively. Make an instance of the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> class and call it <code class="docutils literal notranslate"><span class="pre">poly</span></code>. Set the <code class="docutils literal notranslate"><span class="pre">degree</span></code> parameter to 3. Pass the <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code> values to the <code class="docutils literal notranslate"><span class="pre">poly.fit_transform</span></code> method and store the result in a variable called <code class="docutils literal notranslate"><span class="pre">X</span></code>. (We will use a capital X to emphasise that this is a matrix, but note that, in general, variables starting with capital letters should only be used for the names of classes).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">poly.fit_transform</span></code> method returns a matrix with 4 columns. The first column is the constant term, the second column is the <span class="math notranslate nohighlight">\(x^1\)</span> term, the third column is the <span class="math notranslate nohighlight">\(x^2\)</span> term, and the fourth column is the <span class="math notranslate nohighlight">\(x^3\)</span> term. We will use this matrix as the input to the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> <code class="docutils literal notranslate"><span class="pre">fit</span></code> method.</p>
+<p>Make an instance of the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class and call it <code class="docutils literal notranslate"><span class="pre">model</span></code>. Call the <code class="docutils literal notranslate"><span class="pre">model.fit</span></code> method and pass the <code class="docutils literal notranslate"><span class="pre">X</span></code> matrix and the <code class="docutils literal notranslate"><span class="pre">co2</span></code> values, just as you did in the previous step.</p>
+<p>Now we can call <code class="docutils literal notranslate"><span class="pre">model.predict</span></code> and pass the <code class="docutils literal notranslate"><span class="pre">X</span></code> matrix again to get the predicted CO<sub>2</sub> concentration values. Store the result in a variable called <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code>.</p>
+<p>Make a plot of the original <code class="docutils literal notranslate"><span class="pre">co2</span></code> values and the <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code> values plotted against <code class="docutils literal notranslate"><span class="pre">date</span></code>. Plot these on the same axis so that you can compare the straight-line fit with the actual values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can see that the curve fits much better to the data.</p>
+<p>We can quantify the goodness of the fit by computing the root mean squared error (RMSE) between the predicted CO<sub>2</sub> values and the actual values.</p>
+<p>We can do this easily using the <code class="docutils literal notranslate"><span class="pre">root_mean_squared_error</span></code> function from <code class="docutils literal notranslate"><span class="pre">sklearn.metrics</span></code>. Import this function and then call it passing the <code class="docutils literal notranslate"><span class="pre">co2</span></code> values and the <code class="docutils literal notranslate"><span class="pre">co2_predicted</span> <span class="pre">values</span></code>.</p>
+<p>Store the result in a variable called <code class="docutils literal notranslate"><span class="pre">rmse</span></code>. Print the value of <code class="docutils literal notranslate"><span class="pre">rmse</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4-3-finding-the-best-polynomial-degree">
+<h3>Step 4.3 - Finding the best polynomial degree<a class="headerlink" href="#step-4-3-finding-the-best-polynomial-degree" title="Link to this heading">#</a></h3>
+<p>In the previous section, we used a polynomial of degree 3. We did this by passing the parameter <code class="docutils literal notranslate"><span class="pre">degree=3</span></code> to the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> constructor. We can try different values of the degree parameter to see which gives the best fit.</p>
+<p>In the cell below, use a loop to try values of <code class="docutils literal notranslate"><span class="pre">degree</span></code> from 1 to 10. For each value of <code class="docutils literal notranslate"><span class="pre">degree</span></code>, compute the RMSE and print it. You should be able to implement this quickly by cutting and pasting the code from the previous cells and then adding a loop around it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should find that the error drops a lot going from degree 1 to degree 2, but then only drops a little bit more going from degree 2 to degree 3. After that, the error does not drop much at all. This suggests that degree 2 or degree 3 (i.e., a 2nd or 3rd order polynomial) is the best choice.</p>
+</section>
+<section id="step-4-4-a-fairer-methodology-for-model-evaluation">
+<h3>Step 4.4 - A fairer methodology for model evaluation<a class="headerlink" href="#step-4-4-a-fairer-methodology-for-model-evaluation" title="Link to this heading">#</a></h3>
+<p>In the above, we tested our model by comparing the predictions against the actual values, but we made predictions at the same dates as were used when fitting the model. This is not a fair test because the model has already seen these data points, and so it is not surprising that it fits them well. For our model to be useful, we need it to work well when predicting values for dates that it has not seen before. So to test how well we can do this, we want to fit the data using a subset of the dates (e.g., for dates up to 2000) and then test the model by predicting the values for the dates that were not used for fitting (e.g., from 2000 to 2019).</p>
+<p>The easiest way to do this is to split our <code class="docutils literal notranslate"><span class="pre">co2</span></code> and <code class="docutils literal notranslate"><span class="pre">date</span></code> data into two parts which we might call <code class="docutils literal notranslate"><span class="pre">co2_train</span></code> and <code class="docutils literal notranslate"><span class="pre">date_train</span></code> for the years up to 2000 and <code class="docutils literal notranslate"><span class="pre">co2_test</span></code> and <code class="docutils literal notranslate"><span class="pre">date_test</span></code> for the years from 2000 to 2019. We can then fit the model using the <code class="docutils literal notranslate"><span class="pre">co2_train</span></code> and <code class="docutils literal notranslate"><span class="pre">date_train</span></code> data and then test the model by predicting the CO<sub>2</sub> concentration values for the dates in <code class="docutils literal notranslate"><span class="pre">date_test</span></code>. We can then compare these predicted values with the actual values stored in <code class="docutils literal notranslate"><span class="pre">co2_test</span></code>.</p>
+<p>We will first split the data. This can be done using the code below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">co2</span> <span class="o">=</span> <span class="n">co2_df</span><span class="p">[</span><span class="s1">&#39;co2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">array</span>
+<span class="n">date</span> <span class="o">=</span> <span class="n">co2_df</span><span class="p">[</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">array</span>
+
+<span class="n">date_train</span> <span class="o">=</span> <span class="n">date</span><span class="p">[</span><span class="n">date</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">date_test</span> <span class="o">=</span> <span class="n">date</span><span class="p">[</span><span class="n">date</span> <span class="o">&gt;=</span> <span class="mi">2000</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">co2_train</span> <span class="o">=</span> <span class="n">co2</span><span class="p">[</span><span class="n">date</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">]</span>
+<span class="n">co2_test</span> <span class="o">=</span> <span class="n">co2</span><span class="p">[</span><span class="n">date</span> <span class="o">&gt;=</span> <span class="mi">2000</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now rewrite the code from the previous section that used a loop to compute the RMSE value for polynomials of order N. But substitute <code class="docutils literal notranslate"><span class="pre">date</span></code> and <code class="docutils literal notranslate"><span class="pre">co2</span></code> with the <code class="docutils literal notranslate"><span class="pre">date_train</span></code>, <code class="docutils literal notranslate"><span class="pre">date_test</span></code> and <code class="docutils literal notranslate"><span class="pre">co2_train</span></code>, <code class="docutils literal notranslate"><span class="pre">co2_test</span></code> values as appropriate. Note that you will also need to make separate <code class="docutils literal notranslate"><span class="pre">X_train</span></code> and <code class="docutils literal notranslate"><span class="pre">X_test</span></code> matrices using the <code class="docutils literal notranslate"><span class="pre">date_train</span></code> and <code class="docutils literal notranslate"><span class="pre">date_test</span></code> values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using this more rigorous methodology, you should find that the best polynomial order is 2 rather than 3. With order 3 the predictions become quite poor. This is a case of overfitting. The model with order 3 is too complex and fits local variability in the training data that does not reflect the underlying trend.</p>
+</section>
+<section id="step-5-modeling-the-periodic-component">
+<h3>Step 5 - Modeling the periodic component<a class="headerlink" href="#step-5-modeling-the-periodic-component" title="Link to this heading">#</a></h3>
+<p>We will now improve our model by adding periodic terms. In the lecture notes, we saw examples of how to do this by summing sine and cosine terms. For this to work, we have to assume that we know the period of the periodic component. In this case, we know that the period is one year.</p>
+<p>Our model is going to combine the polynomial terms with the periodic terms. So, it will have the form,</p>
+<p><span class="math notranslate nohighlight">\(y = a + p_1 x + p_2 x^2 + ... + p_n x^{N_\alpha} + s_1 *sin(1 \times 2 \pi x) + c_1 *cos(1 \times 2 \pi x) + ... + s_n * sin (N_\beta \times 2 \pi x) + c_n * cos (N_\beta \times 2 \pi x)\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> is the date in years and <span class="math notranslate nohighlight">\(y\)</span> is the CO<sub>2</sub> concentration. In the above equation, <span class="math notranslate nohighlight">\(N_\alpha\)</span> is the order of the polynomial and <span class="math notranslate nohighlight">\(N_\beta\)</span> is the number of periodic terms, and <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(p_1\)</span>, <span class="math notranslate nohighlight">\(p_2\)</span>, …, <span class="math notranslate nohighlight">\(p_n\)</span>, <span class="math notranslate nohighlight">\(s_1\)</span>, <span class="math notranslate nohighlight">\(c_1\)</span>, …, <span class="math notranslate nohighlight">\(s_n\)</span>, <span class="math notranslate nohighlight">\(c_n\)</span> are the parameters that we need to estimate.</p>
+<p>To fit this model, we will need to store the functions <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(x^2\)</span>, …, <span class="math notranslate nohighlight">\(x^N\)</span>, and <span class="math notranslate nohighlight">\(sin(1 \times 2 \pi x)\)</span>, <span class="math notranslate nohighlight">\(cos(1 \times 2 \pi x)\)</span>, …, <span class="math notranslate nohighlight">\(sin(n \times 2 \pi x)\)</span>, <span class="math notranslate nohighlight">\(cos(n \times 2 \pi x)\)</span> in the matrix <span class="math notranslate nohighlight">\(X\)</span>. We will then use the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class to fit the model in exactly the same way as we did in the previous section.</p>
+<p>Making <code class="docutils literal notranslate"><span class="pre">X</span></code> with the polynomial terms is easy. We just use the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> class as before. But there is no equivalent function for making the periodic terms – we need to make those using the NumPy sine and cosine functions and append them to the <code class="docutils literal notranslate"><span class="pre">X</span></code> matrix. See the lecture notes for an example.</p>
+</section>
+<section id="step-5-1-making-the-x-matrix">
+<h3>Step 5.1 - Making the X matrix<a class="headerlink" href="#step-5-1-making-the-x-matrix" title="Link to this heading">#</a></h3>
+<p>In the cell below, write a function called <code class="docutils literal notranslate"><span class="pre">make_features</span></code> to make the <code class="docutils literal notranslate"><span class="pre">X</span></code> matrix for the model above. The function should take the <span class="math notranslate nohighlight">\(x\)</span> values (i.e., the <code class="docutils literal notranslate"><span class="pre">decimal_year</span></code> values) and the order of the polynomial and the number of periodic terms as parameters. Call the parameters <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">order_polynomial</span></code> and <code class="docutils literal notranslate"><span class="pre">order_periodic</span></code> respectively. It should return the <span class="math notranslate nohighlight">\(X\)</span> matrix.</p>
+<p>The function can use the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> class to make the polynomial terms and then append the periodic terms to the matrix. Or it may be clearer to just make both the polynomial and periodic terms using NumPy functions.</p>
+<p>When you have written the function, run the test cell to check that it works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST </span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">make_features</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">make_features</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">make_features</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now use your function to make the feature matrix <code class="docutils literal notranslate"><span class="pre">X_train</span></code> for a model with polynomial order 2 and periodic order 1, i.e., by passing the model the <code class="docutils literal notranslate"><span class="pre">date_train</span></code> values that you used earlier.</p>
+<p>Then make a <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> model and call its <code class="docutils literal notranslate"><span class="pre">fit</span></code> method passing <code class="docutils literal notranslate"><span class="pre">X_train</span></code> and <code class="docutils literal notranslate"><span class="pre">co2_train</span></code>.</p>
+<p>Finally, call <code class="docutils literal notranslate"><span class="pre">model.predict</span></code> with the <code class="docutils literal notranslate"><span class="pre">X_train</span></code> values to get the predicted CO<sub>2</sub> concentration values. Store the result in a variable called <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code> and plot the <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code> and <code class="docutils literal notranslate"><span class="pre">co2_train</span></code> values against the <code class="docutils literal notranslate"><span class="pre">date_train</span></code> values. You should see that the model fits the data well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can play with the <code class="docutils literal notranslate"><span class="pre">periodic_order</span></code> to see how it affects the fit. In the next section, we will try to find the best value for the <code class="docutils literal notranslate"><span class="pre">periodic_order</span></code> using the same methodology that we used to find the best value for the <code class="docutils literal notranslate"><span class="pre">polynomial_order</span></code>.</p>
+</section>
+<section id="step-5-2-finding-the-best-value-for-the-periodic-order">
+<h3>Step 5.2 - Finding the best value for the periodic order<a class="headerlink" href="#step-5-2-finding-the-best-value-for-the-periodic-order" title="Link to this heading">#</a></h3>
+<p>We will now use the same methodology that we used to find the best value for the polynomial order to find the best value for the periodic order.</p>
+<p>We will fix the polynomial order to the value of 2 but we try periodic orders from 0 to 10. In each case, we will fit the model using the <code class="docutils literal notranslate"><span class="pre">date_train</span></code> and <code class="docutils literal notranslate"><span class="pre">co2_train</span></code> values and then test the model by predicting the CO<sub>2</sub> concentration values for the <code class="docutils literal notranslate"><span class="pre">date_test</span></code> values. We will compute the RMSE value for each value of periodic order and print it to see which works best.</p>
+<p>You should be able to do all of this using code from the previous sections.</p>
+<p>Implement your solution in the cell below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should find that the RMSE error with the periodic order set to 0 (i.e. the purely polynomial model) is about 2.57.  For the periodic order set to 1 (i.e. adding in just a simple sinusoidal variation),  it falls to about 1.21. Increasing to order 2 (i.e., adding a second sinusoidal term), it falls a bit further to about 1.07. After that, the prediction starts to get worse again, i.e., the model starts overfitting the data.</p>
+<p>So, we will conclude that the best model to use is one with polynomial order 2 and periodic order 2.</p>
+</section>
+</section>
+<section id="step-6-using-our-model-to-predict-the-future">
+<h2>Step 6 - Using our model to predict the future<a class="headerlink" href="#step-6-using-our-model-to-predict-the-future" title="Link to this heading">#</a></h2>
+<p>We will now use our model to predict the date when the CO<sub>2</sub> concentration will first reach 450 ppm.</p>
+<p>We will use the model of polynomial order 2 and periodic order 2 that we found was the best fit in the previous section.  We will re-estimate the model parameters using all the data (i.e., the date and CO<sub>2</sub> concentration values from 1958 to 2019). We will then use the model to predict CO<sub>2</sub> concentration levels up to the year 2040 and look to see when this value first reaches 450 ppm.</p>
+<section id="step-6-1-re-estimating-the-model-parameters">
+<h3>Step 6.1 - Re-estimating the model parameters<a class="headerlink" href="#step-6-1-re-estimating-the-model-parameters" title="Link to this heading">#</a></h3>
+<p>We will first re-estimate the model parameters using all the data. This is easy to do. We just need to make the X matrix using all the dates (i.e., passing <code class="docutils literal notranslate"><span class="pre">date</span></code> to our <code class="docutils literal notranslate"><span class="pre">make_features</span></code> function). We then construct a new <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> model and finally, we call the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method on the model.</p>
+<p>Implement this in the cell below and run the test function that will check that your model has the correct number of parameters (i.e., 7)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TEST</span>
+
+<span class="k">assert</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="s2">&quot;The model has the wrong number of coefficients&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-6-2-predicting-the-future">
+<h3>Step 6.2 - Predicting the future<a class="headerlink" href="#step-6-2-predicting-the-future" title="Link to this heading">#</a></h3>
+<p>Now, make a new date axis with dates that run all the way from 2000 to 2040.</p>
+<p>You can do this using <code class="docutils literal notranslate"><span class="pre">np.linspace</span></code> to generate the date values. Choose a resolution of about 0.01 years, i.e., 100 values per year. Call this date axis <code class="docutils literal notranslate"><span class="pre">date_predict</span></code>.</p>
+<p>Then pass this date axis to your <code class="docutils literal notranslate"><span class="pre">make_features</span></code> function to make the corresponding <code class="docutils literal notranslate"><span class="pre">X</span></code> matrix.</p>
+<p>Then pass the <code class="docutils literal notranslate"><span class="pre">X</span></code> matrix to the <code class="docutils literal notranslate"><span class="pre">model.predict</span></code> method to get the predicted CO<sub>2</sub> concentration values. Store the result in a variable called <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code>.</p>
+<p>Finally, plot the <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code> values against your date axis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can now find the earliest data at which the CO<sub>2</sub> concentration is predicted to exceed 450 ppm using something like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">date_predict</span><span class="p">[</span><span class="n">co2_predicted</span> <span class="o">&gt;</span> <span class="mi">450</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>alternatively, you can ask for the last date at which the CO<sub>2</sub> concentration is predicted to fall below 450 ppm using something like</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">date_predict</span><span class="p">[</span><span class="n">co2_predicted</span> <span class="o">&lt;</span> <span class="mi">450</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>These dates are a little different due to the annual fluctuations in the CO<sub>2</sub> concentration.</p>
+<p>You can compare your estimate with that made by other data scientists. There are many predictions that can be found with a bit of searching on the Web. For example, the following page has a prediction of 2037.</p>
+<p><a class="reference external" href="https://insight.factset.com/atmospheric-carbon-levels-may-2023-update#:~:text=The%20resulting%2014.3%20tells%20us,global%20warming%20are%20reached%3A%202037">https://insight.factset.com/atmospheric-carbon-levels-may-2023-update#:~:text=The resulting 14.3 tells us,global warming are reached%3A 2037</a>.</p>
+<p>What we have to remember is that these are just predictions and that the future is uncertain. Our predictions have been made by modelling the past 60 years of data and extrapolating. This makes the big assumption that growth will continue on the same trajectory as it has in the past. Clearly, though, this is not necessarily the case. For example, as the dangers of CO<sub>2</sub> emissions become more apparent, governments are taking action to reduce emissions. This will (hopefully!) change the trajectory of the CO<sub>2</sub> concentration and so our model will no longer be valid and our predicted date will be incorrect. If emissions were cut drastically, it could even be the case that concentrations start to fall and that 450 ppm is never reached.</p>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>In this lab, we have used linear regression to fit a model to the atmospheric CO<sub>2</sub> concentration data. We have seen how to use the <code class="docutils literal notranslate"><span class="pre">PolynomialFeatures</span></code> class to make polynomial features and how to use the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class to fit a model. We have also seen how to use the <code class="docutils literal notranslate"><span class="pre">mean_squared_error</span></code> function to compute the RMSE value for a model. We used the RMSE value to tune the hyperparameter (i.e., finding the polynomial order that produced the smallest error). We then saw how to use the <code class="docutils literal notranslate"><span class="pre">np.sin</span></code> and <code class="docutils literal notranslate"><span class="pre">np.cos</span></code> functions to make periodic features. We used these to make a model that had both polynomial and periodic terms that could fit the data much better. We then tuned the hyperparameters by training on a subset of the data and testing the model’s ability to predict the future. Finally, we used our model to predict the date when the CO<sub>2</sub> concentration will first reach 450 ppm.</p>
+<p>In this lab, we have used the basic least-means-squares approach to fitting a model. This approach works well, but it can have some drawbacks. When the number of parameters is large, the model can become unstable and overfit the data. There are more sophisticated approaches that can be used to <code class="docutils literal notranslate"><span class="pre">regularise</span></code> the model and prevent overfitting. For example, ridge regression and lasso regression. These are implemented in the <code class="docutils literal notranslate"><span class="pre">Ridge</span></code> and <code class="docutils literal notranslate"><span class="pre">Lasso</span></code> classes in <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>. You can read about these in the Scikit Learn documentation.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./materials/labs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="070_classification_with_scikit_learn.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">070 Classification with Scikit Learn</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../solutions/000_Introduction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">000 COM6018 Solutions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-load-the-data">Step 1 - Load the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-prepare-the-data">Step 2 - Prepare the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-plotting-the-data">Step 3 - Plotting the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-fitting-a-polynomial-curve-using-scikit-learn">Step 4 - Fitting a polynomial curve using scikit-learn</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-1-fitting-a-straight-line">Step 4.1 - Fitting a straight line</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-2-fitting-a-polynomial-curve">Step 4.2 - Fitting a polynomial curve</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-3-finding-the-best-polynomial-degree">Step 4.3 - Finding the best polynomial degree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-4-a-fairer-methodology-for-model-evaluation">Step 4.4 - A fairer methodology for model evaluation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-modeling-the-periodic-component">Step 5 - Modeling the periodic component</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-1-making-the-x-matrix">Step 5.1 - Making the X matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-2-finding-the-best-value-for-the-periodic-order">Step 5.2 - Finding the best value for the periodic order</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-using-our-model-to-predict-the-future">Step 6 - Using our model to predict the future</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-1-re-estimating-the-model-parameters">Step 6.1 - Re-estimating the model parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-2-predicting-the-future">Step 6.2 - Predicting the future</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jon Barker, University of Sheffield
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
