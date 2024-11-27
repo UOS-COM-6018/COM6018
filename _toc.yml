@@ -53,5 +53,5 @@ parts:
       - file: materials/solutions/050_using_matplotlib.ipynb
       - file: materials/solutions/060_introducing_scikit_learn.ipynb
       - file: materials/solutions/070_classification_with_scikit_learn.ipynb
-#      - file: materials/solutions/080_curve_fitting_with_scikit_learn.ipynb
+      - file: materials/solutions/080_curve_fitting_with_scikit_learn.ipynb
 #      - file: materials/solutions/090_face_orientation_estimation.ipynb
