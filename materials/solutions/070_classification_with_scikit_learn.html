@@ -63,6 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'materials/solutions/070_classification_with_scikit_learn';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="080 Curve Fitting with Scikit Learn" href="080_curve_fitting_with_scikit_learn.html" />
     <link rel="prev" title="060 Introduction to Scikit Learn" href="060_introducing_scikit_learn.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -218,6 +219,7 @@
 <li class="toctree-l1"><a class="reference internal" href="050_using_matplotlib.html">050 Using Matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">070 Classification with Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="080_curve_fitting_with_scikit_learn.html">080 Curve Fitting with Scikit Learn</a></li>
 </ul>
 
     </div>
@@ -762,6 +764,10 @@ All tests passed!
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;n_neighbors&#39;: 11}
 </pre></div>
 </div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/numpy/ma/core.py:2820: RuntimeWarning: invalid value encountered in cast
+  _data = np.array(data, dtype=dtype, copy=copy,
+</pre></div>
+</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.517948717948718
 </pre></div>
 </div>
@@ -851,7 +857,7 @@ All tests passed!
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;n_neighbors&#39;: 5}
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5461538461538461
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5487179487179488
 </pre></div>
 </div>
 </div>
@@ -887,7 +893,7 @@ All tests passed!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5435897435897435
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5384615384615384
 </pre></div>
 </div>
 </div>
@@ -912,10 +918,10 @@ All tests passed!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;knn__n_neighbors&#39;: 5}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;knn__n_neighbors&#39;: 7}
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5487179487179488
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5512820512820513
 </pre></div>
 </div>
 </div>
@@ -956,7 +962,7 @@ All tests passed!
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;knn__n_neighbors&#39;: 5}
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5487179487179488
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5461538461538461
 </pre></div>
 </div>
 </div>
@@ -1008,10 +1014,10 @@ All tests passed!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;pca__n_components&#39;: 20, &#39;rf__n_estimators&#39;: 100}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;pca__n_components&#39;: 50, &#39;rf__n_estimators&#39;: 100}
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5666666666666667
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5820512820512821
 </pre></div>
 </div>
 </div>
@@ -1073,54 +1079,90 @@ All tests passed!
 <span class="g g-Whitespace">   </span><span class="mi">1472</span> <span class="p">):</span>
 <span class="ne">-&gt; </span><span class="mi">1473</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/model_selection/_search.py:1029,</span> in <span class="ni">BaseSearchCV.fit</span><span class="nt">(self, X, y, **params)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1027</span>     <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">scoring</span><span class="p">)</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">multimetric_</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1028</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_check_refit_for_multimetric</span><span class="p">(</span><span class="n">first_test_score</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1029</span>         <span class="n">refit_metric</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">refit</span>
-<span class="g g-Whitespace">   </span><span class="mi">1031</span> <span class="c1"># For multi-metric evaluation, store the best_index_, best_params_ and</span>
-<span class="g g-Whitespace">   </span><span class="mi">1032</span> <span class="c1"># best_score_ iff refit is one of the scorer names</span>
-<span class="g g-Whitespace">   </span><span class="mi">1033</span> <span class="c1"># In single metric evaluation, refit_metric is &quot;score&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1034</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">refit</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">multimetric_</span><span class="p">:</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/model_selection/_search.py:1019,</span> in <span class="ni">BaseSearchCV.fit</span><span class="nt">(self, X, y, **params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span>     <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_format_results</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>         <span class="n">all_candidate_params</span><span class="p">,</span> <span class="n">n_splits</span><span class="p">,</span> <span class="n">all_out</span><span class="p">,</span> <span class="n">all_more_results</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1017</span>     <span class="k">return</span> <span class="n">results</span>
+<span class="ne">-&gt; </span><span class="mi">1019</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_search</span><span class="p">(</span><span class="n">evaluate_candidates</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1021</span> <span class="c1"># multimetric is determined here because in the case of a callable</span>
+<span class="g g-Whitespace">   </span><span class="mi">1022</span> <span class="c1"># self.scoring the return type is only known after calling</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="n">first_test_score</span> <span class="o">=</span> <span class="n">all_out</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;test_scores&quot;</span><span class="p">]</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/parallel.py:1354,</span> in <span class="ni">Parallel.__exit__</span><span class="nt">(self, exc_type, exc_value, traceback)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1352</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_generator</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calling</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1353</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_abort</span><span class="p">()</span>
-<span class="ne">-&gt; </span><span class="mi">1354</span> <span class="bp">self</span><span class="o">.</span><span class="n">_terminate_and_reset</span><span class="p">()</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/model_selection/_search.py:1573,</span> in <span class="ni">GridSearchCV._run_search</span><span class="nt">(self, evaluate_candidates)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1571</span> <span class="k">def</span> <span class="nf">_run_search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">evaluate_candidates</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1572</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Search all candidates in param_grid&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1573</span>     <span class="n">evaluate_candidates</span><span class="p">(</span><span class="n">ParameterGrid</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param_grid</span><span class="p">))</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/parallel.py:1386,</span> in <span class="ni">Parallel._terminate_and_reset</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1384</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calling</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="g g-Whitespace">   </span><span class="mi">1385</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_managed_backend</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1386</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/model_selection/_search.py:965,</span> in <span class="ni">BaseSearchCV.fit.&lt;locals&gt;.evaluate_candidates</span><span class="nt">(candidate_params, cv, more_results)</span>
+<span class="g g-Whitespace">    </span><span class="mi">957</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">958</span>     <span class="nb">print</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">959</span>         <span class="s2">&quot;Fitting </span><span class="si">{0}</span><span class="s2"> folds for each of </span><span class="si">{1}</span><span class="s2"> candidates,&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">960</span>         <span class="s2">&quot; totalling </span><span class="si">{2}</span><span class="s2"> fits&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">961</span>             <span class="n">n_splits</span><span class="p">,</span> <span class="n">n_candidates</span><span class="p">,</span> <span class="n">n_candidates</span> <span class="o">*</span> <span class="n">n_splits</span>
+<span class="g g-Whitespace">    </span><span class="mi">962</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">963</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">965</span> <span class="n">out</span> <span class="o">=</span> <span class="n">parallel</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">966</span>     <span class="n">delayed</span><span class="p">(</span><span class="n">_fit_and_score</span><span class="p">)(</span>
+<span class="g g-Whitespace">    </span><span class="mi">967</span>         <span class="n">clone</span><span class="p">(</span><span class="n">base_estimator</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">968</span>         <span class="n">X</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">969</span>         <span class="n">y</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">970</span>         <span class="n">train</span><span class="o">=</span><span class="n">train</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">971</span>         <span class="n">test</span><span class="o">=</span><span class="n">test</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">972</span>         <span class="n">parameters</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">973</span>         <span class="n">split_progress</span><span class="o">=</span><span class="p">(</span><span class="n">split_idx</span><span class="p">,</span> <span class="n">n_splits</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">974</span>         <span class="n">candidate_progress</span><span class="o">=</span><span class="p">(</span><span class="n">cand_idx</span><span class="p">,</span> <span class="n">n_candidates</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">975</span>         <span class="o">**</span><span class="n">fit_and_score_kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">976</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">977</span>     <span class="k">for</span> <span class="p">(</span><span class="n">cand_idx</span><span class="p">,</span> <span class="n">parameters</span><span class="p">),</span> <span class="p">(</span><span class="n">split_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">))</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">978</span>         <span class="nb">enumerate</span><span class="p">(</span><span class="n">candidate_params</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">979</span>         <span class="nb">enumerate</span><span class="p">(</span><span class="n">cv</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">routed_params</span><span class="o">.</span><span class="n">splitter</span><span class="o">.</span><span class="n">split</span><span class="p">)),</span>
+<span class="g g-Whitespace">    </span><span class="mi">980</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">981</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">983</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">984</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">985</span>         <span class="s2">&quot;No fits were performed. &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">986</span>         <span class="s2">&quot;Was the CV iterator empty? &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">987</span>         <span class="s2">&quot;Were there no candidates?&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">988</span>     <span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/_parallel_backends.py:610,</span> in <span class="ni">LokyBackend.terminate</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">605</span> <span class="k">def</span> <span class="nf">terminate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">606</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">607</span>         <span class="c1"># Don&#39;t terminate the workers as we want to reuse them in later</span>
-<span class="g g-Whitespace">    </span><span class="mi">608</span>         <span class="c1"># calls, but cleanup the temporary resources that the Parallel call</span>
-<span class="g g-Whitespace">    </span><span class="mi">609</span>         <span class="c1"># created. This &#39;hack&#39; requires a private, low-level operation.</span>
-<span class="ne">--&gt; </span><span class="mi">610</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span><span class="o">.</span><span class="n">_temp_folder_manager</span><span class="o">.</span><span class="n">_clean_temporary_resources</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">611</span>             <span class="n">context_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">parallel</span><span class="o">.</span><span class="n">_id</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span>
-<span class="g g-Whitespace">    </span><span class="mi">612</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">613</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_workers</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">615</span>     <span class="bp">self</span><span class="o">.</span><span class="n">reset_batch_stats</span><span class="p">()</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/utils/parallel.py:74,</span> in <span class="ni">Parallel.__call__</span><span class="nt">(self, iterable)</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span> <span class="n">config</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span> <span class="n">iterable_with_config</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span>     <span class="p">(</span><span class="n">_with_config</span><span class="p">(</span><span class="n">delayed_func</span><span class="p">,</span> <span class="n">config</span><span class="p">),</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>     <span class="k">for</span> <span class="n">delayed_func</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span> <span class="ow">in</span> <span class="n">iterable</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">74</span> <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="n">iterable_with_config</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/_memmapping_reducer.py:641,</span> in <span class="ni">TemporaryResourcesManager._clean_temporary_resources</span><span class="nt">(self, context_id, force, allow_non_empty)</span>
-<span class="g g-Whitespace">    </span><span class="mi">638</span> <span class="c1"># Clean up the folder if possible, either if it is empty or</span>
-<span class="g g-Whitespace">    </span><span class="mi">639</span> <span class="c1"># if none of the files in it are in used and allow_non_empty.</span>
-<span class="g g-Whitespace">    </span><span class="mi">640</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">641</span>     <span class="n">delete_folder</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">642</span>         <span class="n">temp_folder</span><span class="p">,</span> <span class="n">allow_non_empty</span><span class="o">=</span><span class="n">allow_non_empty</span>
-<span class="g g-Whitespace">    </span><span class="mi">643</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">644</span>     <span class="c1"># Forget the folder once it has been deleted</span>
-<span class="g g-Whitespace">    </span><span class="mi">645</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_cached_temp_folders</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">context_id</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/parallel.py:2007,</span> in <span class="ni">Parallel.__call__</span><span class="nt">(self, iterable)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2001</span> <span class="c1"># The first item from the output is blank, but it makes the interpreter</span>
+<span class="g g-Whitespace">   </span><span class="mi">2002</span> <span class="c1"># progress until it enters the Try/Except block of the generator and</span>
+<span class="g g-Whitespace">   </span><span class="mi">2003</span> <span class="c1"># reaches the first `yield` statement. This starts the asynchronous</span>
+<span class="g g-Whitespace">   </span><span class="mi">2004</span> <span class="c1"># dispatch of the tasks to the workers.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2005</span> <span class="nb">next</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">2007</span> <span class="k">return</span> <span class="n">output</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_generator</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/disk.py:136,</span> in <span class="ni">delete_folder</span><span class="nt">(folder_path, onerror, allow_non_empty)</span>
-<span class="g g-Whitespace">    </span><span class="mi">131</span>     <span class="k">if</span> <span class="n">err_count</span> <span class="o">&gt;</span> <span class="n">RM_SUBDIRS_N_RETRY</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span>         <span class="c1"># the folder cannot be deleted right now. It maybe</span>
-<span class="g g-Whitespace">    </span><span class="mi">133</span>         <span class="c1"># because some temporary files have not been deleted</span>
-<span class="g g-Whitespace">    </span><span class="mi">134</span>         <span class="c1"># yet.</span>
-<span class="g g-Whitespace">    </span><span class="mi">135</span>         <span class="k">raise</span>
-<span class="ne">--&gt; </span><span class="mi">136</span> <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">RM_SUBDIRS_RETRY_TIME</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/parallel.py:1650,</span> in <span class="ni">Parallel._get_outputs</span><span class="nt">(self, iterator, pre_dispatch)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1647</span>     <span class="k">yield</span>
+<span class="g g-Whitespace">   </span><span class="mi">1649</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_backend</span><span class="o">.</span><span class="n">retrieval_context</span><span class="p">():</span>
+<span class="ne">-&gt; </span><span class="mi">1650</span>         <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_retrieve</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1652</span> <span class="k">except</span> <span class="ne">GeneratorExit</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1653</span>     <span class="c1"># The generator has been garbage collected before being fully</span>
+<span class="g g-Whitespace">   </span><span class="mi">1654</span>     <span class="c1"># consumed. This aborts the remaining tasks if possible and warn</span>
+<span class="g g-Whitespace">   </span><span class="mi">1655</span>     <span class="c1"># the user if necessary.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1656</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_exception</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/parallel.py:1762,</span> in <span class="ni">Parallel._retrieve</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1757</span> <span class="c1"># If the next job is not ready for retrieval yet, we just wait for</span>
+<span class="g g-Whitespace">   </span><span class="mi">1758</span> <span class="c1"># async callbacks to progress.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1759</span> <span class="k">if</span> <span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_jobs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span>
+<span class="g g-Whitespace">   </span><span class="mi">1760</span>     <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_jobs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_status</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1761</span>         <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">)</span> <span class="o">==</span> <span class="n">TASK_PENDING</span><span class="p">)):</span>
+<span class="ne">-&gt; </span><span class="mi">1762</span>     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1763</span>     <span class="k">continue</span>
+<span class="g g-Whitespace">   </span><span class="mi">1765</span> <span class="c1"># We need to be careful: the job list can be filling up as</span>
+<span class="g g-Whitespace">   </span><span class="mi">1766</span> <span class="c1"># we empty it and Python list are not thread-safe by</span>
+<span class="g g-Whitespace">   </span><span class="mi">1767</span> <span class="c1"># default hence the use of the lock</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -1455,6 +1497,15 @@ All tests passed!
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">060 Introduction to Scikit Learn</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="080_curve_fitting_with_scikit_learn.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">080 Curve Fitting with Scikit Learn</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

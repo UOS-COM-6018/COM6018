@@ -62,10 +62,9 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/labs/080_curve_fitting_with_scikit_learn';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/solutions/080_curve_fitting_with_scikit_learn';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="000 COM6018 Solutions" href="../solutions/000_Introduction.html" />
     <link rel="prev" title="070 Classification with Scikit Learn" href="070_classification_with_scikit_learn.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -200,8 +199,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/080_Curve_Fitting_with_Scikit_Learn.html">080 Curve Fitting with Scikit-Learn</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/080_curve_fitting_with_scikit_learn.html">080 Curve Fitting with Scikit Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Solutions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="010_python_intro.html">010 Getting Started with Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="020_reading_data.html">020 Reading data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="030_introducing_numpy.html">030 Introducing NumPy</a></li>
@@ -210,18 +221,6 @@
 <li class="toctree-l1"><a class="reference internal" href="060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">080 Curve Fitting with Scikit Learn</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../solutions/000_Introduction.html">000 COM6018 Solutions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/010_python_intro.html">010 Getting Started with Python</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/020_reading_data.html">020 Reading data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/030_introducing_numpy.html">030 Introducing NumPy</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/040_working_with_pandas.html">040 Working with Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/050_using_matplotlib.html">050 Using Matplotlib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../solutions/080_curve_fitting_with_scikit_learn.html">080 Curve Fitting with Scikit Learn</a></li>
 </ul>
 
     </div>
@@ -276,7 +275,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/labs/080_curve_fitting_with_scikit_learn.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/solutions/080_curve_fitting_with_scikit_learn.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -324,7 +323,7 @@
       
       
       
-      <li><a href="https://github.com/UOS-COM-6018/COM6018/edit/main/materials/labs/080_curve_fitting_with_scikit_learn.ipynb" target="_blank"
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/edit/main/materials/solutions/080_curve_fitting_with_scikit_learn.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -341,7 +340,7 @@
       
       
       
-      <li><a href="https://github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/labs/080_curve_fitting_with_scikit_learn.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/solutions/080_curve_fitting_with_scikit_learn.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -371,7 +370,7 @@
       
       
       
-      <li><a href="../../_sources/materials/labs/080_curve_fitting_with_scikit_learn.ipynb" target="_blank"
+      <li><a href="../../_sources/materials/solutions/080_curve_fitting_with_scikit_learn.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -517,7 +516,11 @@
 <p>Write the code below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">co2_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/co2.csv&#39;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span><span class="s1">&#39;month&#39;</span><span class="p">,</span><span class="s1">&#39;day&#39;</span><span class="p">,</span><span class="s1">&#39;co2&#39;</span><span class="p">,</span><span class="s1">&#39;NB&#39;</span><span class="p">,</span><span class="s1">&#39;scale&#39;</span><span class="p">,</span> <span class="s1">&#39;sta&#39;</span><span class="p">],</span> <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">co2_df</span> <span class="o">=</span> <span class="n">co2_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;NB&#39;</span><span class="p">,</span> <span class="s1">&#39;scale&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -528,6 +531,125 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>co2</th>
+      <th>sta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1958</td>
+      <td>1</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>mlo</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1958</td>
+      <td>1</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>mlo</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1958</td>
+      <td>1</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>mlo</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1958</td>
+      <td>1</td>
+      <td>4</td>
+      <td>NaN</td>
+      <td>mlo</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1958</td>
+      <td>1</td>
+      <td>5</td>
+      <td>NaN</td>
+      <td>mlo</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>24406</th>
+      <td>2024</td>
+      <td>10</td>
+      <td>27</td>
+      <td>NaN</td>
+      <td>mlo</td>
+    </tr>
+    <tr>
+      <th>24407</th>
+      <td>2024</td>
+      <td>10</td>
+      <td>28</td>
+      <td>NaN</td>
+      <td>mlo</td>
+    </tr>
+    <tr>
+      <th>24408</th>
+      <td>2024</td>
+      <td>10</td>
+      <td>29</td>
+      <td>NaN</td>
+      <td>mlo</td>
+    </tr>
+    <tr>
+      <th>24409</th>
+      <td>2024</td>
+      <td>10</td>
+      <td>30</td>
+      <td>NaN</td>
+      <td>mlo</td>
+    </tr>
+    <tr>
+      <th>24410</th>
+      <td>2024</td>
+      <td>10</td>
+      <td>31</td>
+      <td>NaN</td>
+      <td>mlo</td>
+    </tr>
+  </tbody>
+</table>
+<p>24411 rows × 5 columns</p>
+</div></div></div>
 </div>
 </section>
 <section id="step-2-prepare-the-data">
@@ -538,7 +660,26 @@
 <p>Write the code for these two steps in the cell below and run the test cell to check your code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">co2_df</span> <span class="o">=</span> <span class="n">co2_df</span><span class="p">[</span><span class="o">~</span><span class="n">co2_df</span><span class="o">.</span><span class="n">co2</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+
+<span class="n">co2_df</span><span class="p">[</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">co2_df</span><span class="o">.</span><span class="n">year</span> <span class="o">+</span> <span class="p">(</span><span class="n">co2_df</span><span class="o">.</span><span class="n">month</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">12</span> <span class="o">+</span> <span class="p">(</span><span class="n">co2_df</span><span class="o">.</span><span class="n">day</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">365</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">co2_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(18056, 6)
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2168/100505111.py:5: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  co2_df[&#39;decimal_year&#39;] = co2_df.year + (co2_df.month - 1) / 12 + (co2_df.day - 1) / 365
 </pre></div>
 </div>
 </div>
@@ -553,6 +694,11 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="step-3-plotting-the-data">
@@ -561,9 +707,17 @@
 <p>Write the line of code in the cell below and run it to produce the plot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION </span>
+
+<span class="n">co2_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;co2&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;decimal_year&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/95c221d0b82cf23dd23bd8d64d38c328b96a5fabccc150e6dfba24c854c4f30d.png" src="../../_images/95c221d0b82cf23dd23bd8d64d38c328b96a5fabccc150e6dfba24c854c4f30d.png" />
 </div>
 </div>
 <p>This should produce the famous ‘Keeling curve’. You will see that the carbon dioxide concentration has been increasing steadily since the earliest date in the data and also that there is a seasonal variation, i.e., the curve has a periodic fluctuation with a period of one year.</p>
@@ -580,9 +734,27 @@
 <p>Then make a plot of the original <code class="docutils literal notranslate"><span class="pre">co2</span></code> values and the <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code> values plotted against the date. Plot these on the same axis so that you can compare the straight-line fit with the actual values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">co2</span> <span class="o">=</span> <span class="n">co2_df</span><span class="p">[</span><span class="s1">&#39;co2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">array</span>
+<span class="n">date</span> <span class="o">=</span> <span class="n">co2_df</span><span class="p">[</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">co2</span><span class="p">)</span>
+<span class="n">co2_predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">co2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CO2 concentration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">co2_predicted</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CO2 concentration&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f3cb59c3460&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/cd13e4b830144d95a17a22125fed031bd6f78d528f78b384a4d70c17eb6eac5d.png" src="../../_images/cd13e4b830144d95a17a22125fed031bd6f78d528f78b384a4d70c17eb6eac5d.png" />
 </div>
 </div>
 <p>If you have done everything correctly, you should see that the straight line is a reasonable fit to the data except that it does not capture the period component and that it is too steep in the 1960s and not steep enough in the 2000s and 2010s. The pace of the CO<sub>2</sub> concentration increase has been increasing over time.</p>
@@ -598,9 +770,31 @@
 <p>Make a plot of the original <code class="docutils literal notranslate"><span class="pre">co2</span></code> values and the <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code> values plotted against <code class="docutils literal notranslate"><span class="pre">date</span></code>. Plot these on the same axis so that you can compare the straight-line fit with the actual values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+
+<span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">co2</span> <span class="o">=</span> <span class="n">co2_df</span><span class="p">[</span><span class="s1">&#39;co2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">array</span>
+<span class="n">date</span> <span class="o">=</span> <span class="n">co2_df</span><span class="p">[</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">co2</span><span class="p">)</span>
+<span class="n">co2_predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">co2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CO2 concentration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">co2_predicted</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CO2 concentration&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f3cb5989c40&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/cfba33b832435ba9aae5eff2c23e713ecfb52f2af40530dbce0ed82bf22809a8.png" src="../../_images/cfba33b832435ba9aae5eff2c23e713ecfb52f2af40530dbce0ed82bf22809a8.png" />
 </div>
 </div>
 <p>You can see that the curve fits much better to the data.</p>
@@ -609,7 +803,17 @@
 <p>Store the result in a variable called <code class="docutils literal notranslate"><span class="pre">rmse</span></code>. Print the value of <code class="docutils literal notranslate"><span class="pre">rmse</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">root_mean_squared_error</span>
+
+<span class="n">rmse</span> <span class="o">=</span> <span class="n">root_mean_squared_error</span><span class="p">(</span><span class="n">co2</span><span class="p">,</span> <span class="n">co2_predicted</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;RMSE: </span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RMSE: 2.26
 </pre></div>
 </div>
 </div>
@@ -621,7 +825,37 @@
 <p>In the cell below, use a loop to try values of <code class="docutils literal notranslate"><span class="pre">degree</span></code> from 1 to 10. For each value of <code class="docutils literal notranslate"><span class="pre">degree</span></code>, compute the RMSE and print it. You should be able to implement this quickly by cutting and pasting the code from the previous cells and then adding a loop around it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+
+<span class="n">co2</span> <span class="o">=</span> <span class="n">co2_df</span><span class="p">[</span><span class="s1">&#39;co2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">array</span>
+<span class="n">date</span> <span class="o">=</span> <span class="n">co2_df</span><span class="p">[</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">degree</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">co2</span><span class="p">)</span>
+    <span class="n">co2_predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+    <span class="n">rmse</span> <span class="o">=</span> <span class="n">root_mean_squared_error</span><span class="p">(</span><span class="n">co2</span><span class="p">,</span> <span class="n">co2_predicted</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Degree: </span><span class="si">{</span><span class="n">degree</span><span class="si">}</span><span class="s1">, RMSE: </span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 1, RMSE: 4.91
+Degree: 2, RMSE: 2.28
+Degree: 3, RMSE: 2.26
+Degree: 4, RMSE: 2.26
+Degree: 5, RMSE: 2.26
+Degree: 6, RMSE: 2.26
+Degree: 7, RMSE: 2.26
+Degree: 8, RMSE: 2.26
+Degree: 9, RMSE: 2.26
+Degree: 10, RMSE: 2.26
 </pre></div>
 </div>
 </div>
@@ -649,9 +883,46 @@
 <p>Now rewrite the code from the previous section that used a loop to compute the RMSE value for polynomials of order N. But substitute <code class="docutils literal notranslate"><span class="pre">date</span></code> and <code class="docutils literal notranslate"><span class="pre">co2</span></code> with the <code class="docutils literal notranslate"><span class="pre">date_train</span></code>, <code class="docutils literal notranslate"><span class="pre">date_test</span></code> and <code class="docutils literal notranslate"><span class="pre">co2_train</span></code>, <code class="docutils literal notranslate"><span class="pre">co2_test</span></code> values as appropriate. Note that you will also need to make separate <code class="docutils literal notranslate"><span class="pre">X_train</span></code> and <code class="docutils literal notranslate"><span class="pre">X_test</span></code> matrices using the <code class="docutils literal notranslate"><span class="pre">date_train</span></code> and <code class="docutils literal notranslate"><span class="pre">date_test</span></code> values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">date_test</span><span class="p">,</span> <span class="n">co2_test</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Degree </span><span class="si">{</span><span class="n">degree</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">degree</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">)</span>
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">date_train</span><span class="p">)</span>
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">date_test</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">co2_train</span><span class="p">)</span>
+    <span class="n">co2_predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">date_test</span><span class="p">,</span> <span class="n">co2_predicted</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Degree </span><span class="si">{</span><span class="n">degree</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">rmse</span> <span class="o">=</span> <span class="n">root_mean_squared_error</span><span class="p">(</span><span class="n">co2_test</span><span class="p">,</span> <span class="n">co2_predicted</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Degree: </span><span class="si">{</span><span class="n">degree</span><span class="si">}</span><span class="s1">, RMSE: </span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 1, RMSE: 15.08
+Degree: 2, RMSE: 2.66
+Degree: 3, RMSE: 16.84
+Degree: 4, RMSE: 17.05
+Degree: 5, RMSE: 17.27
+Degree: 6, RMSE: 17.49
+Degree: 7, RMSE: 17.71
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 8, RMSE: 17.94
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 9, RMSE: 18.18
+Degree: 10, RMSE: 18.42
+</pre></div>
+</div>
+<img alt="../../_images/febdff1f3c10d1958da832b0cd00faab0613e90ab8db2fb0e127c7dec91997c7.png" src="../../_images/febdff1f3c10d1958da832b0cd00faab0613e90ab8db2fb0e127c7dec91997c7.png" />
 </div>
 </div>
 <p>Using this more rigorous methodology, you should find that the best polynomial order is 2 rather than 3. With order 3 the predictions become quite poor. This is a case of overfitting. The model with order 3 is too complex and fits local variability in the training data that does not reflect the underlying trend.</p>
@@ -672,7 +943,16 @@
 <p>When you have written the function, run the test cell to check that it works.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="k">def</span> <span class="nf">make_features</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">order_polynomial</span><span class="p">,</span> <span class="n">order_periodic</span><span class="p">):</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">order_polynomial</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">x</span> <span class="o">**</span> <span class="n">i</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">order_periodic</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">x</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">i</span> <span class="o">*</span> <span class="n">x</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">X</span>
 </pre></div>
 </div>
 </div>
@@ -688,15 +968,40 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now use your function to make the feature matrix <code class="docutils literal notranslate"><span class="pre">X_train</span></code> for a model with polynomial order 2 and periodic order 1, i.e., by passing the model the <code class="docutils literal notranslate"><span class="pre">date_train</span></code> values that you used earlier.</p>
 <p>Then make a <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> model and call its <code class="docutils literal notranslate"><span class="pre">fit</span></code> method passing <code class="docutils literal notranslate"><span class="pre">X_train</span></code> and <code class="docutils literal notranslate"><span class="pre">co2_train</span></code>.</p>
 <p>Finally, call <code class="docutils literal notranslate"><span class="pre">model.predict</span></code> with the <code class="docutils literal notranslate"><span class="pre">X_train</span></code> values to get the predicted CO<sub>2</sub> concentration values. Store the result in a variable called <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code> and plot the <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code> and <code class="docutils literal notranslate"><span class="pre">co2_train</span></code> values against the <code class="docutils literal notranslate"><span class="pre">date_train</span></code> values. You should see that the model fits the data well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="n">co2</span> <span class="o">=</span> <span class="n">co2_df</span><span class="p">[</span><span class="s1">&#39;co2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">array</span>
+<span class="n">date</span> <span class="o">=</span> <span class="n">co2_df</span><span class="p">[</span><span class="s1">&#39;decimal_year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">make_features</span><span class="p">(</span><span class="n">date_train</span><span class="p">,</span> <span class="n">order_polynomial</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">order_periodic</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">co2_train</span><span class="p">)</span>
+<span class="n">co2_predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">date_train</span><span class="p">,</span> <span class="n">co2_train</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CO2 concentration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">date_train</span><span class="p">,</span> <span class="n">co2_predicted</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CO2 concentration&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f3cb582b190&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/2a9c19fe3b78dee4074d3ee352a5dd1aa665e50bd0f91facb5521e73948c12aa.png" src="../../_images/2a9c19fe3b78dee4074d3ee352a5dd1aa665e50bd0f91facb5521e73948c12aa.png" />
 </div>
 </div>
 <p>You can play with the <code class="docutils literal notranslate"><span class="pre">periodic_order</span></code> to see how it affects the fit. In the next section, we will try to find the best value for the <code class="docutils literal notranslate"><span class="pre">periodic_order</span></code> using the same methodology that we used to find the best value for the <code class="docutils literal notranslate"><span class="pre">polynomial_order</span></code>.</p>
@@ -709,7 +1014,48 @@
 <p>Implement your solution in the cell below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+
+
+<span class="k">for</span> <span class="n">degree</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="n">X_train</span> <span class="o">=</span> <span class="n">make_features</span><span class="p">(</span><span class="n">date_train</span><span class="p">,</span> <span class="n">order_polynomial</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">order_periodic</span><span class="o">=</span><span class="n">degree</span><span class="p">)</span>
+    <span class="n">X_test</span> <span class="o">=</span> <span class="n">make_features</span><span class="p">(</span><span class="n">date_test</span><span class="p">,</span> <span class="n">order_polynomial</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">order_periodic</span><span class="o">=</span><span class="n">degree</span><span class="p">)</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">co2_train</span><span class="p">)</span>
+    <span class="n">co2_predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">rmse</span> <span class="o">=</span> <span class="n">root_mean_squared_error</span><span class="p">(</span><span class="n">co2_test</span><span class="p">,</span> <span class="n">co2_predicted</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Degree: </span><span class="si">{</span><span class="n">degree</span><span class="si">}</span><span class="s1">, RMSE: </span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 0, RMSE: 2.66
+Degree: 1, RMSE: 1.27
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 2, RMSE: 1.15
+Degree: 3, RMSE: 1.16
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 4, RMSE: 1.16
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 5, RMSE: 1.16
+Degree: 6, RMSE: 1.16
+Degree: 7, RMSE: 1.16
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 8, RMSE: 1.16
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 9, RMSE: 1.16
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 10, RMSE: 1.16
 </pre></div>
 </div>
 </div>
@@ -728,10 +1074,420 @@
 <p>Implement this in the cell below and run the test function that will check that your model has the correct number of parameters (i.e., 7)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">make_features</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">order_polynomial</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">order_periodic</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">co2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-1 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-1 pre {
+  padding: 0;
+}
+
+#sk-container-id-1 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-1 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-1 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-1 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-1 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-1 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-1 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-1 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-1 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-1 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-1 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-1 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-1 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-1 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-1 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;LinearRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>LinearRegression()</pre></div> </div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -739,6 +1495,11 @@
 
 <span class="k">assert</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">7</span><span class="p">,),</span> <span class="s2">&quot;The model has the wrong number of coefficients&quot;</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;All tests passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All tests passed!
 </pre></div>
 </div>
 </div>
@@ -753,9 +1514,20 @@
 <p>Finally, plot the <code class="docutils literal notranslate"><span class="pre">co2_predicted</span></code> values against your date axis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># WRITE SOLUTION HERE</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SOLUTION</span>
+
+<span class="n">date_predict</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2040</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">X_predict</span> <span class="o">=</span> <span class="n">make_features</span><span class="p">(</span><span class="n">date_predict</span><span class="p">,</span> <span class="n">order_polynomial</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">order_periodic</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">co2_predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_predict</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">date_predict</span><span class="p">,</span> <span class="n">co2_predicted</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f3cb57a1a90&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/62eae88b1555911da482a774c7384b5f1c7b632d90d1f4b11f44d6374a3ae870.png" src="../../_images/62eae88b1555911da482a774c7384b5f1c7b632d90d1f4b11f44d6374a3ae870.png" />
 </div>
 </div>
 <p>You can now find the earliest data at which the CO<sub>2</sub> concentration is predicted to exceed 450 ppm using something like</p>
@@ -792,7 +1564,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./materials/labs"
+            path: "./materials/solutions"
         },
         predefinedOutput: true
     }
@@ -817,15 +1589,6 @@
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">070 Classification with Scikit Learn</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../solutions/000_Introduction.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">000 COM6018 Solutions</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
