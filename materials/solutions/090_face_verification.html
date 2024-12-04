@@ -1,0 +1,1180 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>090 Face Verification Assignment &#8212; COM6018 - Data Science with Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'materials/solutions/090_face_verification';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="080 Curve Fitting with Scikit Learn" href="080_curve_fitting_with_scikit_learn.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/uos_logo.png" class="logo__image only-light" alt="COM6018 - Data Science with Python - Home"/>
+    <img src="../../_static/uos_logo_for_dark.png" class="logo__image only-dark pst-js-only" alt="COM6018 - Data Science with Python - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    The COM6018 module book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/000_Introduction.html">000 COM6018 Lecture Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/010_wrapper.html">010 Welcome to COM6018</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/015_wrapper.html">015 Getting set up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/020_wrapper.html">020 Using Git and GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/025_wrapper.html">025 Reading and Writing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/030_wrapper.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/040_wrapper.html">040 Introducing Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/050_wrapper.html">050 Data Visualisation with Matplotlib and Seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/060_wrapper.html">060 An Introduction to Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/070_wrapper.html">070 Classification with Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/080_wrapper.html">080 Curve Fitting with Scikit-Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/000_Introduction.html">000 COM6018 Course Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/010_Introducing_Python.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/015_Further_Python.html">015 Further Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/020_Reading_Data.html">020 Reading and Writing Data Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/030_Introducing_Numpy.html">030 Numerical Computing with NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/035_Some_Common_Problems.html">035 Some Common Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/040_Introducing_Pandas.html">040 Processing Data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/045_Common_Pandas_Mistakes.html">045 Common Pandas Mistakes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/050_Introducing_Matplotlib.html">050 Exploratory Data Analysis and Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/060_Introducing_Scikit_Learn.html">060 Introducing Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/070_Classification_with_Scikit_Learn.html">070 Classification with Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/080_Curve_Fitting_with_Scikit_Learn.html">080 Curve Fitting with Scikit-Learn</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lab Classes</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/000_Introduction.html">000 COM6018 Lab Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/080_curve_fitting_with_scikit_learn.html">080 Curve Fitting with Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/090_face_verification.html">090 Face Verification Assignment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="000_Introduction.html">000 COM6018 Solutions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="010_python_intro.html">010 Getting Started with Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="020_reading_data.html">020 Reading data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="030_introducing_numpy.html">030 Introducing NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="040_working_with_pandas.html">040 Working with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="050_using_matplotlib.html">050 Using Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="060_introducing_scikit_learn.html">060 Introduction to Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="080_curve_fitting_with_scikit_learn.html">080 Curve Fitting with Scikit Learn</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">090 Face Verification Assignment</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/UOS-COM-6018/COM6018/blob/main/materials/solutions/090_face_verification.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/edit/main/materials/solutions/090_face_verification.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/UOS-COM-6018/COM6018/issues/new?title=Issue%20on%20page%20%2Fmaterials/solutions/090_face_verification.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/materials/solutions/090_face_verification.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>090 Face Verification Assignment</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-data-provided">2. Understanding the data provided</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-training-data">2.1 The training data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-evaluation-data">2.2 The evaluation data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-baseline-model">2.3 The baseline model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-human-performance">Measuring Human Performance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runnning-python-script-from-the-command-line">3. Runnning Python script from the command line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-latex">4. Using Latex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-latex-on-your-own-computer">4.1 Installing LaTeX on your own computer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-latex-online-with-overleaf">4.2 Using LaTeX online with Overleaf</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="face-verification-assignment">
+<h1>090 Face Verification Assignment<a class="headerlink" href="#face-verification-assignment" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>COM6018</p>
+</div></blockquote>
+<p><em>Copyright © 2024 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>This notebook have been written to accompany the Face Verification assignment. The notebook is unlike the previous labs notebooks, in that it is not a step-by-step guide to a solution. Instead, it contains some notes and snippets of code that you may find useful.</p>
+</section>
+<section id="understanding-the-data-provided">
+<h2>2. Understanding the data provided<a class="headerlink" href="#understanding-the-data-provided" title="Link to this heading">#</a></h2>
+<p>The assignment makes use of a number of data files that you will need to download from the following location:</p>
+<p><a class="reference external" href="https://drive.google.com/drive/folders/10y3e2zKkh0lVpRZ3WC21Uu-v-EcbBSYs?usp=sharing">https://drive.google.com/drive/folders/10y3e2zKkh0lVpRZ3WC21Uu-v-EcbBSYs?usp=sharing</a></p>
+<p>As described in the assignment handout, you are provided with the following files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">train.joblib</span></code> - the full training dataset</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eval1.joblib</span></code> - a dataset for evaluating your model</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">baseline_model.joblib</span></code> - pre-trained kNN models, i.e., a baseline solution</p></li>
+</ul>
+<p>If you have not downloaded these already, do so now and store them in the same directory as this notebook.</p>
+<section id="the-training-data">
+<h3>2.1 The training data<a class="headerlink" href="#the-training-data" title="Link to this heading">#</a></h3>
+<p>We will first look at the training data. The data can be loaded using the <code class="docutils literal notranslate"><span class="pre">joblib</span></code> library. The training data is stored as a tuple with two elements: a NumPy array of face images and a NumPy array of labels. The code below loads the data. It is also printing out the shape of the arrays to confirm that it has loaded correctly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">joblib</span>
+<span class="n">data_train</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;train.joblib&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">joblib</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">data_train</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;train.joblib&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/numpy_pickle.py:650,</span> in <span class="ni">load</span><span class="nt">(filename, mmap_mode)</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span>         <span class="n">obj</span> <span class="o">=</span> <span class="n">_unpickle</span><span class="p">(</span><span class="n">fobj</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">649</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">650</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">651</span>         <span class="k">with</span> <span class="n">_read_fileobject</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mmap_mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">fobj</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">652</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fobj</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">653</span>                 <span class="c1"># if the returned file object is a string, this means we</span>
+<span class="g g-Whitespace">    </span><span class="mi">654</span>                 <span class="c1"># try to load a pickle file generated with an version of</span>
+<span class="g g-Whitespace">    </span><span class="mi">655</span>                 <span class="c1"># Joblib so we load it with joblib compatibility function.</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;train.joblib&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note, the shape of the train data array is (2200, 5828). This means it is a 2-D array storing 2200 samples, each of which is have 5828 features. These features represent the pixel values for a pair of face images that have been unwrapped into a row of the array. We can extract a single image using <code class="docutils literal notranslate"><span class="pre">one_image</span> <span class="pre">=</span> <span class="pre">data_train['data'][n]</span></code> where n is the index of the sample.</p>
+<p>The code below extracts the <span class="math notranslate nohighlight">\(n\)</span>th image and displays it along with the corresponding person ID.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">sample</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;data_train&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>To view this as a pair of images we need to reshape it back in a 3D array of shape (2, n_pixels_y, n_pixels_x). The code below does this and then displays the pair of images. The images have a shape of 62 rows (y) by 47 colums (x), so the code to do this looks like below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">images</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">47</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">images</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">47</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">images</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;sample&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now display the pair of images side by side using Matplotlib’s subplot and imshow, as follows</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;images&#39; is not defined
+</pre></div>
+</div>
+<img alt="../../_images/c35a6dfeef464c6f29969cc8e39ad07fabe226153adbff03bfc3bfe89ae42cdf.png" src="../../_images/c35a6dfeef464c6f29969cc8e39ad07fabe226153adbff03bfc3bfe89ae42cdf.png" />
+</div>
+</div>
+<p>Above, we reshape a single image into a 3D array. It is actually more convenient to reshape the entire dataset into a 4D array, i.e. (n_samples, 2, n_pixels_y, n_pixels_x). We can then store this back in the data dictionary using a new key, ‘images’. The code below does this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;images&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2200</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">47</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;images&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2200</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">47</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;data_train&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now write a function to display the nth sample of the data along with the target value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">display_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Display a sample of the data as two images and their label.&quot;&quot;&quot;</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;images&#39;</span><span class="p">][</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">][</span><span class="n">n</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The images are from different persons.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The images are from the same person.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We test the function below. Try calling it with different values for the index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display_data</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="mi">1200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">display_data</span><span class="p">(</span><span class="n">data_train</span><span class="p">,</span> <span class="mi">1200</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;data_train&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="the-evaluation-data">
+<h2>2.2 The evaluation data<a class="headerlink" href="#the-evaluation-data" title="Link to this heading">#</a></h2>
+<p>The evaluation data is stored in exactly the same format at the training data. The only difference is that there are only 1000 samples rather than 2200. So the data is stored in a 2D array of shape (1000, 5828).</p>
+<p>The code below loads the data, adds the ‘images’ key and uses the function we’ve written to look at the first sample.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_eval</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;eval1.joblib&#39;</span><span class="p">)</span>
+<span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;images&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">47</span><span class="p">))</span>
+
+<span class="n">display_data</span><span class="p">(</span><span class="n">data_eval</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">data_eval</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;eval1.joblib&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;images&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">47</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">display_data</span><span class="p">(</span><span class="n">data_eval</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/numpy_pickle.py:650,</span> in <span class="ni">load</span><span class="nt">(filename, mmap_mode)</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span>         <span class="n">obj</span> <span class="o">=</span> <span class="n">_unpickle</span><span class="p">(</span><span class="n">fobj</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">649</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">650</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">651</span>         <span class="k">with</span> <span class="n">_read_fileobject</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mmap_mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">fobj</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">652</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fobj</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">653</span>                 <span class="c1"># if the returned file object is a string, this means we</span>
+<span class="g g-Whitespace">    </span><span class="mi">654</span>                 <span class="c1"># try to load a pickle file generated with an version of</span>
+<span class="g g-Whitespace">    </span><span class="mi">655</span>                 <span class="c1"># Joblib so we load it with joblib compatibility function.</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;eval1.joblib&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-baseline-model">
+<h2>2.3 The baseline model<a class="headerlink" href="#the-baseline-model" title="Link to this heading">#</a></h2>
+<p>A baseline model has been trained for you and stored in the files <code class="docutils literal notranslate"><span class="pre">baseline_model.joblib</span></code>. This can be loaded using the <code class="docutils literal notranslate"><span class="pre">joblib</span></code> library. The code below loads model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">joblib</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;baseline_model.joblib&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">joblib</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;baseline_model.joblib&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/numpy_pickle.py:650,</span> in <span class="ni">load</span><span class="nt">(filename, mmap_mode)</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span>         <span class="n">obj</span> <span class="o">=</span> <span class="n">_unpickle</span><span class="p">(</span><span class="n">fobj</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">649</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">650</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">651</span>         <span class="k">with</span> <span class="n">_read_fileobject</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mmap_mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">fobj</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">652</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fobj</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">653</span>                 <span class="c1"># if the returned file object is a string, this means we</span>
+<span class="g g-Whitespace">    </span><span class="mi">654</span>                 <span class="c1"># try to load a pickle file generated with an version of</span>
+<span class="g g-Whitespace">    </span><span class="mi">655</span>                 <span class="c1"># Joblib so we load it with joblib compatibility function.</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;baseline_model.joblib&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note above that the print statement provides a description of the model. You can see that it is Pipeline with a single step, the KNN Classifier, constructed with <span class="math notranslate nohighlight">\(k=1\)</span>. The performance of this model is not great and it should be easy for you to improve on it.</p>
+<p>We can check the performance by using the model’s score method and passing the evaluation data as follows,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">percent_correct</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span> 
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The classifier is </span><span class="si">{</span><span class="n">percent_correct</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">% correct&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">percent_correct</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span> 
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The classifier is </span><span class="si">{</span><span class="n">percent_correct</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">% correct&#39;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;model&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>You should get a score of 56.3%. This is significantly above chance (50%) but there is plenty of room for improvement.</p>
+<p>Or is we want to look in more detail, we can compute and display a confusion matrix. There are only two classes (‘different’ or ‘the same’) so the matrix will be  just 2 by 2. Read and then the code below,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dispaly the confusion matrix using sklearn&#39;s display function</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span>
+
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">],</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Different Person&#39;</span><span class="p">,</span> <span class="s1">&#39;Same Person&#39;</span><span class="p">])</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># dispaly the confusion matrix using sklearn&#39;s display function</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">ConfusionMatrixDisplay</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">],</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">disp</span> <span class="o">=</span> <span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Different Person&#39;</span><span class="p">,</span> <span class="s1">&#39;Same Person&#39;</span><span class="p">])</span>
+
+<span class="ne">NameError</span>: name &#39;model&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>Study the above confusion matrix carefully and make sure that you under the meaning of each entry. What do you notice about the sum of the rows? What does this tell you? What do you notice about the sum of the columns? What does this tell you?</p>
+</section>
+<section id="measuring-human-performance">
+<h2>Measuring Human Performance<a class="headerlink" href="#measuring-human-performance" title="Link to this heading">#</a></h2>
+<p>For tasks like this, it is interesting to be able to compare the model performance against Human ability.</p>
+<p>I have provided a simple annotation tool in a file called <code class="docutils literal notranslate"><span class="pre">tools.py</span></code>. Make sure that you have a copy of this file and that it is stored in the same directory as this notebook.</p>
+<p>The tool will display images from the evaluation set and provide you with a set of buttons that you can use to decide the orientation of the face. The tool will then display the next image. The tool will continue until you choose the ‘QUIT’ button. The results of your experiment will be saved in a csv file.</p>
+<p>The tool uses some external dependency that you may need to install using <code class="docutils literal notranslate"><span class="pre">pip</span></code>. This can be done by running the cell below</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>jupyter_ui_poll<span class="w"> </span>ipywidgets
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting jupyter_ui_poll
+  Downloading jupyter_ui_poll-1.0.0-py2.py3-none-any.whl.metadata (7.3 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting ipywidgets
+  Downloading ipywidgets-8.1.5-py3-none-any.whl.metadata (2.3 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipython in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from jupyter_ui_poll) (8.18.1)
+Requirement already satisfied: comm&gt;=0.1.3 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipywidgets) (0.2.2)
+Requirement already satisfied: traitlets&gt;=4.3.1 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipywidgets) (5.14.3)
+Collecting widgetsnbextension~=4.0.12 (from ipywidgets)
+  Downloading widgetsnbextension-4.0.13-py3-none-any.whl.metadata (1.6 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting jupyterlab-widgets~=3.0.12 (from ipywidgets)
+  Downloading jupyterlab_widgets-3.0.13-py3-none-any.whl.metadata (4.1 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: decorator in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (5.1.1)
+Requirement already satisfied: jedi&gt;=0.16 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (0.19.2)
+Requirement already satisfied: matplotlib-inline in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (0.1.7)
+Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;=3.0.41 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (3.0.48)
+Requirement already satisfied: pygments&gt;=2.4.0 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (2.18.0)
+Requirement already satisfied: stack-data in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (0.6.3)
+Requirement already satisfied: typing-extensions in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (4.12.2)
+Requirement already satisfied: exceptiongroup in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (1.2.2)
+Requirement already satisfied: pexpect&gt;4.3 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (4.9.0)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.4 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython-&gt;jupyter_ui_poll) (0.8.4)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython-&gt;jupyter_ui_poll) (0.7.0)
+Requirement already satisfied: wcwidth in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from prompt-toolkit&lt;3.1.0,&gt;=3.0.41-&gt;ipython-&gt;jupyter_ui_poll) (0.2.13)
+Requirement already satisfied: executing&gt;=1.2.0 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from stack-data-&gt;ipython-&gt;jupyter_ui_poll) (2.1.0)
+Requirement already satisfied: asttokens&gt;=2.1.0 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from stack-data-&gt;ipython-&gt;jupyter_ui_poll) (3.0.0)
+Requirement already satisfied: pure-eval in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from stack-data-&gt;ipython-&gt;jupyter_ui_poll) (0.2.3)
+Downloading jupyter_ui_poll-1.0.0-py2.py3-none-any.whl (9.1 kB)
+Downloading ipywidgets-8.1.5-py3-none-any.whl (139 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading jupyterlab_widgets-3.0.13-py3-none-any.whl (214 kB)
+Downloading widgetsnbextension-4.0.13-py3-none-any.whl (2.3 MB)
+?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/2.3 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.3/2.3 MB</span> <span class=" -Color -Color-Red">137.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: widgetsnbextension, jupyterlab-widgets, jupyter_ui_poll, ipywidgets
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed ipywidgets-8.1.5 jupyter_ui_poll-1.0.0 jupyterlab-widgets-3.0.13 widgetsnbextension-4.0.13
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before running the tool, we first need to make an empty csv file that will be used for saving the results. We will call this file <code class="docutils literal notranslate"><span class="pre">human.csv</span></code>. Run the cell below to perform this step.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results_file</span> <span class="o">=</span> <span class="s1">&#39;human.csv&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">results_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;n_pixels, index, direction, label</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now run the annotation tool. We will start by using the 90 pixel sub-images. Run the code below and label about 50 images before hitting ‘QUIT’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tools</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+<span class="n">importlib</span><span class="o">.</span><span class="n">reload</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span>
+<span class="n">data_eval</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;eval1.joblib&#39;</span><span class="p">)</span>
+
+<span class="n">tools</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">],</span> <span class="n">results_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">tools</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">joblib</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">importlib</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;tools&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>A file called ‘human.csv’ should have appeared in the folder where you are storing the notebook. Have a look at the contents of the folder in an editor. It will show you the label that you selected and the correct label. You can use this to calculate the accuracy of your annotations.</p>
+</section>
+<section id="runnning-python-script-from-the-command-line">
+<h2>3. Runnning Python script from the command line<a class="headerlink" href="#runnning-python-script-from-the-command-line" title="Link to this heading">#</a></h2>
+<p>So far in this module we have been running all our Python code from inside a Jupyter notebook. Jupyter notebooks are very convenient for rapid prototyping, experimentation and demonstrating ideas, but they are less good for training and evaluating models in a reproducible way. For this, it is better to use a Python script that can be run from the command line. This is what you will need to do for the assignment.</p>
+<p>The code below shows a Python script that loads a model and evaluates it with the evaluation data. Cut and paste the code below and save it in a file called <code class="docutils literal notranslate"><span class="pre">my)evaluate.py</span></code>. Then open a command line window and run the script using the command <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">my_evaluate.py</span></code>. You should see the same accuracy as you saw when you ran the code in the notebook.</p>
+<p>(Note, if the code does not work, you may need to install the <code class="docutils literal notranslate"><span class="pre">joblib</span></code> library using <code class="docutils literal notranslate"><span class="pre">pip</span></code>, i.e., run <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">joblib</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Python script for evaluating a model</span>
+
+<span class="sd">Cut and paste this code into a file called `evaluate.py` and run it with the command `python evaluate.py`.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to evaluate the model.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Load the model for 50 pixel sub-images</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;baseline_model.joblib&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Load the evaluation data </span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;eval1.joblib&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Evaluate the model and print the results</span>
+    <span class="n">percent_correct</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The classifier is </span><span class="si">{</span><span class="n">percent_correct</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">% correct&#39;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">15</span><span class="p">],</span> <span class="n">line</span> <span class="mi">22</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The classifier is </span><span class="si">{</span><span class="n">percent_correct</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">% correct&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">22</span>     <span class="n">main</span><span class="p">()</span>
+
+<span class="nn">Cell In[15], line 11,</span> in <span class="ni">main</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Function to evaluate the model.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># Load the model for 50 pixel sub-images</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;baseline_model.joblib&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="c1"># Load the evaluation data </span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">data</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;eval1.joblib&#39;</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/numpy_pickle.py:650,</span> in <span class="ni">load</span><span class="nt">(filename, mmap_mode)</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span>         <span class="n">obj</span> <span class="o">=</span> <span class="n">_unpickle</span><span class="p">(</span><span class="n">fobj</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">649</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">650</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">651</span>         <span class="k">with</span> <span class="n">_read_fileobject</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">mmap_mode</span><span class="p">)</span> <span class="k">as</span> <span class="n">fobj</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">652</span>             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fobj</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">653</span>                 <span class="c1"># if the returned file object is a string, this means we</span>
+<span class="g g-Whitespace">    </span><span class="mi">654</span>                 <span class="c1"># try to load a pickle file generated with an version of</span>
+<span class="g g-Whitespace">    </span><span class="mi">655</span>                 <span class="c1"># Joblib so we load it with joblib compatibility function.</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;baseline_model.joblib&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code above should all be very familiar to you from the code we have seen in the notebooks. Notice how all the code that you want to run appears inside a function called <code class="docutils literal notranslate"><span class="pre">main</span></code>. This is good practice and avoids having variables defined in the global scope. This top level function can be called anything, but it is conventional to call it <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
+<p>Notice how the call to the function <code class="docutils literal notranslate"><span class="pre">main</span></code> occurs at the bottom of the script and is inside an if-statement. This line “if <strong>name</strong> == ‘<strong>main</strong>’:” is a common pattern using a special variable “<strong>name</strong>” that is automatically set to “<strong>main</strong>” when the script is run from the command line. So this pattern ensures that the code only runs when it is called from the command line. This is useful because it means you can import this code into another script without it running automatically. Do not worry about this too much, but it is good practice to use this pattern.</p>
+<p>The code above is not very versatile because it always uses the same model file. It would be better if we could pass these as command line arguments. Python has a module called <code class="docutils literal notranslate"><span class="pre">argparse</span></code> that makes this easy. The code below shows how to use this module to pass the model file and the evaluation data as command line arguments. Cut and paste the code below and save it in a file called <code class="docutils literal notranslate"><span class="pre">my_evaluate2.py</span></code>. Then open a command line window and run the script using the command <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">my_evaluate2.py</span> <span class="pre">baseline_model.joblib</span> <span class="pre">eval1.joblib</span></code>. You should see the same accuracy as you saw when you ran the code in the notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;Evaluate a given model using a given dataset.</span>
+
+<span class="sd">Usage:</span>
+<span class="sd">    python evaluate_model.py &lt;model_file&gt; &lt;eval_data&gt;</span>
+
+<span class="sd">    model_file: The name of the model file.</span>
+<span class="sd">    eval_data: The name of the eval data file.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">ArgumentParser</span>
+<span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">load</span>
+
+
+<span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">model_file</span><span class="p">,</span> <span class="n">eval_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Evaluate a model on the eval1 dataset.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        model_file (str): The name of the model file.</span>
+<span class="sd">        eval_data (str): The name of the eval data file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Evaluating </span><span class="si">{</span><span class="n">model_file</span><span class="si">}</span><span class="s2"> with </span><span class="si">{</span><span class="n">eval_data</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">model</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">model_file</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">eval_data</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">))</span>
+
+    <span class="n">score</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">score</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Evaluate a model using a given dataset.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Parse the command-line arguments</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">ArgumentParser</span><span class="p">()</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;model_file&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;eval_data&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="c1"># Evaluate the model</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">model_file</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">eval_data</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Score:&quot;</span><span class="p">,</span> <span class="n">score</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;%&quot;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>usage: ipykernel_launcher.py [-h] model_file eval_data
+ipykernel_launcher.py: error: the following arguments are required: eval_data
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">An</span> <span class="n">exception</span> <span class="n">has</span> <span class="n">occurred</span><span class="p">,</span> <span class="n">use</span> <span class="o">%</span><span class="k">tb</span> to see the full traceback.
+
+<span class="ne">SystemExit</span>: 2
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py:3558: UserWarning: To exit: use &#39;exit&#39;, &#39;quit&#39;, or Ctrl-D.
+  warn(&quot;To exit: use &#39;exit&#39;, &#39;quit&#39;, or Ctrl-D.&quot;, stacklevel=1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>With your new version of the script you can now also evaluate the other models and the other sub-image sizes. For example, to evaluate the 30 pixel model, you would run the command <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">my_evaluate2.py</span> <span class="pre">baseline_model.joblib</span> <span class="pre">eval1.joblib</span></code>.</p>
+<p>If you’d trained your own model you could now use the same script. For example, if you’d trained a model called <code class="docutils literal notranslate"><span class="pre">my_model.joblib</span></code> you could evaluate it using the command <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">my_evaluate2.py</span> <span class="pre">my_model.joblib</span> <span class="pre">eval1.joblib</span></code>.</p>
+<p>Note in the code above that the <code class="docutils literal notranslate"><span class="pre">main</span></code> method handles the parsing of the commandline arguments and then calls a function called <code class="docutils literal notranslate"><span class="pre">evaluate</span></code> to do the useful work. It is good practice to separate the argument parsing from the rest of the code functionality. This makes the code easier to read and understand. It also means that the code can be re-used in other scripts. For example, we may have another script that has its own commandline parsing but which wants to use the evaluate function. This can be easily done by importing the <code class="docutils literal notranslate"><span class="pre">my_evaluate2.py</span></code> script, e.g. with <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">evaluate</span> <span class="pre">from</span> <span class="pre">my_evaluate2</span></code>. This would not be possible is the commandline parsing and evaluate code were all mixed together in the <code class="docutils literal notranslate"><span class="pre">main</span></code> function.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">argparse</span></code> module is very sophisticated and can handle many different types of commandline arguments. For example, it can handle optional arguments, positional arguments, and arguments with default values. It can also handle arguments that are lists of values. It is easy to learn to use as it has a very good <a class="reference external" href="https://docs.python.org/3/library/argparse.html">documentation page</a> and there are many examples on the web. The following website has some nicely organised examples that start with simple cases and then build up to more complex usage: <a class="reference external" href="https://vnetman.github.io/argparse-recipes/2018/04/21/python-3-argparse-recipe-book.html">https://vnetman.github.io/argparse-recipes/2018/04/21/python-3-argparse-recipe-book.html</a></p>
+</section>
+<section id="using-latex">
+<h2>4. Using Latex<a class="headerlink" href="#using-latex" title="Link to this heading">#</a></h2>
+<p>For your final report you have been asked to use LaTeX. LaTeX is a typesetting system that is widely used in academia. It is very good for writing technical documents that contain equations and figures. It is also very good for writing documents that contain references to other documents. You will need to use it for your dissertation, so this is a good opportunity to learn how to use it.</p>
+<p>We will discuss this more in the lecture session on Monday.</p>
+<p>LaTeX can be installed on your own computer, or it can also be used online via the website <a class="reference external" href="https://www.overleaf.com/">https://www.overleaf.com/</a>. Overleaf is an excellent LaTeX hosting service that has a lot of documentation and examples. It is free to use, but you will need to create an account. Whether you prefer to use Overleaf or install LaTeX on your own computer is up to you. The advantage of running on your own computer is that you can work offline and it can be faster. The advantage of Overleaf is that it is easier to get started and you can work on your report from any computer with an internet connection.</p>
+</section>
+<section id="installing-latex-on-your-own-computer">
+<h2>4.1 Installing LaTeX on your own computer<a class="headerlink" href="#installing-latex-on-your-own-computer" title="Link to this heading">#</a></h2>
+<p>If you want to install LaTeX on your own computer, you can download it from the following website: <a class="reference external" href="https://www.latex-project.org/get/">https://www.latex-project.org/get/</a>. Installation should be very easy for Linux and Mac. LaTeX is also available for Windows, but it is a bit more complicated to install. If you are using Windows, I recommend that you use Overleaf instead.</p>
+<p>There is a template for the assignment stored in a zip file called ‘COM6018_latex_template.v1_0.zip’ in the assignment directory of the module’s git repository. Run ‘git pull’ to make sure that you have it and then copy it to a new working directory and unzip it. Move into the folder ‘COM6018_latex_template’. If you have LaTeX installed correctly then you should be able to compile the template document using the command ‘pdflatex report.tex’. This should create a file called ‘report.pdf’ that you can open in a PDF viewer. If you have any problems, please ask for help or use Overleaf instead (next section)</p>
+</section>
+<section id="using-latex-online-with-overleaf">
+<h2>4.2 Using LaTeX online with Overleaf<a class="headerlink" href="#using-latex-online-with-overleaf" title="Link to this heading">#</a></h2>
+<p>Overleaf is one of several online LaTeX services, others include Papeeria, LaTeX base, CoCalc. Overleaf is the most popular and has the best documentation and examples. It is free to use, but you will need to create an account.</p>
+<p>To get started with Overleaf, go to the website <a class="reference external" href="https://www.overleaf.com/">https://www.overleaf.com/</a> and create an account. Then click on the ‘New Project’ button and select ‘Upload Project’. Then upload the file <code class="docutils literal notranslate"><span class="pre">COM6018_latex_template.zip</span></code> that you can find in the assignment directory of the module’s git repository.</p>
+<p>After uploading the zip file, the project should open and you will see the LaTeX source on the left and the pdf document that it generates on the right. You can edit the source and the pdf will automatically update.</p>
+<p>We will spend time on Monday explaining how to use LaTeX. In the meantime, you can look at the source of the template document and try to work out what it is doing. You can also look at the Overleaf documentation and examples. The following page is a good place to start: <a class="reference external" href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes</a></p>
+<p><em>Copyright © 2023, 2024 Jon Barker, University of Sheffield. All rights reserved</em>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./materials/solutions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="080_curve_fitting_with_scikit_learn.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">080 Curve Fitting with Scikit Learn</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-data-provided">2. Understanding the data provided</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-training-data">2.1 The training data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-evaluation-data">2.2 The evaluation data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-baseline-model">2.3 The baseline model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measuring-human-performance">Measuring Human Performance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#runnning-python-script-from-the-command-line">3. Runnning Python script from the command line</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-latex">4. Using Latex</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-latex-on-your-own-computer">4.1 Installing LaTeX on your own computer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-latex-online-with-overleaf">4.2 Using LaTeX online with Overleaf</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jon Barker, University of Sheffield
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
