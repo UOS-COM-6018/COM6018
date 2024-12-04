@@ -859,7 +859,7 @@ All tests passed!
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;n_neighbors&#39;: 5}
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5461538461538461
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5435897435897435
 </pre></div>
 </div>
 </div>
@@ -920,10 +920,10 @@ All tests passed!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;knn__n_neighbors&#39;: 7}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;knn__n_neighbors&#39;: 5}
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5512820512820513
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5435897435897435
 </pre></div>
 </div>
 </div>
@@ -1016,10 +1016,10 @@ All tests passed!
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;pca__n_components&#39;: 50, &#39;rf__n_estimators&#39;: 50}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;pca__n_components&#39;: 20, &#39;rf__n_estimators&#39;: 100}
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5871794871794872
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5564102564102564
 </pre></div>
 </div>
 </div>
@@ -1101,11 +1101,74 @@ All tests passed!
 <span class="g g-Whitespace">   </span><span class="mi">1472</span> <span class="p">):</span>
 <span class="ne">-&gt; </span><span class="mi">1473</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/pipeline.py:473,</span> in <span class="ni">Pipeline.fit</span><span class="nt">(self, X, y, **params)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/pipeline.py:469,</span> in <span class="ni">Pipeline.fit</span><span class="nt">(self, X, y, **params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">426</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Fit the model.</span>
+<span class="g g-Whitespace">    </span><span class="mi">427</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">428</span><span class="sd"> Fit all the transformers one after the other and sequentially transform the</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">466</span><span class="sd">     Pipeline with fitted steps.</span>
+<span class="g g-Whitespace">    </span><span class="mi">467</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">468</span> <span class="n">routed_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_method_params</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s2">&quot;fit&quot;</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">469</span> <span class="n">Xt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">routed_params</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">470</span> <span class="k">with</span> <span class="n">_print_elapsed_time</span><span class="p">(</span><span class="s2">&quot;Pipeline&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_log_message</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)):</span>
 <span class="g g-Whitespace">    </span><span class="mi">471</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_final_estimator</span> <span class="o">!=</span> <span class="s2">&quot;passthrough&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">472</span>         <span class="n">last_step_params</span> <span class="o">=</span> <span class="n">routed_params</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span>
-<span class="ne">--&gt; </span><span class="mi">473</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_final_estimator</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xt</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">last_step_params</span><span class="p">[</span><span class="s2">&quot;fit&quot;</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">475</span> <span class="k">return</span> <span class="bp">self</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/pipeline.py:406,</span> in <span class="ni">Pipeline._fit</span><span class="nt">(self, X, y, routed_params)</span>
+<span class="g g-Whitespace">    </span><span class="mi">404</span>     <span class="n">cloned_transformer</span> <span class="o">=</span> <span class="n">clone</span><span class="p">(</span><span class="n">transformer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">405</span> <span class="c1"># Fit or load from cache the current transformer</span>
+<span class="ne">--&gt; </span><span class="mi">406</span> <span class="n">X</span><span class="p">,</span> <span class="n">fitted_transformer</span> <span class="o">=</span> <span class="n">fit_transform_one_cached</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">407</span>     <span class="n">cloned_transformer</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">408</span>     <span class="n">X</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">409</span>     <span class="n">y</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">410</span>     <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">411</span>     <span class="n">message_clsname</span><span class="o">=</span><span class="s2">&quot;Pipeline&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">412</span>     <span class="n">message</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_log_message</span><span class="p">(</span><span class="n">step_idx</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">413</span>     <span class="n">params</span><span class="o">=</span><span class="n">routed_params</span><span class="p">[</span><span class="n">name</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">414</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">415</span> <span class="c1"># Replace the transformer of the step with the fitted</span>
+<span class="g g-Whitespace">    </span><span class="mi">416</span> <span class="c1"># transformer. This is necessary when loading the transformer</span>
+<span class="g g-Whitespace">    </span><span class="mi">417</span> <span class="c1"># from the cache.</span>
+<span class="g g-Whitespace">    </span><span class="mi">418</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="n">step_idx</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">fitted_transformer</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/memory.py:577,</span> in <span class="ni">MemorizedFunc.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">575</span> <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">576</span>     <span class="c1"># Return the output, without the metadata</span>
+<span class="ne">--&gt; </span><span class="mi">577</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_call</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">shelving</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/memory.py:532,</span> in <span class="ni">MemorizedFunc._cached_call</span><span class="nt">(self, args, kwargs, shelving)</span>
+<span class="g g-Whitespace">    </span><span class="mi">526</span>     <span class="bp">self</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">527</span>         <span class="sa">f</span><span class="s2">&quot;Computing func </span><span class="si">{</span><span class="n">func_name</span><span class="si">}</span><span class="s2">, argument hash </span><span class="si">{</span><span class="n">args_id</span><span class="si">}</span><span class="s2"> &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">528</span>         <span class="sa">f</span><span class="s2">&quot;in location </span><span class="si">{</span><span class="n">location</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">529</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">531</span> <span class="c1"># Returns the output but not the metadata</span>
+<span class="ne">--&gt; </span><span class="mi">532</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call</span><span class="p">(</span><span class="n">call_id</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">shelving</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/memory.py:771,</span> in <span class="ni">MemorizedFunc._call</span><span class="nt">(self, call_id, args, kwargs, shelving)</span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span> <span class="bp">self</span><span class="o">.</span><span class="n">_before_call</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">770</span> <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">771</span> <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">772</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_after_call</span><span class="p">(</span><span class="n">call_id</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">shelving</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">773</span>                         <span class="n">output</span><span class="p">,</span> <span class="n">start_time</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/pipeline.py:1310,</span> in <span class="ni">_fit_transform_one</span><span class="nt">(transformer, X, y, weight, message_clsname, message, params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1308</span> <span class="k">with</span> <span class="n">_print_elapsed_time</span><span class="p">(</span><span class="n">message_clsname</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1309</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">transformer</span><span class="p">,</span> <span class="s2">&quot;fit_transform&quot;</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1310</span>         <span class="n">res</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;fit_transform&quot;</span><span class="p">,</span> <span class="p">{}))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1311</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1312</span>         <span class="n">res</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;fit&quot;</span><span class="p">,</span> <span class="p">{}))</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1313</span>             <span class="n">X</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;transform&quot;</span><span class="p">,</span> <span class="p">{})</span>
+<span class="g g-Whitespace">   </span><span class="mi">1314</span>         <span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/utils/_set_output.py:316,</span> in <span class="ni">_wrap_method_output.&lt;locals&gt;.wrapped</span><span class="nt">(self, X, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">314</span> <span class="nd">@wraps</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">315</span> <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">316</span>     <span class="n">data_to_wrap</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">317</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data_to_wrap</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">318</span>         <span class="c1"># only wrap the first output for cross decomposition</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span>         <span class="n">return_tuple</span> <span class="o">=</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">320</span>             <span class="n">_wrap_data_with_container</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">data_to_wrap</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">,</span> <span class="bp">self</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">321</span>             <span class="o">*</span><span class="n">data_to_wrap</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+<span class="g g-Whitespace">    </span><span class="mi">322</span>         <span class="p">)</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/base.py:1473,</span> in <span class="ni">_fit_context.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(estimator, *args, **kwargs)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1466</span>     <span class="n">estimator</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
@@ -1116,48 +1179,78 @@ All tests passed!
 <span class="g g-Whitespace">   </span><span class="mi">1472</span> <span class="p">):</span>
 <span class="ne">-&gt; </span><span class="mi">1473</span>     <span class="k">return</span> <span class="n">fit_method</span><span class="p">(</span><span class="n">estimator</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/svm/_base.py:250,</span> in <span class="ni">BaseLibSVM.fit</span><span class="nt">(self, X, y, sample_weight)</span>
-<span class="g g-Whitespace">    </span><span class="mi">247</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[LibSVM]&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">249</span> <span class="n">seed</span> <span class="o">=</span> <span class="n">rnd</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">iinfo</span><span class="p">(</span><span class="s2">&quot;i&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">250</span> <span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="p">,</span> <span class="n">solver_type</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">251</span> <span class="c1"># see comment on the other call to np.iinfo in this file</span>
-<span class="g g-Whitespace">    </span><span class="mi">253</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape_fit_</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="s2">&quot;shape&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="p">(</span><span class="n">n_samples</span><span class="p">,)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/decomposition/_pca.py:474,</span> in <span class="ni">PCA.fit_transform</span><span class="nt">(self, X, y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">451</span> <span class="nd">@_fit_context</span><span class="p">(</span><span class="n">prefer_skip_nested_validation</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">452</span> <span class="k">def</span> <span class="nf">fit_transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">453</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Fit the model with X and apply the dimensionality reduction on X.</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">455</span><span class="sd">     Parameters</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">472</span><span class="sd">     C-ordered array, use &#39;np.ascontiguousarray&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">473</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">474</span>     <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">x_is_centered</span><span class="p">,</span> <span class="n">xp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">475</span>     <span class="k">if</span> <span class="n">U</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">476</span>         <span class="n">U</span> <span class="o">=</span> <span class="n">U</span><span class="p">[:,</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_components_</span><span class="p">]</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/svm/_base.py:328,</span> in <span class="ni">BaseLibSVM._dense_fit</span><span class="nt">(self, X, y, sample_weight, solver_type, kernel, random_seed)</span>
-<span class="g g-Whitespace">    </span><span class="mi">314</span> <span class="n">libsvm</span><span class="o">.</span><span class="n">set_verbosity_wrap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">verbose</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">316</span> <span class="c1"># we don&#39;t pass **self.get_params() to allow subclasses to</span>
-<span class="g g-Whitespace">    </span><span class="mi">317</span> <span class="c1"># add other parameters to __init__</span>
-<span class="g g-Whitespace">    </span><span class="mi">318</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span>     <span class="bp">self</span><span class="o">.</span><span class="n">support_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">320</span>     <span class="bp">self</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_n_support</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">322</span>     <span class="bp">self</span><span class="o">.</span><span class="n">dual_coef_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">323</span>     <span class="bp">self</span><span class="o">.</span><span class="n">intercept_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">324</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_probA</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">325</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_probB</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">326</span>     <span class="bp">self</span><span class="o">.</span><span class="n">fit_status_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">327</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_num_iter</span><span class="p">,</span>
-<span class="ne">--&gt; </span><span class="mi">328</span> <span class="p">)</span> <span class="o">=</span> <span class="n">libsvm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">329</span>     <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">330</span>     <span class="n">y</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">331</span>     <span class="n">svm_type</span><span class="o">=</span><span class="n">solver_type</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">332</span>     <span class="n">sample_weight</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">333</span>     <span class="n">class_weight</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;class_weight_&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">)),</span>
-<span class="g g-Whitespace">    </span><span class="mi">334</span>     <span class="n">kernel</span><span class="o">=</span><span class="n">kernel</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">335</span>     <span class="n">C</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span>     <span class="n">nu</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">nu</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">337</span>     <span class="n">probability</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">probability</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">338</span>     <span class="n">degree</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">degree</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">339</span>     <span class="n">shrinking</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">shrinking</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">340</span>     <span class="n">tol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tol</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">341</span>     <span class="n">cache_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cache_size</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">342</span>     <span class="n">coef0</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">coef0</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">343</span>     <span class="n">gamma</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_gamma</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">344</span>     <span class="n">epsilon</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">epsilon</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">345</span>     <span class="n">max_iter</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_iter</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">346</span>     <span class="n">random_seed</span><span class="o">=</span><span class="n">random_seed</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">349</span> <span class="bp">self</span><span class="o">.</span><span class="n">_warn_from_fit_status</span><span class="p">()</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/decomposition/_pca.py:549,</span> in <span class="ni">PCA._fit</span><span class="nt">(self, X)</span>
+<span class="g g-Whitespace">    </span><span class="mi">547</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit_full</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">n_components</span><span class="p">,</span> <span class="n">xp</span><span class="p">,</span> <span class="n">is_array_api_compliant</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">548</span> <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit_svd_solver</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;arpack&quot;</span><span class="p">,</span> <span class="s2">&quot;randomized&quot;</span><span class="p">]:</span>
+<span class="ne">--&gt; </span><span class="mi">549</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit_truncated</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">n_components</span><span class="p">,</span> <span class="n">xp</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/decomposition/_pca.py:764,</span> in <span class="ni">PCA._fit_truncated</span><span class="nt">(self, X, n_components, xp)</span>
+<span class="g g-Whitespace">    </span><span class="mi">760</span>     <span class="n">U</span><span class="p">,</span> <span class="n">Vt</span> <span class="o">=</span> <span class="n">svd_flip</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">Vt</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">u_based_decision</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">762</span> <span class="k">elif</span> <span class="n">svd_solver</span> <span class="o">==</span> <span class="s2">&quot;randomized&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">763</span>     <span class="c1"># sign flipping is done inside</span>
+<span class="ne">--&gt; </span><span class="mi">764</span>     <span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">Vt</span> <span class="o">=</span> <span class="n">randomized_svd</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">765</span>         <span class="n">X_centered</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">766</span>         <span class="n">n_components</span><span class="o">=</span><span class="n">n_components</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">767</span>         <span class="n">n_oversamples</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_oversamples</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">768</span>         <span class="n">n_iter</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">iterated_power</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">769</span>         <span class="n">power_iteration_normalizer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">power_iteration_normalizer</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">770</span>         <span class="n">flip_sign</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">771</span>         <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">772</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">773</span>     <span class="n">U</span><span class="p">,</span> <span class="n">Vt</span> <span class="o">=</span> <span class="n">svd_flip</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">Vt</span><span class="p">,</span> <span class="n">u_based_decision</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">775</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_samples_</span> <span class="o">=</span> <span class="n">n_samples</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/utils/_param_validation.py:186,</span> in <span class="ni">validate_params.&lt;locals&gt;.decorator.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">184</span> <span class="n">global_skip_validation</span> <span class="o">=</span> <span class="n">get_config</span><span class="p">()[</span><span class="s2">&quot;skip_parameter_validation&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span> <span class="k">if</span> <span class="n">global_skip_validation</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">186</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span> <span class="n">func_sig</span> <span class="o">=</span> <span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">190</span> <span class="c1"># Map *args/**kwargs to the function signature</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/utils/extmath.py:520,</span> in <span class="ni">randomized_svd</span><span class="nt">(M, n_components, n_oversamples, n_iter, power_iteration_normalizer, transpose, flip_sign, random_state, svd_lapack_driver)</span>
+<span class="g g-Whitespace">    </span><span class="mi">516</span> <span class="k">if</span> <span class="n">transpose</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">517</span>     <span class="c1"># this implementation is a bit faster with smaller shape[1]</span>
+<span class="g g-Whitespace">    </span><span class="mi">518</span>     <span class="n">M</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">T</span>
+<span class="ne">--&gt; </span><span class="mi">520</span> <span class="n">Q</span> <span class="o">=</span> <span class="n">randomized_range_finder</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">521</span>     <span class="n">M</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">522</span>     <span class="n">size</span><span class="o">=</span><span class="n">n_random</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">523</span>     <span class="n">n_iter</span><span class="o">=</span><span class="n">n_iter</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">524</span>     <span class="n">power_iteration_normalizer</span><span class="o">=</span><span class="n">power_iteration_normalizer</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">525</span>     <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">526</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">528</span> <span class="c1"># project M to the (k + p) dimensional space using the basis vectors</span>
+<span class="g g-Whitespace">    </span><span class="mi">529</span> <span class="n">B</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">M</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/sklearn/utils/extmath.py:337,</span> in <span class="ni">randomized_range_finder</span><span class="nt">(A, size, n_iter, power_iteration_normalizer, random_state)</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span> <span class="c1"># Perform power iterations with Q to further &#39;imprint&#39; the top</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span> <span class="c1"># singular vectors of A in Q</span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iter</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">337</span>     <span class="n">Q</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">normalizer</span><span class="p">(</span><span class="n">A</span> <span class="o">@</span> <span class="n">Q</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span>     <span class="n">Q</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">normalizer</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">Q</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">340</span> <span class="c1"># Sample the range of A using by linear projection of Q</span>
+<span class="g g-Whitespace">    </span><span class="mi">341</span> <span class="c1"># Extract an orthonormal basis</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/scipy/linalg/_decomp_lu.py:340,</span> in <span class="ni">lu</span><span class="nt">(a, permute_l, overwrite_a, check_finite, p_indices)</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span>     <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">339</span>     <span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">a1</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">340</span>     <span class="n">lu_dispatcher</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">permute_l</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">341</span>     <span class="n">P</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="k">if</span> <span class="n">m</span> <span class="o">&gt;</span> <span class="n">n</span> <span class="k">else</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">a1</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">else</span><span class="p">:</span>  <span class="c1"># Stacked array</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span> 
+<span class="g g-Whitespace">    </span><span class="mi">345</span>     <span class="c1"># Prepare the contiguous data holders</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
