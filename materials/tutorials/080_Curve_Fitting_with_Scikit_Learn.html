@@ -569,7 +569,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/593b3fba8d0c242aed7d664d5fbdb49aa58c3a8f503e170f8ea1561d4f57d44d.png" src="../../_images/593b3fba8d0c242aed7d664d5fbdb49aa58c3a8f503e170f8ea1561d4f57d44d.png" />
+<img alt="../../_images/59b4ad92d1500e91c1dee4be06ffad7e276dafd63598ecdd184e4bb5b7635209.png" src="../../_images/59b4ad92d1500e91c1dee4be06ffad7e276dafd63598ecdd184e4bb5b7635209.png" />
 </div>
 </div>
 <p>The periodic data look like this.</p>
@@ -587,7 +587,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4b1878d6390d412f7ca23b1f512d5aeb2fb3a615215026f173dcf5d9e7a106a7.png" src="../../_images/4b1878d6390d412f7ca23b1f512d5aeb2fb3a615215026f173dcf5d9e7a106a7.png" />
+<img alt="../../_images/562c497436f78c5cdecec015b7bb881680a173b0eccb758a0d5e269453c00bf4.png" src="../../_images/562c497436f78c5cdecec015b7bb881680a173b0eccb758a0d5e269453c00bf4.png" />
 </div>
 </div>
 <p>For convenience later, we are going to reshape our <code class="docutils literal notranslate"><span class="pre">x1</span></code> and <code class="docutils literal notranslate"><span class="pre">x2</span></code> axes data so that the values are stored in a 2D numpy array but with one dimension having a size of 1. This will make it easier to use the data with the <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> library. The code for doing this is shown below.</p>
@@ -628,8 +628,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.47787441]
-2.003567823841937
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.48432951]
+2.0153714732127774
 </pre></div>
 </div>
 </div>
@@ -647,7 +647,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b54e8c62eeaf78a26561c65fabbf1c258aa445bcc4e5e45d93397ed10e2f83b1.png" src="../../_images/b54e8c62eeaf78a26561c65fabbf1c258aa445bcc4e5e45d93397ed10e2f83b1.png" />
+<img alt="../../_images/1f3aee308ba78f33a6fb74f1b76bc340f4a7440e7cee065594f27c36b73f0f86.png" src="../../_images/1f3aee308ba78f33a6fb74f1b76bc340f4a7440e7cee065594f27c36b73f0f86.png" />
 </div>
 </div>
 <p>Note how the line passes very close to all of the data points. The mathematics of linear regression tells us that of all the possible straight lines, this particular line is the one that comes closest to the points on average if our measure of closeness is the squared distance between the line and the points. This is why it is also called the <strong>least squares fit</strong>.</p>
@@ -675,7 +675,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/28d5b4ffd775339807dd71597079abdf05996049a3bc240af7c2323a2a41f689.png" src="../../_images/28d5b4ffd775339807dd71597079abdf05996049a3bc240af7c2323a2a41f689.png" />
+<img alt="../../_images/17b26573343a56b59c4828d141eede8348d42de53bcea1f835567b384ca6f23a.png" src="../../_images/17b26573343a56b59c4828d141eede8348d42de53bcea1f835567b384ca6f23a.png" />
 </div>
 </div>
 <p>Notice now that although the blue predicted line follows the general trend of the red points, it is a long way from the data in some places. This is not a good fit. It is the best straight line that we could have plotted, but our model was too simple. We say that the model is <strong>underfitting</strong> the data. We need to use a more complex model.</p>
@@ -688,8 +688,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-27.7435491]
-23.07939827016606
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-28.05679075]
+22.20201528134887
 </pre></div>
 </div>
 </div>
@@ -752,8 +752,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.13210862  2.51963386 -1.7864528 ]
-1.225431079468784
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.96478755  2.2370714  -1.67214466]
+2.7988449944403335
 </pre></div>
 </div>
 </div>
@@ -774,7 +774,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2d078476cbcf9756c866f1210c9fb82f46a04b93eb9c6a89c1c9b0a527346cbb.png" src="../../_images/2d078476cbcf9756c866f1210c9fb82f46a04b93eb9c6a89c1c9b0a527346cbb.png" />
+<img alt="../../_images/a43fb1c1cefb960e4b6e5df6f6492d5bd7e2d5a3c7b4f5c88fab5280381dad9d.png" src="../../_images/a43fb1c1cefb960e4b6e5df6f6492d5bd7e2d5a3c7b4f5c88fab5280381dad9d.png" />
 </div>
 </div>
 <p>We can see that visually, this is a pretty good fit to the data despite the fact that the model’s estimates of the linear and intercept parameters were a little bit different from the true values. Note that the curve is dominated by the cubic and quadratic terms, so the errors in the linear and intercept parameters do not have a big effect compared to the range of -200 to +300 on the <span class="math notranslate nohighlight">\(y\)</span> axis.</p>
@@ -806,9 +806,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8955f9fb4729511313baa98cc7fe4fe36cb8fada4e88041438ef5dfda202e44f.png" src="../../_images/8955f9fb4729511313baa98cc7fe4fe36cb8fada4e88041438ef5dfda202e44f.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.51876505  0.79691214]
-1.8700761371601562
+<img alt="../../_images/fd9825b122683e67f7fb1924a27c70ce9db680fa15bebca5c42f3dfcbfe6ff7f.png" src="../../_images/fd9825b122683e67f7fb1924a27c70ce9db680fa15bebca5c42f3dfcbfe6ff7f.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.58832926  0.78911668]
+2.096580062851549
 </pre></div>
 </div>
 </div>
@@ -887,7 +887,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4b1878d6390d412f7ca23b1f512d5aeb2fb3a615215026f173dcf5d9e7a106a7.png" src="../../_images/4b1878d6390d412f7ca23b1f512d5aeb2fb3a615215026f173dcf5d9e7a106a7.png" />
+<img alt="../../_images/562c497436f78c5cdecec015b7bb881680a173b0eccb758a0d5e269453c00bf4.png" src="../../_images/562c497436f78c5cdecec015b7bb881680a173b0eccb758a0d5e269453c00bf4.png" />
 </div>
 </div>
 <p>We will start with the simplest possible model, a straight line. We will use the same linear regression fitting approach as before.</p>
@@ -906,7 +906,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/59a3b6d74b3f9e883dabad92e9d02859a8bbf4b53358fdcb13af572f4d083455.png" src="../../_images/59a3b6d74b3f9e883dabad92e9d02859a8bbf4b53358fdcb13af572f4d083455.png" />
+<img alt="../../_images/c019e231f5ce8a440b7f0a4eca56737318308648a7dc5af8581a266a2bc021d9.png" src="../../_images/c019e231f5ce8a440b7f0a4eca56737318308648a7dc5af8581a266a2bc021d9.png" />
 </div>
 </div>
 <p>Unsurprisingly, this is a poor fit. We will now use a model that is a sum of sine and cosine functions that mirrors the way in which the data were actually generated. We will use the same approach as before, but instead of the model being.</p>
@@ -942,7 +942,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.99183406  0.52168423 -0.0089483  -0.00512566 -0.00470534 -0.00714041]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-1.01298947  0.49932461 -0.00543938  0.01177318 -0.02871552 -0.00254771]
 </pre></div>
 </div>
 </div>
@@ -960,7 +960,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/95f4b02d24a6f860b30ac912f41c0700d195bb2d32a2474a9dd9700ab1b53e22.png" src="../../_images/95f4b02d24a6f860b30ac912f41c0700d195bb2d32a2474a9dd9700ab1b53e22.png" />
+<img alt="../../_images/c783e800a0943ffbd47c543862fd0bb46f979834366f6498849ea210211ab329.png" src="../../_images/c783e800a0943ffbd47c543862fd0bb46f979834366f6498849ea210211ab329.png" />
 </div>
 </div>
 <p>Let us repeat the exercise with the more complicated <code class="docutils literal notranslate"><span class="pre">periodic3</span></code> data that used all six cosine and sine terms.</p>
@@ -982,7 +982,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 0.99857431  0.49019384 -0.48584794 -0.78434442 -0.21084158  0.27517171]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.00179759  0.49831878 -0.50168892 -0.78531777 -0.21182056  0.29132837]
 </pre></div>
 </div>
 </div>
@@ -999,7 +999,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/995192a7255016bfd0fe9e415f78ef38236f2cca028b325c800e4d358e126921.png" src="../../_images/995192a7255016bfd0fe9e415f78ef38236f2cca028b325c800e4d358e126921.png" />
+<img alt="../../_images/15a4be3dfee928d339a1e9971431eef818ae78491d03d6b7b6f4b154f157f404.png" src="../../_images/15a4be3dfee928d339a1e9971431eef818ae78491d03d6b7b6f4b154f157f404.png" />
 </div>
 </div>
 <p>Let us now see what happens if we try to overfit. We will first rewrite our periodic_features function so that it can generate a sequence of cosine and sine terms up to any given order, i.e. <span class="math notranslate nohighlight">\(\sin(x)\)</span>, <span class="math notranslate nohighlight">\(\sin(2x)\)</span>, …, <span class="math notranslate nohighlight">\(\sin(nx)\)</span> and similarly for cosine.</p>
@@ -1044,7 +1044,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/08a40db778733e595bf3d8d878b5cd7073e81ac9b4f65b87ca18c54553980a50.png" src="../../_images/08a40db778733e595bf3d8d878b5cd7073e81ac9b4f65b87ca18c54553980a50.png" />
+<img alt="../../_images/59a76abeb9a094b83d41e6a468355aabb3119873e9acc03738ce088bc4a2d881.png" src="../../_images/59a76abeb9a094b83d41e6a468355aabb3119873e9acc03738ce088bc4a2d881.png" />
 </div>
 </div>
 <p>The red curve is using the correct model parameters (i.e., the parameters that were used to produce the original data that we would not normally know.) Note how it is a smooth line that passes close to the data points. The blue curve which is using our 30th order model is too complicated. It produces a curve that passes very close to the data points but is not smooth. It captures random variation in the training data that is unlikely to be the same in future periods. We will explore this in more detail in the lab class.</p>
