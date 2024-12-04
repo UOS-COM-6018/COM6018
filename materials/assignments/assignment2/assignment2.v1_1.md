@@ -2,7 +2,7 @@
 
 *Copyright &copy; 2024 Jon Barker, University of Sheffield. All rights reserved*.
 
-4th Dec 2024. v1.0.1  (fixed typo: train.full.joblib -> train.joblib)
+4th Dec 2024. v1.1.0  (fixed typo: train.full.joblib -> train.joblib, add Pillow)
 15th November 2024. v1.0.0
 
 ## Face Verification <!-- omit from toc -->
@@ -140,7 +140,7 @@ Some additional rules have been set to ensure that the assignment is fair for ev
 - **Your model file should be named 'model.joblib' and must not exceed 80 MB in size.**
 - **You can only train your model using the provided training data (augmentation is allowed).**
 - **You cannot use any pre-trained models.**
-- **You may only use the standard Python libraries and the following: numpy, matplotlib, seaborn, pandas, scikit-learn, joblib.**
+- **You may only use the standard Python libraries and the following: numpy, matplotlib, seaborn, pandas, scikit-learn, joblib, Pillow (for image processing)**
 
 ## 5. Assessment
 
