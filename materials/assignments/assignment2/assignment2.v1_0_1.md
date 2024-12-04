@@ -2,7 +2,8 @@
 
 *Copyright &copy; 2024 Jon Barker, University of Sheffield. All rights reserved*.
 
-15th November 2024. v1.0
+4th Dec 2024. v1.0.1  (fixed typo: train.full.joblib -> train.joblib)
+15th November 2024. v1.0.0
 
 ## Face Verification <!-- omit from toc -->
 
@@ -116,7 +117,7 @@ python train.py <TRAINING_DATA_FILE_NAME> <MODEL_FILE_NAME>
 So, for example, you can train your model files with
 
 ```bash
-python train.py train.full.joblib model.joblib
+python train.py train.joblib model.joblib
 ```
 
 ### 3.2. Writing a Report
