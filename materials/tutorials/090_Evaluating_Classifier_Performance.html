@@ -532,7 +532,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/31c54c0e7376a0b5ab2b6a2e9b205b676e1927703f4a98f3f4f7aeb5893d07e6.png" src="../../_images/31c54c0e7376a0b5ab2b6a2e9b205b676e1927703f4a98f3f4f7aeb5893d07e6.png" />
+<img alt="../../_images/1397e50a0b2391c5d8efa621256f73d825b689f508f84a06a95542765a14a4dd.png" src="../../_images/1397e50a0b2391c5d8efa621256f73d825b689f508f84a06a95542765a14a4dd.png" />
 </div>
 </div>
 <p>Given that we know the underlying distributions of the data, we can generate a classifier that will perform well on these data. The <span class="math notranslate nohighlight">\(x_2\)</span> Gaussians have the same variance, so the Bayes optimal classifier will be a linear classifier with a decision boundary at <span class="math notranslate nohighlight">\(x_2 = 0\)</span>, for all values of <span class="math notranslate nohighlight">\(x_1\)</span>, i.e., to classify a point, we just need to look at the <span class="math notranslate nohighlight">\(x_2\)</span> value and assign class 1 if it is negative and class 2 if it is positive.</p>
@@ -583,7 +583,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5a9623888934ae52c75227a46a86a1a5ac18635a798273701471af742e8e1ceb.png" src="../../_images/5a9623888934ae52c75227a46a86a1a5ac18635a798273701471af742e8e1ceb.png" />
+<img alt="../../_images/39d04463e8265b2091a20001d85abea5cbb5d258f5cfbe21e65af490fe7100ca.png" src="../../_images/39d04463e8265b2091a20001d85abea5cbb5d258f5cfbe21e65af490fe7100ca.png" />
 </div>
 </div>
 <p>You will note that the best performance does indeed occur close to when the decision boundary is at <span class="math notranslate nohighlight">\(x_2 = 0\)</span>. The curve is not completely smooth, and there might be threshold values close to 0 that give slightly better performances on the data. This is because we have a finite sample of data. If you rerun with a large sample size, then the curve will be smoother.</p>
@@ -638,7 +638,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/48490012d8057510b2f5395d21d8c9b48e30a14e59d5a500152f0a58d4576e01.png" src="../../_images/48490012d8057510b2f5395d21d8c9b48e30a14e59d5a500152f0a58d4576e01.png" />
+<img alt="../../_images/80a902e855363c7bea2a42725c42169a521bd29e8d59fc581999cc51c60bd17e.png" src="../../_images/80a902e855363c7bea2a42725c42169a521bd29e8d59fc581999cc51c60bd17e.png" />
 </div>
 </div>
 <p>We can see from this plot that although the FPR and FNR are both low at the threshold value of 0, we can further reduce the false positives by increasing the detection threshold, or we can reduce the false negatives by decreasing the detection threshold. This is a trade-off. If, as we argued before, the consequences of false negatives are more severe than the consequences of false positives, then we might want to set the threshold to a lower value to reduce the false negatives. For example, setting the threshold to -2 would increase the number of false positives, and would increase the number of errors overall, but it would reduce the number of false negatives to close to zero.</p>
@@ -670,7 +670,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/90962c2c753a5a0c8fad2a44fe0430b476b309dbd9f31903661fce6e48c5dd48.png" src="../../_images/90962c2c753a5a0c8fad2a44fe0430b476b309dbd9f31903661fce6e48c5dd48.png" />
+<img alt="../../_images/b2e9052b152d538a44feb7703626373d754d92cff9985fcfc41aa2e73f51fa7c.png" src="../../_images/b2e9052b152d538a44feb7703626373d754d92cff9985fcfc41aa2e73f51fa7c.png" />
 </div>
 </div>
 <p>The ROC curve is a useful way to visualise the performance of a classifier. The ideal classifier would have a TPR of 1 and an FPR of 0, that is, it would be in the top left corner of the plot. A classifier that is no better than random guessing would have a ROC curve that is a straight line from the bottom left to the top right. The area under the ROC curve (AUC) is a measure of the performance of the classifier. The AUC is a value between 0 and 1. A classifier with an AUC of 1 is a perfect classifier, a classifier with an AUC of 0.5 is no better than random guessing.</p>
@@ -681,7 +681,7 @@
     <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">fpr</span><span class="p">)</span>
     <span class="n">fpr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fpr</span><span class="p">)[</span><span class="n">sorted_indices</span><span class="p">]</span>
     <span class="n">tpr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tpr</span><span class="p">)[</span><span class="n">sorted_indices</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">tpr</span><span class="p">,</span> <span class="n">fpr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">tpr</span><span class="p">,</span> <span class="n">fpr</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -694,7 +694,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUC: 0.8882875
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUC: 0.88895
 </pre></div>
 </div>
 </div>
@@ -728,7 +728,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3859b945575be9485aff2f8d42fa3b6dd28c1c112910a392a373f910a51f0649.png" src="../../_images/3859b945575be9485aff2f8d42fa3b6dd28c1c112910a392a373f910a51f0649.png" />
+<img alt="../../_images/fb82f2f36bd4ba03f6c2a580498c36769d1c23e04d8204556be01aa7a26a7e72.png" src="../../_images/fb82f2f36bd4ba03f6c2a580498c36769d1c23e04d8204556be01aa7a26a7e72.png" />
 </div>
 </div>
 <p>Likewise, we can follow the same steps as before in order to compute the classifier’s accuracy. Then we calculate the FPR and FNR for a range of detection thresholds so that we can plot the ROC curve and measure the AUC.</p>
@@ -773,7 +773,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3f45fc8813aeb7ef0a3148384568a20a9d3344d6e4ac279ad42ba4fc8c41a1fe.png" src="../../_images/3f45fc8813aeb7ef0a3148384568a20a9d3344d6e4ac279ad42ba4fc8c41a1fe.png" />
+<img alt="../../_images/2ec381838f862c3f3ee3afd32674b1cc17e99d2b1c461d932403edea879a9ef6.png" src="../../_images/2ec381838f862c3f3ee3afd32674b1cc17e99d2b1c461d932403edea879a9ef6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -784,7 +784,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUC: 0.911696875
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUC: 0.911690625
 </pre></div>
 </div>
 </div>
@@ -841,7 +841,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/77af71b5ff0ed4fe9bdce5d5e866cb74b6b278485d0f245b7f11223dd076143e.png" src="../../_images/77af71b5ff0ed4fe9bdce5d5e866cb74b6b278485d0f245b7f11223dd076143e.png" />
+<img alt="../../_images/7a96861c1410d84a8096091f75117cab41c0a02b5b03461ddc0d8b4336e11215.png" src="../../_images/7a96861c1410d84a8096091f75117cab41c0a02b5b03461ddc0d8b4336e11215.png" />
 </div>
 </div>
 <p>Note that, ideally, we would like there to be some threshold where both Precision and Recall are close to 1.0, i.e. for a good system the PR-curve should pass close to the top-right corner of the plot. You can see from the plot above that this is far from the case for our classifier.</p>
@@ -852,7 +852,7 @@
     <span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">recalls</span><span class="p">)</span>
     <span class="n">precisions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">precisions</span><span class="p">)[</span><span class="n">sorted_indices</span><span class="p">]</span>
     <span class="n">recalls</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">recalls</span><span class="p">)[</span><span class="n">sorted_indices</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">precisions</span><span class="p">,</span> <span class="n">recalls</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">precisions</span><span class="p">,</span> <span class="n">recalls</span><span class="p">)</span>
 
 <span class="n">auc_pr_value</span> <span class="o">=</span> <span class="n">auc_pr</span><span class="p">(</span><span class="n">precisions</span><span class="p">,</span> <span class="n">recalls</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;AUC-PR: </span><span class="si">{</span><span class="n">auc_pr_value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -860,7 +860,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUC-PR: 0.24244631785175957
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUC-PR: 0.2549759442168842
 </pre></div>
 </div>
 </div>
@@ -1361,11 +1361,11 @@ Accuracy: 0.82
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2413/2886000782.py:8: UserWarning: The following kwargs were not used by contour: &#39;label&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2398/2886000782.py:8: UserWarning: The following kwargs were not used by contour: &#39;label&#39;
   contour=plt.contour(X1, X2, probs, levels=np.arange(0,1,0.1), colors=&#39;k&#39;, label=&#39;Decision Boundary&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/b9363e2b03455d3641491cb91d823ead97124b0b2e7eb077b1d160f01dcbaf6e.png" src="../../_images/b9363e2b03455d3641491cb91d823ead97124b0b2e7eb077b1d160f01dcbaf6e.png" />
+<img alt="../../_images/2478312e3ef8d78f64b311191ac9c6aad8a1b1dd091e0261a0ba3096c4c22ace.png" src="../../_images/2478312e3ef8d78f64b311191ac9c6aad8a1b1dd091e0261a0ba3096c4c22ace.png" />
 </div>
 </div>
 <p>In the above plot, the contour at <span class="math notranslate nohighlight">\(p=0.5\)</span> is the decision boundary. The classifier will classify a sample as positive (red) if the probability is greater than 0.5 and negative (blue) if the probability is less than 0.5. We can change the threshold by changing the probability threshold. For example, if we want to reduce the number of false positives, we can increase the threshold to 0.9. There would now be very few false positive (i.e., blue points above the boundary), but many false negatives (i.e., red points below the boundary).</p>
@@ -1394,7 +1394,7 @@ Accuracy: 0.82
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ff3c908fc1e21f5ce07848403d81e70f97ffbb1be81335ee49f532a9e86856d1.png" src="../../_images/ff3c908fc1e21f5ce07848403d81e70f97ffbb1be81335ee49f532a9e86856d1.png" />
+<img alt="../../_images/ee4e5e653a6f61ca46358557fc02fe7d69977357b576dd1131fc67d87370b592.png" src="../../_images/ee4e5e653a6f61ca46358557fc02fe7d69977357b576dd1131fc67d87370b592.png" />
 </div>
 </div>
 <p>Note that we can compute the ROC curve for any classifier in sklearn that provides a <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> method. Not all classifiers do, but many do.</p>
@@ -1418,7 +1418,7 @@ Accuracy: 0.82
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/37bd501dee692b98f061a839f27b0cfcf3c5ccebe54d782b16f52185bb93710c.png" src="../../_images/37bd501dee692b98f061a839f27b0cfcf3c5ccebe54d782b16f52185bb93710c.png" />
+<img alt="../../_images/ebab9357e72b94dc354c4930b498e7ded8c4e23f199d5886e976911dba487b3d.png" src="../../_images/ebab9357e72b94dc354c4930b498e7ded8c4e23f199d5886e976911dba487b3d.png" />
 </div>
 </div>
 <p>As an exercise, return to the data generation functions and make a training and test data set with a large class imbalance and then replot the ROC and PR curves. You should see that the AUC-PR will become lower than the AUC.</p>

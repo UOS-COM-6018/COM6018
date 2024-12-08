@@ -678,7 +678,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(18056, 6)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2019/100505111.py:5: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2039/100505111.py:5: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -721,7 +721,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;decimal_year&#39;&gt;
 </pre></div>
 </div>
-<img alt="../../_images/95c221d0b82cf23dd23bd8d64d38c328b96a5fabccc150e6dfba24c854c4f30d.png" src="../../_images/95c221d0b82cf23dd23bd8d64d38c328b96a5fabccc150e6dfba24c854c4f30d.png" />
+<img alt="../../_images/deaa9d5e0cb7318c41e6d4a7b228f368ce1e97e7c91014e5904280e220fafe75.png" src="../../_images/deaa9d5e0cb7318c41e6d4a7b228f368ce1e97e7c91014e5904280e220fafe75.png" />
 </div>
 </div>
 <p>This should produce the famous ‘Keeling curve’. You will see that the carbon dioxide concentration has been increasing steadily since the earliest date in the data and also that there is a seasonal variation, i.e., the curve has a periodic fluctuation with a period of one year.</p>
@@ -755,10 +755,10 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f2b21afa6a0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ffa8f71cf10&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/cd13e4b830144d95a17a22125fed031bd6f78d528f78b384a4d70c17eb6eac5d.png" src="../../_images/cd13e4b830144d95a17a22125fed031bd6f78d528f78b384a4d70c17eb6eac5d.png" />
+<img alt="../../_images/77023917e579a02a5eb51538da76507fc2361d6ba8874312e62627b266334599.png" src="../../_images/77023917e579a02a5eb51538da76507fc2361d6ba8874312e62627b266334599.png" />
 </div>
 </div>
 <p>If you have done everything correctly, you should see that the straight line is a reasonable fit to the data except that it does not capture the period component and that it is too steep in the 1960s and not steep enough in the 2000s and 2010s. The pace of the CO<sub>2</sub> concentration increase has been increasing over time.</p>
@@ -795,10 +795,10 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f2b21aaecd0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ffa8ca8b790&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/cfba33b832435ba9aae5eff2c23e713ecfb52f2af40530dbce0ed82bf22809a8.png" src="../../_images/cfba33b832435ba9aae5eff2c23e713ecfb52f2af40530dbce0ed82bf22809a8.png" />
+<img alt="../../_images/85b330a3b1c697e835d2cc7ea52e81a509d8107c9724f75c7a3e687c3507256a.png" src="../../_images/85b330a3b1c697e835d2cc7ea52e81a509d8107c9724f75c7a3e687c3507256a.png" />
 </div>
 </div>
 <p>You can see that the curve fits much better to the data.</p>
@@ -919,12 +919,10 @@ Degree: 6, RMSE: 17.49
 Degree: 7, RMSE: 17.71
 Degree: 8, RMSE: 17.94
 Degree: 9, RMSE: 18.18
+Degree: 10, RMSE: 18.42
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 10, RMSE: 18.42
-</pre></div>
-</div>
-<img alt="../../_images/febdff1f3c10d1958da832b0cd00faab0613e90ab8db2fb0e127c7dec91997c7.png" src="../../_images/febdff1f3c10d1958da832b0cd00faab0613e90ab8db2fb0e127c7dec91997c7.png" />
+<img alt="../../_images/40d144c48507d234acf836ab5b820914a79956f169e3b40dd1a0b3d5ce7a844d.png" src="../../_images/40d144c48507d234acf836ab5b820914a79956f169e3b40dd1a0b3d5ce7a844d.png" />
 </div>
 </div>
 <p>Using this more rigorous methodology, you should find that the best polynomial order is 2 rather than 3. With order 3 the predictions become quite poor. This is a case of overfitting. The model with order 3 is too complex and fits local variability in the training data that does not reflect the underlying trend.</p>
@@ -1000,10 +998,10 @@ Degree: 9, RMSE: 18.18
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f2b21a27430&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ffa8c8f7190&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/2a9c19fe3b78dee4074d3ee352a5dd1aa665e50bd0f91facb5521e73948c12aa.png" src="../../_images/2a9c19fe3b78dee4074d3ee352a5dd1aa665e50bd0f91facb5521e73948c12aa.png" />
+<img alt="../../_images/f21081fbd75bc4be18a423479d38a202ac6e87b49a307085c927c46464a3d9d6.png" src="../../_images/f21081fbd75bc4be18a423479d38a202ac6e87b49a307085c927c46464a3d9d6.png" />
 </div>
 </div>
 <p>You can play with the <code class="docutils literal notranslate"><span class="pre">periodic_order</span></code> to see how it affects the fit. In the next section, we will try to find the best value for the <code class="docutils literal notranslate"><span class="pre">periodic_order</span></code> using the same methodology that we used to find the best value for the <code class="docutils literal notranslate"><span class="pre">polynomial_order</span></code>.</p>
@@ -1042,10 +1040,10 @@ Degree: 3, RMSE: 1.16
 Degree: 4, RMSE: 1.16
 Degree: 5, RMSE: 1.16
 Degree: 6, RMSE: 1.16
+Degree: 7, RMSE: 1.16
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 7, RMSE: 1.16
-Degree: 8, RMSE: 1.16
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 8, RMSE: 1.16
 Degree: 9, RMSE: 1.16
 Degree: 10, RMSE: 1.16
 </pre></div>
@@ -1516,10 +1514,10 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f2b21952d30&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ffa8c81cf50&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/62eae88b1555911da482a774c7384b5f1c7b632d90d1f4b11f44d6374a3ae870.png" src="../../_images/62eae88b1555911da482a774c7384b5f1c7b632d90d1f4b11f44d6374a3ae870.png" />
+<img alt="../../_images/baf942663cbffbab07da04028b6097a7e94448d68a07f58564eca8aef0682484.png" src="../../_images/baf942663cbffbab07da04028b6097a7e94448d68a07f58564eca8aef0682484.png" />
 </div>
 </div>
 <p>You can now find the earliest data at which the CO<sub>2</sub> concentration is predicted to exceed 450 ppm using something like</p>

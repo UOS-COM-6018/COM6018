@@ -1381,7 +1381,7 @@ Name: Extent, Length: 84, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/45b95dc98db0deeb8285cf736e4ce4339f53feabc8c9f669c2c28fe419ce2640.png" src="../../_images/45b95dc98db0deeb8285cf736e4ce4339f53feabc8c9f669c2c28fe419ce2640.png" />
+<img alt="../../_images/e1d1dea3e8b16547c8bff0362bc886ba3a277c5dc9e209d1aa2b9981a20c49e5.png" src="../../_images/e1d1dea3e8b16547c8bff0362bc886ba3a277c5dc9e209d1aa2b9981a20c49e5.png" />
 </div>
 </div>
 <p>You can see that the sea ice extent has been broadly trending downwards but the values at the extremes of the x-axis look a bit odd, i.e., there are very large values for the first and last year in the dataset. This is an ‘artifact’ caused by the data for these years being incomplete. The data for 1978 only start in November and the data for 2019 only go up to July. The code has computed the average for the few months that are available, but this is not representative of the average for the full year. We can fix this problem by simply removing these years from the data before plotting.</p>
@@ -1398,7 +1398,7 @@ Name: Extent, Length: 84, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9cc02b6c44b70efb9a676d2a508276ca927007426f81df2627ea950da8fb3abf.png" src="../../_images/9cc02b6c44b70efb9a676d2a508276ca927007426f81df2627ea950da8fb3abf.png" />
+<img alt="../../_images/f1ccdd647e0cd19c3e44a49836a81233da2b09a1c0e03b3c525730570e6cd59c.png" src="../../_images/f1ccdd647e0cd19c3e44a49836a81233da2b09a1c0e03b3c525730570e6cd59c.png" />
 </div>
 </div>
 <p>Notice how the sea ice minimum fluctuates seemingly at random from year to year. This kind of unexplained variation in data is often referred to as noise. However, ignoring the fluctuations, we can see that there also appears to be a downward trend in the sea ice minimum. If we want to be sure that there is a genuine downward trend and that the low values in recent years are not just part of the usual random fluctuations, then we need to perform some statistical analysis. We will look at how to do this later in the module.</p>
@@ -1472,7 +1472,7 @@ Name: Extent, Length: 84, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2201/1817109800.py:1: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2212/1817109800.py:1: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
 
 For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
@@ -1518,7 +1518,7 @@ For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2201/2940318962.py:1: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2212/2940318962.py:1: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
 
 For example, when doing &#39;df[col].method(value, inplace=True)&#39;, try using &#39;df.method({col: value}, inplace=True)&#39; or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.

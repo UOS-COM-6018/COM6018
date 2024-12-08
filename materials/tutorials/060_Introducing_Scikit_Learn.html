@@ -624,7 +624,7 @@ latter are NOT linearly separable from each other.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7c136c748749b0457342e9ceee70b79f181331b9deb3541354eb57047a4990c3.png" src="../../_images/7c136c748749b0457342e9ceee70b79f181331b9deb3541354eb57047a4990c3.png" />
+<img alt="../../_images/21bc3dc05734fd74ad000c3e378ce0bd814f6148cce43ee667fcde4fdbb6e97f.png" src="../../_images/21bc3dc05734fd74ad000c3e378ce0bd814f6148cce43ee667fcde4fdbb6e97f.png" />
 </div>
 </div>
 <p>Note that this is an improvement of the visualisation that we produced in the Matplotlib lab class because the diagonal elements (which only consider one feature) are displayed using histograms rather than scatter plots.</p>
@@ -642,7 +642,7 @@ latter are NOT linearly separable from each other.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/64b3ba3061b48a2c365088ba73bf07cd23cc1f65ff3fe09807084e660560e8bd.png" src="../../_images/64b3ba3061b48a2c365088ba73bf07cd23cc1f65ff3fe09807084e660560e8bd.png" />
+<img alt="../../_images/6c4d223733967c1e4eff58be0162cc7abf9b0d4ecd0ca63e59c6547bbcfad172.png" src="../../_images/6c4d223733967c1e4eff58be0162cc7abf9b0d4ecd0ca63e59c6547bbcfad172.png" />
 </div>
 </div>
 <p>Note that in the above, the <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> package is imported as <code class="docutils literal notranslate"><span class="pre">sns</span></code>. Again, this is just a convention, but it is a common one, and so it is a good idea to follow it.</p>
@@ -1217,7 +1217,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ff0db7b418a4ea0e992f8a9435981675e1a89348cf7e1a0efc2096e94da876b3.png" src="../../_images/ff0db7b418a4ea0e992f8a9435981675e1a89348cf7e1a0efc2096e94da876b3.png" />
+<img alt="../../_images/476952293ff4ccfb0e851431f8f59622603b7bc9d3461722adb86f7126cf99b5.png" src="../../_images/476952293ff4ccfb0e851431f8f59622603b7bc9d3461722adb86f7126cf99b5.png" />
 </div>
 </div>
 <p>To interpret the confusion matrix, we look at the <em>row</em> to see what the true class is and the <em>column</em> to see what the predicted class is. For example, the first row shows that there are 16 samples in the test set that are of class 0 (Setosa). Of these, 16 were correctly classified as Setosa. The second row shows that there are 24 samples in the test set that are of class 1 (Versicolor). Of these, 23 were correctly classified as Versicolor and 1 was incorrectly classified as Virginica. The third row shows that there are 20 samples in the test set that are of class 2 (Virginica). Of these, 20 were correctly classified as Virginica. The numbers on the diagonal of the matrix show the number of samples that were correctly classified. The off-diagonal elements show the number of samples that were incorrectly classified.</p>
@@ -1262,7 +1262,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/183feab24f090d94e0fa8435faaa5e2fda787614fc2d1a417b4d1106da220146.png" src="../../_images/183feab24f090d94e0fa8435faaa5e2fda787614fc2d1a417b4d1106da220146.png" />
+<img alt="../../_images/360e2430f21f419ac4ee47b2502567d9fe4082cd08e4db62bc4af8746c251fc2.png" src="../../_images/360e2430f21f419ac4ee47b2502567d9fe4082cd08e4db62bc4af8746c251fc2.png" />
 </div>
 </div>
 <p>To speed up processing, <code class="docutils literal notranslate"><span class="pre">cross_val_predict</span></code> can use multiple cores on the machine, and you can tell it how many to use by setting the <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter. Note that in the above, the <code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> parameter of the <code class="docutils literal notranslate"><span class="pre">cross_val_predict</span></code> function is set to -1. This special value tells Scikit-Learn to use all the available cores on the machine. This can significantly speed up the computation. For this small dataset, and the simple k-nearest neighbours algorithm, it does not make much difference, but for larger datasets it can make a big difference.</p>

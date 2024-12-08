@@ -525,7 +525,7 @@
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">data_train</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">data_train</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/numpy_pickle.py:650,</span> in <span class="ni">load</span><span class="nt">(filename, mmap_mode)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/joblib/numpy_pickle.py:650,</span> in <span class="ni">load</span><span class="nt">(filename, mmap_mode)</span>
 <span class="g g-Whitespace">    </span><span class="mi">648</span>         <span class="n">obj</span> <span class="o">=</span> <span class="n">_unpickle</span><span class="p">(</span><span class="n">fobj</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">649</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">650</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -608,7 +608,7 @@
 <span class="ne">NameError</span>: name &#39;images&#39; is not defined
 </pre></div>
 </div>
-<img alt="../../_images/c35a6dfeef464c6f29969cc8e39ad07fabe226153adbff03bfc3bfe89ae42cdf.png" src="../../_images/c35a6dfeef464c6f29969cc8e39ad07fabe226153adbff03bfc3bfe89ae42cdf.png" />
+<img alt="../../_images/a2578b8a9ed27f96f8740270a3135f43a9b0dee7c119f443730c3b5d5e583367.png" src="../../_images/a2578b8a9ed27f96f8740270a3135f43a9b0dee7c119f443730c3b5d5e583367.png" />
 </div>
 </div>
 <p>Above, we reshape a single image into a 3D array. It is actually more convenient to reshape the entire dataset into a 4D array, i.e. (n_samples, 2, n_pixels_y, n_pixels_x). We can then store this back in the data dictionary using a new key, ‘images’. The code below does this.</p>
@@ -689,7 +689,7 @@
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;images&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_eval</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">47</span><span class="p">))</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">display_data</span><span class="p">(</span><span class="n">data_eval</span><span class="p">,</span> <span class="mi">800</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/numpy_pickle.py:650,</span> in <span class="ni">load</span><span class="nt">(filename, mmap_mode)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/joblib/numpy_pickle.py:650,</span> in <span class="ni">load</span><span class="nt">(filename, mmap_mode)</span>
 <span class="g g-Whitespace">    </span><span class="mi">648</span>         <span class="n">obj</span> <span class="o">=</span> <span class="n">_unpickle</span><span class="p">(</span><span class="n">fobj</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">649</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">650</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -726,7 +726,7 @@
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">model</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;baseline_model.joblib&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/numpy_pickle.py:650,</span> in <span class="ni">load</span><span class="nt">(filename, mmap_mode)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/joblib/numpy_pickle.py:650,</span> in <span class="ni">load</span><span class="nt">(filename, mmap_mode)</span>
 <span class="g g-Whitespace">    </span><span class="mi">648</span>         <span class="n">obj</span> <span class="o">=</span> <span class="n">_unpickle</span><span class="p">(</span><span class="n">fobj</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">649</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">650</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -811,13 +811,11 @@
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading jupyter_ui_poll-1.0.0-py2.py3-none-any.whl.metadata (7.3 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting ipywidgets
+Collecting ipywidgets
   Downloading ipywidgets-8.1.5-py3-none-any.whl.metadata (2.3 kB)
-Requirement already satisfied: ipython in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from jupyter_ui_poll) (8.18.1)
-Requirement already satisfied: comm&gt;=0.1.3 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipywidgets) (0.2.2)
-Requirement already satisfied: traitlets&gt;=4.3.1 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipywidgets) (5.14.3)
+Requirement already satisfied: ipython in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from jupyter_ui_poll) (8.30.0)
+Requirement already satisfied: comm&gt;=0.1.3 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipywidgets) (0.2.2)
+Requirement already satisfied: traitlets&gt;=4.3.1 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipywidgets) (5.14.3)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting widgetsnbextension~=4.0.12 (from ipywidgets)
@@ -826,33 +824,28 @@ Requirement already satisfied: traitlets&gt;=4.3.1 in /opt/hostedtoolcache/Pytho
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting jupyterlab-widgets~=3.0.12 (from ipywidgets)
   Downloading jupyterlab_widgets-3.0.13-py3-none-any.whl.metadata (4.1 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: decorator in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (5.1.1)
-Requirement already satisfied: jedi&gt;=0.16 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (0.19.2)
-Requirement already satisfied: matplotlib-inline in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (0.1.7)
-Requirement already satisfied: prompt-toolkit&lt;3.1.0,&gt;=3.0.41 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (3.0.48)
-Requirement already satisfied: pygments&gt;=2.4.0 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (2.18.0)
-Requirement already satisfied: stack-data in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (0.6.3)
-Requirement already satisfied: typing-extensions in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (4.12.2)
-Requirement already satisfied: exceptiongroup in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (1.2.2)
-Requirement already satisfied: pexpect&gt;4.3 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from ipython-&gt;jupyter_ui_poll) (4.9.0)
-Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.4 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython-&gt;jupyter_ui_poll) (0.8.4)
-Requirement already satisfied: ptyprocess&gt;=0.5 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython-&gt;jupyter_ui_poll) (0.7.0)
-Requirement already satisfied: wcwidth in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from prompt-toolkit&lt;3.1.0,&gt;=3.0.41-&gt;ipython-&gt;jupyter_ui_poll) (0.2.13)
-Requirement already satisfied: executing&gt;=1.2.0 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from stack-data-&gt;ipython-&gt;jupyter_ui_poll) (2.1.0)
-Requirement already satisfied: asttokens&gt;=2.1.0 in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from stack-data-&gt;ipython-&gt;jupyter_ui_poll) (3.0.0)
-Requirement already satisfied: pure-eval in /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages (from stack-data-&gt;ipython-&gt;jupyter_ui_poll) (0.2.3)
+Requirement already satisfied: decorator in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (5.1.1)
+Requirement already satisfied: jedi&gt;=0.16 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (0.19.2)
+Requirement already satisfied: matplotlib-inline in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (0.1.7)
+Requirement already satisfied: pexpect&gt;4.3 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (4.9.0)
+Requirement already satisfied: prompt_toolkit&lt;3.1.0,&gt;=3.0.41 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (3.0.48)
+Requirement already satisfied: pygments&gt;=2.4.0 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (2.18.0)
+Requirement already satisfied: stack_data in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (0.6.3)
+Requirement already satisfied: typing_extensions&gt;=4.6 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (4.12.2)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.4 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from jedi&gt;=0.16-&gt;ipython-&gt;jupyter_ui_poll) (0.8.4)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from pexpect&gt;4.3-&gt;ipython-&gt;jupyter_ui_poll) (0.7.0)
+Requirement already satisfied: wcwidth in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from prompt_toolkit&lt;3.1.0,&gt;=3.0.41-&gt;ipython-&gt;jupyter_ui_poll) (0.2.13)
+Requirement already satisfied: executing&gt;=1.2.0 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from stack_data-&gt;ipython-&gt;jupyter_ui_poll) (2.1.0)
+Requirement already satisfied: asttokens&gt;=2.1.0 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from stack_data-&gt;ipython-&gt;jupyter_ui_poll) (3.0.0)
+Requirement already satisfied: pure-eval in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from stack_data-&gt;ipython-&gt;jupyter_ui_poll) (0.2.3)
 Downloading jupyter_ui_poll-1.0.0-py2.py3-none-any.whl (9.1 kB)
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading ipywidgets-8.1.5-py3-none-any.whl (139 kB)
 Downloading jupyterlab_widgets-3.0.13-py3-none-any.whl (214 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading widgetsnbextension-4.0.13-py3-none-any.whl (2.3 MB)
+Downloading widgetsnbextension-4.0.13-py3-none-any.whl (2.3 MB)
 ?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/2.3 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.3/2.3 MB</span> <span class=" -Color -Color-Red">81.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.3/2.3 MB</span> <span class=" -Color -Color-Red">116.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25h
 </pre></div>
 </div>
@@ -949,7 +942,7 @@ Downloading jupyterlab_widgets-3.0.13-py3-none-any.whl (214 kB)
 <span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="c1"># Load the evaluation data </span>
 <span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">data</span> <span class="o">=</span> <span class="n">joblib</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;eval1.joblib&#39;</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/joblib/numpy_pickle.py:650,</span> in <span class="ni">load</span><span class="nt">(filename, mmap_mode)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/joblib/numpy_pickle.py:650,</span> in <span class="ni">load</span><span class="nt">(filename, mmap_mode)</span>
 <span class="g g-Whitespace">    </span><span class="mi">648</span>         <span class="n">obj</span> <span class="o">=</span> <span class="n">_unpickle</span><span class="p">(</span><span class="n">fobj</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">649</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">--&gt; </span><span class="mi">650</span>     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -1028,7 +1021,7 @@ ipykernel_launcher.py: error: the following arguments are required: eval_data
 <span class="ne">SystemExit</span>: 2
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.9.20/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py:3558: UserWarning: To exit: use &#39;exit&#39;, &#39;quit&#39;, or Ctrl-D.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/IPython/core/interactiveshell.py:3585: UserWarning: To exit: use &#39;exit&#39;, &#39;quit&#39;, or Ctrl-D.
   warn(&quot;To exit: use &#39;exit&#39;, &#39;quit&#39;, or Ctrl-D.&quot;, stacklevel=1)
 </pre></div>
 </div>
