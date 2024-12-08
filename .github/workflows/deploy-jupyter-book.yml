@@ -18,13 +18,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9" # or the Python version you're using
+          python-version: "3.11" # or the Python version you're using
 
       # Step 3: Install dependencies (Jupyter Book, etc.)
       - name: Install Jupyter Book
         run: |
           python -m pip install --upgrade pip
-          pip install jupyter-book matplotlib numpy pandas seaborn basemap basemap-data-hires scikit-learn xlrd
+          pip install jupyter-book matplotlib numpy pandas seaborn cartopy scikit-learn xlrd
 
       # Step 4: Clean and build the Jupyter Book
       - name: Build Jupyter Book
