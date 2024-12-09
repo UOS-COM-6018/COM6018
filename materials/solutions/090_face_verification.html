@@ -182,6 +182,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/060_wrapper.html">060 An Introduction to Scikit-Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/070_wrapper.html">070 Classification with Scikit-Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/080_wrapper.html">080 Curve Fitting with Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/090_wrapper.html">090 Assignment 2 - Face Orientation Challenge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/100_wrapper.html">100 Evaluating Classifiers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
 <ul class="nav bd-sidenav">
@@ -813,16 +815,16 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading jupyter_ui_poll-1.0.0-py2.py3-none-any.whl.metadata (7.3 kB)
 Collecting ipywidgets
   Downloading ipywidgets-8.1.5-py3-none-any.whl.metadata (2.3 kB)
-Requirement already satisfied: ipython in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from jupyter_ui_poll) (8.30.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipython in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from jupyter_ui_poll) (8.30.0)
 Requirement already satisfied: comm&gt;=0.1.3 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipywidgets) (0.2.2)
 Requirement already satisfied: traitlets&gt;=4.3.1 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipywidgets) (5.14.3)
+Collecting widgetsnbextension~=4.0.12 (from ipywidgets)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting widgetsnbextension~=4.0.12 (from ipywidgets)
-  Downloading widgetsnbextension-4.0.13-py3-none-any.whl.metadata (1.6 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting jupyterlab-widgets~=3.0.12 (from ipywidgets)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading widgetsnbextension-4.0.13-py3-none-any.whl.metadata (1.6 kB)
+Collecting jupyterlab-widgets~=3.0.12 (from ipywidgets)
   Downloading jupyterlab_widgets-3.0.13-py3-none-any.whl.metadata (4.1 kB)
 Requirement already satisfied: decorator in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (5.1.1)
 Requirement already satisfied: jedi&gt;=0.16 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (0.19.2)
@@ -834,18 +836,20 @@ Requirement already satisfied: stack_data in /opt/hostedtoolcache/Python/3.11.10
 Requirement already satisfied: typing_extensions&gt;=4.6 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (4.12.2)
 Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.4 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from jedi&gt;=0.16-&gt;ipython-&gt;jupyter_ui_poll) (0.8.4)
 Requirement already satisfied: ptyprocess&gt;=0.5 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from pexpect&gt;4.3-&gt;ipython-&gt;jupyter_ui_poll) (0.7.0)
-Requirement already satisfied: wcwidth in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from prompt_toolkit&lt;3.1.0,&gt;=3.0.41-&gt;ipython-&gt;jupyter_ui_poll) (0.2.13)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: wcwidth in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from prompt_toolkit&lt;3.1.0,&gt;=3.0.41-&gt;ipython-&gt;jupyter_ui_poll) (0.2.13)
 Requirement already satisfied: executing&gt;=1.2.0 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from stack_data-&gt;ipython-&gt;jupyter_ui_poll) (2.1.0)
 Requirement already satisfied: asttokens&gt;=2.1.0 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from stack_data-&gt;ipython-&gt;jupyter_ui_poll) (3.0.0)
 Requirement already satisfied: pure-eval in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from stack_data-&gt;ipython-&gt;jupyter_ui_poll) (0.2.3)
 Downloading jupyter_ui_poll-1.0.0-py2.py3-none-any.whl (9.1 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading ipywidgets-8.1.5-py3-none-any.whl (139 kB)
+Downloading ipywidgets-8.1.5-py3-none-any.whl (139 kB)
 Downloading jupyterlab_widgets-3.0.13-py3-none-any.whl (214 kB)
 Downloading widgetsnbextension-4.0.13-py3-none-any.whl (2.3 MB)
 ?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/2.3 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.3/2.3 MB</span> <span class=" -Color -Color-Red">116.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.3/2.3 MB</span> <span class=" -Color -Color-Red">136.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25h
 </pre></div>
 </div>

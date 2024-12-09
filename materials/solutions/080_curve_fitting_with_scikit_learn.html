@@ -183,6 +183,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/060_wrapper.html">060 An Introduction to Scikit-Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/070_wrapper.html">070 Classification with Scikit-Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../wrappers/080_wrapper.html">080 Curve Fitting with Scikit-Learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/090_wrapper.html">090 Assignment 2 - Face Orientation Challenge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../wrappers/100_wrapper.html">100 Evaluating Classifiers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Notes</span></p>
 <ul class="nav bd-sidenav">
@@ -678,7 +680,7 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(18056, 6)
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2039/100505111.py:5: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2097/100505111.py:5: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -755,7 +757,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ffa8f71cf10&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa0735466d0&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/77023917e579a02a5eb51538da76507fc2361d6ba8874312e62627b266334599.png" src="../../_images/77023917e579a02a5eb51538da76507fc2361d6ba8874312e62627b266334599.png" />
@@ -795,10 +797,10 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ffa8ca8b790&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa0735c3690&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/85b330a3b1c697e835d2cc7ea52e81a509d8107c9724f75c7a3e687c3507256a.png" src="../../_images/85b330a3b1c697e835d2cc7ea52e81a509d8107c9724f75c7a3e687c3507256a.png" />
+<img alt="../../_images/b910902f7e7f01c7abe3a99fc4e13f3f8ab3c62630dc58cb041c6425a1288def.png" src="../../_images/b910902f7e7f01c7abe3a99fc4e13f3f8ab3c62630dc58cb041c6425a1288def.png" />
 </div>
 </div>
 <p>You can see that the curve fits much better to the data.</p>
@@ -817,7 +819,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RMSE: 2.26
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RMSE: 2.28
 </pre></div>
 </div>
 </div>
@@ -852,10 +854,10 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 1, RMSE: 4.91
 Degree: 2, RMSE: 2.28
-Degree: 3, RMSE: 2.26
-Degree: 4, RMSE: 2.26
-Degree: 5, RMSE: 2.26
-Degree: 6, RMSE: 2.26
+Degree: 3, RMSE: 2.28
+Degree: 4, RMSE: 2.27
+Degree: 5, RMSE: 2.27
+Degree: 6, RMSE: 2.27
 Degree: 7, RMSE: 2.26
 Degree: 8, RMSE: 2.26
 Degree: 9, RMSE: 2.26
@@ -912,17 +914,17 @@ Degree: 10, RMSE: 2.26
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Degree: 1, RMSE: 15.08
 Degree: 2, RMSE: 2.66
-Degree: 3, RMSE: 16.84
-Degree: 4, RMSE: 17.05
-Degree: 5, RMSE: 17.27
-Degree: 6, RMSE: 17.49
-Degree: 7, RMSE: 17.71
-Degree: 8, RMSE: 17.94
-Degree: 9, RMSE: 18.18
-Degree: 10, RMSE: 18.42
+Degree: 3, RMSE: 2.59
+Degree: 4, RMSE: 2.54
+Degree: 5, RMSE: 2.49
+Degree: 6, RMSE: 2.45
+Degree: 7, RMSE: 2.42
+Degree: 8, RMSE: 2.40
+Degree: 9, RMSE: 2.38
+Degree: 10, RMSE: 2.37
 </pre></div>
 </div>
-<img alt="../../_images/40d144c48507d234acf836ab5b820914a79956f169e3b40dd1a0b3d5ce7a844d.png" src="../../_images/40d144c48507d234acf836ab5b820914a79956f169e3b40dd1a0b3d5ce7a844d.png" />
+<img alt="../../_images/1869a3fd7f7b4000f86b71fc3ca019569e735ad91fa0d7e1ffdfc80aea85f963.png" src="../../_images/1869a3fd7f7b4000f86b71fc3ca019569e735ad91fa0d7e1ffdfc80aea85f963.png" />
 </div>
 </div>
 <p>Using this more rigorous methodology, you should find that the best polynomial order is 2 rather than 3. With order 3 the predictions become quite poor. This is a case of overfitting. The model with order 3 is too complex and fits local variability in the training data that does not reflect the underlying trend.</p>
@@ -998,10 +1000,10 @@ Degree: 10, RMSE: 18.42
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ffa8c8f7190&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa073603510&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/f21081fbd75bc4be18a423479d38a202ac6e87b49a307085c927c46464a3d9d6.png" src="../../_images/f21081fbd75bc4be18a423479d38a202ac6e87b49a307085c927c46464a3d9d6.png" />
+<img alt="../../_images/8d671ade27d3aae900bd9307eda8bf7c24b17469f4b7e7306206c3f1fe1db5cd.png" src="../../_images/8d671ade27d3aae900bd9307eda8bf7c24b17469f4b7e7306206c3f1fe1db5cd.png" />
 </div>
 </div>
 <p>You can play with the <code class="docutils literal notranslate"><span class="pre">periodic_order</span></code> to see how it affects the fit. In the next section, we will try to find the best value for the <code class="docutils literal notranslate"><span class="pre">periodic_order</span></code> using the same methodology that we used to find the best value for the <code class="docutils literal notranslate"><span class="pre">polynomial_order</span></code>.</p>
@@ -1075,7 +1077,8 @@ Degree: 10, RMSE: 1.16
 <div class="cell_output docutils container">
 <div class="output text_html"><style>#sk-container-id-1 {
   /* Definition of color scheme common for light and dark mode */
-  --sklearn-color-text: black;
+  --sklearn-color-text: #000;
+  --sklearn-color-text-muted: #666;
   --sklearn-color-line: gray;
   /* Definition of color scheme for unfitted estimators */
   --sklearn-color-unfitted-level-0: #fff5e6;
@@ -1220,12 +1223,21 @@ clickable and can be expanded/collapsed.
 /* Toggleable label */
 #sk-container-id-1 label.sk-toggleable__label {
   cursor: pointer;
-  display: block;
+  display: flex;
   width: 100%;
   margin-bottom: 0;
   padding: 0.5em;
   box-sizing: border-box;
   text-align: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+#sk-container-id-1 label.sk-toggleable__label .caption {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: var(--sklearn-color-text-muted);
 }
 
 #sk-container-id-1 label.sk-toggleable__label-arrow:before {
@@ -1378,7 +1390,8 @@ a:visited.sk-estimator-doc-link {
   height: 1em;
   width: 1em;
   text-decoration: none !important;
-  margin-left: 1ex;
+  margin-left: 0.5em;
+  text-align: center;
   /* unfitted */
   border: var(--sklearn-color-unfitted-level-1) 1pt solid;
   color: var(--sklearn-color-unfitted-level-1);
@@ -1477,7 +1490,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
-</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;LinearRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.5/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>LinearRegression()</pre></div> </div></div></div></div></div></div>
+</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LinearRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>LinearRegression</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.6/modules/generated/sklearn.linear_model.LinearRegression.html">?<span>Documentation for LinearRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>LinearRegression()</pre></div> </div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1514,7 +1527,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7ffa8c81cf50&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa073505a90&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/baf942663cbffbab07da04028b6097a7e94448d68a07f58564eca8aef0682484.png" src="../../_images/baf942663cbffbab07da04028b6097a7e94448d68a07f58564eca8aef0682484.png" />
