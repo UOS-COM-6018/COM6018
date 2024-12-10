@@ -65,6 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'materials/solutions/090_face_verification';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="100 Evaluating Classifiers" href="100_classifier_evaluation.html" />
     <link rel="prev" title="080 Curve Fitting with Scikit Learn" href="080_curve_fitting_with_scikit_learn.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -213,6 +214,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../labs/070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../labs/080_curve_fitting_with_scikit_learn.html">080 Curve Fitting with Scikit Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../labs/090_face_verification.html">090 Face Verification Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/100_classifier_evaluation.html">100 Evaluating Classifiers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
 <ul class="current nav bd-sidenav">
@@ -226,6 +228,7 @@
 <li class="toctree-l1"><a class="reference internal" href="070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="080_curve_fitting_with_scikit_learn.html">080 Curve Fitting with Scikit Learn</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">090 Face Verification Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="100_classifier_evaluation.html">100 Evaluating Classifiers</a></li>
 </ul>
 
     </div>
@@ -810,24 +813,24 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting jupyter_ui_poll
+  Downloading jupyter_ui_poll-1.0.0-py2.py3-none-any.whl.metadata (7.3 kB)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading jupyter_ui_poll-1.0.0-py2.py3-none-any.whl.metadata (7.3 kB)
-Collecting ipywidgets
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting ipywidgets
   Downloading ipywidgets-8.1.5-py3-none-any.whl.metadata (2.3 kB)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ipython in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from jupyter_ui_poll) (8.30.0)
+Requirement already satisfied: ipython in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from jupyter_ui_poll) (8.30.0)
 Requirement already satisfied: comm&gt;=0.1.3 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipywidgets) (0.2.2)
 Requirement already satisfied: traitlets&gt;=4.3.1 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipywidgets) (5.14.3)
-Collecting widgetsnbextension~=4.0.12 (from ipywidgets)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Downloading widgetsnbextension-4.0.13-py3-none-any.whl.metadata (1.6 kB)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting widgetsnbextension~=4.0.12 (from ipywidgets)
+  Downloading widgetsnbextension-4.0.13-py3-none-any.whl.metadata (1.6 kB)
 Collecting jupyterlab-widgets~=3.0.12 (from ipywidgets)
   Downloading jupyterlab_widgets-3.0.13-py3-none-any.whl.metadata (4.1 kB)
 Requirement already satisfied: decorator in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (5.1.1)
-Requirement already satisfied: jedi&gt;=0.16 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (0.19.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jedi&gt;=0.16 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (0.19.2)
 Requirement already satisfied: matplotlib-inline in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (0.1.7)
 Requirement already satisfied: pexpect&gt;4.3 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (4.9.0)
 Requirement already satisfied: prompt_toolkit&lt;3.1.0,&gt;=3.0.41 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (3.0.48)
@@ -836,20 +839,18 @@ Requirement already satisfied: stack_data in /opt/hostedtoolcache/Python/3.11.10
 Requirement already satisfied: typing_extensions&gt;=4.6 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from ipython-&gt;jupyter_ui_poll) (4.12.2)
 Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.4 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from jedi&gt;=0.16-&gt;ipython-&gt;jupyter_ui_poll) (0.8.4)
 Requirement already satisfied: ptyprocess&gt;=0.5 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from pexpect&gt;4.3-&gt;ipython-&gt;jupyter_ui_poll) (0.7.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: wcwidth in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from prompt_toolkit&lt;3.1.0,&gt;=3.0.41-&gt;ipython-&gt;jupyter_ui_poll) (0.2.13)
+Requirement already satisfied: wcwidth in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from prompt_toolkit&lt;3.1.0,&gt;=3.0.41-&gt;ipython-&gt;jupyter_ui_poll) (0.2.13)
 Requirement already satisfied: executing&gt;=1.2.0 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from stack_data-&gt;ipython-&gt;jupyter_ui_poll) (2.1.0)
 Requirement already satisfied: asttokens&gt;=2.1.0 in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from stack_data-&gt;ipython-&gt;jupyter_ui_poll) (3.0.0)
 Requirement already satisfied: pure-eval in /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages (from stack_data-&gt;ipython-&gt;jupyter_ui_poll) (0.2.3)
 Downloading jupyter_ui_poll-1.0.0-py2.py3-none-any.whl (9.1 kB)
 Downloading ipywidgets-8.1.5-py3-none-any.whl (139 kB)
 Downloading jupyterlab_widgets-3.0.13-py3-none-any.whl (214 kB)
-Downloading widgetsnbextension-4.0.13-py3-none-any.whl (2.3 MB)
-?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/2.3 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.3/2.3 MB</span> <span class=" -Color -Color-Red">136.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading widgetsnbextension-4.0.13-py3-none-any.whl (2.3 MB)
+?25l   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/2.3 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.3/2.3 MB</span> <span class=" -Color -Color-Red">145.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
 ?25h
 </pre></div>
 </div>
@@ -1095,6 +1096,15 @@ ipykernel_launcher.py: error: the following arguments are required: eval_data
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">080 Curve Fitting with Scikit Learn</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="100_classifier_evaluation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">100 Evaluating Classifiers</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

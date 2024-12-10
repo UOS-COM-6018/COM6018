@@ -214,6 +214,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../labs/070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../labs/080_curve_fitting_with_scikit_learn.html">080 Curve Fitting with Scikit Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../labs/090_face_verification.html">090 Face Verification Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/100_classifier_evaluation.html">100 Evaluating Classifiers</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Solutions</span></p>
 <ul class="current nav bd-sidenav">
@@ -227,6 +228,7 @@
 <li class="toctree-l1"><a class="reference internal" href="070_classification_with_scikit_learn.html">070 Classification with Scikit Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="080_curve_fitting_with_scikit_learn.html">080 Curve Fitting with Scikit Learn</a></li>
 <li class="toctree-l1"><a class="reference internal" href="090_face_verification.html">090 Face Verification Assignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="100_classifier_evaluation.html">100 Evaluating Classifiers</a></li>
 </ul>
 
     </div>
@@ -925,23 +927,53 @@
 <span class="g g-Whitespace">    </span><span class="mi">961</span>     <span class="k">if</span> <span class="n">p_rings</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">962</span>         <span class="n">rings</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">p_rings</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/cartopy/crs.py:910,</span> in <span class="ni">Projection._project_linear_ring</span><span class="nt">(self, linear_ring, src_crs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">906</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">multi_line_string</span><span class="o">.</span><span class="n">geoms</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">907</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">908</span>                                             <span class="n">line</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">909</span>                                             <span class="n">atol</span><span class="o">=</span><span class="n">threshold</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">910</span>         <span class="n">result_geometry</span> <span class="o">=</span> <span class="n">sgeom</span><span class="o">.</span><span class="n">LinearRing</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">coords</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">911</span>         <span class="n">rings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result_geometry</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">912</span>     <span class="k">else</span><span class="p">:</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/cartopy/crs.py:846,</span> in <span class="ni">Projection._project_linear_ring</span><span class="nt">(self, linear_ring, src_crs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">841</span> <span class="n">debug</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="g g-Whitespace">    </span><span class="mi">842</span> <span class="c1"># 1) Resolve the initial lines into projected segments</span>
+<span class="g g-Whitespace">    </span><span class="mi">843</span> <span class="c1"># 1abc</span>
+<span class="g g-Whitespace">    </span><span class="mi">844</span> <span class="c1"># def23ghi</span>
+<span class="g g-Whitespace">    </span><span class="mi">845</span> <span class="c1"># jkl41</span>
+<span class="ne">--&gt; </span><span class="mi">846</span> <span class="n">multi_line_string</span> <span class="o">=</span> <span class="n">cartopy</span><span class="o">.</span><span class="n">trace</span><span class="o">.</span><span class="n">project_linear</span><span class="p">(</span><span class="n">linear_ring</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">847</span>                                                  <span class="n">src_crs</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">849</span> <span class="c1"># Threshold for whether a point is close enough to be the same</span>
+<span class="g g-Whitespace">    </span><span class="mi">850</span> <span class="c1"># point as another.</span>
+<span class="g g-Whitespace">    </span><span class="mi">851</span> <span class="n">threshold</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x_limits</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">y_limits</span><span class="p">))</span> <span class="o">*</span> <span class="mf">1e-5</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/shapely/geometry/polygon.py:93,</span> in <span class="ni">LinearRing.__new__</span><span class="nt">(self, coordinates)</span>
-<span class="g g-Whitespace">     </span><span class="mi">90</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">91</span>         <span class="k">return</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">o</span><span class="p">]</span>
-<span class="ne">---&gt; </span><span class="mi">93</span> <span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">_coords</span><span class="p">(</span><span class="n">o</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">95</span>     <span class="c1"># conversion of coords to 2D array failed, this might be due</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span>     <span class="c1"># to inconsistent coordinate dimensionality</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Inconsistent coordinate dimensionality&quot;</span><span class="p">)</span>
+<span class="nn">File lib/cartopy/trace.pyx:591,</span> in <span class="ni">cartopy.trace.project_linear</span><span class="nt">()</span>
+
+<span class="nn">File lib/cartopy/trace.pyx:482,</span> in <span class="ni">cartopy.trace._project_segment</span><span class="nt">()</span>
+
+<span class="nn">File lib/cartopy/trace.pyx:413,</span> in <span class="ni">cartopy.trace.bisect</span><span class="nt">()</span>
+
+<span class="nn">File lib/cartopy/trace.pyx:376,</span> in <span class="ni">cartopy.trace.straightAndDomain</span><span class="nt">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/shapely/prepared.py:45,</span> in <span class="ni">PreparedGeometry.covers</span><span class="nt">(self, other)</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="k">def</span> <span class="nf">covers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Returns True if the geometry covers the other, else False&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">45</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">covers</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/shapely/geometry/base.py:667,</span> in <span class="ni">BaseGeometry.covers</span><span class="nt">(self, other)</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span> <span class="k">def</span> <span class="nf">covers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">666</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Returns True if the geometry covers the other, else False&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">667</span>     <span class="k">return</span> <span class="n">_maybe_unpack</span><span class="p">(</span><span class="n">shapely</span><span class="o">.</span><span class="n">covers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">))</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/shapely/decorators.py:77,</span> in <span class="ni">multithreading_enabled.&lt;locals&gt;.wrapped</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>     <span class="k">for</span> <span class="n">arr</span> <span class="ow">in</span> <span class="n">array_args</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span>         <span class="n">arr</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">writeable</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="ne">---&gt; </span><span class="mi">77</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">78</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span>     <span class="k">for</span> <span class="n">arr</span><span class="p">,</span> <span class="n">old_flag</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">array_args</span><span class="p">,</span> <span class="n">old_flags</span><span class="p">):</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/shapely/predicates.py:671,</span> in <span class="ni">covers</span><span class="nt">(a, b, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">626</span> <span class="nd">@multithreading_enabled</span>
+<span class="g g-Whitespace">    </span><span class="mi">627</span> <span class="k">def</span> <span class="nf">covers</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">628</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Returns True if no point in geometry B is outside geometry A.</span>
+<span class="g g-Whitespace">    </span><span class="mi">629</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">630</span><span class="sd">     Parameters</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">669</span><span class="sd">     False</span>
+<span class="g g-Whitespace">    </span><span class="mi">670</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">671</span>     <span class="k">return</span> <span class="n">lib</span><span class="o">.</span><span class="n">covers</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
