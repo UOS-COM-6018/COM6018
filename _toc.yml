@@ -45,6 +45,7 @@ parts:
       - file: materials/labs/070_classification_with_scikit_learn.ipynb
       - file: materials/labs/080_curve_fitting_with_scikit_learn.ipynb
       - file: materials/labs/090_face_verification.ipynb
+      - file: materials/labs/100_classifier_evaluation.ipynb
   - caption: Solutions
     chapters:
       - file: materials/solutions/000_Introduction.md
@@ -57,3 +58,4 @@ parts:
       - file: materials/solutions/070_classification_with_scikit_learn.ipynb
       - file: materials/solutions/080_curve_fitting_with_scikit_learn.ipynb
       - file: materials/solutions/090_face_verification.ipynb
+      - file: materials/solutions/100_classifier_evaluation.ipynb
