@@ -1,21 +1,19 @@
 name: com6018
 channels:
-  - conda-forge
-  - defaults
+    - conda-forge
+    - defaults
 dependencies:
-  - basemap=1.4.0
-  - basemap-data-hires=1.3.2
-  - docopt=0.6.2
-  - ipykernel=6.29.5
-  - jupyter_contrib_nbextensions=0.7.0
-  - libtiff=4.7.0
-  - matplotlib=3.9.2
-  - nb_conda_kernels=2.5.1
-  - notebook=6.5.7
-  - numpy=2.1.1
-  - pandas=2.2.3
-  - pyproj=3.6.1
-  - python=3.12
-  - scikit-learn=1.5.2
-  - seaborn=0.13.2
-  - xlrd=2.0.1
+    - docopt=0.6.2
+    - ipykernel=6.29.5
+    - jupyter_contrib_nbextensions=0.7.0
+    - libtiff=4.7.0
+    - matplotlib=3.9.2
+    - nb_conda_kernels=2.5.1
+    - notebook=6.5.7
+    - numpy=2.1.1
+    - pandas=2.2.3
+    - pyproj=3.6.1
+    - python=3.12
+    - scikit-learn=1.5.2
+    - seaborn=0.13.2
+    - xlrd=2.0.1
