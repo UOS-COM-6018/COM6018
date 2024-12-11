@@ -945,35 +945,21 @@
 
 <span class="nn">File lib/cartopy/trace.pyx:413,</span> in <span class="ni">cartopy.trace.bisect</span><span class="nt">()</span>
 
-<span class="nn">File lib/cartopy/trace.pyx:376,</span> in <span class="ni">cartopy.trace.straightAndDomain</span><span class="nt">()</span>
+<span class="nn">File lib/cartopy/trace.pyx:371,</span> in <span class="ni">cartopy.trace.straightAndDomain</span><span class="nt">()</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/shapely/prepared.py:45,</span> in <span class="ni">PreparedGeometry.covers</span><span class="nt">(self, other)</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="k">def</span> <span class="nf">covers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Returns True if the geometry covers the other, else False&quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">45</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">covers</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/shapely/geometry/base.py:667,</span> in <span class="ni">BaseGeometry.covers</span><span class="nt">(self, other)</span>
-<span class="g g-Whitespace">    </span><span class="mi">665</span> <span class="k">def</span> <span class="nf">covers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">666</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Returns True if the geometry covers the other, else False&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">667</span>     <span class="k">return</span> <span class="n">_maybe_unpack</span><span class="p">(</span><span class="n">shapely</span><span class="o">.</span><span class="n">covers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">))</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/shapely/decorators.py:77,</span> in <span class="ni">multithreading_enabled.&lt;locals&gt;.wrapped</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">75</span>     <span class="k">for</span> <span class="n">arr</span> <span class="ow">in</span> <span class="n">array_args</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">76</span>         <span class="n">arr</span><span class="o">.</span><span class="n">flags</span><span class="o">.</span><span class="n">writeable</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="ne">---&gt; </span><span class="mi">77</span>     <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">78</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">79</span>     <span class="k">for</span> <span class="n">arr</span><span class="p">,</span> <span class="n">old_flag</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">array_args</span><span class="p">,</span> <span class="n">old_flags</span><span class="p">):</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/shapely/predicates.py:671,</span> in <span class="ni">covers</span><span class="nt">(a, b, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">626</span> <span class="nd">@multithreading_enabled</span>
-<span class="g g-Whitespace">    </span><span class="mi">627</span> <span class="k">def</span> <span class="nf">covers</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">628</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Returns True if no point in geometry B is outside geometry A.</span>
-<span class="g g-Whitespace">    </span><span class="mi">629</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">630</span><span class="sd">     Parameters</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/shapely/geometry/linestring.py:38,</span> in <span class="ni">LineString.__new__</span><span class="nt">(self, coordinates)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span><span class="sd"> A geometry type composed of one or more line segments.</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span><span class="sd"> </span>
 <span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">669</span><span class="sd">     False</span>
-<span class="g g-Whitespace">    </span><span class="mi">670</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">671</span>     <span class="k">return</span> <span class="n">lib</span><span class="o">.</span><span class="n">covers</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span><span class="sd"> 2.0</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">---&gt; </span><span class="mi">38</span> <span class="k">def</span> <span class="fm">__new__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">39</span>     <span class="k">if</span> <span class="n">coordinates</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span>         <span class="c1"># empty geometry</span>
+<span class="g g-Whitespace">     </span><span class="mi">41</span>         <span class="c1"># TODO better constructor</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span>         <span class="k">return</span> <span class="n">shapely</span><span class="o">.</span><span class="n">from_wkt</span><span class="p">(</span><span class="s2">&quot;LINESTRING EMPTY&quot;</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
